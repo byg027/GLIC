@@ -45,7 +45,21 @@
         .logo-container {
             display: flex;
             align-items: center;
+            /* El gap ahora se maneja dentro del enlace */
+        }
+
+        /* NUEVA CLASE PARA EL ENLACE DEL LOGO */
+        .logo-anchor {
+            display: flex;
+            align-items: center;
             gap: 10px;
+            text-decoration: none; /* Quita el subrayado */
+            color: inherit; /* Hereda el color */
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-anchor:hover {
+            opacity: 0.9;
         }
 
         /* LOGO */
@@ -79,7 +93,8 @@
             left: 14px;
         }
 
-        .logo-link:hover::before {
+        /* Efecto hover al pasar sobre todo el contenedor del enlace */
+        .logo-anchor:hover .logo-link::before {
             transform: rotate(405deg);
         }
 
@@ -472,8 +487,10 @@
 <body>
     <header class="animate__animated animate__fadeInDown">
         <div class="logo-container">
-            <div class="logo-link" role="img" aria-label="GLIC Ingeniería logo"></div>
-            <h1>GLIC Ingeniería</h1>
+            <a href="https://glic.cl" class="logo-anchor" aria-label="Ir al inicio de GLIC Ingeniería">
+                <div class="logo-link" role="img"></div>
+                <h1>GLIC Ingeniería</h1>
+            </a>
         </div>
         <nav>
             <a href="#servicios">Servicios</a>
