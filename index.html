@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLIC Ingeniería</title>
+    
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%23111" rx="12"/><text x="50%" y="50%" dy=".35em" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="42" fill="%23ff9900">G</text></svg>'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        /* Reset general */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: #111;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            transition: top 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            /* El gap ahora se maneja dentro del enlace */
+        }
+
+        /* NUEVA CLASE PARA EL ENLACE DEL LOGO */
+        .logo-anchor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none; /* Quita el subrayado */
+            color: inherit; /* Hereda el color */
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-anchor:hover {
+            opacity: 0.9;
+        }
+
+        /* LOGO */
+        .logo-link {
+            width: 28px;
+            height: 28px;
+            position: relative;
+            display: grid;
+            place-items: center;
+            transition: transform 0.5s ease;
+        }
+
+        .logo-link::before {
+            content: '';
+            width: 20px;
+            height: 10px;
+            border: 3px solid #ff9900;
+            border-radius: 7.5px;
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
+        }
+
+        .logo-link::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 3px solid #ff9900;
+            border-radius: 50%;
+            top: 7px;
+            left: 14px;
+        }
+
+        /* Efecto hover al pasar sobre todo el contenedor del enlace */
+        .logo-anchor:hover .logo-link::before {
+            transform: rotate(405deg);
+        }
+
+        .logo-container h1 {
+            font-size: 1.65rem;
+            letter-spacing: 1px;
+            color: #ff9900;
+            margin: 0;
+            line-height: 1;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff9900;
+            transform: scale(1.1);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 3rem 0;
+        }
+
+        /* SECCIÓN HERO */
+        .hero-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-flex-img, .hero-flex-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-flex-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .hero-flex-text h2 {
+            text-align: left;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #ff9900;
+        }
+
+        .hero-flex-text h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #ff9900;
+            display: block;
+            margin: 0.5rem 0 0;
+            border-radius: 2px;
+        }
+
+        .hero-flex-text p {
+            line-height: 1.7;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        /* TÍTULOS */
+        h2 {
+            color: #ff9900;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: #ff9900;
+            display: block;
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #111;
+            padding: 2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px) rotate(1deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #111, #222);
+        }
+
+        .card h3 {
+            margin-bottom: 0.8rem;
+            color: #ff9900;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover h3 {
+            color: #fff;
+        }
+
+        .card p {
+            color: #ddd;
+            text-align: justify;
+        }
+
+        /* LISTAS */
+        ul {
+            list-style: none;
+            padding-left: 0;
+            color: #fff;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li:hover {
+            background-color: #1a1a1a;
+        }
+
+        ul li strong {
+            color: #ff9900;
+        }
+
+        /* FORMULARIO */
+        .contact-form {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #444;
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: #000;
+            color: #fff;
+            transition: border 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border: 1px solid #ff9900;
+            outline: none;
+            transform: scale(1.01);
+        }
+
+        .contact-form button {
+            background: #ff9900;
+            color: #fff;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            background: #e68a00;
+            transform: scale(1.03) translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            color: #d1d5db;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #ff9900;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #e68a00;
+            transform: translateY(-2px);
+        }
+
+        /* FAB */
+        .fab {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #ff9900;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            font-weight: bold;
+            z-index: 1000;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .fab:hover {
+            background-color: #e68a00;
+            transform: scale(1.05);
+        }
+
+        /* PROYECTOS */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-item, .specialty-item {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+            will-change: transform;
+        }
+
+        .project-item:hover, .specialty-item:hover {
+            transform: translateY(-12px) scale(1.02) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(255,153,0,0.2);
+        }
+
+        .image-wrapper, .specialty-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-wrapper img, .specialty-image-wrapper img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover img, .specialty-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-height: 100px;
+        }
+
+        .project-content h3 {
+            color: #ff9900;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover h3 { color: #fff; }
+
+        .project-content p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: justify;
+            margin-top: auto;
+        }
+
+        /* ESPECIALIDADES */
+        .specialty-content {
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-height: 100px;
+        }
+
+        .specialty-content h4 {
+            color: #ff9900;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .specialty-content p {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: justify;
+            margin-top: auto;
+        }
+
+        /* ANIMACIONES */
+        .animated-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .animated-fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+        .animated-zoom-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .animated-zoom-in.is-visible { opacity: 1; transform: scale(1); }
+
+        /* HEADER SCROLL */
+        .hide-header { top: -150px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo-container {
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            header nav {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            header nav a { margin: 0 0.5rem; }
+
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-flex-text h2 { text-align: center; }
+            .hero-flex-text h2::after { margin: 0.5rem auto 0; }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="animate__animated animate__fadeInDown">
+        <div class="logo-container">
+            <a href="https://glic.cl" class="logo-anchor" aria-label="Ir al inicio de GLIC Ingeniería">
+                <div class="logo-link" role="img"></div>
+                <h1>GLIC Ingeniería</h1>
+            </a>
+        </div>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#normativa">Normativa</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container hero-flex">
+            <div class="hero-flex-img animated-fade-in" data-animation="fade-in">
+                <img src="https://images.unsplash.com/photo-1696759106449-70e7d2ea67d8?fm=jpg&q=60&w=1500&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN0ZWVsJTIwYnJpZGdlfGVufDB8fDB8fHww" alt="Vista detallada de un puente de acero, simbolizando precisión y solidez en ingeniería." loading="lazy">
+            </div>
+            <div class="hero-flex-text animated-fade-in" data-animation="fade-in">
+                <h2 class="animate__animated animate__fadeInRight">Precisión que Inspira Confianza</h2>
+                <p class="animate__animated animate__fadeInRight animate__delay-1s">Observa la meticulosidad plasmada en este análisis. Cada línea, cada nodo, revela un esqueleto de acero diseñado con una <strong>exactitud implacable</strong>. Es la promesa de una estructura no solo fuerte, sino inteligentemente concebida para resistir los desafíos más exigentes. Siente la <strong>solidez visual</strong> de un trabajo donde la ingeniería se encuentra con la <strong>artesanía digital</strong>, anticipando cada tensión, cada carga, para ofrecer una <strong>tranquilidad inquebrantable</strong>.</p>
+            </div>
+        </section>
+
+        <section id="servicios" class="container">
+            <h2 class="animated-fade-in" data-animation="fade-in">Servicios</h2>
+            <div class="cards">
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Estructuras Metálicas</h3>
+                    <p>Diseño y cálculo de estructuras de acero según <strong>NCh427</strong> y <strong>AISC 360</strong>, garantizando seguridad, eficiencia y cumplimiento normativo.</p>
+                </div>
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Hormigón Armado</h3>
+                    <p>Desarrollo de proyectos en hormigón bajo normativa chilena, considerando aspectos sísmicos y constructivos.</p>
+                </div>
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Normativa Sísmica</h3>
+                    <p>Análisis estructural de acuerdo a <strong>NCh2369</strong> y demás normas, optimizando el comportamiento frente a sismos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="container">
+            <h2 class="animated-fade-in" data-animation="fade-in">Nuestros Proyectos</h2>
+            <div class="project-grid">
+
+                <div class="project-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="image-wrapper">
+                        <img src="https://e0.pxfuel.com/wallpapers/841/235/desktop-wallpaper-steel-structure-buildings-steel-buildings-steel-structure-design.jpg" alt="Cálculo estructural de una nave industrial o galpón." loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Estructuras de Acero</h3>
+                        <p>Cálculo estructural de una nave industrial o galpón, mostrando la optimización del diseño y la distribución de cargas.</p>
+                    </div>
+                </div>
+
+                <div class="project-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="image-wrapper">
+                        <img src="https://www.eec-tampabay.com/wp-content/uploads/shutterstock_597706874-1.jpg" alt="Modelado en 3D de una vivienda unifamiliar." loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Diseño de Vivienda</h3>
+                        <p>Modelado en 3D de una vivienda unifamiliar o multifamiliar, destacando su integración con el entorno y la distribución de espacios.</p>
+                    </div>
+                </div>
+                
+                <div class="specialty-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="specialty-image-wrapper">
+                        <img src="https://images.ctfassets.net/a8na0kc5cc0v/4dlqr21CrtHpJ67TpNik6Z/3f13e643ea77bcae314e0c595e9b1e97/2017_11_lucera-cuadro-electrico-casa-01.jpg?w=1200&h=630&fit=thumb&fm=jpg" alt="Plano eléctrico detallado de una vivienda." loading="lazy">
+                    </div>
+                    <div class="specialty-content">
+                        <h4>Eléctrico</h4>
+                        <p>Diseñamos planos eléctricos detallados, con diagramas de circuitos y simbología.</p>
+                    </div>
+                </div>
+
+                <div class="specialty-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="specialty-image-wrapper">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXz6k0yUjwwmun4e-STMegtoz3ZSn02If51r_baDqqoE2oqcp_k3JMOh_9QYhl-VKRL9M&usqp=CAU" alt="Diseño de red sanitaria y de alcantarillado." loading="lazy">
+                    </div>
+                    <div class="specialty-content">
+                        <h4>Sanitario</h4>
+                        <p>Planificamos instalaciones de alcantarillado y drenaje para la correcta evacuación de aguas.</p>
+                    </div>
+                </div>
+
+                <div class="specialty-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="specialty-image-wrapper">
+                        <img src="https://bosstech.pe/wp-content/uploads/2020/12/que-podria-haber-agua-grifo.jpg" alt="Instalaciones de agua potable." loading="lazy">
+                    </div>
+                    <div class="specialty-content">
+                        <h4>Agua Potable</h4>
+                        <p>Diseñamos la red de tuberías de agua potable, asegurando un suministro eficiente y seguro.</p>
+                    </div>
+                </div>
+
+                <div class="specialty-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="specialty-image-wrapper">
+                        <img src="https://adaptivesolutions.cz/wp-content/uploads/2024/10/AC-Heat-Pump-Alberta-ProSolutions-1024x778-1.jpg" alt="Diseño de sistema de climatización." loading="lazy">
+                    </div>
+                    <div class="specialty-content">
+                        <h4>Climatización</h4>
+                        <p>Desarrollamos proyectos de climatización con la ubicación de ductos y equipos.</p>
+                    </div>
+                </div>
+
+                <div class="project-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="image-wrapper">
+                        <img src="https://png.pngtree.com/thumb_back/fw800/background/20220601/pngtree-metal-concrete-structures-multistory-modern-sky-photo-image_30762794.jpg" alt="Diseño de una fundación o muro de contención." loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Diseño en Hormigón</h3>
+                        <p>Diseño de una fundación o muro de contención, ilustrando la correcta distribución del refuerzo de acero y el cálculo de secciones.</p>
+                    </div>
+                </div>
+
+                <div class="project-item animated-zoom-in" data-animation="zoom-in">
+                    <div class="image-wrapper">
+                        <img src="https://emaningenieria.com/wp-content/uploads/2021/09/imagen-post.jpg" alt="Proyecto especial de ingeniería civil." loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Proyectos Personalizados</h3>
+                        <p>Modelado o plano de un proyecto especial, como una estructura de contención de suelo o un túnel, mostrando soluciones de ingeniería únicas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="normativa" class="container">
+            <h2 class="animated-fade-in" data-animation="fade-in">Normativa Aplicada</h2>
+            <p class="animated-fade-in" data-animation="fade-in" style="text-align:center; max-width:700px; margin:auto;">
+                En GLIC Ingeniería trabajamos bajo estrictos estándares de calidad, aplicando normativas como:
+            </p>
+            <ul class="animated-fade-in" data-animation="fade-in" style="max-width:600px; margin:2rem auto;">
+                <li><strong>NCh427</strong>: Diseño en acero.</li>
+                <li><strong>AISC 360</strong>: Specification for Structural Steel Buildings.</li>
+                <li><strong>NCh2369</strong>: Diseño sísmico de estructuras.</li>
+                <li><strong>NCh430</strong>: Hormigón armado - Requisitos de diseño.</li>
+            </ul>
+        </section>
+
+        <section id="beneficios" class="container">
+            <h2 class="animated-fade-in" data-animation="fade-in">Beneficios de un Buen Cálculo Estructural</h2>
+            <div class="cards">
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Menos Materiales</h3>
+                    <p>Optimización en el uso de acero y hormigón, reduciendo costos de obra.</p>
+                </div>
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Procesos Simplificados</h3>
+                    <p>Un diseño bien estructurado permite métodos constructivos más simples y rápidos.</p>
+                </div>
+                <div class="card animated-zoom-in" data-animation="zoom-in">
+                    <h3>Ejecución Expedita</h3>
+                    <p>La obra se desarrolla de forma más ordenada, reduciendo tiempos y costos asociados.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="container">
+            <h2 class="animated-fade-in" data-animation="fade-in">Contacto</h2>
+            <div class="contact-form animated-zoom-in" data-animation="zoom-in">
+                
+                <form action="https://api.web3forms.com/submit" method="POST">
+
+                    <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
+
+                    <input type="text" name="nombre" placeholder="Tu nombre" required aria-label="Tu nombre">
+                    <input type="email" name="email" placeholder="Tu correo" required aria-label="Tu correo electrónico">
+                    <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required aria-label="Tu mensaje"></textarea>
+
+                    <input type="hidden" name="subject" value="Nuevo Contacto desde GLIC Ingeniería">
+
+                    <button type="submit">Enviar</button>
+
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GLIC Ingeniería. Todos los derechos reservados.</p>
+        <p>
+            <a href="#" aria-label="Enlace a LinkedIn">LinkedIn</a> | 
+            <a href="#" aria-label="Enlace a WhatsApp">WhatsApp</a>
+        </p>
+    </footer>
+
+    <a href="#contacto" class="fab animate__animated animate__bounceInUp" aria-label="Botón flotante de contacto">Contacto</a>
+    
+    <script>
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector('header');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animated-fade-in, .animated-zoom-in').forEach(element => {
+                observer.observe(element);
+            });
+
+            window.addEventListener('scroll', () => {
+                if (lastScrollY < window.scrollY && window.scrollY > 50) {
+                    header.classList.add('hide-header');
+                } else if (lastScrollY > window.scrollY) {
+                    header.classList.remove('hide-header');
+                }
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
+</body>
+</html>
