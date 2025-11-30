@@ -111,7 +111,7 @@
         h2 { font-family: var(--font-title); color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative; }
         h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* --- HERO INTELIGENTE (Responsive Aspect Ratio) --- */
+        /* --- HERO INTELIGENTE --- */
         #inicio {
             min-height: 100dvh; 
             width: 100%;
@@ -138,13 +138,11 @@
         }
         .hero-text h2::after { display: none; }
         
-        /* Texto Justificado */
         .hero-text p { 
             font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; 
             text-align: justify;
         }
 
-        /* Estilos de imagen para PC (Lado derecho) */
         .hero-img-wrapper {
             flex: 1;
             height: 60vh; 
@@ -182,51 +180,48 @@
             }
 
             .hero-text {
-                width: 100%;
-                text-align: center;
+                width: 100%; text-align: center;
             }
 
             .hero-text h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
             
-            /* En móvil a veces justificado forzado se ve mal, pero se mantiene a petición */
-            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; }
+            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; text-align: justify; }
 
-            /* --- IMAGEN CUADRADA EN VERTICAL --- */
             .hero-img-wrapper {
                 width: 100%;
-                /* Ajuste para que no sea gigante en tablets anchas */
-                max-width: 550px; 
-                margin: 0 auto;
-                
-                /* AQUÍ LA CLAVE: 1/1 es cuadrado. 5/4 es un poco más vertical. */
+                max-width: 550px; margin: 0 auto;
                 aspect-ratio: 1 / 1; 
-                
-                /* Limitamos la altura para que en pantallas muy chatas no tape todo */
                 max-height: 50vh; 
                 height: auto; 
             }
 
-            .hero-img-wrapper img { 
-                object-fit: cover; 
-                object-position: center; 
-            }
+            .hero-img-wrapper img { object-fit: cover; object-position: center; }
         }
 
         @media (max-width: 480px) {
             .hero-text h2 { font-size: 2rem; }
-            /* En móviles muy finos, mantenemos el cuadrado */
             .hero-img-wrapper { aspect-ratio: 1 / 1; }
         }
 
-        /* --- RESTO DE ESTILOS --- */
-        .cards, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        /* --- CARDS & PROYECTOS --- */
+        .cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; 
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
         .card, .project-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; transition: all 0.3s; overflow: hidden; }
         .card { padding: 3rem 2.5rem; }
         .card:hover, .project-item:hover { transform: translateY(-10px); border-color: var(--primary); }
         .card h3, .project-content h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1rem; }
         .project-content h3 { color: var(--primary); }
         
-        /* Texto Justificado */
         .card p, .project-content p { color: var(--text-muted); text-align: justify; }
         
         .image-wrapper { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
@@ -238,11 +233,29 @@
         .normativa-list li { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; color: #ddd; }
         .normativa-list li strong { color: var(--primary); }
 
-        .contact-form { background: var(--bg-card); padding: 4rem; border-radius: 16px; max-width: 700px; margin: auto; border: 1px solid rgba(255,255,255,0.05); }
+        .contact-form { 
+            background: var(--bg-card); 
+            padding: 4rem; 
+            border-radius: 16px; 
+            max-width: 700px; 
+            margin: auto; 
+            border: 1px solid rgba(255,255,255,0.05); 
+        }
+        
+        /* CORRECCIÓN FORMULARIO MÓVIL */
+        @media (max-width: 600px) { 
+            .contact-form { 
+                padding: 2rem 1rem; /* Mucho menos padding lateral */
+            } 
+            .container {
+                width: 95%; /* Usar casi todo el ancho */
+            }
+        }
+        
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
-        /* --- FOOTER SINGLE ROW --- */
+        /* --- FOOTER CENTRADO Y GRID --- */
         footer { 
             background-color: #080808; 
             border-top: 1px solid rgba(255,255,255,0.05); 
@@ -251,32 +264,47 @@
         }
         
         .footer-container { 
-            width: 95%; max-width: 1200px; margin: auto; 
-            display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;
-            gap: 1.5rem; flex-wrap: nowrap; 
+            width: 95%; max-width: 1000px; /* Reducido para juntar columnas */
+            margin: auto; 
+            /* GRID asegura columnas iguales */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2rem; 
+            /* Centrado de contenido */
+            text-align: center;
         }
         
-        .footer-col { flex: 1; min-width: 0; }
-
         .footer-col h3 { 
             color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
-        .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin-top: 10px; }
+        /* Línea decorativa centrada */
+        .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin: 10px auto 0; }
 
-        /* Texto Footer Justificado */
-        .footer-about p { color: #999; font-size: 0.9rem; line-height: 1.6; text-align: justify; }
+        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            font-weight: 400; 
+            text-decoration: none; 
+            display: block;
+            margin-bottom: 0.5rem;
+        }
 
-        .footer-links ul { list-style: none; }
-        .footer-links a { color: #aaa; text-decoration: none; display: block; margin-bottom: 6px; font-size: 0.9rem; }
-        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .footer-contact a:hover, .footer-links a:hover { color: var(--primary); transition: color 0.3s; }
+        /* Efecto hover desactivado en centrado, o cambiado a escala */
+        .footer-links a:hover { transform: scale(1.05); }
+        .footer-links ul { list-style: none; padding: 0; }
 
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
         
-        /* Ajustes Footer Móvil */
+        /* Ajustes Footer Móvil para que quepa en 1 fila */
         @media (max-width: 768px) {
-            .footer-container { gap: 1rem; }
-            .footer-col h3 { font-size: 0.9rem; margin-bottom: 0.8rem; }
-            .footer-about p, .footer-links a, .footer-col p { font-size: 0.75rem; line-height: 1.4; }
+            .footer-container { gap: 5px; }
+            .footer-col h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
+            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { 
+                font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.3rem;
+            }
             .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
         }
 
@@ -418,7 +446,7 @@
         <div class="footer-container">
             <div class="footer-col footer-about">
                 <h3>GLIC Ingeniería</h3>
-                <p>Consultora de ingeniería civil y estructural comprometida con la excelencia técnica. Transformamos desafíos complejos en soluciones constructivas seguras, eficientes y normadas.</p>
+                <p>Consultora de ingeniería civil y estructural comprometida con la excelencia técnica. Transformamos desafíos complejos en soluciones seguras y eficientes.</p>
             </div>
             <div class="footer-col footer-links">
                 <h3>Navegación</h3>
@@ -432,12 +460,10 @@
             </div>
             <div class="footer-col footer-contact">
                 <h3>Contacto</h3>
-                <p style="color: #aaa; margin-bottom: 10px;">Región de Los Ríos, Chile</p>
-                <p><a href="mailto:contacto@glic.cl" style="color:#fff; font-weight:400; font-size: 1.1rem;">contacto@glic.cl</a></p>
-                <div style="margin-top: 25px; display: flex; gap: 15px;">
-                    <a href="#" style="color:var(--text-muted); font-size: 0.9rem;">LinkedIn</a>
-                    <a href="#" style="color:var(--text-muted); font-size: 0.9rem;">WhatsApp</a>
-                </div>
+                <p>Valdivia, Los Ríos, Chile</p>
+                <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">WhatsApp</a>
             </div>
         </div>
         <div class="footer-bottom">
