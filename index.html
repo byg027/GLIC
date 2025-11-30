@@ -6,9 +6,7 @@
     <title>GLIC Ingeniería | Cálculo Estructural</title>
     
     <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%23111" rx="12"/><text x="50%" y="50%" dy=".35em" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="42" fill="%23ff9900">G</text></svg>'>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -25,7 +23,7 @@
             --text-muted: #a0a0a0;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
-            --header-height: 80px; /* Altura estimada del header */
+            --header-height: 70px;
         }
 
         /* --- RESET & BASICS --- */
@@ -43,7 +41,6 @@
             min-height: 100vh;
         }
 
-        /* UTILIDADES */
         .text-gradient {
             background: linear-gradient(to right, var(--primary), var(--primary-light));
             -webkit-background-clip: text;
@@ -51,18 +48,19 @@
             display: inline-block;
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER & NAV --- */
         header {
-            background: rgba(5, 5, 5, 0.90);
-            padding: 1rem 0;
-            position: fixed; /* Fijo para que siempre esté, pero el Hero lo compensará */
-            top: 0;
-            left: 0;
-            width: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            padding: 0; /* Padding controlado internamente */
+            position: fixed;
+            top: 0; left: 0; width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             backdrop-filter: blur(15px);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
         }
         
         .header-content {
@@ -76,389 +74,186 @@
 
         /* Logo */
         .logo-anchor {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #fff;
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: #fff; z-index: 1001;
         }
-
         .logo-link {
-            width: 32px;
-            height: 32px;
-            position: relative;
-            display: grid;
-            place-items: center;
+            width: 32px; height: 32px; position: relative; display: grid; place-items: center;
         }
-
         .logo-link::before {
-            content: '';
-            width: 22px;
-            height: 12px;
-            border: 3px solid var(--primary);
-            border-radius: 8px;
-            transform: rotate(45deg);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            content: ''; width: 22px; height: 12px;
+            border: 3px solid var(--primary); border-radius: 8px;
+            transform: rotate(45deg); transition: 0.5s;
         }
-
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
-
         .logo-link::after {
             content: ''; position: absolute; width: 14px; height: 14px;
             border: 3px solid var(--primary); border-radius: 50%;
             top: 9px; left: 16px;
         }
-
         .header-content h1 {
-            font-family: var(--font-title);
-            font-weight: 800;
-            font-size: 1.4rem; /* Ajustado ligeramente */
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
+            font-family: var(--font-title); font-weight: 800; font-size: 1.3rem;
+            letter-spacing: -0.5px; text-transform: uppercase;
         }
 
-        /* Navegación PC */
-        nav { display: flex; gap: 25px; }
+        /* NAVEGACIÓN PC (Por defecto) */
+        .nav-menu { display: flex; gap: 25px; }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s;
-            padding: 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .nav-link {
+            color: #fff; text-decoration: none; font-size: 0.9rem;
+            font-weight: 600; position: relative; transition: color 0.3s;
+            padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px;
         }
-
-        nav a:hover, nav a.active { color: var(--primary); }
-        
-        nav a::after {
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
+        .nav-link::after {
             content: ''; position: absolute; width: 0; height: 2px;
             bottom: -2px; left: 0; background: var(--primary);
             transition: width 0.3s ease-in-out;
         }
-        nav a:hover::after, nav a.active::after { width: 100%; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-        /* --- CONTENEDOR GENERAL --- */
-        .container {
-            width: 90%; max-width: 1200px; margin: auto; padding: 5rem 0;
+        /* HAMBURGUESA (Oculta en PC) */
+        .hamburger {
+            display: none; cursor: pointer; z-index: 1001;
+        }
+        .bar {
+            display: block; width: 25px; height: 3px; margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out;
+            background-color: #fff; border-radius: 2px;
         }
 
-        /* --- TYPOGRAPHY --- */
+        /* --- ESTILOS MÓVIL (Menú Hamburguesa) --- */
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            
+            /* Animación de la hamburguesa a X */
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--primary); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0; /* Ocupa desde arriba */
+                flex-direction: column;
+                background-color: rgba(0,0,0,0.98); /* Fondo casi negro total */
+                width: 100%;
+                height: 100vh; /* Toda la altura */
+                text-align: center;
+                transition: 0.3s;
+                justify-content: center; /* Centrar items verticalmente */
+                gap: 2rem;
+                padding-top: 60px; /* Espacio para el header */
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-menu.active { left: 0; }
+
+            .nav-link { font-size: 1.5rem; /* Letra más grande en móvil */ }
+            
+            /* Ajuste de H1 en móvil para que quepa con la hamburguesa */
+            .header-content h1 { font-size: 1.1rem; }
+        }
+
+        /* --- RESTO DEL CSS (Hero, Cards, etc.) --- */
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 5rem 0; }
         h2 {
-            font-family: var(--font-title);
-            color: var(--primary);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            position: relative;
+            font-family: var(--font-title); color: var(--primary); font-size: 2.5rem;
+            text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative;
         }
-        
         h2::after {
             content: ''; display: block; width: 80px; height: 4px;
-            background: var(--primary); margin: 15px auto 0;
-            border-radius: 2px;
+            background: var(--primary); margin: 15px auto 0; border-radius: 2px;
         }
 
-        /* --- HERO SECTION (100% Pantalla) --- */
+        /* Hero */
         #inicio {
-            min-height: 100vh; /* Ocupa TODA la pantalla */
-            display: flex;
-            align-items: center; /* Centra verticalmente */
-            justify-content: center;
-            padding-top: var(--header-height); /* Compensa el header fijo */
-            padding-bottom: 2rem;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding-top: var(--header-height); padding-bottom: 2rem;
         }
-        
-        .hero-flex {
-            display: flex; align-items: center; gap: 4rem; width: 100%;
-        }
-
+        .hero-flex { display: flex; align-items: center; gap: 4rem; width: 100%; }
         .hero-flex-img { flex: 1; min-width: 350px; }
         .hero-flex-img img {
-            width: 100%; 
-            max-height: 80vh; /* Evita que la imagen sea más alta que la pantalla */
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 2px rgba(255, 153, 0, 0.1);
-        }
-
-        .hero-flex-text { flex: 1; min-width: 350px; }
-
-        .hero-flex-text h2 {
-            text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem;
-            text-transform: none; letter-spacing: -1.5px;
-        }
-        .hero-flex-text h2::after { display: none; }
-
-        .hero-flex-text p {
-            font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted);
-            max-width: 550px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: #000;
-            padding: 15px 35px;
-            font-weight: 800;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.5);
-            background: var(--primary-light);
-        }
-
-        /* --- CARDS --- */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 3rem 2.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        .card h3 {
-            font-family: var(--font-title);
-            font-size: 1.4rem;
-            margin-bottom: 1rem; color: #fff;
-        }
-
-        .card p { color: var(--text-muted); font-size: 1rem; }
-
-        /* --- PROYECTOS GRID --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-item {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex; flex-direction: column;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .project-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-dark);
+            width: 100%; max-height: 80vh; object-fit: cover; border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
-
-        .image-wrapper {
-            width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative;
-        }
+        .hero-flex-text { flex: 1; min-width: 350px; }
+        .hero-flex-text h2 { text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; text-transform: none; letter-spacing: -1.5px; }
+        .hero-flex-text h2::after { display: none; }
+        .hero-flex-text p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; }
         
-        .image-wrapper::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-            opacity: 0; transition: opacity 0.4s;
+        .cta-button {
+            display: inline-block; background: var(--primary); color: #000;
+            padding: 15px 35px; font-weight: 800; text-decoration: none; border-radius: 6px;
+            text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;
         }
-        .project-item:hover .image-wrapper::after { opacity: 1; }
+        .cta-button:hover { transform: translateY(-3px); background: var(--primary-light); }
 
-        .image-wrapper img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        /* Grids */
+        .cards, .project-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
         }
+        .card, .project-item {
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px; transition: all 0.3s; overflow: hidden;
+        }
+        .card { padding: 3rem 2.5rem; }
+        .card:hover, .project-item:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card h3, .project-content h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1rem; }
+        .project-content h3 { color: var(--primary); }
+        .card p, .project-content p { color: var(--text-muted); }
+        
+        .image-wrapper { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .project-item:hover img { transform: scale(1.1); }
+        .project-content { padding: 2rem; }
 
-        .project-content {
-            padding: 2rem;
-            display: flex; flex-direction: column; flex-grow: 1;
-            text-align: left; 
-        }
+        .normativa-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 3rem auto 0; list-style: none; }
+        .normativa-list li { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; color: #ddd; }
+        .normativa-list li strong { color: var(--primary); }
 
-        .project-content h3 {
-            color: var(--primary);
-            font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 1.3rem; margin-bottom: 0.8rem;
-        }
-        
-        .project-content p {
-            font-size: 0.95rem; color: #ccc; line-height: 1.6;
-        }
-
-        /* --- NORMATIVA --- */
-        .normativa-list {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;
-            max-width: 800px; margin: 3rem auto 0; list-style: none;
-        }
-        .normativa-list li {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 25px; border-radius: 50px;
-            font-size: 0.95rem; color: #ddd;
-            transition: 0.3s;
-        }
-        .normativa-list li:hover {
-            border-color: var(--primary); background: rgba(255,153,0,0.1);
-        }
-        .normativa-list li strong { color: var(--primary); font-weight: 700; }
-
-        /* --- FORMULARIO --- */
         .contact-form {
-            background: var(--bg-card);
-            padding: 4rem; border-radius: 16px;
-            max-width: 700px; margin: auto;
+            background: var(--bg-card); padding: 4rem; border-radius: 16px; max-width: 700px; margin: auto;
             border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-
         .contact-form input, .contact-form textarea {
-            width: 100%; padding: 1.2rem; margin-bottom: 1.5rem;
-            background: rgba(0,0,0,0.5); border: 1px solid #333;
-            color: #fff; font-family: var(--font-body);
-            border-radius: 8px; font-size: 1rem;
-            transition: all 0.3s;
+            width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px;
         }
-        
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none; border-color: var(--primary);
-            background: rgba(0,0,0,0.8);
-            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
-        }
+        .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
-        .contact-form button {
-            width: 100%; background: var(--primary); color: #000;
-            padding: 1.2rem; border: none; font-weight: 800;
-            text-transform: uppercase; cursor: pointer;
-            transition: all 0.3s; border-radius: 8px; font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-        .contact-form button:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.4);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #080808;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 5rem 0 2rem 0;
-            margin-top: auto;
-        }
-        
-        .footer-container {
-            width: 90%; max-width: 1200px; margin: auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-        }
-
-        .footer-col h3 {
-            color: #fff; font-family: var(--font-title); font-size: 1.1rem;
-            margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;
-            font-weight: 700;
-        }
-        .footer-col h3::after {
-            content: ''; display: block; width: 30px; height: 3px;
-            background: var(--primary); margin-top: 10px;
-        }
-
-        .footer-about p { color: #999; font-size: 0.95rem; line-height: 1.8; }
-
+        footer { background-color: #080808; border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 0 2rem 0; margin-top: auto; }
+        .footer-container { width: 90%; max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; }
+        .footer-col h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1.5rem; text-transform: uppercase; }
         .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a {
-            color: #aaa; text-decoration: none; transition: 0.3s;
-            font-size: 0.95rem; display: inline-block;
-        }
-        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .footer-links a { color: #aaa; text-decoration: none; display: block; margin-bottom: 8px; }
+        .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
 
-        .footer-bottom {
-            margin-top: 4rem; padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center; color: #666; font-size: 0.85rem;
-        }
-
-        /* --- FAB & ANIMATIONS --- */
         .fab {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--primary); color: #000;
-            padding: 15px 30px; border-radius: 50px;
-            text-decoration: none; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(255,153,0,0.4);
+            position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: #000;
+            padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255,153,0,0.4);
             z-index: 100; transition: all 0.3s;
         }
-        .fab:hover { transform: scale(1.1) translateY(-5px); background: var(--primary-light); }
+        .fab:hover { transform: scale(1.1) translateY(-5px); }
         .hide-header { transform: translateY(-100%); }
-
-        .animated-element { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+        .animated-element { opacity: 0; transform: translateY(40px); transition: 1s; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* --- RESPONSIVE OPTIMIZADO (PC vs MÓVIL) --- */
-        
-        /* Tablet y Móvil */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 992px) {
-            .hero-flex { 
-                flex-direction: column-reverse; /* Imagen arriba en móvil? No, texto arriba es mejor para SEO/UX, pero visualmente imagen impacta */
-                /* En este caso, dejaremos texto arriba para que el botón cotizar esté accesible rápido */
-                text-align: center; 
-                gap: 2rem; 
-            }
-            .hero-flex-img { width: 100%; min-width: auto; }
-            .hero-flex-text { width: 100%; min-width: auto; }
-            
-            .hero-flex-text h2 { text-align: center; font-size: 2.8rem; }
+            .hero-flex { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .hero-flex-img, .hero-flex-text { width: 100%; min-width: auto; }
+            .hero-flex-text h2 { font-size: 2.5rem; text-align: center; }
             .hero-flex-text p { margin: 0 auto 2rem auto; }
-            
-            /* Header Stacked */
-            .header-content { flex-direction: column; gap: 1rem; }
-            nav { justify-content: center; width: 100%; flex-wrap: wrap; gap: 15px; }
-            
-            #inicio { padding-top: 140px; /* Más espacio arriba porque el nav ocupa dos lineas */ }
+            #inicio { padding-top: 120px; }
         }
-
-        /* Móvil Pequeño (Teléfonos Verticales) */
+        
         @media (max-width: 480px) {
-            /* Ajustes de tipografía para que no se vea gigante */
             h2 { font-size: 2rem; }
-            .hero-flex-text h2 { font-size: 2.1rem; letter-spacing: -0.5px; }
-            .hero-flex-text p { font-size: 1rem; }
-            
-            /* Reducción de paddings excesivos */
+            .hero-flex-text h2 { font-size: 2rem; }
             .container { padding: 3rem 0; }
-            .card { padding: 2rem; }
-            .contact-form { padding: 2rem 1.5rem; }
-            
-            /* Ajuste de Hero para que quepa mejor */
-            #inicio { 
-                min-height: auto; /* En móvil dejamos que la altura sea natural */
-                padding-top: 160px; 
-                padding-bottom: 4rem;
-            }
-            
-            /* Navegación más compacta */
-            nav a { font-size: 0.8rem; padding: 2px 0; }
+            .card, .contact-form { padding: 2rem; }
+            #inicio { padding-top: 100px; padding-bottom: 2rem; min-height: auto; }
         }
     </style>
 </head>
@@ -472,7 +267,14 @@
                     <h1>GLIC Ingeniería</h1>
                 </a>
             </div>
-            <nav>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="nav-menu">
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#servicios" class="nav-link">Servicios</a>
                 <a href="#proyectos" class="nav-link">Proyectos</a>
@@ -517,87 +319,38 @@
         <section id="proyectos" class="container">
             <h2 class="animated-element">Proyectos y Especialidades</h2>
             <div class="project-grid">
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://e0.pxfuel.com/wallpapers/841/235/desktop-wallpaper-steel-structure-buildings-steel-buildings-steel-structure-design.jpg" alt="Estructuras de Acero" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Naves Industriales</h3>
-                        <p>Cálculo estructural optimizado de galpones de gran luz, enfocados en la eficiencia del montaje y distribución de cargas.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://e0.pxfuel.com/wallpapers/841/235/desktop-wallpaper-steel-structure-buildings-steel-buildings-steel-structure-design.jpg" alt="Estructuras de Acero" loading="lazy"></div>
+                    <div class="project-content"><h3>Naves Industriales</h3><p>Cálculo estructural optimizado de galpones de gran luz, enfocados en la eficiencia del montaje y distribución de cargas.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://www.eec-tampabay.com/wp-content/uploads/shutterstock_597706874-1.jpg" alt="Diseño de Vivienda" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Vivienda y Edificación</h3>
-                        <p>Modelado y cálculo de viviendas unifamiliares y edificios, integrando la estructura con la arquitectura.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://www.eec-tampabay.com/wp-content/uploads/shutterstock_597706874-1.jpg" alt="Diseño de Vivienda" loading="lazy"></div>
+                    <div class="project-content"><h3>Vivienda y Edificación</h3><p>Modelado y cálculo de viviendas unifamiliares y edificios, integrando la estructura con la arquitectura.</p></div>
                 </div>
-                
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://images.ctfassets.net/a8na0kc5cc0v/4dlqr21CrtHpJ67TpNik6Z/3f13e643ea77bcae314e0c595e9b1e97/2017_11_lucera-cuadro-electrico-casa-01.jpg?w=1200&h=630&fit=thumb&fm=jpg" alt="Eléctrico" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Proyectos Eléctricos</h3>
-                        <p>Diseño de planos eléctricos detallados, diagramas unilineales, cuadros de carga y especificaciones técnicas.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://images.ctfassets.net/a8na0kc5cc0v/4dlqr21CrtHpJ67TpNik6Z/3f13e643ea77bcae314e0c595e9b1e97/2017_11_lucera-cuadro-electrico-casa-01.jpg?w=1200&h=630&fit=thumb&fm=jpg" alt="Eléctrico" loading="lazy"></div>
+                    <div class="project-content"><h3>Proyectos Eléctricos</h3><p>Diseño de planos eléctricos detallados, diagramas unilineales, cuadros de carga y especificaciones técnicas.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXz6k0yUjwwmun4e-STMegtoz3ZSn02If51r_baDqqoE2oqcp_k3JMOh_9QYhl-VKRL9M&usqp=CAU" alt="Sanitario" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Instalaciones Sanitarias</h3>
-                        <p>Planificación eficiente de redes de agua potable, alcantarillado y sistemas de drenaje pluvial.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXz6k0yUjwwmun4e-STMegtoz3ZSn02If51r_baDqqoE2oqcp_k3JMOh_9QYhl-VKRL9M&usqp=CAU" alt="Sanitario" loading="lazy"></div>
+                    <div class="project-content"><h3>Instalaciones Sanitarias</h3><p>Planificación eficiente de redes de agua potable, alcantarillado y sistemas de drenaje pluvial.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://bosstech.pe/wp-content/uploads/2020/12/que-podria-haber-agua-grifo.jpg" alt="Agua Potable" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Redes de Agua</h3>
-                        <p>Diseño hidráulico de redes de agua potable fría y caliente, asegurando presión y caudal normativo.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://bosstech.pe/wp-content/uploads/2020/12/que-podria-haber-agua-grifo.jpg" alt="Agua Potable" loading="lazy"></div>
+                    <div class="project-content"><h3>Redes de Agua</h3><p>Diseño hidráulico de redes de agua potable fría y caliente, asegurando presión y caudal normativo.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://adaptivesolutions.cz/wp-content/uploads/2024/10/AC-Heat-Pump-Alberta-ProSolutions-1024x778-1.jpg" alt="Climatización" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Climatización (HVAC)</h3>
-                        <p>Desarrollo de proyectos de calefacción y ventilación, definiendo equipos y trazado de ductos.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://adaptivesolutions.cz/wp-content/uploads/2024/10/AC-Heat-Pump-Alberta-ProSolutions-1024x778-1.jpg" alt="Climatización" loading="lazy"></div>
+                    <div class="project-content"><h3>Climatización (HVAC)</h3><p>Desarrollo de proyectos de calefacción y ventilación, definiendo equipos y trazado de ductos.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://png.pngtree.com/thumb_back/fw800/background/20220601/pngtree-metal-concrete-structures-multistory-modern-sky-photo-image_30762794.jpg" alt="Diseño en Hormigón" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Fundaciones y Muros</h3>
-                        <p>Diseño geotécnico y estructural de fundaciones, muros de contención y elementos de hormigón armado.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://png.pngtree.com/thumb_back/fw800/background/20220601/pngtree-metal-concrete-structures-multistory-modern-sky-photo-image_30762794.jpg" alt="Diseño en Hormigón" loading="lazy"></div>
+                    <div class="project-content"><h3>Fundaciones y Muros</h3><p>Diseño geotécnico y estructural de fundaciones, muros de contención y elementos de hormigón armado.</p></div>
                 </div>
-
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="https://emaningenieria.com/wp-content/uploads/2021/09/imagen-post.jpg" alt="Proyectos Personalizados" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <h3>Proyectos Especiales</h3>
-                        <p>Soluciones de ingeniería a medida para desafíos complejos, estructuras no convencionales o refuerzos.</p>
-                    </div>
+                    <div class="image-wrapper"><img src="https://emaningenieria.com/wp-content/uploads/2021/09/imagen-post.jpg" alt="Proyectos Personalizados" loading="lazy"></div>
+                    <div class="project-content"><h3>Proyectos Especiales</h3><p>Soluciones de ingeniería a medida para desafíos complejos, estructuras no convencionales o refuerzos.</p></div>
                 </div>
-
             </div>
         </section>
 
@@ -618,18 +371,9 @@
         <section id="beneficios" class="container">
             <h2 class="animated-element">Valor Agregado</h2>
             <div class="cards">
-                <div class="card animated-element">
-                    <h3>Optimización de Costos</h3>
-                    <p>Un cálculo preciso reduce el sobredimensionamiento, logrando ahorros significativos en materiales (acero/hormigón) sin afectar la seguridad.</p>
-                </div>
-                <div class="card animated-element">
-                    <h3>Constructabilidad</h3>
-                    <p>Entregamos planos claros y detallados pensados para la obra, lo que simplifica el montaje y evita errores costosos en terreno.</p>
-                </div>
-                <div class="card animated-element">
-                    <h3>Certeza Técnica</h3>
-                    <p>Respaldo total con memorias de cálculo firmadas por ingenieros civiles, listas para una rápida tramitación municipal.</p>
-                </div>
+                <div class="card animated-element"><h3>Optimización de Costos</h3><p>Un cálculo preciso reduce el sobredimensionamiento, logrando ahorros significativos en materiales (acero/hormigón) sin afectar la seguridad.</p></div>
+                <div class="card animated-element"><h3>Constructabilidad</h3><p>Entregamos planos claros y detallados pensados para la obra, lo que simplifica el montaje y evita errores costosos en terreno.</p></div>
+                <div class="card animated-element"><h3>Certeza Técnica</h3><p>Respaldo total con memorias de cálculo firmadas por ingenieros civiles, listas para una rápida tramitación municipal.</p></div>
             </div>
         </section>
 
@@ -638,16 +382,9 @@
             <div class="contact-form animated-element">
                 <form action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
-                    
-                    <label for="nombre" style="display:none">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre o Empresa" required>
-                    
-                    <label for="email" style="display:none">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Tu Correo Electrónico" required>
-                    
-                    <label for="mensaje" style="display:none">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Detalles del Proyecto (Ubicación, tipo de estructura, m2...)" required></textarea>
-                    
+                    <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
+                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+                    <textarea name="mensaje" rows="5" placeholder="Detalles del Proyecto (Ubicación, tipo de estructura, m2...)" required></textarea>
                     <input type="hidden" name="subject" value="Solicitud de Cotización - GLIC Web">
                     <button type="submit">Enviar Solicitud</button>
                 </form>
@@ -689,13 +426,31 @@
     <a href="#contacto" class="fab">Cotizar</a>
     
     <script>
-        // Lógica del Header y ScrollSpy
+        // --- LOGICA DE MENÚ MÓVIL (Hamburguesa) ---
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        navLinks.forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+
+        // --- LÓGICA DE HEADER AUTO-HIDE ---
         let lastScrollY = window.scrollY;
         const header = document.getElementById('main-header');
-        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Secciones para ScrollSpy
         const sections = document.querySelectorAll('section');
 
         window.addEventListener('scroll', () => {
+            // Auto Hide Header (Smart Hide)
             if (lastScrollY < window.scrollY && window.scrollY > 100) {
                 header.classList.add('hide-header');
             } else {
@@ -703,6 +458,7 @@
             }
             lastScrollY = window.scrollY;
             
+            // ScrollSpy (Detectar sección activa)
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -720,6 +476,7 @@
             });
         });
 
+        // --- ANIMACIONES (Intersection Observer) ---
         const observerOptions = {
             root: null,
             threshold: 0.15, 
