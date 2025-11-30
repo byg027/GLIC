@@ -233,24 +233,8 @@
         .normativa-list li { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; color: #ddd; }
         .normativa-list li strong { color: var(--primary); }
 
-        .contact-form { 
-            background: var(--bg-card); 
-            padding: 4rem; 
-            border-radius: 16px; 
-            max-width: 700px; 
-            margin: auto; 
-            border: 1px solid rgba(255,255,255,0.05); 
-        }
-        
-        /* CORRECCIÓN FORMULARIO MÓVIL */
-        @media (max-width: 600px) { 
-            .contact-form { 
-                padding: 2rem 1rem; /* Mucho menos padding lateral */
-            } 
-            .container {
-                width: 95%; /* Usar casi todo el ancho */
-            }
-        }
+        .contact-form { background: var(--bg-card); padding: 4rem; border-radius: 16px; max-width: 700px; margin: auto; border: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 480px) { .contact-form { padding: 2rem 1rem; } }
         
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
@@ -264,13 +248,11 @@
         }
         
         .footer-container { 
-            width: 95%; max-width: 1000px; /* Reducido para juntar columnas */
+            width: 95%; max-width: 1000px; 
             margin: auto; 
-            /* GRID asegura columnas iguales */
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
             gap: 2rem; 
-            /* Centrado de contenido */
             text-align: center;
         }
         
@@ -278,7 +260,6 @@
             color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
-        /* Línea decorativa centrada */
         .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin: 10px auto 0; }
 
         .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { 
@@ -292,13 +273,11 @@
         }
 
         .footer-contact a:hover, .footer-links a:hover { color: var(--primary); transition: color 0.3s; }
-        /* Efecto hover desactivado en centrado, o cambiado a escala */
         .footer-links a:hover { transform: scale(1.05); }
         .footer-links ul { list-style: none; padding: 0; }
 
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
         
-        /* Ajustes Footer Móvil para que quepa en 1 fila */
         @media (max-width: 768px) {
             .footer-container { gap: 5px; }
             .footer-col h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
@@ -308,8 +287,30 @@
             .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
         }
 
-        .fab { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255,153,0,0.4); z-index: 100; transition: all 0.3s; }
-        .fab:hover { transform: scale(1.1) translateY(-5px); }
+        /* --- BOTÓN FAB INTELIGENTE --- */
+        .fab { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: var(--primary); color: #000; padding: 15px 30px; 
+            border-radius: 50px; text-decoration: none; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; 
+            box-shadow: 0 10px 25px rgba(255,153,0,0.4); 
+            z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            /* ESTADO INICIAL: OCULTO */
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.8);
+        }
+        
+        /* ESTADO VISIBLE (Activado por JS) */
+        .fab.show-fab {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+        
+        .fab.show-fab:hover { transform: scale(1.1) translateY(-5px); }
+
         .hide-header { transform: translateY(-100%); }
         .animated-element { opacity: 0; transform: translateY(40px); transition: 1s; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
@@ -479,6 +480,7 @@
         const navMenu = document.querySelector(".nav-menu");
         const navLinks = document.querySelectorAll(".nav-link");
         const header = document.getElementById('main-header');
+        const fab = document.querySelector('.fab'); // Seleccion del FAB
         const sections = document.querySelectorAll('section');
         let lastScrollY = window.scrollY;
 
@@ -493,13 +495,22 @@
         }));
 
         window.addEventListener('scroll', () => {
+            // Logic Header Auto-Hide
             if (lastScrollY < window.scrollY && window.scrollY > 100) {
                 header.classList.add('hide-header');
             } else {
                 header.classList.remove('hide-header');
             }
             lastScrollY = window.scrollY;
+
+            // Logic FAB (Solo mostrar al bajar 50px)
+            if (window.scrollY > 50) {
+                fab.classList.add('show-fab');
+            } else {
+                fab.classList.remove('show-fab');
+            }
             
+            // Logic ScrollSpy
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
