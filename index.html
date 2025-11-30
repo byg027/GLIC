@@ -111,14 +111,13 @@
         h2 { font-family: var(--font-title); color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative; }
         h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* --- HERO SECTION (El nuevo enfoque) --- */
+        /* --- HERO INTELIGENTE (Responsive Aspect Ratio) --- */
         #inicio {
-            /* Ocupar al menos toda la pantalla, pero permitir crecimiento si el contenido es mucho */
             min-height: 100dvh; 
             width: 100%;
             padding-top: var(--header-height);
             display: flex;
-            align-items: center; /* Centrado vertical en PC */
+            align-items: center; 
         }
 
         .hero-container {
@@ -128,7 +127,7 @@
             display: flex;
             align-items: center;
             gap: 4rem;
-            padding: 2rem 0; /* Un poco de aire arriba y abajo */
+            padding: 2rem 0; 
         }
 
         .hero-text { flex: 1; z-index: 2; }
@@ -139,14 +138,15 @@
         }
         .hero-text h2::after { display: none; }
         
+        /* Texto Justificado */
         .hero-text p { 
             font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; 
+            text-align: justify;
         }
 
         /* Estilos de imagen para PC (Lado derecho) */
         .hero-img-wrapper {
             flex: 1;
-            /* En PC, definimos una altura máxima para que no sea gigante */
             height: 60vh; 
             display: flex;
             align-items: center;
@@ -156,7 +156,7 @@
         .hero-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Llenar el contenedor sin deformar */
+            object-fit: cover; 
             border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
@@ -169,19 +169,16 @@
         }
         .cta-button:hover { transform: translateY(-3px); background: var(--primary-light); }
 
-        /* --- MEDIA QUERIES: EL CAMBIO CLAVE --- */
-        
-        /* Cuando la pantalla es estrecha (Split screen o móvil/tablet vertical) */
+        /* --- MEDIA QUERIES --- */
         @media (max-width: 992px) {
             #inicio {
-                align-items: flex-start; /* Alinear arriba en móvil */
+                align-items: flex-start;
                 padding-bottom: 3rem;
             }
 
             .hero-container {
-                /* Invertir orden: Imagen arriba (visual), Texto abajo */
                 flex-direction: column-reverse; 
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             .hero-text {
@@ -189,38 +186,36 @@
                 text-align: center;
             }
 
-            .hero-text h2 { 
-                text-align: center; font-size: 2.5rem; margin-bottom: 1rem;
-            }
+            .hero-text h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
             
-            .hero-text p {
-                margin: 0 auto 1.5rem auto; font-size: 1rem;
-            }
+            /* En móvil a veces justificado forzado se ve mal, pero se mantiene a petición */
+            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; }
 
-            /* NUEVO ENFOQUE PARA LA IMAGEN VERTICAL */
+            /* --- IMAGEN CUADRADA EN VERTICAL --- */
             .hero-img-wrapper {
                 width: 100%;
-                /* Definimos una relación de aspecto fija (ej. 4:3 o 16:9) para que siempre tenga presencia */
-                aspect-ratio: 16 / 9; 
-                /* Pero limitamos su altura máxima para que no se coma toda la pantalla en split-screen */
-                max-height: 45vh; 
-                height: auto; /* Reseteamos la altura fija de PC */
+                /* Ajuste para que no sea gigante en tablets anchas */
+                max-width: 550px; 
+                margin: 0 auto;
+                
+                /* AQUÍ LA CLAVE: 1/1 es cuadrado. 5/4 es un poco más vertical. */
+                aspect-ratio: 1 / 1; 
+                
+                /* Limitamos la altura para que en pantallas muy chatas no tape todo */
+                max-height: 50vh; 
+                height: auto; 
             }
 
-            .hero-img-wrapper img {
-                /* object-fit: cover asegura que la imagen llene el cuadro definido arriba sin estirarse, recortando si es necesario */
+            .hero-img-wrapper img { 
                 object-fit: cover; 
-                object-position: center;
+                object-position: center; 
             }
         }
 
-        /* Móvil Pequeño */
         @media (max-width: 480px) {
             .hero-text h2 { font-size: 2rem; }
-            .hero-img-wrapper { 
-                /* En móviles muy pequeños, podemos hacerla un poco más cuadrada */
-                 aspect-ratio: 4 / 3; 
-            }
+            /* En móviles muy finos, mantenemos el cuadrado */
+            .hero-img-wrapper { aspect-ratio: 1 / 1; }
         }
 
         /* --- RESTO DE ESTILOS --- */
@@ -230,7 +225,9 @@
         .card:hover, .project-item:hover { transform: translateY(-10px); border-color: var(--primary); }
         .card h3, .project-content h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1rem; }
         .project-content h3 { color: var(--primary); }
-        .card p, .project-content p { color: var(--text-muted); }
+        
+        /* Texto Justificado */
+        .card p, .project-content p { color: var(--text-muted); text-align: justify; }
         
         .image-wrapper { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
@@ -245,12 +242,43 @@
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
-        footer { background-color: #080808; border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 0 2rem 0; margin-top: auto; }
-        .footer-container { width: 90%; max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; }
-        .footer-col h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1.5rem; text-transform: uppercase; }
+        /* --- FOOTER SINGLE ROW --- */
+        footer { 
+            background-color: #080808; 
+            border-top: 1px solid rgba(255,255,255,0.05); 
+            padding: 4rem 0 2rem 0; 
+            margin-top: auto; 
+        }
+        
+        .footer-container { 
+            width: 95%; max-width: 1200px; margin: auto; 
+            display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;
+            gap: 1.5rem; flex-wrap: nowrap; 
+        }
+        
+        .footer-col { flex: 1; min-width: 0; }
+
+        .footer-col h3 { 
+            color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
+        }
+        .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin-top: 10px; }
+
+        /* Texto Footer Justificado */
+        .footer-about p { color: #999; font-size: 0.9rem; line-height: 1.6; text-align: justify; }
+
         .footer-links ul { list-style: none; }
-        .footer-links a { color: #aaa; text-decoration: none; display: block; margin-bottom: 8px; }
+        .footer-links a { color: #aaa; text-decoration: none; display: block; margin-bottom: 6px; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
+        
+        /* Ajustes Footer Móvil */
+        @media (max-width: 768px) {
+            .footer-container { gap: 1rem; }
+            .footer-col h3 { font-size: 0.9rem; margin-bottom: 0.8rem; }
+            .footer-about p, .footer-links a, .footer-col p { font-size: 0.75rem; line-height: 1.4; }
+            .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
+        }
 
         .fab { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255,153,0,0.4); z-index: 100; transition: all 0.3s; }
         .fab:hover { transform: scale(1.1) translateY(-5px); }
@@ -350,7 +378,7 @@
 
         <section id="normativa" class="container" style="text-align: center;">
             <h2 class="animated-element">Estándares y Normativa</h2>
-            <p class="animated-element" style="max-width: 700px; margin: auto; color: var(--text-muted); font-size: 1.1rem;">
+            <p class="animated-element" style="max-width: 700px; margin: auto; color: var(--text-muted); font-size: 1.1rem; text-align: justify;">
                 La seguridad no es negociable. En GLIC Ingeniería trabajamos bajo los más estrictos estándares nacionales e internacionales.
             </p>
             <ul class="normativa-list animated-element">
@@ -378,7 +406,7 @@
                     <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
                     <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
                     <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
-                    <textarea name="mensaje" rows="5" placeholder="Detalles del Proyecto (Ubicación, tipo de estructura, m2...)" required></textarea>
+                    <textarea name="mensaje" rows="5" placeholder="Detalles del Proyecto" required></textarea>
                     <input type="hidden" name="subject" value="Solicitud de Cotización - GLIC Web">
                     <button type="submit">Enviar Solicitud</button>
                 </form>
@@ -405,7 +433,7 @@
             <div class="footer-col footer-contact">
                 <h3>Contacto</h3>
                 <p style="color: #aaa; margin-bottom: 10px;">Región de Los Ríos, Chile</p>
-                <p><a href="mailto:contacto@glic.cl" style="color:#fff; font-weight:700; font-size: 1.1rem;">contacto@glic.cl</a></p>
+                <p><a href="mailto:contacto@glic.cl" style="color:#fff; font-weight:400; font-size: 1.1rem;">contacto@glic.cl</a></p>
                 <div style="margin-top: 25px; display: flex; gap: 15px;">
                     <a href="#" style="color:var(--text-muted); font-size: 0.9rem;">LinkedIn</a>
                     <a href="#" style="color:var(--text-muted); font-size: 0.9rem;">WhatsApp</a>
@@ -439,7 +467,6 @@
         }));
 
         window.addEventListener('scroll', () => {
-            // Header Auto-Hide
             if (lastScrollY < window.scrollY && window.scrollY > 100) {
                 header.classList.add('hide-header');
             } else {
@@ -447,7 +474,6 @@
             }
             lastScrollY = window.scrollY;
             
-            // ScrollSpy
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -464,7 +490,6 @@
             });
         });
 
-        // --- ANIMACIONES ---
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
