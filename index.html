@@ -32,7 +32,7 @@
         html, body {
             width: 100%;
             max-width: 100%;
-            overflow-x: hidden; /* CLAVE: Bloquea scroll lateral */
+            overflow-x: hidden; 
             position: relative;
         }
 
@@ -86,18 +86,18 @@
             transform: rotate(45deg); 
             transition: 0.5s; /* Mantiene la transición de 0.5s para el hover */
         }
-        /* HOVER ORIGINAL */
+        /* HOVER ORIGINAL (45deg -> 225deg, que es +180deg) */
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
         .logo-link::after { content: ''; position: absolute; width: 14px; height: 14px; border: 3px solid var(--primary); border-radius: 50%; top: 9px; left: 16px; }
         .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; }
 
-        /* --- CÓDIGO MODIFICADO PARA ANIMACIÓN DE CARGA (0.5s) --- */
+        /* --- CÓDIGO MODIFICADO PARA ANIMACIÓN DE CARGA (0.5s y 180 grados) --- */
         @keyframes initialLogoSpin {
             0% {
                 transform: rotate(45deg); 
             }
             100% {
-                transform: rotate(405deg); 
+                transform: rotate(225deg); /* Gira 180 grados hasta el punto final del hover */
             }
         }
 
@@ -105,7 +105,7 @@
             transition: none !important; 
             
             animation-name: initialLogoSpin;
-            animation-duration: 0.5s; /* AHORA ES 0.5s para igualar al hover */
+            animation-duration: 0.5s; /* Duración igual al hover */
             animation-timing-function: linear; 
             animation-delay: 0.5s; 
             animation-fill-mode: forwards; 
@@ -598,7 +598,7 @@
                     logoAnchor.classList.remove('animate-on-load');
                 }, animationDuration);
                 
-            }, 100); // Pequeño delay de 100ms antes de comenzar todo
+            }, 100); 
         });
     </script>
 </body>
