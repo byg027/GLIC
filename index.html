@@ -77,10 +77,41 @@
         /* Logo */
         .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; z-index: 1001; }
         .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
-        .logo-link::before { content: ''; width: 22px; height: 12px; border: 3px solid var(--primary); border-radius: 8px; transform: rotate(45deg); transition: 0.5s; }
+        .logo-link::before { 
+            content: ''; 
+            width: 22px; 
+            height: 12px; 
+            border: 3px solid var(--primary); 
+            border-radius: 8px; 
+            transform: rotate(45deg); 
+            transition: 0.5s; /* Mantiene la transición de 0.5s para el hover */
+        }
+        /* HOVER ORIGINAL */
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
         .logo-link::after { content: ''; position: absolute; width: 14px; height: 14px; border: 3px solid var(--primary); border-radius: 50%; top: 9px; left: 16px; }
         .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; }
+
+        /* --- CÓDIGO MODIFICADO PARA ANIMACIÓN DE CARGA (0.5s) --- */
+        @keyframes initialLogoSpin {
+            0% {
+                transform: rotate(45deg); 
+            }
+            100% {
+                transform: rotate(405deg); 
+            }
+        }
+
+        .logo-anchor.animate-on-load .logo-link::before {
+            transition: none !important; 
+            
+            animation-name: initialLogoSpin;
+            animation-duration: 0.5s; /* AHORA ES 0.5s para igualar al hover */
+            animation-timing-function: linear; 
+            animation-delay: 0.5s; 
+            animation-fill-mode: forwards; 
+        }
+        /* --- FIN CÓDIGO MODIFICADO --- */
+
 
         /* NAV PC */
         .nav-menu { display: flex; gap: 25px; }
@@ -334,7 +365,7 @@
         <div class="header-content">
             <div class="logo-container">
                 <a href="https://glic.cl" class="logo-anchor">
-                    <div class="logo-link"></div>
+                    <div class="logo-link" id="logo-animate"></div> 
                     <h1>GLIC Ingeniería</h1>
                 </a>
             </div>
@@ -538,16 +569,37 @@
             });
         });
 
+        // Animación al hacer scroll
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); 
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+
+        // --- LÓGICA: ACTIVAR ANIMACIÓN DE GIRO DEL LOGO AL CARGAR ---
+        
+        const logoAnchor = document.querySelector('.logo-anchor');
+        
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // 1. Aplica la clase para iniciar el Keyframe
+                logoAnchor.classList.add('animate-on-load');
+                
+                // 2. Duración total = Animación (0.5s) + Delay (0.5s) = 1000ms
+                const animationDuration = 1000; 
+                
+                // 3. Remueve la clase para restaurar el hover
+                setTimeout(() => {
+                    logoAnchor.classList.remove('animate-on-load');
+                }, animationDuration);
+                
+            }, 100); // Pequeño delay de 100ms antes de comenzar todo
+        });
     </script>
 </body>
 </html>
