@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GLIC Ingeniería | Cálculo Estructural</title>
     
-    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%23111" rx="12"/><text x="50%" y="50%" dy=".35em" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="42" fill="%23ff9900">G</text></svg>'>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +79,8 @@
         /* Logo */
         .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; z-index: 1001; }
         .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
+        
+        /* Estilo base del logo */
         .logo-link::before { 
             content: ''; 
             width: 22px; 
@@ -84,33 +88,14 @@
             border: 3px solid var(--primary); 
             border-radius: 8px; 
             transform: rotate(45deg); 
-            transition: 0.5s; /* Mantiene la transición de 0.5s para el hover */
+            transition: 0.5s ease; /* Transición suave para el hover */
         }
-        /* HOVER ORIGINAL (45deg -> 225deg, que es +180deg) */
+        
+        /* HOVER: Solo gira al pasar el mouse (45deg -> 225deg = 180 grados de giro) */
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
+        
         .logo-link::after { content: ''; position: absolute; width: 14px; height: 14px; border: 3px solid var(--primary); border-radius: 50%; top: 9px; left: 16px; }
         .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; }
-
-        /* --- CÓDIGO MODIFICADO PARA ANIMACIÓN DE CARGA (0.5s y 180 grados) --- */
-        @keyframes initialLogoSpin {
-            0% {
-                transform: rotate(45deg); 
-            }
-            100% {
-                transform: rotate(225deg); /* Gira 180 grados hasta el punto final del hover */
-            }
-        }
-
-        .logo-anchor.animate-on-load .logo-link::before {
-            transition: none !important; 
-            
-            animation-name: initialLogoSpin;
-            animation-duration: 0.5s; /* Duración igual al hover */
-            animation-timing-function: linear; 
-            animation-delay: 0.5s; 
-            animation-fill-mode: forwards; 
-        }
-        /* --- FIN CÓDIGO MODIFICADO --- */
 
 
         /* NAV PC */
@@ -148,7 +133,7 @@
         h2 { font-family: var(--font-title); color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative; }
         h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* --- HERO INTELIGENTE --- */
+        /* --- HERO --- */
         #inicio {
             min-height: 100dvh; 
             width: 100%;
@@ -280,7 +265,7 @@
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
-        /* --- FOOTER CENTRADO --- */
+        /* --- FOOTER --- */
         footer { 
             background-color: #080808; 
             border-top: 1px solid rgba(255,255,255,0.05); 
@@ -311,8 +296,6 @@
             text-decoration: none; 
             display: block;
             margin-bottom: 0.5rem;
-            
-            /* Asegura que no se desborde el texto en móvil */
             word-break: break-word; 
         }
 
@@ -331,7 +314,7 @@
             .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
         }
 
-        /* --- BOTÓN FAB INTELIGENTE (SCROLL) --- */
+        /* --- BOTÓN FAB --- */
         .fab { 
             position: fixed; bottom: 30px; right: 30px; 
             background: var(--primary); color: #000; padding: 15px 30px; 
@@ -339,24 +322,14 @@
             text-transform: uppercase; letter-spacing: 1px; 
             box-shadow: 0 10px 25px rgba(255,153,0,0.4); 
             z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px) scale(0.8);
+            opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.8);
         }
-        
-        .fab.show-fab {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0) scale(1);
-        }
-        
+        .fab.show-fab { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
         .fab.show-fab:hover { transform: scale(1.1) translateY(-5px); }
 
         .hide-header { transform: translateY(-100%); }
         .animated-element { opacity: 0; transform: translateY(40px); transition: 1s; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
-
     </style>
 </head>
 <body>
@@ -553,7 +526,6 @@
         }));
 
         window.addEventListener('scroll', () => {
-            // Header Auto-Hide
             if (lastScrollY < window.scrollY && window.scrollY > 100) {
                 header.classList.add('hide-header');
             } else {
@@ -561,14 +533,12 @@
             }
             lastScrollY = window.scrollY;
 
-            // FAB Inteligente
             if (window.scrollY > 50) {
                 fab.classList.add('show-fab');
             } else {
                 fab.classList.remove('show-fab');
             }
             
-            // ScrollSpy
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -585,7 +555,6 @@
             });
         });
 
-        // Animación al hacer scroll
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -596,26 +565,8 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
-
-        // --- LÓGICA: ACTIVAR ANIMACIÓN DE GIRO DEL LOGO AL CARGAR ---
         
-        const logoAnchor = document.querySelector('.logo-anchor');
-        
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                // 1. Aplica la clase para iniciar el Keyframe
-                logoAnchor.classList.add('animate-on-load');
-                
-                // 2. Duración total = Animación (0.5s) + Delay (0.5s) = 1000ms
-                const animationDuration = 1000; 
-                
-                // 3. Remueve la clase para restaurar el hover
-                setTimeout(() => {
-                    logoAnchor.classList.remove('animate-on-load');
-                }, animationDuration);
-                
-            }, 100); 
-        });
+        // ¡Se ha eliminado completamente la lógica de animación de carga del logo!
     </script>
 </body>
 </html>
