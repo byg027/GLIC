@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GLIC Ingeniería | Cálculo Estructural</title>
     
-    <link rel="icon" type="image/png" sizes="768x768" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="shortcut icon" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://glic.cl/assets/favicon.png">
+    <link rel="apple-touch-icon" href="https://glic.cl/assets/favicon.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +30,7 @@
             --header-height: 70px;
         }
 
-        /* --- RESET & BASICS (BLINDAJE SCROLL) --- */
+        /* --- RESET & BASICS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
@@ -76,11 +78,9 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        /* Logo */
         .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; z-index: 1001; }
         .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
         
-        /* Estilo base del logo */
         .logo-link::before { 
             content: ''; 
             width: 22px; 
@@ -88,28 +88,22 @@
             border: 3px solid var(--primary); 
             border-radius: 8px; 
             transform: rotate(45deg); 
-            transition: 0.5s ease; /* Transición suave para el hover */
+            transition: 0.5s ease;
         }
         
-        /* HOVER: Solo gira al pasar el mouse (45deg -> 225deg = 180 grados de giro) */
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
-        
         .logo-link::after { content: ''; position: absolute; width: 14px; height: 14px; border: 3px solid var(--primary); border-radius: 50%; top: 9px; left: 16px; }
         .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; }
 
-
-        /* NAV PC */
         .nav-menu { display: flex; gap: 25px; }
         .nav-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; transition: color 0.3s; padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px; }
         .nav-link:hover, .nav-link.active { color: var(--primary); }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--primary); transition: width 0.3s ease-in-out; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-        /* HAMBURGUESA */
         .hamburger { display: none; cursor: pointer; z-index: 1001; }
         .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: #fff; border-radius: 2px; }
 
-        /* MÓVIL / TABLET */
         @media (max-width: 992px) {
             .hamburger { display: block; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
@@ -128,58 +122,19 @@
             .header-content h1 { font-size: 1.1rem; }
         }
 
-        /* --- RESTO DEL SITIO --- */
+        /* --- SECCIONES --- */
         .container { width: 90%; max-width: 1200px; margin: auto; padding: 5rem 0; }
         h2 { font-family: var(--font-title); color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative; }
         h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* --- HERO --- */
-        #inicio {
-            min-height: 100dvh; 
-            width: 100%;
-            padding-top: var(--header-height);
-            display: flex;
-            align-items: center; 
-        }
-
-        .hero-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            padding: 2rem 0; 
-        }
-
+        #inicio { min-height: 100dvh; width: 100%; padding-top: var(--header-height); display: flex; align-items: center; }
+        .hero-container { width: 90%; max-width: 1200px; margin: auto; display: flex; align-items: center; gap: 4rem; padding: 2rem 0; }
         .hero-text { flex: 1; z-index: 2; }
-        
-        .hero-text h2 { 
-            text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; 
-            text-transform: none; letter-spacing: -1.5px; 
-        }
+        .hero-text h2 { text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; text-transform: none; letter-spacing: -1.5px; }
         .hero-text h2::after { display: none; }
-        
-        .hero-text p { 
-            font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; 
-            text-align: justify;
-        }
-
-        .hero-img-wrapper {
-            flex: 1;
-            height: 60vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; text-align: justify; }
+        .hero-img-wrapper { flex: 1; height: 60vh; display: flex; align-items: center; justify-content: center; }
+        .hero-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
         .cta-button {
             display: inline-block; background: var(--primary); color: #000;
@@ -189,63 +144,14 @@
         }
         .cta-button:hover { transform: translateY(-3px); background: var(--primary-light); }
 
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 992px) {
-            #inicio {
-                align-items: flex-start;
-                padding-bottom: 3rem;
-            }
-
-            .hero-container {
-                flex-direction: column-reverse; 
-                gap: 2rem;
-            }
-
-            .hero-text {
-                width: 100%; text-align: center;
-            }
-
-            .hero-text h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
-            
-            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; text-align: justify; }
-
-            .hero-img-wrapper {
-                width: 100%;
-                max-width: 550px; margin: 0 auto;
-                aspect-ratio: 1 / 1; 
-                max-height: 50vh; 
-                height: auto; 
-            }
-
-            .hero-img-wrapper img { object-fit: cover; object-position: center; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h2 { font-size: 2rem; }
-            .hero-img-wrapper { aspect-ratio: 1 / 1; }
-        }
-
-        /* --- CARDS & PROYECTOS --- */
-        .cards { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 2.5rem; 
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-        
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
         .card, .project-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; transition: all 0.3s; overflow: hidden; }
         .card { padding: 3rem 2.5rem; }
         .card:hover, .project-item:hover { transform: translateY(-10px); border-color: var(--primary); }
         .card h3, .project-content h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1rem; }
         .project-content h3 { color: var(--primary); }
-        
         .card p, .project-content p { color: var(--text-muted); text-align: justify; }
-        
         .image-wrapper { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .project-item:hover img { transform: scale(1.1); }
@@ -256,65 +162,18 @@
         .normativa-list li strong { color: var(--primary); }
 
         .contact-form { background: var(--bg-card); padding: 4rem; border-radius: 16px; max-width: 700px; margin: auto; border: 1px solid rgba(255,255,255,0.05); }
-        
-        @media (max-width: 600px) { 
-            .contact-form { padding: 2rem 1rem; } 
-            .container { width: 95%; }
-        }
-        
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
         /* --- FOOTER --- */
-        footer { 
-            background-color: #080808; 
-            border-top: 1px solid rgba(255,255,255,0.05); 
-            padding: 4rem 0 2rem 0; 
-            margin-top: auto; 
-        }
-        
-        .footer-container { 
-            width: 95%; max-width: 1000px; 
-            margin: auto; 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2rem; 
-            text-align: center;
-        }
-        
-        .footer-col h3 { 
-            color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
+        footer { background-color: #080808; border-top: 1px solid rgba(255,255,255,0.05); padding: 4rem 0 2rem 0; margin-top: auto; }
+        .footer-container { width: 95%; max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+        .footer-col h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem; }
         .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin: 10px auto 0; }
-
-        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
-            line-height: 1.6; 
-            font-weight: 400; 
-            text-decoration: none; 
-            display: block;
-            margin-bottom: 0.5rem;
-            word-break: break-word; 
-        }
-
-        .footer-contact a:hover, .footer-links a:hover { color: var(--primary); transition: color 0.3s; }
-        .footer-links a:hover { transform: scale(1.05); }
-        .footer-links ul { list-style: none; padding: 0; }
-
+        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; text-decoration: none; display: block; }
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
-        
-        @media (max-width: 768px) {
-            .footer-container { gap: 5px; }
-            .footer-col h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
-            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { 
-                font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.3rem;
-            }
-            .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
-        }
 
-        /* --- BOTÓN FAB --- */
+        /* --- BOTÓN FLOTANTE --- */
         .fab { 
             position: fixed; bottom: 30px; right: 30px; 
             background: var(--primary); color: #000; padding: 15px 30px; 
@@ -325,11 +184,17 @@
             opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.8);
         }
         .fab.show-fab { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-        .fab.show-fab:hover { transform: scale(1.1) translateY(-5px); }
 
         .hide-header { transform: translateY(-100%); }
         .animated-element { opacity: 0; transform: translateY(40px); transition: 1s; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* MEDIA QUERIES MÓVIL */
+        @media (max-width: 768px) {
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-text h2 { font-size: 2.2rem; text-align: center; }
+            .hero-container { flex-direction: column-reverse; }
+        }
     </style>
 </head>
 <body>
@@ -338,7 +203,7 @@
         <div class="header-content">
             <div class="logo-container">
                 <a href="https://glic.cl" class="logo-anchor">
-                    <div class="logo-link" id="logo-animate"></div> 
+                    <div class="logo-link"></div> 
                     <h1>GLIC Ingeniería</h1>
                 </a>
             </div>
@@ -368,7 +233,7 @@
                     <a href="#contacto" class="cta-button">Cotizar Proyecto</a>
                 </div>
                 <div class="hero-img-wrapper animated-element">
-                    <img src="assets/portada.jpg" alt="Puente de acero, ingeniería de precisión" loading="lazy">
+                    <img src="assets/portada.jpg" alt="Ingeniería de precisión GLIC" loading="lazy">
                 </div>
             </div>
         </section>
@@ -376,86 +241,9 @@
         <section id="servicios" class="container">
             <h2 class="animated-element">Servicios Principales</h2>
             <div class="cards">
-                <div class="card animated-element"><h3>Estructuras Metálicas</h3><p>Diseño y cálculo avanzado de naves industriales y edificios de acero según <strong>NCh427</strong> y <strong>AISC 360</strong>. Optimizamos el peso sin sacrificar seguridad.</p></div>
-                <div class="card animated-element"><h3>Hormigón Armado</h3><p>Desarrollo de proyectos robustos en hormigón armado bajo <strong>NCh430</strong>, considerando detallamiento sísmico y constructabilidad.</p></div>
-                <div class="card animated-element"><h3>Ingeniería Sísmica</h3><p>Análisis dinámico y espectral avanzado de acuerdo a <strong>NCh2369</strong>, asegurando el desempeño de la estructura ante eventos severos.</p></div>
-            </div>
-        </section>
-
-        <section id="proyectos" class="container">
-            <h2 class="animated-element">Proyectos y Especialidades</h2>
-            <div class="project-grid">
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/acero.jpg" alt="Estructuras de Acero" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Naves Industriales</h3><p>Cálculo estructural optimizado de galpones de gran luz, enfocados en la eficiencia del montaje y distribución de cargas.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/vivienda.webp" alt="Diseño de Vivienda" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Vivienda y Edificación</h3><p>Modelado y cálculo de viviendas unifamiliares y edificios, integrando la estructura con la arquitectura.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/electrico.jpg" alt="Eléctrico" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Proyectos Eléctricos</h3><p>Diseño de planos eléctricos detallados, diagramas unilineales, cuadros de carga y especificaciones técnicas.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/sanitario.jpg" alt="Sanitario" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Instalaciones Sanitarias</h3><p>Planificación eficiente de redes de agua potable, alcantarillado y sistemas de drenaje pluvial.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/ap.jpg" alt="Agua Potable" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Redes de Agua</h3><p>Diseño hidráulico de redes de agua potable fría y caliente, asegurando presión y caudal normativo.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/climatizacion.jpg" alt="Climatización" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Climatización (HVAC)</h3><p>Desarrollo de proyectos de calefacción y ventilación, definiendo equipos y trazado de ductos.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/fundaciones.jpg" alt="Diseño en Hormigón" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Fundaciones y Muros</h3><p>Diseño geotécnico y estructural de fundaciones, muros de contención y elementos de hormigón armado.</p></div>
-                </div>
-                <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/proyectos.jpg" alt="Proyectos Personalizados" loading="lazy">
-                    </div>
-                    <div class="project-content"><h3>Proyectos Especiales</h3><p>Soluciones de ingeniería a medida para desafíos complejos, estructuras no convencionales o refuerzos.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="normativa" class="container" style="text-align: center;">
-            <h2 class="animated-element">Estándares y Normativa</h2>
-            <p class="animated-element" style="max-width: 700px; margin: auto; color: var(--text-muted); font-size: 1.1rem; text-align: justify;">
-                La seguridad no es negociable. En GLIC Ingeniería trabajamos bajo los más estrictos estándares nacionales e internacionales.
-            </p>
-            <ul class="normativa-list animated-element">
-                <li><strong>NCh427</strong> Diseño en Acero</li>
-                <li><strong>AISC 360</strong> Steel Buildings</li>
-                <li><strong>NCh2369</strong> Diseño Sísmico Industrial</li>
-                <li><strong>NCh430</strong> Hormigón Armado</li>
-                <li><strong>ACI 318</strong> Structural Concrete</li>
-            </ul>
-        </section>
-
-        <section id="beneficios" class="container">
-            <h2 class="animated-element">Valor Agregado</h2>
-            <div class="cards">
-                <div class="card animated-element"><h3>Optimización de Costos</h3><p>Un cálculo preciso reduce el sobredimensionamiento, logrando ahorros significativos en materiales (acero/hormigón) sin afectar la seguridad.</p></div>
-                <div class="card animated-element"><h3>Constructabilidad</h3><p>Entregamos planos claros y detallados pensados para la obra, lo que simplifica el montaje y evita errores costosos en terreno.</p></div>
-                <div class="card animated-element"><h3>Certeza Técnica</h3><p>Respaldo total con memorias de cálculo firmadas por ingenieros civiles, listas para una rápida tramitación municipal.</p></div>
+                <div class="card animated-element"><h3>Estructuras Metálicas</h3><p>Diseño y cálculo avanzado de naves industriales y edificios de acero. Optimizamos el peso sin sacrificar seguridad.</p></div>
+                <div class="card animated-element"><h3>Hormigón Armado</h3><p>Desarrollo de proyectos robustos bajo normativa vigente, considerando detallamiento sísmico y constructabilidad.</p></div>
+                <div class="card animated-element"><h3>Ingeniería Sísmica</h3><p>Análisis dinámico avanzado, asegurando el desempeño de la estructura ante eventos severos.</p></div>
             </div>
         </section>
 
@@ -467,7 +255,6 @@
                     <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
                     <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
                     <textarea name="mensaje" rows="5" placeholder="Detalles del Proyecto" required></textarea>
-                    <input type="hidden" name="subject" value="Solicitud de Cotización - GLIC Web">
                     <button type="submit">Enviar Solicitud</button>
                 </form>
             </div>
@@ -478,41 +265,33 @@
         <div class="footer-container">
             <div class="footer-col footer-about">
                 <h3>GLIC Ingeniería</h3>
-                <p>Consultora de ingeniería civil y estructural comprometida con la excelencia técnica. Transformamos desafíos complejos en soluciones seguras y eficientes.</p>
+                <p>Consultora de ingeniería civil comprometida con la excelencia técnica en Valdivia y todo Chile.</p>
             </div>
             <div class="footer-col footer-links">
                 <h3>Navegación</h3>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios Principales</a></li>
-                    <li><a href="#proyectos">Especialidades</a></li>
-                    <li><a href="#normativa">Normativa</a></li>
-                    <li><a href="#contacto">Solicitar Cotización</a></li>
-                </ul>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
             </div>
             <div class="footer-col footer-contact">
                 <h3>Contacto</h3>
-                <p>Valdivia, Los Ríos, Chile</p>
+                <p>Valdivia, Chile</p>
                 <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">WhatsApp</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 GLIC Ingeniería SpA. Todos los derechos reservados.</p>
+            <p>&copy; 2026 GLIC Ingeniería SpA. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <a href="#contacto" class="fab">Cotizar</a>
     
     <script>
-        // --- LOGICA MENÚ & SCROLL ---
+        // LÓGICA DE INTERFAZ
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
-        const navLinks = document.querySelectorAll(".nav-link");
         const header = document.getElementById('main-header');
         const fab = document.querySelector('.fab');
-        const sections = document.querySelectorAll('section');
         let lastScrollY = window.scrollY;
 
         hamburger.addEventListener("click", () => {
@@ -520,12 +299,8 @@
             navMenu.classList.toggle("active");
         });
 
-        navLinks.forEach(n => n.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-        }));
-
         window.addEventListener('scroll', () => {
+            // Mostrar/Ocultar Header al hacer scroll
             if (lastScrollY < window.scrollY && window.scrollY > 100) {
                 header.classList.add('hide-header');
             } else {
@@ -533,40 +308,24 @@
             }
             lastScrollY = window.scrollY;
 
-            if (window.scrollY > 50) {
+            // Mostrar FAB
+            if (window.scrollY > 300) {
                 fab.classList.add('show-fab');
             } else {
                 fab.classList.remove('show-fab');
             }
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
         });
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        // ANIMACIONES AL HACER SCROLL
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
-        
-        // ¡Se ha eliminado completamente la lógica de animación de carga del logo!
     </script>
 </body>
 </html>
