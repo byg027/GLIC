@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -104,7 +104,7 @@
 
         /* Navegación PC */
         .nav-menu { display: flex; gap: 25px; align-items: center; }
-        .nav-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; transition: color 0.3s; padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
+        .nav-link { display: flex; align-items: center; color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; transition: color 0.3s; padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
         .nav-link:hover, .nav-link.active { color: var(--primary); }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--primary); transition: width 0.3s ease-in-out; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
@@ -307,16 +307,16 @@
                     <a href="#servicios" class="nav-link">Servicios <span class="arrow">&#9662;</span></a>
                     <div class="dropdown-content">
                         <span class="dropdown-title">Diseño Estructural</span>
-                        <a href="viviendas.html" class="dropdown-item indent">Viviendas</a>
-                        <a href="galpones.html" class="dropdown-item indent">Galpones</a>
-                        <a href="temporales.html" class="dropdown-item indent">Estructuras temporales</a>
-                        <a href="industriales.html" class="dropdown-item indent">Estructuras industriales</a>
+                        <a href="viviendas" class="dropdown-item indent">Viviendas</a>
+                        <a href="galpones" class="dropdown-item indent">Galpones</a>
+                        <a href="temporales" class="dropdown-item indent">Estructuras temporales</a>
+                        <a href="industriales" class="dropdown-item indent">Estructuras industriales</a>
                         
                         <span class="dropdown-title" style="margin-top: 10px;">Otros Servicios</span>
-                        <a href="regularizacion.html" class="dropdown-item">Regularización de viviendas</a>
-                        <a href="asesoria.html" class="dropdown-item">Asesoría de proyectos</a>
-                        <a href="ingeniero.html" class="dropdown-item">Ingeniero en tu empresa</a>
-                        <a href="especialidades.html" class="dropdown-item">Especialidades</a>
+                        <a href="regularizacion" class="dropdown-item">Regularización de viviendas</a>
+                        <a href="asesoria" class="dropdown-item">Asesoría de proyectos</a>
+                        <a href="ingeniero" class="dropdown-item">Ingeniero en tu empresa</a>
+                        <a href="especialidades" class="dropdown-item">Especialidades</a>
                     </div>
                 </div>
 
@@ -342,11 +342,76 @@
         </section>
 
         <section id="servicios" class="container">
-            <h2 class="animated-element">Servicios Principales</h2>
-            <div class="cards">
-                <div class="card animated-element"><h3>Estructuras Metálicas</h3><p>Diseño y cálculo avanzado de naves industriales y edificios de acero según <strong>NCh427</strong> y <strong>AISC 360</strong>. Optimizamos el peso sin sacrificar seguridad.</p></div>
-                <div class="card animated-element"><h3>Hormigón Armado</h3><p>Desarrollo de proyectos robustos en hormigón armado bajo <strong>NCh430</strong>, considerando detallamiento sísmico y constructabilidad.</p></div>
-                <div class="card animated-element"><h3>Ingeniería Sísmica</h3><p>Análisis dinámico y espectral avanzado de acuerdo a <strong>NCh2369</strong>, asegurando el desempeño de la estructura ante eventos severos.</p></div>
+            <h2 class="animated-element">Nuestros Servicios</h2>
+            <div class="card animated-element" style="position: relative; overflow: hidden; background: radial-gradient(circle at 15% 15%, rgba(255,153,0,0.06) 0%, transparent 55%), var(--bg-card); padding: 3rem 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+                    
+                    <!-- Lado Principal (Diseño Estructural) -->
+                    <div>
+                        <h3 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2rem; font-weight: 600; display: inline-block;">
+                            <span style="color: var(--primary);">Diseño Estructural</span> 
+                            <span style="display:inline-block; margin-left: 10px; width: 40px; height: 1px; background: rgba(255,153,0,0.3); vertical-align: middle;"></span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+                            <div>
+                                <h4 style="font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.4rem;"><a href="viviendas" style="color: #fff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">Viviendas</a></h4>
+                                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">Cálculo estructural para casas y edificios, optimizando materiales y garantizando la seguridad normativa.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.4rem;"><a href="galpones" style="color: #fff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">Galpones</a></h4>
+                                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">Diseño eficiente de naves de acero de gran luz para bodegas, almacenamiento y centros logísticos.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.4rem;"><a href="temporales" style="color: #fff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">Estructuras Temporales</a></h4>
+                                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">Análisis y cálculo de andamios, escenarios, carpas y otras estructuras provisorias de rápido montaje.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.4rem;"><a href="industriales" style="color: #fff; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">Estructuras Industriales</a></h4>
+                                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">Proyectos de alta complejidad considerando cargas dinámicas, operacionales y sísmicas rigurosas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Secundario (Servicios Complementarios) -->
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <div style="display: flex; flex-direction: column; gap: 1.6rem; margin-top: 2rem;">
+                            <!-- Items secundarios con menor opacidad global -->
+                            <div style="opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+                                <h4 style="font-family: var(--font-title); font-size: 1rem; margin-bottom: 0.4rem;">
+                                    <a href="regularizacion" style="color: #fff; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
+                                        <span style="color: var(--primary); font-size: 0.5rem;">♦</span> Regularización de Viviendas
+                                    </a>
+                                </h4>
+                                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); padding-left: 15px;">Asesoría y tramitación de la regularización estructural de propiedades para obtener recepción final.</p>
+                            </div>
+                            <div style="opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+                                <h4 style="font-family: var(--font-title); font-size: 1rem; margin-bottom: 0.4rem;">
+                                    <a href="asesoria" style="color: #fff; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
+                                        <span style="color: var(--primary); font-size: 0.5rem;">♦</span> Asesoría de Proyectos
+                                    </a>
+                                </h4>
+                                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); padding-left: 15px;">Revisión independiente, optimización de diseños, presupuestos y apoyo técnico especializado.</p>
+                            </div>
+                            <div style="opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+                                <h4 style="font-family: var(--font-title); font-size: 1rem; margin-bottom: 0.4rem;">
+                                    <a href="ingeniero" style="color: #fff; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
+                                        <span style="color: var(--primary); font-size: 0.5rem;">♦</span> Ingeniero en tu Empresa
+                                    </a>
+                                </h4>
+                                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); padding-left: 15px;">Outsourcing de ingeniería estructural, aportando un especialista civil de manera remota a tu equipo.</p>
+                            </div>
+                            <div style="opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+                                <h4 style="font-family: var(--font-title); font-size: 1rem; margin-bottom: 0.4rem;">
+                                    <a href="especialidades" style="color: #fff; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='#fff'">
+                                        <span style="color: var(--primary); font-size: 0.5rem;">♦</span> Especialidades
+                                    </a>
+                                </h4>
+                                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); padding-left: 15px;">Coordinación y desarrollo de proyectos sanitarios, eléctricos, y de climatización (HVAC).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
