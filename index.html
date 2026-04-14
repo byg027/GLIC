@@ -19,7 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* --- VARIABLES --- */
+        /* ==========================================================================
+           1. VARIABLES Y RESET GENERAL
+           ========================================================================== */
         :root {
             --primary: #ff9900;
             --primary-light: #ffb347;
@@ -33,7 +35,6 @@
             --header-height: 70px;
         }
 
-        /* --- RESET & BASICS (BLINDAJE SCROLL) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
@@ -61,7 +62,9 @@
             display: inline-block;
         }
 
-        /* --- HEADER & NAV --- */
+        /* ==========================================================================
+           2. ESTILOS DEL HEADER Y NAVEGACIÓN
+           ========================================================================== */
         header {
             background: rgba(5, 5, 5, 0.95);
             padding: 0; 
@@ -85,7 +88,6 @@
         .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; z-index: 1001; }
         .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
         
-        /* Estilo base del logo */
         .logo-link::before { 
             content: ''; 
             width: 22px; 
@@ -93,28 +95,55 @@
             border: 3px solid var(--primary); 
             border-radius: 8px; 
             transform: rotate(45deg); 
-            transition: 0.5s ease; /* Transición suave para el hover */
+            transition: 0.5s ease;
         }
         
-        /* HOVER: Solo gira al pasar el mouse (45deg -> 225deg = 180 grados de giro) */
         .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
-        
         .logo-link::after { content: ''; position: absolute; width: 14px; height: 14px; border: 3px solid var(--primary); border-radius: 50%; top: 9px; left: 16px; }
         .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; }
 
-
-        /* NAV PC */
-        .nav-menu { display: flex; gap: 25px; }
-        .nav-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; transition: color 0.3s; padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* Navegación PC */
+        .nav-menu { display: flex; gap: 25px; align-items: center; }
+        .nav-link { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; position: relative; transition: color 0.3s; padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
         .nav-link:hover, .nav-link.active { color: var(--primary); }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--primary); transition: width 0.3s ease-in-out; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-        /* HAMBURGUESA */
+        /* Menú Desplegable (PC) */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute; background-color: rgba(5, 5, 5, 0.98);
+            min-width: 280px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+            z-index: 1002; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px; top: 100%; left: 0; padding: 10px 0;
+            backdrop-filter: blur(15px);
+        }
+        .dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
+        
+        .dropdown-title {
+            display: block; padding: 15px 20px 5px 20px;
+            color: var(--primary); font-size: 0.75rem; font-weight: 800;
+            letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 5px; text-transform: uppercase;
+        }
+
+        .dropdown-item {
+            color: #fff; padding: 10px 20px; text-decoration: none; display: flex;
+            align-items: center; font-size: 0.85rem; font-weight: 600; 
+            letter-spacing: 0.5px; transition: background 0.3s, color 0.3s;
+        }
+        .dropdown-item.indent { padding-left: 30px; color: var(--text-muted); }
+        .dropdown-item:hover, .dropdown-item.indent:hover { background-color: rgba(255, 153, 0, 0.1); color: var(--primary); }
+
+        .arrow { font-size: 0.7rem; margin-left: 8px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Hamburguesa */
         .hamburger { display: none; cursor: pointer; z-index: 1001; }
         .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: #fff; border-radius: 2px; }
 
-        /* MÓVIL / TABLET */
+        /* Media Query: Header en Móvil/Tablet */
         @media (max-width: 992px) {
             .hamburger { display: block; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
@@ -122,69 +151,57 @@
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
 
             .nav-menu {
-                position: fixed; left: -100%; top: 0;
+                position: fixed; left: -50%; top: 0; 
                 flex-direction: column; background-color: rgba(0,0,0,0.98);
-                width: 100%; height: 100vh; text-align: center;
-                transition: 0.3s; justify-content: center; gap: 2rem;
-                padding-top: 60px; backdrop-filter: blur(10px);
+                width: 50%; height: 100vh; text-align: left;
+                transition: 0.3s; justify-content: flex-start; gap: 0.5rem;
+                padding-top: 80px; backdrop-filter: blur(10px); overflow-y: auto;
+                border-right: 1px solid rgba(255,255,255,0.1);
             }
             .nav-menu.active { left: 0; }
-            .nav-link { font-size: 1.5rem; }
+            .nav-link { font-size: 1.1rem; padding-left: 20px;} 
             .header-content h1 { font-size: 1.1rem; }
+
+            /* Ajustes Menú Desplegable Móvil - CORRECCIÓN DE PARPADEO */
+            .dropdown-content {
+                position: static; display: block; 
+                box-shadow: none; border: none; background: transparent; 
+                min-width: 100%; padding: 0;
+            }
+            /* Esta línea anula la animación de PC que causaba el parpadeo en móviles al pasar el dedo */
+            .dropdown:hover .dropdown-content { animation: none; }
+            
+            .dropdown-title { padding-left: 20px; font-size: 0.7rem; margin-top: 10px; }
+            .dropdown-item { padding: 8px 20px; font-size: 0.9rem; color: var(--primary-light); }
+            .dropdown-item.indent { font-size: 0.85rem; padding-left: 30px; color: var(--text-muted); }
+            .arrow { display: none; }
         }
 
-        /* --- RESTO DEL SITIO --- */
+        /* ==========================================================================
+           3. ESTILOS DEL BODY (MAIN)
+           ========================================================================== */
         .container { width: 90%; max-width: 1200px; margin: auto; padding: 5rem 0; }
         h2 { font-family: var(--font-title); color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 800; letter-spacing: -1px; position: relative; }
         h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* --- HERO --- */
+        /* Hero / Inicio */
         #inicio {
-            min-height: 100dvh; 
-            width: 100%;
-            padding-top: var(--header-height);
-            display: flex;
-            align-items: center; 
+            min-height: 100dvh; width: 100%; padding-top: var(--header-height);
+            display: flex; align-items: center; 
         }
 
         .hero-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            padding: 2rem 0; 
+            width: 90%; max-width: 1200px; margin: auto;
+            display: flex; align-items: center; gap: 4rem; padding: 2rem 0; 
         }
 
         .hero-text { flex: 1; z-index: 2; }
-        
-        .hero-text h2 { 
-            text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; 
-            text-transform: none; letter-spacing: -1.5px; 
-        }
+        .hero-text h2 { text-align: left; font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; text-transform: none; letter-spacing: -1.5px; }
         .hero-text h2::after { display: none; }
-        
-        .hero-text p { 
-            font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; 
-            text-align: justify;
-        }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-muted); max-width: 550px; text-align: justify; }
 
-        .hero-img-wrapper {
-            flex: 1;
-            height: 60vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
+        .hero-img-wrapper { flex: 1; height: 60vh; display: flex; align-items: center; justify-content: center; }
+        .hero-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
         .cta-button {
             display: inline-block; background: var(--primary); color: #000;
@@ -194,61 +211,15 @@
         }
         .cta-button:hover { transform: translateY(-3px); background: var(--primary-light); }
 
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 992px) {
-            #inicio {
-                align-items: flex-start;
-                padding-bottom: 3rem;
-            }
-
-            .hero-container {
-                flex-direction: column-reverse; 
-                gap: 2rem;
-            }
-
-            .hero-text {
-                width: 100%; text-align: center;
-            }
-
-            .hero-text h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
-            
-            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; text-align: justify; }
-
-            .hero-img-wrapper {
-                width: 100%;
-                max-width: 550px; margin: 0 auto;
-                aspect-ratio: 1 / 1; 
-                max-height: 50vh; 
-                height: auto; 
-            }
-
-            .hero-img-wrapper img { object-fit: cover; object-position: center; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h2 { font-size: 2rem; }
-            .hero-img-wrapper { aspect-ratio: 1 / 1; }
-        }
-
-        /* --- CARDS & PROYECTOS --- */
-        .cards { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 2.5rem; 
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
+        /* Cards & Proyectos */
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
         
         .card, .project-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; transition: all 0.3s; overflow: hidden; }
         .card { padding: 3rem 2.5rem; }
         .card:hover, .project-item:hover { transform: translateY(-10px); border-color: var(--primary); }
         .card h3, .project-content h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1rem; }
         .project-content h3 { color: var(--primary); }
-        
         .card p, .project-content p { color: var(--text-muted); text-align: justify; }
         
         .image-wrapper { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
@@ -260,79 +231,54 @@
         .normativa-list li { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; color: #ddd; }
         .normativa-list li strong { color: var(--primary); }
 
+        /* Formulario de Contacto */
         .contact-form { background: var(--bg-card); padding: 4rem; border-radius: 16px; max-width: 700px; margin: auto; border: 1px solid rgba(255,255,255,0.05); }
-        
-        @media (max-width: 600px) { 
-            .contact-form { padding: 2rem 1rem; } 
-            .container { width: 95%; }
-        }
-        
         .contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.5); border: 1px solid #333; color: #fff; border-radius: 8px; }
         .contact-form button { width: 100%; background: var(--primary); padding: 1.2rem; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
 
-        /* --- FOOTER --- */
-        footer { 
-            background-color: #080808; 
-            border-top: 1px solid rgba(255,255,255,0.05); 
-            padding: 4rem 0 2rem 0; 
-            margin-top: auto; 
+        /* Media Queries Body */
+        @media (max-width: 992px) {
+            #inicio { align-items: flex-start; padding-bottom: 3rem; }
+            .hero-container { flex-direction: column-reverse; gap: 2rem; }
+            .hero-text { width: 100%; text-align: center; }
+            .hero-text h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
+            .hero-text p { margin: 0 auto 1.5rem auto; font-size: 1rem; text-align: justify; }
+            .hero-img-wrapper { width: 100%; max-width: 550px; margin: 0 auto; aspect-ratio: 1 / 1; max-height: 50vh; height: auto; }
+            .hero-img-wrapper img { object-fit: cover; object-position: center; }
         }
-        
-        .footer-container { 
-            width: 95%; max-width: 1000px; 
-            margin: auto; 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2rem; 
-            text-align: center;
+
+        @media (max-width: 600px) { .contact-form { padding: 2rem 1rem; } .container { width: 95%; } }
+        @media (max-width: 480px) {
+            .hero-text h2 { font-size: 2rem; }
+            .hero-img-wrapper { aspect-ratio: 1 / 1; }
         }
-        
-        .footer-col h3 { 
-            color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
+
+        /* ==========================================================================
+           4. ESTILOS DEL FOOTER Y ELEMENTOS FLOTANTES
+           ========================================================================== */
+        footer { background-color: #080808; border-top: 1px solid rgba(255,255,255,0.05); padding: 4rem 0 2rem 0; margin-top: auto; }
+        .footer-container { width: 95%; max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+        .footer-col h3 { color: #fff; font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin: 10px auto 0; }
-
-        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
-            line-height: 1.6; 
-            font-weight: 400; 
-            text-decoration: none; 
-            display: block;
-            margin-bottom: 0.5rem;
-            word-break: break-word; 
-        }
-
+        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; font-weight: 400; text-decoration: none; display: block; margin-bottom: 0.5rem; word-break: break-word; }
         .footer-contact a:hover, .footer-links a:hover { color: var(--primary); transition: color 0.3s; }
         .footer-links a:hover { transform: scale(1.05); }
         .footer-links ul { list-style: none; padding: 0; }
-
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 0.85rem; }
         
         @media (max-width: 768px) {
             .footer-container { gap: 5px; }
             .footer-col h3 { font-size: 0.75rem; margin-bottom: 0.5rem; }
-            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { 
-                font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.3rem;
-            }
+            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.3rem; }
             .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
         }
 
-        /* --- BOTÓN FAB --- */
-        .fab { 
-            position: fixed; bottom: 30px; right: 30px; 
-            background: var(--primary); color: #000; padding: 15px 30px; 
-            border-radius: 50px; text-decoration: none; font-weight: 800; 
-            text-transform: uppercase; letter-spacing: 1px; 
-            box-shadow: 0 10px 25px rgba(255,153,0,0.4); 
-            z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.8);
-        }
+        /* Botón FAB y Animaciones Globales */
+        .fab { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255,153,0,0.4); z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.8); }
         .fab.show-fab { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
         .fab.show-fab:hover { transform: scale(1.1) translateY(-5px); }
 
-        .hide-header { transform: translateY(-100%); }
+        
         .animated-element { opacity: 0; transform: translateY(40px); transition: 1s; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -356,7 +302,24 @@
 
             <nav class="nav-menu">
                 <a href="#inicio" class="nav-link">Inicio</a>
-                <a href="#servicios" class="nav-link">Servicios</a>
+                
+                <div class="dropdown">
+                    <a href="#servicios" class="nav-link">Servicios <span class="arrow">&#9662;</span></a>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">Diseño Estructural</span>
+                        <a href="viviendas.html" class="dropdown-item indent">Viviendas</a>
+                        <a href="galpones.html" class="dropdown-item indent">Galpones</a>
+                        <a href="temporales.html" class="dropdown-item indent">Estructuras temporales</a>
+                        <a href="industriales.html" class="dropdown-item indent">Estructuras industriales</a>
+                        
+                        <span class="dropdown-title" style="margin-top: 10px;">Otros Servicios</span>
+                        <a href="regularizacion.html" class="dropdown-item">Regularización de viviendas</a>
+                        <a href="asesoria.html" class="dropdown-item">Asesoría de proyectos</a>
+                        <a href="ingeniero.html" class="dropdown-item">Ingeniero en tu empresa</a>
+                        <a href="especialidades.html" class="dropdown-item">Especialidades</a>
+                    </div>
+                </div>
+
                 <a href="#proyectos" class="nav-link">Proyectos</a>
                 <a href="#normativa" class="nav-link">Normativa</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
@@ -391,51 +354,35 @@
             <h2 class="animated-element">Proyectos y Especialidades</h2>
             <div class="project-grid">
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/acero.jpg" alt="Estructuras de Acero" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/acero.jpg" alt="Estructuras de Acero" loading="lazy"></div>
                     <div class="project-content"><h3>Naves Industriales</h3><p>Cálculo estructural optimizado de galpones de gran luz, enfocados en la eficiencia del montaje y distribución de cargas.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/vivienda.webp" alt="Diseño de Vivienda" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/vivienda.webp" alt="Diseño de Vivienda" loading="lazy"></div>
                     <div class="project-content"><h3>Vivienda y Edificación</h3><p>Modelado y cálculo de viviendas unifamiliares y edificios, integrando la estructura con la arquitectura.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/electrico.jpg" alt="Eléctrico" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/electrico.jpg" alt="Eléctrico" loading="lazy"></div>
                     <div class="project-content"><h3>Proyectos Eléctricos</h3><p>Diseño de planos eléctricos detallados, diagramas unilineales, cuadros de carga y especificaciones técnicas.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/sanitario.jpg" alt="Sanitario" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/sanitario.jpg" alt="Sanitario" loading="lazy"></div>
                     <div class="project-content"><h3>Instalaciones Sanitarias</h3><p>Planificación eficiente de redes de agua potable, alcantarillado y sistemas de drenaje pluvial.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/ap.jpg" alt="Agua Potable" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/ap.jpg" alt="Agua Potable" loading="lazy"></div>
                     <div class="project-content"><h3>Redes de Agua</h3><p>Diseño hidráulico de redes de agua potable fría y caliente, asegurando presión y caudal normativo.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/climatizacion.jpg" alt="Climatización" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/climatizacion.jpg" alt="Climatización" loading="lazy"></div>
                     <div class="project-content"><h3>Climatización (HVAC)</h3><p>Desarrollo de proyectos de calefacción y ventilación, definiendo equipos y trazado de ductos.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/fundaciones.jpg" alt="Diseño en Hormigón" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/fundaciones.jpg" alt="Diseño en Hormigón" loading="lazy"></div>
                     <div class="project-content"><h3>Fundaciones y Muros</h3><p>Diseño geotécnico y estructural de fundaciones, muros de contención y elementos de hormigón armado.</p></div>
                 </div>
                 <div class="project-item animated-element">
-                    <div class="image-wrapper">
-                        <img src="assets/proyectos.jpg" alt="Proyectos Personalizados" loading="lazy">
-                    </div>
+                    <div class="image-wrapper"><img src="assets/proyectos.jpg" alt="Proyectos Personalizados" loading="lazy"></div>
                     <div class="project-content"><h3>Proyectos Especiales</h3><p>Soluciones de ingeniería a medida para desafíos complejos, estructuras no convencionales o refuerzos.</p></div>
                 </div>
             </div>
@@ -511,10 +458,8 @@
     <a href="#contacto" class="fab">Cotizar</a>
     
     <script>
-        // --- LOGICA MENÚ & SCROLL ---
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
-        const navLinks = document.querySelectorAll(".nav-link");
         const header = document.getElementById('main-header');
         const fab = document.querySelector('.fab');
         const sections = document.querySelectorAll('section');
@@ -525,17 +470,14 @@
             navMenu.classList.toggle("active");
         });
 
-        navLinks.forEach(n => n.addEventListener("click", () => {
+        // Ocultar menú al hacer clic en un enlace (excepto el botón del desplegable)
+        document.querySelectorAll(".nav-link:not(.dropdown > .nav-link), .dropdown-item").forEach(n => n.addEventListener("click", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
 
         window.addEventListener('scroll', () => {
-            if (lastScrollY < window.scrollY && window.scrollY > 100) {
-                header.classList.add('hide-header');
-            } else {
-                header.classList.remove('hide-header');
-            }
+
             lastScrollY = window.scrollY;
 
             if (window.scrollY > 50) {
@@ -552,7 +494,8 @@
                     current = section.getAttribute('id');
                 }
             });
-            navLinks.forEach(link => {
+            
+            document.querySelectorAll(".nav-menu > .nav-link").forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
@@ -570,8 +513,6 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
-        
-        // ¡Se ha eliminado completamente la lógica de animación de carga del logo!
     </script>
 </body>
 </html>
