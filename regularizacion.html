@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Regularización de Viviendas y Ampliaciones DOM | GLIC Ingeniería</title>
+    <meta name="description"
+        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales (DOM) en Chile. Levantamiento técnico, planos y expedientes con GLIC Ingeniería.">
+    <link rel="canonical" href="https://glic.cl/regularizacion.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:title" content="Regularización de Viviendas y Ampliaciones DOM | GLIC Ingeniería">
+    <meta property="og:description"
+        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales (DOM) en Chile. Levantamiento técnico, planos y expedientes con GLIC Ingeniería.">
+    <meta property="og:image" content="https://glic.cl/assets/servicios_regularizacion.jpg">
+    <meta property="og:url" content="https://glic.cl/regularizacion.html">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="https://glic.cl/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://glic.cl/assets/favicon.png">
+    <link rel="apple-touch-icon" href="https://glic.cl/assets/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://glic.cl/assets/favicon.png">
+    
+    <meta name="theme-color" content="#050505">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const saved = localStorage.getItem('glic_theme');
+            if (saved === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <style>
+        /* ==========================================================================
+           1. DESIGN TOKENS (Custom Properties & High Contrast)
+           ========================================================================== */
+        :root {
+            --primary: #ff9900;
+            --primary-light: #ffb347;
+            --primary-dark: #e68a00;
+            --primary-dim: rgba(255, 153, 0, 0.08);
+            --bg-main: #050505;
+            --bg-card: #111111;
+            --bg-surface: rgba(255, 255, 255, 0.02);
+            --text-main: #f0f0f0;
+            --text-heading: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 153, 0, 0.3);
+            --header-bg: rgba(5, 5, 5, 0.95);
+            --header-border: rgba(255, 255, 255, 0.05);
+            --nav-link-color: #ffffff;
+            --dropdown-bg: rgba(5, 5, 5, 0.98);
+            --dropdown-text: #ffffff;
+            --bar-color: #ffffff;
+            --theme-toggle-bg: rgba(255, 255, 255, 0.08);
+            --theme-toggle-border: rgba(255, 255, 255, 0.15);
+            --hero-overlay: linear-gradient(135deg, rgba(5, 5, 5, 0.92) 0%, rgba(10, 10, 10, 0.84) 100%);
+            --hero-card-bg: rgba(17, 17, 17, 0.88);
+            --hero-card-border: rgba(255, 255, 255, 0.1);
+            --hero-subcard-bg: rgba(255, 255, 255, 0.03);
+            --hero-text: #a0a0a0;
+            --hero-title: #ffffff;
+            --card-text-title: #ffffff;
+            --input-bg: rgba(0, 0, 0, 0.4);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-color: #ffffff;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --header-height: 70px;
+            --r-sm: 6px;
+            --r-md: 10px;
+            --r-lg: 16px;
+            --r-xl: 24px;
+            --shadow-sm: 0 1px 3px rgba(255, 153, 0, 0.05);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --transition-speed: 150ms;
+        }
+
+        [data-theme="light"] {
+            --bg-main: #ffffff;
+            --bg-card: #f8fafc;
+            --bg-surface: #f1f5f9;
+            --text-main: #0f172a;
+            --text-heading: #0f172a;
+            --text-muted: #475569;
+            --border: rgba(0, 0, 0, 0.08);
+            --header-bg: rgba(255, 255, 255, 0.94);
+            --header-border: rgba(0, 0, 0, 0.08);
+            --nav-link-color: #1e293b;
+            --dropdown-bg: rgba(255, 255, 255, 0.98);
+            --dropdown-text: #0f172a;
+            --bar-color: #0f172a;
+            --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+            --theme-toggle-border: rgba(0, 0, 0, 0.12);
+            --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.90) 100%);
+            --hero-card-bg: rgba(255, 255, 255, 0.96);
+            --hero-card-border: rgba(0, 0, 0, 0.08);
+            --hero-subcard-bg: rgba(241, 245, 249, 0.95);
+            --hero-text: #475569;
+            --hero-title: #0f172a;
+            --card-text-title: #0f172a;
+            --input-bg: #f8fafc;
+            --input-border: #cbd5e1;
+            --input-color: #0f172a;
+            --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ==========================================================================
+           RESET Y BASES TIPOGRÁFICAS (Filosofía Ejemplo #01, #02, #08)
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.75;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.1;
+            text-wrap: balance;
+        }
+
+        p {
+            max-width: 65ch;
+            text-wrap: pretty;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* ==========================================================================
+           2. HEADER Y NAVEGACIÓN (Filosofía #03 gap, #06 targeted transitions)
+           ========================================================================== */
+        header {
+            background: var(--header-bg);
+            padding: 0; 
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--header-border);
+            transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            width: 90%; max-width: 1200px; margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-heading); z-index: 1001; }
+        .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
+        
+        .logo-link::before { 
+            content: ''; 
+            box-sizing: content-box;
+            width: 22px; 
+            height: 12px; 
+            border: 3px solid #ff9900; 
+            border-radius: 8px; 
+            transform: rotate(45deg); 
+            transition: transform 0.5s ease; 
+        }
+        
+        .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
+        
+        .logo-link::after { content: ''; box-sizing: content-box; position: absolute; width: 14px; height: 14px; border: 3px solid #ff9900; border-radius: 50%; top: 9px; left: 16px; }
+        .logo-anchor h1,
+        .logo-anchor .logo-text,
+        .header-content h1 { font-family: var(--font-title); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; text-transform: uppercase; color: var(--text-heading); margin: 0; }
+
+        .nav-menu { display: flex; gap: 25px; align-items: center; }
+        .nav-link {
+            color: var(--nav-link-color); text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            position: relative; transition: color var(--transition-speed) ease;
+            padding: 5px 0; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0;
+            background: var(--primary); transition: width var(--transition-speed) ease-in-out;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Botón de cambio de tema */
+        .theme-toggle-btn {
+            background: var(--theme-toggle-bg);
+            border: 1px solid var(--theme-toggle-border);
+            color: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform 0.25s ease, color var(--transition-speed) ease;
+            padding: 0;
+            flex-shrink: 0;
+            outline: none;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-dim);
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .theme-toggle-btn .sun-icon { display: block; }
+        .theme-toggle-btn .moon-icon { display: none; }
+        [data-theme="light"] .theme-toggle-btn .sun-icon { display: none; }
+        [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; color: #d97706; }
+
+        .hamburger { display: none; cursor: pointer; z-index: 1001; }
+        .bar {
+            display: block; width: 25px; height: 3px; margin: 5px auto;
+            transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            background-color: var(--bar-color); border-radius: 2px;
+        }
+
+        /* Menú Desplegable (PC) */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute; background-color: var(--dropdown-bg);
+            min-width: 280px; box-shadow: var(--shadow-lg);
+            z-index: 1002; border: 1px solid var(--border);
+            border-radius: var(--r-md); top: 100%; left: 0; padding: 10px 0;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .dropdown:hover .dropdown-content { display: block; animation: fadeIn var(--transition-speed) ease; }
+        
+        .dropdown-title {
+            display: block; padding: 15px 20px 5px 20px;
+            color: var(--primary); font-size: 0.75rem; font-weight: 800;
+            letter-spacing: 1px; border-bottom: 1px solid var(--border);
+            margin-bottom: 5px; text-transform: uppercase;
+        }
+
+        .dropdown-item {
+            color: var(--dropdown-text); padding: 10px 20px; text-decoration: none; display: flex;
+            align-items: center; font-size: 0.85rem; font-weight: 600; 
+            letter-spacing: 0.5px;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+        .dropdown-item.indent { padding-left: 30px; color: var(--text-muted); }
+        .dropdown-item:hover, .dropdown-item.indent:hover { background-color: var(--primary-dim); color: var(--primary); }
+
+        /* Submenús Multinivel (Sub-sub-menús desplegables) */
+        .dropdown-submenu { position: relative; }
+        .dropdown-item.submenu-trigger {
+            display: flex; justify-content: space-between; align-items: center; width: 100%; cursor: pointer;
+        }
+        .submenu-arrow {
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; color: var(--text-muted);
+            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+            margin-left: 10px; padding: 2px 6px; border-radius: 4px;
+        }
+        .dropdown-item.submenu-trigger:hover .submenu-arrow,
+        .dropdown-submenu.is-open .submenu-arrow { color: var(--primary); }
+
+        @media (min-width: 993px) {
+            .dropdown-submenu .submenu-content {
+                display: none; position: absolute; left: 100%; top: -6px; min-width: 250px;
+                background-color: var(--dropdown-bg); border: 1px solid var(--border);
+                border-radius: var(--r-md); box-shadow: var(--shadow-lg); padding: 8px 0;
+                backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1005;
+            }
+            .dropdown-submenu .submenu-content::before {
+                content: ''; position: absolute; top: 0; left: -12px; width: 12px; height: 100%;
+            }
+            .dropdown-submenu:hover > .submenu-content,
+            .dropdown-submenu.is-open > .submenu-content {
+                display: block; animation: flyoutFadeIn 180ms ease;
+            }
+            .dropdown-submenu:hover > .submenu-trigger .submenu-arrow,
+            .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes flyoutFadeIn {
+            from { opacity: 0; transform: translateX(-6px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .arrow { font-size: 0.7rem; margin-left: 8px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--primary); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
+
+            .nav-menu {
+                position: fixed; left: -100%; top: 0; 
+                flex-direction: column; background-color: var(--dropdown-bg);
+                width: 75%; max-width: 320px; height: 100vh; text-align: left;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); justify-content: flex-start; gap: 0.5rem;
+                padding-top: calc(var(--header-height) + 20px); backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px); overflow-y: auto;
+                border-right: 1px solid var(--border);
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+            }
+            .nav-menu.active { left: 0; }
+            .nav-link { font-size: 1rem; padding: 12px 25px; width: 100%; } 
+            .header-content h1 { font-size: 1.1rem; }
+
+            .dropdown-content {
+                position: static; display: block; 
+                box-shadow: none; border: none; background: transparent; 
+                min-width: 100%; padding: 0;
+            }
+            .dropdown:hover .dropdown-content { animation: none; }
+            
+            .dropdown-title { padding-left: 25px; font-size: 0.7rem; margin-top: 10px; }
+            .dropdown-item { padding: 8px 25px; font-size: 0.85rem; }
+            .dropdown-item.indent { padding-left: 35px; }
+
+            .dropdown-submenu .submenu-content {
+                display: none; background: rgba(255, 255, 255, 0.03);
+                border-left: 2px solid var(--primary); margin: 4px 0 6px 16px;
+                border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 4px 0;
+            }
+            [data-theme="light"] .dropdown-submenu .submenu-content { background: rgba(0, 0, 0, 0.03); }
+            .dropdown-submenu.is-open > .submenu-content { display: block; }
+            .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
+                transform: rotate(90deg); color: var(--primary);
+            }
+            .submenu-content .dropdown-item { padding: 7px 18px; font-size: 0.85rem; color: var(--text-muted); }
+            .submenu-content .dropdown-item:hover { color: var(--primary); background: transparent; }
+
+            .arrow { display: none; }
+        }
+
+        /* ==========================================================================
+           3. HERO PRINCIPAL DE SERVICIO
+           ========================================================================== */
+        .service-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--header-height) + 3.5rem) 0 4rem 0;
+            background-image: var(--hero-overlay), url('assets/servicios_regularizacion.jpg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container {
+            width: 90%; max-width: 1200px; margin: 0 auto;
+        }
+
+        .hero-card {
+            background: var(--hero-card-bg);
+            border: 1px solid var(--hero-card-border);
+            border-radius: var(--r-xl);
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(15px);
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-dim);
+            color: var(--primary);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+            font-family: var(--font-title);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            color: var(--text-heading);
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.2rem;
+            max-width: 75ch;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #000;
+            font-weight: 800;
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 1rem 2.5rem;
+            border-radius: var(--r-sm);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
+            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--primary-light);
+            color: #000;
+        }
+
+        /* ==========================================================================
+           4. SECCIONES EDITORIALES (Diseño Limpio y Espacioso)
+           ========================================================================== */
+        .service-section {
+            padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .service-section:nth-child(even) {
+            background-color: var(--bg-surface);
+        }
+
+        .area-tag {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            font-family: var(--font-title);
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            line-height: 1.2;
+            font-family: var(--font-title);
+            letter-spacing: 0.5px;
+        }
+
+        .section-lead {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            max-width: 75ch;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        /* Editorial Split */
+        .editorial-split {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: clamp(2rem, 4vw, 4rem);
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .editorial-split.reverse {
+            grid-template-columns: 1fr 1.15fr;
+        }
+
+        @media (max-width: 900px) {
+            .editorial-split,
+            .editorial-split.reverse {
+                grid-template-columns: 1fr;
+            }
+            .editorial-split.reverse .editorial-media {
+                order: -1;
+            }
+        }
+
+        .editorial-text h4 {
+            font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            font-family: var(--font-title);
+        }
+
+        .editorial-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1.2rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .spec-list li svg {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .editorial-media {
+            position: relative;
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .editorial-media img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .editorial-media:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Pillars */
+        .engineering-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-left: 2px solid var(--primary);
+            padding-left: 1.4rem;
+        }
+
+        .pillar-item h4 {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin: 0;
+            font-family: var(--font-title);
+        }
+
+        .pillar-item p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Tools / Norms Strip */
+        .tools-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+
+        .tool-badge {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: var(--r-sm);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .tool-badge.featured {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-dim);
+        }
+
+        /* Callout Cross-link */
+        .cross-link-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--r-md);
+            padding: clamp(1.8rem, 3vw, 2.4rem);
+            margin-top: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cross-link-text h3 {
+            font-size: 1.15rem;
+            color: var(--text-heading);
+            margin-bottom: 0.4rem;
+            font-family: var(--font-title);
+        }
+
+        .cross-link-text p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.6;
+            max-width: 70ch;
+        }
+
+        .cross-link-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-dim);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--r-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            white-space: nowrap;
+        }
+
+        .cross-link-btn:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateX(4px);
+        }
+
+        /* ==========================================================================
+           5. FORMULARIO DE CONTACTO UNIFICADO WIDESCREEN
+           ========================================================================== */
+        #contacto {
+            padding: clamp(4rem, 6vw, 6rem) 0;
+            background-color: var(--bg-main);
+            position: relative;
+        }
+
+        .contact-container {
+            width: 92%;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .contact-header-wrap {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto clamp(2.5rem, 4vw, 3.5rem) auto;
+        }
+
+        .contact-section-title {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 3.8vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-lead-desc {
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0 auto;
+        }
+
+        .contact-split-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: clamp(2rem, 4vw, 3.2rem);
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1.35fr auto 1fr;
+            gap: clamp(2rem, 3.5vw, 3.5rem);
+            align-items: stretch;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        [data-theme="light"] .contact-split-box {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-header {
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-form-subtitle {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .contact-split-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .contact-form-row-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .contact-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .contact-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-heading);
+            font-family: var(--font-title);
+        }
+
+        .contact-input-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: var(--r-sm);
+            color: var(--input-color);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: all var(--transition-speed) ease;
+            box-sizing: border-box;
+        }
+
+        .contact-input-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+        }
+
+        [data-theme="light"] .contact-input-control {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        [data-theme="light"] .contact-input-control:focus {
+            background: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .contact-select-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            padding-right: 2.5rem;
+        }
+
+        textarea.contact-input-control {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .contact-form-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .contact-btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #000;
+            font-weight: 800;
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 1.05rem 2rem;
+            border: none;
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+        }
+
+        .contact-btn-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+        }
+
+        .contact-form-privacy {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .contact-vertical-divider {
+            width: 1px;
+            background: var(--border);
+            min-height: 100%;
+        }
+
+        .contact-direct-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.8rem;
+        }
+
+        .contact-panel-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-panel-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-panel-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .contact-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .contact-action-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0.9rem 1.15rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-action-card:hover {
+            border-color: var(--primary);
+            background: var(--primary-dim);
+            transform: translateX(4px);
+        }
+
+        .contact-action-card .action-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(255, 153, 0, 0.12);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-action-card:hover .action-icon {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .contact-action-card.whatsapp-action:hover .action-icon {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .action-meta {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .action-label {
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .action-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-highlights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1.1rem;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px dashed var(--border);
+            border-radius: var(--r-sm);
+        }
+
+        [data-theme="light"] .contact-highlights-list {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .highlight-item strong {
+            color: var(--text-heading);
+        }
+
+        .highlight-bullet {
+            font-size: 1rem;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        .contact-panel-footer-logo {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-panel-footer-logo .logo-text {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            color: var(--text-heading);
+        }
+
+        @media (max-width: 960px) {
+            .contact-split-box {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-vertical-divider {
+                width: 100%;
+                height: 1px;
+                min-height: 1px;
+            }
+
+            .contact-btn-submit {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contact-panel-footer-logo {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-form-row-duo {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section-title {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+        }
+
+        /* ==========================================================================
+           6. FOOTER Y ELEMENTOS FLOTANTES
+           ========================================================================== */
+        footer { 
+            background-color: #080808; 
+            border-top: 1px solid var(--border); 
+            padding: 4rem 0 2rem 0; 
+            margin-top: auto; 
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        [data-theme="light"] footer {
+            background-color: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-container { 
+            width: 95%; max-width: 1000px; 
+            margin: auto; 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2rem; 
+            text-align: center; 
+        }
+        
+        .footer-col h3 { 
+            color: var(--text-heading); font-family: var(--font-title); margin-bottom: 1.2rem; text-transform: uppercase; font-size: 1.1rem;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        
+        .footer-col h3::after { content: ''; display: block; width: 30px; height: 3px; background: var(--primary); margin: 10px auto 0; }
+
+        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a { 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            line-height: 1.75; 
+            font-weight: 400; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            word-break: break-word; 
+        }
+
+        .footer-contact a:hover, .footer-links a:hover { color: var(--primary); }
+        .footer-links a { transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; }
+        .footer-links a:hover { transform: scale(1.05); }
+        .footer-links ul { list-style: none; padding: 0; }
+
+        .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: #666; font-size: 0.85rem; }
+        
+        @media (max-width: 768px) {
+            .footer-container { gap: 15px; }
+            .footer-col h3 { font-size: 0.8rem; margin-bottom: 0.5rem; }
+            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { 
+                font-size: 0.75rem; line-height: 1.5; margin-bottom: 0.3rem;
+            }
+            .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
+            .footer-bottom { margin-top: 2rem; }
+        }
+
+        [data-theme="light"] header {
+            background-color: var(--header-bg);
+            border-bottom-color: var(--header-border);
+        }
+
+        [data-theme="light"] .logo-anchor,
+        [data-theme="light"] .logo-anchor h1,
+        [data-theme="light"] .nav-link {
+            color: var(--text-heading);
+        }
+
+        [data-theme="light"] .nav-link:hover,
+        [data-theme="light"] .nav-link.active {
+            color: var(--primary);
+        }
+
+        [data-theme="light"] .dropdown-content {
+            background-color: var(--dropdown-bg);
+            border-color: var(--border);
+        }
+
+        [data-theme="light"] .dropdown-item {
+            color: var(--dropdown-text);
+        }
+
+        [data-theme="light"] .dropdown-item.indent {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .bar {
+            background-color: var(--bar-color);
+        }
+
+        [data-theme="light"] h1,
+        [data-theme="light"] h2,
+        [data-theme="light"] h3,
+        [data-theme="light"] h4,
+        [data-theme="light"] h5,
+        [data-theme="light"] h6,
+        [data-theme="light"] .section-title,
+        [data-theme="light"] .contact-section-title,
+        [data-theme="light"] .contact-form-title,
+        [data-theme="light"] .contact-panel-title,
+        [data-theme="light"] .action-val,
+        [data-theme="light"] .contact-label,
+        [data-theme="light"] .pillar-item h4,
+        [data-theme="light"] .editorial-text h4,
+        [data-theme="light"] .footer-col h3 {
+            color: #0f172a;
+        }
+
+        [data-theme="light"] .contact-action-card {
+            background: #f8fafc;
+            border-color: rgba(0, 0, 0, 0.08);
+            color: #0f172a;
+        }
+
+        [data-theme="light"] .contact-action-card:hover {
+            background: var(--primary-dim);
+            border-color: var(--primary);
+        }
+
+        [data-theme="light"] .footer-contact a,
+        [data-theme="light"] .footer-links a {
+            color: #475569;
+        }
+
+        [data-theme="light"] .footer-bottom {
+            border-top-color: rgba(0, 0, 0, 0.08);
+            color: #64748b;
+        }
+
+        .fab { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: var(--primary); color: #000; padding: 15px 30px; 
+            border-radius: 50px; text-decoration: none; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; 
+            box-shadow: 0 10px 25px rgba(255,153,0,0.4); 
+            z-index: 100; transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity var(--transition-speed) ease;
+            opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.8);
+        }
+        .fab.show-fab { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+        .fab.show-fab:hover { transform: scale(1.05) translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="header-content">
+            <a href="https://glic.cl" class="logo-anchor">
+                <div class="logo-link"></div>
+                <h1>GLIC Ingeniería</h1>
+            </a>
+
+            <div class="header-actions">
+                <nav class="nav-menu" aria-label="Navegación principal">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+
+                    <div class="dropdown">
+                        <a href="index.html#servicios" class="nav-link active">Servicios <span class="arrow">&#9662;</span></a>
+                        <div class="dropdown-content">
+                            <!-- 1. Diseño Estructural -->
+                            <div class="dropdown-submenu">
+                                <a href="estructural.html" class="dropdown-item submenu-trigger">
+                                    <span>Diseño Estructural</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="estructural.html#viviendas" class="dropdown-item">Viviendas</a>
+                                    <a href="estructural.html#galpones" class="dropdown-item">Galpones y Naves</a>
+                                    <a href="estructural.html#industriales" class="dropdown-item">Estructuras Industriales</a>
+                                    <a href="estructural.html#temporales" class="dropdown-item">Estructuras Temporales</a>
+                                </div>
+                            </div>
+
+                            <!-- 2. Proyectos Sanitarios -->
+                            <div class="dropdown-submenu">
+                                <a href="sanitarios.html" class="dropdown-item submenu-trigger">
+                                    <span>Proyectos Sanitarios</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="sanitarios.html#agua-potable" class="dropdown-item">Agua Potable</a>
+                                    <a href="sanitarios.html#alcantarillado" class="dropdown-item">Alcantarillado</a>
+                                    <a href="sanitarios.html#domiciliarios" class="dropdown-item">Proyectos Domiciliarios</a>
+                                    <a href="sanitarios.html#regularizacion-sanitaria" class="dropdown-item">Regularización Sanitaria</a>
+                                </div>
+                            </div>
+
+                            <!-- 3. Regularizaciones -->
+                            <div class="dropdown-submenu">
+                                <a href="regularizacion.html" class="dropdown-item submenu-trigger">
+                                    <span>Regularizaciones</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="regularizacion.html#viviendas" class="dropdown-item">Regularización de Viviendas</a>
+                                    <a href="regularizacion.html#ampliaciones" class="dropdown-item">Ampliaciones Existentes</a>
+                                    <a href="regularizacion.html#expedientes" class="dropdown-item">Expedientes Técnicos DOM</a>
+                                </div>
+                            </div>
+
+                            <!-- 4. Otros Servicios -->
+                            <div class="dropdown-submenu">
+                                <a href="otros-servicios.html" class="dropdown-item submenu-trigger">
+                                    <span>Otros Servicios</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="otros-servicios.html#asesoria" class="dropdown-item">Asesoría Técnica</a>
+                                    <a href="otros-servicios.html#ingeniero" class="dropdown-item">Ingeniero en tu Empresa</a>
+                                    <a href="otros-servicios.html#especialidades" class="dropdown-item">Especialidades MEP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+                    <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </nav>
+
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema claro / oscuro"
+                    title="Cambiar tema">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <div class="hamburger" role="button" tabindex="0" aria-label="Menú de navegación" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Principal del Servicio Unificado -->
+        <section class="service-hero">
+            <div class="container">
+                <div class="hero-card">
+                    <div class="hero-badge">Gestión Municipal y Regularizaciones DOM</div>
+                    <h2 class="hero-title">Regularización de <span class="text-gradient">Viviendas y Ampliaciones</span></h2>
+                    <p class="hero-desc">
+                        Evita multas, aumenta la plusvalía comercial y obtén la Recepción Final definitiva para tu propiedad. En GLIC Ingeniería desarrollamos el expediente técnico oficial exigido por la Dirección de Obras Municipales (DOM) en todo Chile, tanto mediante leyes especiales de regularización simplificada (Ley del Mono N° 20.898) como por el procedimiento ordinario de la Ordenanza General de Urbanismo y Construcciones (OGUC).
+                    </p>
+                    <div class="tools-strip" style="margin-bottom: 2rem;">
+                        <span class="tool-badge featured">Ley 20.898 (Ley del Mono)</span>
+                        <span class="tool-badge featured">OGUC / D.S. 47</span>
+                        <span class="tool-badge">DOM Municipal</span>
+                        <span class="tool-badge">Recepción Final</span>
+                        <span class="tool-badge">Levantamiento As-Built</span>
+                        <span class="tool-badge">Cálculo de Estabilidad</span>
+                    </div>
+                    <a href="#contacto" class="cta-btn">Cotizar Regularización DOM &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. VIVIENDAS EXISTENTES -->
+        <section id="viviendas" class="service-section">
+            <div class="container">
+                <span class="area-tag">01. Marco Legal y Vías de Aprobación</span>
+                <h3 class="section-title">Regularización de <span class="text-gradient">Viviendas Existentes</span></h3>
+                <p class="section-lead">
+                    Tramitación formal de inmuebles construidos sin permiso de edificación previo, habilitando su venta mediante crédito hipotecario bancario y asegurando su tasación comercial real.
+                </p>
+
+                <div class="editorial-split">
+                    <div class="editorial-text">
+                        <h4>Vías de Regularización ante la DOM</h4>
+                        <p>
+                            Evaluamos rigurosamente los antecedentes técnicos, constructivos y legales de tu inmueble para determinar la vía más rápida y económica de ingreso ante la Dirección de Obras Municipales de tu comuna.
+                        </p>
+
+                        <ul class="spec-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Ley del Mono (Ley N° 20.898 y prórrogas):</strong> Procedimiento de regularización simplificada para viviendas sociales, autoconstrucciones o microempresas familiares que cumplan límites de avalúo fiscal y superficie máxima.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Permiso de Edificación Ordinario OGUC:</strong> Regularización integral para viviendas que sobrepasan los límites de leyes excepcionales, tramitando expediente de edificación con memorias de cálculo sismorresistente.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Subsanación de observaciones municipales:</strong> Respuesta técnica integral a actas de observaciones emitidas por revisores de la DOM hasta lograr la aprobación definitiva del expediente.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Certificados de Informaciones Previas (CIP):</strong> Estudio de zonificación del Plano Regulador Comunal (PRC), coeficientes de constructibilidad, ocupación de suelo y distanciamientos reglamentarios.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="editorial-media">
+                        <img src="assets/servicios_regularizacion.jpg" alt="Regularización de viviendas y planos municipales" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AMPLIACIONES EXISTENTES -->
+        <section id="ampliaciones" class="service-section">
+            <div class="container">
+                <span class="area-tag">02. Obras Posteriores y Ampliaciones</span>
+                <h3 class="section-title">Levantamiento de <span class="text-gradient">Ampliaciones Existentes</span></h3>
+                <p class="section-lead">
+                    Levantamiento métrico y estructural en terreno para regularizar segundos pisos, quinchos, ampliaciones de estar, recintos habitables y cobertizos.
+                </p>
+
+                <div class="editorial-split reverse">
+                    <div class="editorial-media">
+                        <img src="assets/vivienda.webp" alt="Levantamiento técnico de ampliaciones existentes" loading="lazy">
+                    </div>
+
+                    <div class="editorial-text">
+                        <h4>Inspección Profesional en Terreno y Planos As-Built</h4>
+                        <p>
+                            Un ingeniero civil realiza el levantamiento exhaustivo de lo efectivamente construido, verificando materialidad, escuadrías, fundaciones y estado estructural para garantizar seguridad y viabilidad normativa.
+                        </p>
+
+                        <ul class="spec-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Medición y catastro milimétrico:</strong> Levantamiento arquitectónico en terreno de muros, vanos, recintos, alturas libres, rasantes y adosamientos.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Inspección estructural de vigas y columnas:</strong> Revisión de elementos soportantes en madera, acero o albañilería, identificando refuerzos necesarios para garantizar estabilidad sísmica.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Planimetría As-Built oficial:</strong> Planos de ubicación, emplazamiento, arquitectura por niveles, cortes y fachadas conforme al formato y escalas exigidas por la DOM.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Verificación de habitabilidad y seguridad:</strong> Cumplimiento de normas de iluminación, ventilación natural, resistencia al fuego (F-30, F-60) y aislamiento térmico (Art. 4.1.10 OGUC).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. EXPEDIENTES TÉCNICOS DOM -->
+        <section id="expedientes" class="service-section">
+            <div class="container">
+                <span class="area-tag">03. Dossier Oficial y Beneficios</span>
+                <h3 class="section-title">Expedientes Técnicos DOM y <span class="text-gradient">Recepción Final</span></h3>
+                <p class="section-lead">
+                    Elaboramos la carpeta técnica completa timbrada por ingenieros civiles y gestionamos el proceso hasta la obtención del Certificado de Recepción Definitiva.
+                </p>
+
+                <div class="engineering-pillars">
+                    <div class="pillar-item">
+                        <h4>Dossier Oficial y Formularios MINVU</h4>
+                        <p>Preparación y firma de formularios oficiales (Formulario Único de Estadísticas de Edificación, solicitudes DOM, declaraciones juradas de dominio y responsabilidad profesional).</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Informes y Memorias de Estabilidad</h4>
+                        <p>Memoria de cálculo sismorresistente o informe de estabilidad estructural suscrito por ingeniero civil colegiado para certificar la solidez y seguridad del inmueble.</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Incremento de Plusvalía y Venta Bancaria</h4>
+                        <p>Legalización que permite tasar el 100% de los metros construidos, facilitando la venta mediante créditos hipotecarios bancarios y traspasos hereditarios sin observaciones.</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Blindaje Legal y Exención de Multas</h4>
+                        <p>Regularizar formalmente extingue el riesgo de clausuras, multas municipales acumulativas o decretos de demolición ante fiscalizaciones de la Dirección de Obras.</p>
+                    </div>
+                </div>
+
+                <!-- Callout de Enlace Contextual a Proyectos Sanitarios -->
+                <div class="cross-link-box">
+                    <div class="cross-link-text">
+                        <h3>¿Tu regularización también requiere agua potable o alcantarillado?</h3>
+                        <p>Para obtener la recepción final municipal, la DOM exige obligatoriamente el certificado de dotación de servicios sanitarios emitido por la empresa concesionaria o SEREMI de Salud. En GLIC desarrollamos y regularizamos tus proyectos sanitarios integrales.</p>
+                    </div>
+                    <div>
+                        <a href="sanitarios.html" class="cross-link-btn">Ver Proyectos Sanitarios &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto General Widescreen -->
+        <section id="contacto">
+            <div class="contact-container">
+                <div class="contact-header-wrap">
+                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
+                    <p class="contact-lead-desc">Inicia la regularización de tu propiedad con nosotros. Cuéntanos las características de tu inmueble y te responderemos con una evaluación técnica en pocas horas.</p>
+                </div>
+
+                <div class="contact-split-box">
+                    <!-- Columna Izquierda: Formulario Widescreen -->
+                    <div class="contact-form-column">
+                        <div class="contact-form-header">
+                            <h3 class="contact-form-title">Cotizar Regularización Municipal</h3>
+                            <p class="contact-form-subtitle">Completa el formulario y un ingeniero civil evaluará tu caso técnico para indicarte el procedimiento óptimo.</p>
+                        </div>
+
+                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
+                            <input type="hidden" name="subject" value="Cotización Regularización Viviendas - GLIC Web">
+
+                            <div class="contact-form-row-duo">
+                                <div class="contact-form-group">
+                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
+                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Particular / Juan Pérez" required autocomplete="name">
+                                </div>
+                                <div class="contact-form-group">
+                                    <label for="email" class="contact-label">Correo Electrónico *</label>
+                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                </div>
+                            </div>
+
+                            <div class="contact-form-row-duo">
+                                <div class="contact-form-group">
+                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
+                                </div>
+                                <div class="contact-form-group">
+                                    <label for="tipo_tramite" class="contact-label">Tipo de Regularización</label>
+                                    <select id="tipo_tramite" name="tipo_tramite" class="contact-input-control contact-select-control">
+                                        <option value="Regularizacion-LeyMono">Regularización Ley del Mono (Ley 20.898)</option>
+                                        <option value="Regularizacion-General">Regularización General Vivienda (OGUC)</option>
+                                        <option value="Ampliacion-Existente">Regularización de Ampliación / Segundo Piso</option>
+                                        <option value="Expediente-DOM">Expediente Técnico y Recepción Final DOM</option>
+                                        <option value="Otro-Regularizacion">Otra consulta de regularización o edificación</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label for="mensaje" class="contact-label">Detalles de la Propiedad *</label>
+                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica comuna donde se ubica el inmueble, metros cuadrados aproximados de la vivienda o ampliación, año estimado de construcción y si cuentas con permiso original..." required></textarea>
+                            </div>
+
+                            <div class="contact-form-footer">
+                                <button type="submit" class="contact-btn-submit">
+                                    <span>ENVIAR SOLICITUD</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+                                <p class="contact-form-privacy">Tus antecedentes serán tratados bajo estricta confidencialidad técnica.</p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Divisor Vertical Sutil -->
+                    <div class="contact-vertical-divider" aria-hidden="true"></div>
+
+                    <!-- Columna Derecha: Canales Directos e Información Oficial -->
+                    <div class="contact-direct-column">
+                        <div class="contact-panel-info">
+                            <span class="contact-panel-tag">Atención Inmediata</span>
+                            <h4 class="contact-panel-title">Canales Directos</h4>
+                            <p class="contact-panel-desc">¿Tienes una notificación de la DOM o necesitas vender tu propiedad con crédito hipotecario pronto? Escríbenos directamente:</p>
+                        </div>
+
+                        <div class="contact-quick-actions">
+                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.275-.1-.476-.15-.677.15-.2.301-.777.978-.953 1.179-.176.2-.351.226-.652.075-1.479-.742-2.45-1.328-3.419-2.992-.257-.441.257-.409.734-1.362.08-.16.04-.301-.02-.451-.06-.15-.677-1.632-.928-2.235-.244-.587-.492-.507-.677-.516-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.802.376-.275.301-1.054 1.03-1.054 2.512 0 1.482 1.079 2.913 1.23 3.114.15.2 2.124 3.243 5.145 4.549 2.059.89 2.87.89 3.896.737.625-.093 1.78-.728 2.032-1.431.252-.703.252-1.305.176-1.431-.076-.126-.276-.201-.577-.351zM12.042 21.688c-1.87 0-3.647-.51-5.184-1.401l-.372-.218-3.856 1.011 1.029-3.759-.24-.382a9.664 9.664 0 0 1-1.48-5.186c0-5.352 4.354-9.706 9.708-9.706 2.593 0 5.031 1.01 6.865 2.844a9.66 9.66 0 0 1 2.843 6.864c0 5.353-4.354 9.707-9.708 9.707zm0-17.708c-4.412 0-8 3.588-8 8 0 1.547.44 2.993 1.203 4.225l.189.303-.612 2.235 2.29-.601.294.175a7.96 7.96 0 0 0 4.636 1.463c4.412 0 8-3.588 8-8 0-4.412-3.588-8-8-8z"/>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">WhatsApp Directo</span>
+                                    <span class="action-val">+56 9 5032 1322</span>
+                                </div>
+                            </a>
+
+                            <a href="tel:+56950321322" class="contact-action-card">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">Llamada Telefónica</span>
+                                    <span class="action-val">+56 9 5032 1322</span>
+                                </div>
+                            </a>
+
+                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">Correo Electrónico</span>
+                                    <span class="action-val">contacto@glic.cl</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="contact-highlights-list">
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Levantamiento métrico en terreno y planos <strong>As-Built oficiales</strong>.</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Expediente completo para <strong>Recepción Final DOM</strong> sin trabas.</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Validación de estabilidad suscrita por <strong>Ingeniero Civil</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-panel-footer-logo">
+                            <span class="logo-text">GLIC INGENIERÍA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <h3>GLIC Ingeniería</h3>
+                <p>Consultora de ingeniería civil y estructural comprometida con la excelencia técnica. Transformamos desafíos complejos en soluciones seguras y eficientes.</p>
+            </div>
+            <div class="footer-col footer-links">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios Principales</a></li>
+                    <li><a href="index.html#proyectos">Proyectos</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="contacto.html">Solicitar Cotización</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contacto</h3>
+                <p>Valdivia, Los Ríos, Chile</p>
+                <a href="mailto:contacto@glic.cl" aria-label="Enviar email a contacto@glic.cl">contacto@glic.cl</a>
+                <a href="tel:+56950321322" aria-label="Llamar al teléfono +56 9 5032 1322">+56 9 5032 1322</a>
+                <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" aria-label="Contactar a GLIC por WhatsApp">WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GLIC Ingeniería SpA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="contacto.html" class="fab" aria-label="Cotizar proyecto">Cotizar</a>
+    
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const header = document.getElementById('main-header');
+        const fab = document.querySelector('.fab');
+        const sections = document.querySelectorAll('section');
+        let lastScrollY = window.scrollY;
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Ocultar menú al hacer clic en un enlace (excepto el botón del desplegable y los gatillos de submenús)
+        document.querySelectorAll(".nav-link:not(.dropdown > .nav-link), .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+
+        // Soporte táctil y clic para sub-sub-menús desplegables
+        document.querySelectorAll('.dropdown-submenu .submenu-arrow').forEach(arrow => {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const parent = arrow.closest('.dropdown-submenu');
+                parent.classList.toggle('is-open');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+
+            lastScrollY = window.scrollY;
+
+            if (window.scrollY > 50) {
+                fab.classList.add('show-fab');
+            } else {
+                fab.classList.remove('show-fab');
+            }
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll(".nav-menu > .nav-link").forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+
+        // Control del botón de alternancia de modo Claro / Oscuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                const nextTheme = isLight ? 'dark' : 'light';
+
+                if (nextTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+
+                localStorage.setItem('glic_theme', nextTheme);
+
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
+                if (metaTheme) {
+                    metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Proyectos Sanitarios y Alcantarillado | GLIC Ingeniería</title>
+    <meta name="description"
+        content="Proyectos de ingeniería sanitaria: agua potable, alcantarillado, proyectos domiciliarios y regularizaciones bajo normativa RIDAA en Chile.">
+    <link rel="canonical" href="https://glic.cl/sanitarios.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:title" content="Proyectos Sanitarios y Alcantarillado | GLIC Ingeniería">
+    <meta property="og:description"
+        content="Proyectos de ingeniería sanitaria: agua potable, alcantarillado, proyectos domiciliarios y regularizaciones bajo normativa RIDAA en Chile.">
+    <meta property="og:image" content="https://glic.cl/assets/sanitario.jpg">
+    <meta property="og:url" content="https://glic.cl/sanitarios.html">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <meta name="theme-color" content="#050505">
+    <script>
+        (function () {
+            var savedTheme = localStorage.getItem('glic_theme');
+            if (savedTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', '#ffffff');
+            }
+        })();
+    </script>
+
+    <style>
+        /* ==========================================================================
+           1. DESIGN TOKENS & HIGH CONTRAST THEMING
+           ========================================================================== */
+        :root {
+            --primary: #ff9900;
+            --primary-light: #ffb347;
+            --primary-dark: #e68a00;
+            --primary-dim: rgba(255, 153, 0, 0.12);
+            --bg-main: #050505;
+            --bg-card: #111111;
+            --bg-surface: rgba(255, 255, 255, 0.03);
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --text-heading: #ffffff;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 153, 0, 0.4);
+            --header-bg: rgba(5, 5, 5, 0.90);
+            --header-border: rgba(255, 255, 255, 0.08);
+            --dropdown-bg: rgba(12, 12, 14, 0.98);
+            --dropdown-text: #f0f0f0;
+            --nav-link-color: #f0f0f0;
+            --bar-color: #ffffff;
+            --theme-toggle-bg: rgba(255, 255, 255, 0.08);
+            --theme-toggle-border: rgba(255, 255, 255, 0.15);
+            --hero-overlay: linear-gradient(135deg, rgba(5, 5, 5, 0.92) 0%, rgba(10, 10, 10, 0.84) 100%);
+            --hero-card-bg: rgba(17, 17, 17, 0.88);
+            --hero-card-border: rgba(255, 255, 255, 0.1);
+            --subcard-bg: rgba(20, 20, 22, 0.85);
+            --subcard-border: rgba(255, 255, 255, 0.08);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.1);
+            --pill-text: #e0e0e0;
+            --input-bg: rgba(0, 0, 0, 0.6);
+            --input-border: rgba(255, 255, 255, 0.15);
+            --input-text: #ffffff;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --header-height: 70px;
+            --r-sm: 6px;
+            --r-md: 10px;
+            --r-lg: 16px;
+            --r-xl: 24px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --transition-speed: 200ms;
+        }
+
+        [data-theme="light"] {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-surface: #f1f5f9;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(255, 153, 0, 0.6);
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --header-border: rgba(0, 0, 0, 0.08);
+            --dropdown-bg: rgba(255, 255, 255, 0.98);
+            --dropdown-text: #0f172a;
+            --nav-link-color: #1e293b;
+            --bar-color: #0f172a;
+            --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+            --theme-toggle-border: rgba(0, 0, 0, 0.12);
+            --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.88) 100%);
+            --hero-card-bg: rgba(255, 255, 255, 0.96);
+            --hero-card-border: rgba(0, 0, 0, 0.08);
+            --subcard-bg: #ffffff;
+            --subcard-border: rgba(0, 0, 0, 0.08);
+            --pill-bg: #ffffff;
+            --pill-border: rgba(0, 0, 0, 0.1);
+            --pill-text: #334155;
+            --input-bg: #ffffff;
+            --input-border: #cbd5e1;
+            --input-text: #0f172a;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ==========================================================================
+           2. RESET & BASE
+           ========================================================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-title);
+            color: var(--text-heading);
+            line-height: 1.2;
+            text-wrap: balance;
+        }
+
+        p { max-width: 65ch; text-wrap: pretty; }
+        a { color: var(--primary); text-decoration: none; transition: color var(--transition-speed) ease; }
+        img { display: block; max-width: 100%; height: auto; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* ==========================================================================
+           3. HEADER & NAVEGACIÓN
+           ========================================================================== */
+        header {
+            background: var(--header-bg);
+            padding: 0;
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--header-border);
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content {
+            width: 90%; max-width: 1200px; margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        .logo-anchor { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-heading); z-index: 1001; }
+        .logo-link { width: 32px; height: 32px; position: relative; display: grid; place-items: center; }
+        .logo-link::before {
+            content: ''; box-sizing: content-box; width: 22px; height: 12px;
+            border: 3px solid #ff9900; border-radius: 8px; transform: rotate(45deg);
+            transition: transform 0.5s ease;
+        }
+        .logo-anchor:hover .logo-link::before { transform: rotate(225deg); }
+        .logo-link::after {
+            content: ''; box-sizing: content-box; position: absolute;
+            width: 14px; height: 14px; border: 3px solid #ff9900; border-radius: 50%; top: 9px; left: 16px;
+        }
+        .logo-anchor h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; margin: 0; }
+
+        .nav-menu { display: flex; gap: 24px; align-items: center; }
+        .nav-link {
+            color: var(--nav-link-color); font-size: 0.88rem; font-weight: 600;
+            position: relative; padding: 6px 0; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0;
+            background: var(--primary); transition: width var(--transition-speed) ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        .theme-toggle-btn {
+            background: var(--theme-toggle-bg);
+            border: 1px solid var(--theme-toggle-border);
+            color: var(--primary);
+            width: 36px; height: 36px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; padding: 0; outline: none;
+            transition: transform 0.25s ease, background-color var(--transition-speed) ease;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle-btn .sun-icon { display: block; }
+        .theme-toggle-btn .moon-icon { display: none; }
+        [data-theme="light"] .theme-toggle-btn .sun-icon { display: none; }
+        [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; color: #d97706; }
+
+        .hamburger { display: none; cursor: pointer; z-index: 1001; }
+        .bar {
+            display: block; width: 25px; height: 3px; margin: 5px auto;
+            transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+            background-color: var(--bar-color); border-radius: 2px;
+        }
+
+        /* Menú Desplegable */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: var(--dropdown-bg);
+            min-width: 270px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); z-index: 1002;
+            border: 1px solid var(--border); border-radius: var(--r-md);
+            top: 100%; left: 0; padding: 10px 0; backdrop-filter: blur(15px);
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-title {
+            display: block; padding: 12px 20px 4px 20px; color: var(--primary);
+            font-size: 0.72rem; font-weight: 800; letter-spacing: 1px;
+            border-bottom: 1px solid var(--border); margin-bottom: 4px; text-transform: uppercase;
+        }
+        .dropdown-item {
+            color: var(--dropdown-text); padding: 8px 20px; font-size: 0.85rem; font-weight: 600;
+            display: flex; align-items: center; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+        .dropdown-item.indent { padding-left: 28px; color: var(--text-muted); }
+        .dropdown-item:hover, .dropdown-item.indent:hover { background-color: var(--primary-dim); color: var(--primary); }
+        .arrow { font-size: 0.7rem; margin-left: 6px; }
+
+        /* Submenús Multinivel (Sub-sub-menús desplegables) */
+        .dropdown-submenu { position: relative; }
+        .dropdown-item.submenu-trigger {
+            display: flex; justify-content: space-between; align-items: center; width: 100%; cursor: pointer;
+        }
+        .submenu-arrow {
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; color: var(--text-muted);
+            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+            margin-left: 10px; padding: 2px 6px; border-radius: 4px;
+        }
+        .dropdown-item.submenu-trigger:hover .submenu-arrow,
+        .dropdown-submenu.is-open .submenu-arrow { color: var(--primary); }
+
+        @media (min-width: 993px) {
+            .dropdown-submenu .submenu-content {
+                display: none; position: absolute; left: 100%; top: -6px; min-width: 250px;
+                background-color: var(--dropdown-bg); border: 1px solid var(--border);
+                border-radius: var(--r-md); box-shadow: var(--shadow-lg); padding: 8px 0;
+                backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1005;
+            }
+            .dropdown-submenu .submenu-content::before {
+                content: ''; position: absolute; top: 0; left: -12px; width: 12px; height: 100%;
+            }
+            .dropdown-submenu:hover > .submenu-content,
+            .dropdown-submenu.is-open > .submenu-content {
+                display: block; animation: flyoutFadeIn 180ms ease;
+            }
+            .dropdown-submenu:hover > .submenu-trigger .submenu-arrow,
+            .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes flyoutFadeIn {
+            from { opacity: 0; transform: translateX(-6px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--primary); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
+            .nav-menu {
+                position: fixed; left: -100%; top: 0; flex-direction: column;
+                background-color: var(--dropdown-bg); width: 80%; max-width: 320px; height: 100vh;
+                padding-top: calc(var(--header-height) + 20px); transition: left 0.3s ease;
+                overflow-y: auto; border-right: 1px solid var(--border);
+            }
+            .nav-menu.active { left: 0; }
+            .nav-link { width: 100%; padding: 12px 25px; }
+            .dropdown-content { position: static; display: block; box-shadow: none; border: none; background: transparent; padding: 0; }
+            
+            .dropdown-submenu .submenu-content {
+                display: none; background: rgba(255, 255, 255, 0.03);
+                border-left: 2px solid var(--primary); margin: 4px 0 6px 16px;
+                border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 4px 0;
+            }
+            [data-theme="light"] .dropdown-submenu .submenu-content { background: rgba(0, 0, 0, 0.03); }
+            .dropdown-submenu.is-open > .submenu-content { display: block; }
+            .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
+                transform: rotate(90deg); color: var(--primary);
+            }
+            .submenu-content .dropdown-item { padding: 7px 18px; font-size: 0.85rem; color: var(--text-muted); }
+            .submenu-content .dropdown-item:hover { color: var(--primary); background: transparent; }
+            .arrow { display: none; }
+        }
+
+        /* ==========================================================================
+           4. HERO PRINCIPAL DE SERVICIO
+           ========================================================================== */
+        .service-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--header-height) + 3.5rem) 0 4rem 0;
+            background-image: var(--hero-overlay), url('assets/sanitario.jpg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container {
+            width: 90%; max-width: 1200px; margin: 0 auto;
+        }
+
+        .hero-card {
+            background: var(--hero-card-bg);
+            border: 1px solid var(--hero-card-border);
+            border-radius: var(--r-xl);
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(15px);
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-dim);
+            color: var(--primary);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+            font-family: var(--font-title);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            color: var(--text-heading);
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.2rem;
+            max-width: 75ch;
+        }
+
+        .hero-highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-highlight-box {
+            background: var(--subcard-bg);
+            border: 1px solid var(--subcard-border);
+            border-bottom: 3px solid var(--primary);
+            border-radius: var(--r-md);
+            padding: 1.4rem;
+            text-align: left;
+        }
+
+        .hero-highlight-num {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.95rem;
+            font-family: var(--font-title);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-highlight-box h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-heading);
+        }
+
+        .hero-highlight-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #000;
+            font-weight: 800;
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 1rem 2.5rem;
+            border-radius: var(--r-sm);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
+            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--primary-light);
+            color: #000;
+        }
+
+        /* ==========================================================================
+           5. SECCIÓN DE LÍNEAS SANITARIAS (Diseño Editorial Limpio)
+           ========================================================================== */
+        .service-section {
+            padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .service-section:nth-child(even) {
+            background-color: var(--bg-surface);
+        }
+
+        .area-tag {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            font-family: var(--font-title);
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            line-height: 1.2;
+        }
+
+        .section-lead {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            max-width: 75ch;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        /* Editorial Split */
+        .editorial-split {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: clamp(2rem, 4vw, 4rem);
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .editorial-split.reverse {
+            grid-template-columns: 1fr 1.15fr;
+        }
+
+        .editorial-text h4 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+        }
+
+        .editorial-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1.2rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .spec-list li svg {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .editorial-media {
+            position: relative;
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .editorial-media img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .editorial-media:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Pillars (Diseño limpio y espacioso) */
+        .engineering-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-left: 2px solid var(--primary);
+            padding-left: 1.4rem;
+        }
+
+        .pillar-item h4 {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin: 0;
+        }
+
+        .pillar-item p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Tools / Norms Strip */
+        .tools-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+
+        .tool-badge {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: var(--r-sm);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .tool-badge.featured {
+            border-color: rgba(255, 153, 0, 0.4);
+            color: var(--primary);
+            background: var(--primary-dim);
+        }
+
+        @media (max-width: 960px) {
+            .editorial-split,
+            .editorial-split.reverse {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Callout Enlace Contextual */
+        .cross-link-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 153, 0, 0.25);
+            border-radius: var(--r-lg);
+            padding: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin: 3.5rem auto 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-card);
+        }
+
+        .cross-link-text h3 {
+            font-size: 1.25rem;
+            color: var(--text-heading);
+            margin-bottom: 0.4rem;
+        }
+
+        .cross-link-text p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .cross-link-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.6rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--r-sm);
+            font-weight: 800;
+            font-size: 0.88rem;
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+        }
+
+        .cross-link-btn:hover {
+            background: var(--primary);
+            color: #000000;
+        }
+
+        /* ==========================================================================
+           6. FORMULARIO DE CONTACTO GENERAL (Widescreen Unificado)
+           ========================================================================== */
+        #contacto {
+            width: 100%;
+            position: relative;
+            padding: clamp(3.5rem, 6vh, 5.5rem) 0;
+            background: transparent;
+            z-index: 2;
+        }
+
+        .contact-container {
+            width: 94%;
+            max-width: 1320px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-header-wrap {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto clamp(2rem, 4vh, 3rem) auto;
+        }
+
+        .contact-section-title {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-lead-desc {
+            font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .contact-split-box {
+            display: grid;
+            grid-template-columns: 1.35fr auto 1fr;
+            align-items: stretch;
+            gap: clamp(2rem, 3.5vw, 3.8rem);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: clamp(2rem, 3.5vw, 3.5rem);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        /* Columna Izquierda: Formulario */
+        .contact-form-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-form-header {
+            margin-bottom: 1.6rem;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-form-subtitle {
+            font-size: clamp(0.88rem, 1.05vw, 0.96rem);
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .contact-split-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .contact-form-row-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .contact-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            width: 100%;
+        }
+
+        .contact-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            font-family: var(--font-title);
+        }
+
+        .contact-input-control {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            color: var(--input-color);
+            border-radius: var(--r-sm);
+            padding: 0.9rem 1.15rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            box-sizing: border-box;
+        }
+
+        .contact-select-control {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.1em;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        .contact-select-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .contact-input-control::placeholder {
+            color: var(--input-placeholder);
+            opacity: 0.8;
+        }
+
+        .contact-input-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.22);
+        }
+
+        textarea.contact-input-control {
+            min-height: 145px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .contact-form-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .contact-btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #000000;
+            border: none;
+            border-radius: var(--r-sm);
+            padding: 1rem 2.5rem;
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 0.98rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            box-shadow: 0 4px 18px rgba(255, 153, 0, 0.35);
+        }
+
+        .contact-btn-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 24px rgba(255, 153, 0, 0.45);
+        }
+
+        .contact-guarantee-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-guarantee-note svg {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* Divisor Vertical Elegante */
+        .contact-vertical-divider {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
+            min-height: 100%;
+        }
+
+        /* Columna Derecha: Panel Informativo */
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.8rem;
+        }
+
+        .contact-badge {
+            display: inline-block;
+            background: var(--primary-dim);
+            color: var(--primary);
+            border: 1px solid rgba(255, 153, 0, 0.25);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-panel-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-panel-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .contact-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .contact-action-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0.9rem 1.15rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-action-card:hover {
+            border-color: var(--primary);
+            background: var(--primary-dim);
+            transform: translateX(4px);
+        }
+
+        .contact-action-card .action-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(255, 153, 0, 0.12);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .contact-action-card:hover .action-icon {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .contact-action-card.whatsapp-action:hover .action-icon {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .action-meta {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .action-label {
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .action-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-highlights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1.1rem;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px dashed var(--border);
+            border-radius: var(--r-sm);
+        }
+
+        [data-theme="light"] .contact-highlights-list {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .highlight-item strong {
+            color: var(--text-heading);
+        }
+
+        .highlight-bullet {
+            font-size: 1rem;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        /* Logo Oficial GLIC al pie del panel */
+        .contact-panel-footer-logo {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-panel-footer-logo .logo-text {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            color: var(--text-heading);
+        }
+
+        @media (max-width: 960px) {
+            .contact-split-box {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-vertical-divider {
+                width: 100%;
+                height: 1px;
+                min-height: 1px;
+            }
+
+            .contact-btn-submit {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contact-panel-footer-logo {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-form-row-duo {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section-title {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+        }
+
+        /* ==========================================================================
+           7. FOOTER & FAB
+           ========================================================================== */
+        footer {
+            background-color: #080808;
+            border-top: 1px solid var(--border);
+            padding: 4rem 0 2rem 0;
+            margin-top: auto;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        [data-theme="light"] footer {
+            background-color: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .footer-container {
+            width: 95%; max-width: 1000px; margin: auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem; font-weight: 800; margin-bottom: 1.2rem;
+            text-transform: uppercase; color: var(--text-heading);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .footer-col h3::after {
+            content: ''; display: block; width: 30px; height: 3px;
+            background: var(--primary); margin: 10px auto 0;
+        }
+
+        .footer-about p, .footer-contact p, .footer-contact a, .footer-links a {
+            color: var(--text-muted); font-size: 0.9rem; line-height: 1.75;
+            display: block; margin-bottom: 0.5rem; word-break: break-word;
+        }
+        .footer-contact a:hover, .footer-links a:hover { color: var(--primary); }
+        .footer-links ul { list-style: none; padding: 0; }
+
+        .footer-bottom {
+            margin-top: 4rem; padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center; color: var(--text-muted); font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                gap: 15px;
+            }
+
+            .footer-col h3 {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-about p,
+            .footer-links a,
+            .footer-contact p,
+            .footer-contact a {
+                font-size: 0.75rem;
+                line-height: 1.5;
+                margin-bottom: 0.3rem;
+            }
+
+            .footer-col h3::after {
+                width: 15px;
+                height: 2px;
+                margin-top: 5px;
+            }
+        }
+
+        .fab {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--primary); color: #000; padding: 14px 28px;
+            border-radius: 50px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 0.85rem; font-family: var(--font-title);
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.4);
+            z-index: 100; transition: transform 0.25s ease, opacity 0.25s ease;
+            opacity: 0; pointer-events: none; transform: translateY(20px);
+        }
+        .fab.show-fab { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .fab.show-fab:hover { transform: translateY(-3px); background: #ffffff; color: #000; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Principal -->
+    <header id="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-anchor" aria-label="Ir a Inicio GLIC Ingeniería">
+                <div class="logo-link"></div>
+                <h1>GLIC Ingeniería</h1>
+            </a>
+
+            <div class="header-actions">
+                <nav class="nav-menu" aria-label="Navegación principal">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+
+                    <div class="dropdown">
+                        <a href="index.html#servicios" class="nav-link active">Servicios <span class="arrow">&#9662;</span></a>
+                        <div class="dropdown-content">
+                            <!-- 1. Diseño Estructural -->
+                            <div class="dropdown-submenu">
+                                <a href="estructural.html" class="dropdown-item submenu-trigger">
+                                    <span>Diseño Estructural</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="estructural.html#viviendas" class="dropdown-item">Viviendas</a>
+                                    <a href="estructural.html#galpones" class="dropdown-item">Galpones y Naves</a>
+                                    <a href="estructural.html#industriales" class="dropdown-item">Estructuras Industriales</a>
+                                    <a href="estructural.html#temporales" class="dropdown-item">Estructuras Temporales</a>
+                                </div>
+                            </div>
+
+                            <!-- 2. Proyectos Sanitarios -->
+                            <div class="dropdown-submenu">
+                                <a href="sanitarios.html" class="dropdown-item submenu-trigger">
+                                    <span>Proyectos Sanitarios</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="sanitarios.html#agua-potable" class="dropdown-item">Agua Potable</a>
+                                    <a href="sanitarios.html#alcantarillado" class="dropdown-item">Alcantarillado</a>
+                                    <a href="sanitarios.html#domiciliarios" class="dropdown-item">Proyectos Domiciliarios</a>
+                                    <a href="sanitarios.html#regularizacion-sanitaria" class="dropdown-item">Regularización Sanitaria</a>
+                                </div>
+                            </div>
+
+                            <!-- 3. Regularizaciones -->
+                            <div class="dropdown-submenu">
+                                <a href="regularizacion.html" class="dropdown-item submenu-trigger">
+                                    <span>Regularizaciones</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="regularizacion.html#viviendas" class="dropdown-item">Regularización de Viviendas</a>
+                                    <a href="regularizacion.html#ampliaciones" class="dropdown-item">Ampliaciones Existentes</a>
+                                    <a href="regularizacion.html#expedientes" class="dropdown-item">Expedientes Técnicos DOM</a>
+                                </div>
+                            </div>
+
+                            <!-- 4. Otros Servicios -->
+                            <div class="dropdown-submenu">
+                                <a href="otros-servicios.html" class="dropdown-item submenu-trigger">
+                                    <span>Otros Servicios</span>
+                                    <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="otros-servicios.html#asesoria" class="dropdown-item">Asesoría Técnica</a>
+                                    <a href="otros-servicios.html#ingeniero" class="dropdown-item">Ingeniero en tu Empresa</a>
+                                    <a href="otros-servicios.html#especialidades" class="dropdown-item">Especialidades MEP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+                    <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </nav>
+
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema claro / oscuro" title="Cambiar tema">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <div class="hamburger" role="button" tabindex="0" aria-label="Menú de navegación" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Principal del Servicio Unificado -->
+        <section class="service-hero">
+            <div class="container">
+                <div class="hero-card">
+                    <div class="hero-badge">Ingeniería Hidráulica y Sanitaria RIDAA</div>
+                    <h2 class="hero-title">Proyectos <span class="text-gradient">Sanitarios</span></h2>
+                    <p class="hero-desc">
+                        Desarrollamos proyectos integrales de ingeniería sanitaria de agua potable y alcantarillado para viviendas particulares, loteos residenciales, recintos comerciales e industrias. Aplicamos modelación hidráulica computacional con EPANET, cálculo de estanques, plantas de tratamiento (PTAS), impulsiones y expedientes técnicos rigurosos para tramitación y aprobación definitiva ante empresas sanitarias concesionarias, SEREMI de Salud y Direcciones de Obras Municipales (DOM).
+                    </p>
+                    <div class="tools-strip" style="margin-bottom: 2rem;">
+                        <span class="tool-badge featured">EPANET</span>
+                        <span class="tool-badge featured">AutoCAD</span>
+                        <span class="tool-badge">RIDAA (D.S. 50/02)</span>
+                        <span class="tool-badge">D.S. 236/26</span>
+                        <span class="tool-badge">SEREMI de Salud</span>
+                        <span class="tool-badge">SISS</span>
+                    </div>
+                    <a href="#contacto" class="cta-btn">Cotizar Proyecto Sanitario &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. AGUA POTABLE -->
+        <section id="agua-potable" class="service-section">
+            <div class="container">
+                <span class="area-tag">01. Abastecimiento y Redes de Distribución</span>
+                <h3 class="section-title">Diseño y Cálculo de <span class="text-gradient">Agua Potable</span></h3>
+                <p class="section-lead">
+                    Dimensionamiento riguroso de redes interiores, matrices y sistemas de impulsión garantizando presiones de servicio continuas y optimización de pérdidas de carga bajo normativa RIDAA.
+                </p>
+
+                <div class="editorial-split">
+                    <div class="editorial-text">
+                        <h4>Redes Domiciliarias, Matrices y Salas de Bombas</h4>
+                        <p>
+                            Diseñamos sistemas de distribución de agua potable fría y caliente (APF y APC) para viviendas unifamiliares de gran superficie, loteos residenciales, edificios y recintos comerciales e industriales bajo estricta normativa chilena.
+                        </p>
+
+                        <ul class="spec-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Cálculo hidráulico y pérdidas de carga:</strong> Determinación precisa de presiones estáticas y dinámicas, pérdidas lineales y singulares en tuberías de cobre, PVC, PPR y PEX.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Sistemas de acumulación e impulsión:</strong> Dimensionamiento de estanques de reserva de agua potable, bombas centrífugas y estanques hidroneumáticos para garantizar caudal y presión constante en horas punta.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Matrices interiores y nichos de medidores (MAP):</strong> Diseño de arranques domiciliarios y empalmes a redes públicas concesionadas con especificación técnica reglamentaria de medidores.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Redes húmedas contra incendio:</strong> Integración de gabinetes de red húmeda y seca conforme a las exigencias de la Ordenanza General de Urbanismo y Construcciones (OGUC).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="editorial-media">
+                        <img src="assets/ap.jpg" alt="Proyecto de red de agua potable" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ALCANTARILLADO -->
+        <section id="alcantarillado" class="service-section">
+            <div class="container">
+                <span class="area-tag">02. Evacuación y Tratamiento de Aguas Servidas</span>
+                <h3 class="section-title">Alcantarillado y <span class="text-gradient">Tratamiento de Aguas</span></h3>
+                <p class="section-lead">
+                    Soluciones integrales para la evacuación segura y gravitacional de aguas servidas, tanto en zonas urbanas con empalme a colector como en sectores rurales sin factibilidad de red pública.
+                </p>
+
+                <div class="editorial-split reverse">
+                    <div class="editorial-media">
+                        <img src="assets/drenes.png" alt="Sistema de alcantarillado y drenes de infiltración" loading="lazy">
+                    </div>
+
+                    <div class="editorial-text">
+                        <h4>Soluciones Urbanas y Particulares (Fosas y PTAS)</h4>
+                        <p>
+                            Resolvemos la evacuación de aguas servidas domésticas y comerciales garantizando pendiente hidráulica, velocidad de autolimpieza y protección del medio ambiente conforme al D.S. N° 236/26 y RIDAA.
+                        </p>
+
+                        <ul class="spec-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Redes interiores y bajadas:</strong> Trazado gravitacional de tuberías, registros de inspección y ventilaciones sanitarias que evitan malos olores y pérdidas de sello hidráulico.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Uniones Domiciliarias (UD):</strong> Conexión reglamentaria a colectores públicos, cámaras de inspección domiciliarias y perfiles longitudinales con cotas de solera y rasante.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Soluciones particulares (Fosas sépticas y drenes):</strong> Pruebas de absorción de suelos, dimensionamiento de cámaras desgrasadoras, fosas sépticas y sistemas de drenes de infiltración para parcelas.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Plantas de Tratamiento (PTAS):</strong> Proyectos de plantas modulares de tratamiento de aguas servidas para loteos campestres, parcelaciones y condominios sin red pública.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROYECTOS DOMICILIARIOS Y MODELACIÓN -->
+        <section id="domiciliarios" class="service-section">
+            <div class="container">
+                <span class="area-tag">03. Expedientes Técnicos y Modelación</span>
+                <h3 class="section-title">Modelación Hidráulica y <span class="text-gradient">Planos Domiciliarios</span></h3>
+                <p class="section-lead">
+                    Desarrollamos la carpeta técnica completa lista para ejecución en terreno y tramitación municipal o concesionaria, integrando modelación hidráulica computacional y cubicaciones detalladas.
+                </p>
+
+                <div class="engineering-pillars">
+                    <div class="pillar-item">
+                        <h4>Simulación Hidráulica EPANET</h4>
+                        <p>Modelación computacional de redes de distribución, análisis de curvas características de bombas, presiones nodales dinámicas y velocidades de flujo para prevenir cavitación y golpe de ariete.</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Planos Isométricos de Agua Potable</h4>
+                        <p>Despiece isométrico tridimensional detallado con identificación de nudos, cotas piezométricas, diámetros nominales, válvulas de corte y accesorios para montaje expedito en faena.</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Perfiles Longitudinales de Alcantarillado</h4>
+                        <p>Planimetría técnica con pendientes calculadas (%), cotas de terreno, radier y rasante en cada tramo de cámara a cámara, garantizando velocidades de arrastre normativas.</p>
+                    </div>
+                    <div class="pillar-item">
+                        <h4>Memorias y Especificaciones Técnicas (EETT)</h4>
+                        <p>Justificación formal de gastos instalados y máximos probables (UEH), dotaciones de diseño, cuadro de artefactos y especificación de pruebas de presión hidrostática y hermeticidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. REGULARIZACIÓN SANITARIA -->
+        <section id="regularizacion-sanitaria" class="service-section">
+            <div class="container">
+                <span class="area-tag">04. Legalización y Resoluciones Sanitarias</span>
+                <h3 class="section-title">Regularización Sanitaria y <span class="text-gradient">Certificados de Dotación</span></h3>
+                <p class="section-lead">
+                    Tramitamos la regularización técnica de instalaciones sanitarias ejecutadas sin proyecto previo o modificadas tras ampliaciones, requisito obligatorio para la Recepción Final municipal.
+                </p>
+
+                <div class="editorial-split">
+                    <div class="editorial-text">
+                        <h4>De la Inspección en Terreno a la Aprobación Oficial</h4>
+                        <p>
+                            Si construiste o modificaste una propiedad sin planos sanitarios aprobados, elaboramos el expediente técnico completo para obtener la resolución sanitaria de la SEREMI de Salud o el certificado de dotación de la empresa sanitaria concesionaria.
+                        </p>
+
+                        <ul class="spec-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Levantamiento en terreno:</strong> Catastro de redes existentes, ubicación de cámaras de inspección, llaves de paso, artefactos y empalmes.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Planos As-Built:</strong> Generación de planimetría en planta e isométricos según lo efectivamente construido en obra.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Gestión ante SEREMI de Salud y Concesionarias:</strong> Ingreso de antecedentes, respuesta a observaciones y seguimiento hasta la aprobación formal.</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span><strong>Certificado de Dotación Sanitaria:</strong> Documento indispensable exigido por la Dirección de Obras Municipales (DOM) para tramitar la Recepción Final.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="editorial-media">
+                        <img src="assets/sanitario.jpg" alt="Regularización e inspección sanitaria" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Callout de Enlace Cruzado a Regularizaciones DOM -->
+                <div class="cross-link-box">
+                    <div class="cross-link-text">
+                        <h3>¿Tu proyecto también requiere regularización municipal (DOM)?</h3>
+                        <p>Si además de la regularización sanitaria necesitas legalizar la edificación o ampliación ante la Dirección de Obras Municipales, contamos con el servicio integral de Regularización de Viviendas.</p>
+                    </div>
+                    <div>
+                        <a href="regularizacion.html" class="cross-link-btn">Ver Regularizaciones DOM &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Badges Normativos Sanitarios -->
+                <div style="text-align: center; margin-top: 3.5rem;">
+                    <div style="color: var(--primary); font-family: var(--font-title); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem;">
+                        Marco Normativo y Estándares Técnicos
+                    </div>
+                    <div class="tools-strip" style="justify-content: center;">
+                        <span class="tool-badge">RIDAA (D.S. N° 50/02 MOP)</span>
+                        <span class="tool-badge">NCh 2485 (Agua Potable)</span>
+                        <span class="tool-badge">NCh 1105 (Alcantarillado)</span>
+                        <span class="tool-badge">NCh 1360 (Tuberías PVC)</span>
+                        <span class="tool-badge">D.S. N° 236/26 (Alcantarillados Particulares)</span>
+                        <span class="tool-badge">SEREMI de Salud</span>
+                        <span class="tool-badge">SISS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto General Widescreen -->
+        <section id="contacto">
+            <div class="contact-container">
+                <div class="contact-header-wrap">
+                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
+                    <p class="contact-lead-desc">Inicia tu proyecto sanitario con nosotros. Cuéntanos las características de tu instalación y te responderemos con una propuesta técnica a medida en pocas horas.</p>
+                </div>
+
+                <div class="contact-split-box">
+                    <!-- Columna Izquierda: Formulario Widescreen -->
+                    <div class="contact-form-column">
+                        <div class="contact-form-header">
+                            <h3 class="contact-form-title">Cotizar Proyecto Sanitario</h3>
+                            <p class="contact-form-subtitle">Completa el formulario y te contactaremos con asesoría directa de un ingeniero civil.</p>
+                        </div>
+
+                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
+                            <input type="hidden" name="subject" value="Cotización Proyectos Sanitarios - GLIC Web">
+
+                            <div class="contact-form-row-duo">
+                                <div class="contact-form-group">
+                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
+                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Particular / Constructora" required autocomplete="name">
+                                </div>
+                                <div class="contact-form-group">
+                                    <label for="email" class="contact-label">Correo Electrónico *</label>
+                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                </div>
+                            </div>
+
+                            <div class="contact-form-row-duo">
+                                <div class="contact-form-group">
+                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
+                                </div>
+                                <div class="contact-form-group">
+                                    <label for="servicio_sanitario" class="contact-label">Tipo de Proyecto Sanitario</label>
+                                    <select id="servicio_sanitario" name="servicio_sanitario" class="contact-input-control contact-select-control">
+                                        <option value="Agua-Potable">Proyecto de Agua Potable y Matrices</option>
+                                        <option value="Alcantarillado-PTAS">Proyecto de Alcantarillado / Fosa y Drenes / PTAS</option>
+                                        <option value="Sanitario-Completo">Proyecto Completo (Agua Potable + Alcantarillado)</option>
+                                        <option value="Regularizacion-Sanitaria">Regularización Sanitaria / As-Built / SEREMI</option>
+                                        <option value="Otro-Sanitario">Otro requerimiento hidráulico o sanitario</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label for="mensaje" class="contact-label">Detalles de la Instalación *</label>
+                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica ubicación de la propiedad, cantidad aproximada de recintos húmedos o artefactos, si cuenta con factibilidad de red pública o es sector rural..." required></textarea>
+                            </div>
+
+                            <div class="contact-form-footer">
+                                <button type="submit" class="contact-btn-submit">
+                                    <span>ENVIAR SOLICITUD</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+                                <p class="contact-form-privacy">Tus datos serán tratados bajo estricta confidencialidad técnica.</p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Divisor Vertical Sutil -->
+                    <div class="contact-vertical-divider" aria-hidden="true"></div>
+
+                    <!-- Columna Derecha: Canales Directos e Información Oficial -->
+                    <div class="contact-direct-column">
+                        <div class="contact-panel-info">
+                            <span class="contact-panel-tag">Atención Inmediata</span>
+                            <h4 class="contact-panel-title">Canales Directos</h4>
+                            <p class="contact-panel-desc">¿Requieres asistencia técnica urgente o consultar factibilidad de un proyecto? Escríbenos directamente:</p>
+                        </div>
+
+                        <div class="contact-quick-actions">
+                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.275-.1-.476-.15-.677.15-.2.301-.777.978-.953 1.179-.176.2-.351.226-.652.075-1.479-.742-2.45-1.328-3.419-2.992-.257-.441.257-.409.734-1.362.08-.16.04-.301-.02-.451-.06-.15-.677-1.632-.928-2.235-.244-.587-.492-.507-.677-.516-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.802.376-.275.301-1.054 1.03-1.054 2.512 0 1.482 1.079 2.913 1.23 3.114.15.2 2.124 3.243 5.145 4.549 2.059.89 2.87.89 3.896.737.625-.093 1.78-.728 2.032-1.431.252-.703.252-1.305.176-1.431-.076-.126-.276-.201-.577-.351zM12.042 21.688c-1.87 0-3.647-.51-5.184-1.401l-.372-.218-3.856 1.011 1.029-3.759-.24-.382a9.664 9.664 0 0 1-1.48-5.186c0-5.352 4.354-9.706 9.708-9.706 2.593 0 5.031 1.01 6.865 2.844a9.66 9.66 0 0 1 2.843 6.864c0 5.353-4.354 9.707-9.708 9.707zm0-17.708c-4.412 0-8 3.588-8 8 0 1.547.44 2.993 1.203 4.225l.189.303-.612 2.235 2.29-.601.294.175a7.96 7.96 0 0 0 4.636 1.463c4.412 0 8-3.588 8-8 0-4.412-3.588-8-8-8z"/>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">WhatsApp Directo</span>
+                                    <span class="action-val">+56 9 5032 1322</span>
+                                </div>
+                            </a>
+
+                            <a href="tel:+56950321322" class="contact-action-card">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">Llamada Telefónica</span>
+                                    <span class="action-val">+56 9 5032 1322</span>
+                                </div>
+                            </a>
+
+                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
+                                <div class="action-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="action-meta">
+                                    <span class="action-label">Correo Electrónico</span>
+                                    <span class="action-val">contacto@glic.cl</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="contact-highlights-list">
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Modelación computacional <strong>EPANET</strong> y cálculo de pérdidas de carga.</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Tramitación oficial ante <strong>SEREMI de Salud</strong> y concesionarias sanitarias.</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">&#9679;</span>
+                                <span>Expedientes técnicos integrados para <strong>Recepción Final DOM</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-panel-footer-logo">
+                            <span class="logo-text">GLIC INGENIERÍA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <h3>GLIC Ingeniería</h3>
+                <p>Consultora de ingeniería civil y estructural comprometida con la excelencia técnica. Transformamos desafíos complejos en soluciones seguras y eficientes.</p>
+            </div>
+            <div class="footer-col footer-links">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios Principales</a></li>
+                    <li><a href="index.html#proyectos">Proyectos</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="contacto.html">Solicitar Cotización</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contacto</h3>
+                <p>Valdivia, Los Ríos, Chile</p>
+                <a href="mailto:contacto@glic.cl" aria-label="Enviar email a contacto@glic.cl">contacto@glic.cl</a>
+                <a href="tel:+56950321322" aria-label="Llamar al teléfono +56 9 5032 1322">+56 9 5032 1322</a>
+                <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" aria-label="Contactar a GLIC por WhatsApp">WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GLIC Ingeniería SpA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="#contacto" class="fab" aria-label="Cotizar proyecto">Cotizar</a>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const fab = document.querySelector('.fab');
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-link:not(.dropdown > .nav-link), .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+
+        // Soporte táctil y clic para sub-sub-menús desplegables
+        document.querySelectorAll('.dropdown-submenu .submenu-arrow').forEach(arrow => {
+            arrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const parent = arrow.closest('.dropdown-submenu');
+                parent.classList.toggle('is-open');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 150) {
+                fab.classList.add('show-fab');
+            } else {
+                fab.classList.remove('show-fab');
+            }
+        });
+
+        // Alternancia Día / Noche
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                const nextTheme = isLight ? 'dark' : 'light';
+
+                if (nextTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+
+                localStorage.setItem('glic_theme', nextTheme);
+
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
+                if (metaTheme) {
+                    metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
