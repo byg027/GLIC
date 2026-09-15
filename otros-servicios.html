@@ -63,8 +63,12 @@
             --dropdown-text: #f0f0f0;
             --nav-link-color: #f0f0f0;
             --bar-color: #ffffff;
-            --theme-toggle-bg: rgba(255, 255, 255, 0.08);
-            --theme-toggle-border: rgba(255, 255, 255, 0.15);
+            --theme-toggle-bg: transparent;
+            --theme-toggle-border: transparent;
+            --theme-toggle-color: rgba(255, 255, 255, 0.55);
+            --theme-toggle-hover-bg: rgba(255, 255, 255, 0.08);
+            --theme-toggle-hover-border: rgba(255, 255, 255, 0.12);
+            --theme-toggle-hover-color: #ffffff;
             --hero-overlay: linear-gradient(135deg, rgba(5, 5, 5, 0.92) 0%, rgba(10, 10, 10, 0.84) 100%);
             --hero-card-bg: rgba(17, 17, 17, 0.88);
             --subcard-bg: rgba(20, 20, 22, 0.85);
@@ -98,8 +102,12 @@
             --dropdown-text: #0f172a;
             --nav-link-color: #1e293b;
             --bar-color: #0f172a;
-            --theme-toggle-bg: rgba(0, 0, 0, 0.05);
-            --theme-toggle-border: rgba(0, 0, 0, 0.12);
+            --theme-toggle-bg: transparent;
+            --theme-toggle-border: transparent;
+            --theme-toggle-color: rgba(15, 23, 42, 0.55);
+            --theme-toggle-hover-bg: rgba(0, 0, 0, 0.05);
+            --theme-toggle-hover-border: rgba(0, 0, 0, 0.08);
+            --theme-toggle-hover-color: #0f172a;
             --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.88) 100%);
             --hero-card-bg: rgba(255, 255, 255, 0.96);
             --hero-card-border: rgba(0, 0, 0, 0.08);
@@ -199,17 +207,22 @@
         .theme-toggle-btn {
             background: var(--theme-toggle-bg);
             border: 1px solid var(--theme-toggle-border);
-            color: var(--primary);
-            width: 36px; height: 36px; border-radius: 50%;
+            color: var(--theme-toggle-color);
+            width: 34px; height: 34px; border-radius: 50%;
             display: inline-flex; align-items: center; justify-content: center;
             cursor: pointer; padding: 0; outline: none;
-            transition: transform 0.25s ease, background-color var(--transition-speed) ease;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
-        .theme-toggle-btn:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle-btn:hover {
+            background: var(--theme-toggle-hover-bg);
+            border-color: var(--theme-toggle-hover-border);
+            color: var(--theme-toggle-hover-color);
+        }
+        .theme-toggle-btn svg { width: 17px; height: 17px; stroke-width: 1.75; display: block; }
         .theme-toggle-btn .sun-icon { display: block; }
         .theme-toggle-btn .moon-icon { display: none; }
         [data-theme="light"] .theme-toggle-btn .sun-icon { display: none; }
-        [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; color: #d97706; }
+        [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; }
 
         .hamburger { display: none; cursor: pointer; z-index: 1001; }
         .bar {

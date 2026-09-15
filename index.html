@@ -83,8 +83,12 @@
             --geo-frame-bg: #101015;
             --geo-img-brightness: 0.75;
             --geo-sublinks-color: #d1d5db;
-            --theme-toggle-bg: rgba(255, 255, 255, 0.08);
-            --theme-toggle-border: rgba(255, 255, 255, 0.15);
+            --theme-toggle-bg: transparent;
+            --theme-toggle-border: transparent;
+            --theme-toggle-color: rgba(255, 255, 255, 0.55);
+            --theme-toggle-hover-bg: rgba(255, 255, 255, 0.08);
+            --theme-toggle-hover-border: rgba(255, 255, 255, 0.12);
+            --theme-toggle-hover-color: #ffffff;
             --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.5);
 
             --font-title: 'Montserrat', sans-serif;
@@ -128,8 +132,12 @@
             --geo-frame-bg: #e2e8f0;
             --geo-img-brightness: 0.95;
             --geo-sublinks-color: #334155;
-            --theme-toggle-bg: rgba(0, 0, 0, 0.05);
-            --theme-toggle-border: rgba(0, 0, 0, 0.12);
+            --theme-toggle-bg: transparent;
+            --theme-toggle-border: transparent;
+            --theme-toggle-color: rgba(15, 23, 42, 0.55);
+            --theme-toggle-hover-bg: rgba(0, 0, 0, 0.05);
+            --theme-toggle-hover-border: rgba(0, 0, 0, 0.08);
+            --theme-toggle-hover-color: #0f172a;
             --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
         }
 
@@ -344,28 +352,35 @@
             width: 100%;
         }
 
-        /* Botón de cambio de tema (Sol / Luna) al lado de contacto */
+        /* Botón de cambio de tema (Sol / Luna) - diseño discreto */
         .theme-toggle-btn {
             background: var(--theme-toggle-bg);
             border: 1px solid var(--theme-toggle-border);
-            color: var(--primary);
-            width: 36px;
-            height: 36px;
+            color: var(--theme-toggle-color);
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform 0.25s ease, color var(--transition-speed) ease;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
             padding: 0;
             flex-shrink: 0;
             outline: none;
         }
 
         .theme-toggle-btn:hover {
-            border-color: var(--primary);
-            background: var(--primary-dim);
-            transform: scale(1.1) rotate(15deg);
+            background: var(--theme-toggle-hover-bg);
+            border-color: var(--theme-toggle-hover-border);
+            color: var(--theme-toggle-hover-color);
+        }
+
+        .theme-toggle-btn svg {
+            width: 17px;
+            height: 17px;
+            stroke-width: 1.75;
+            display: block;
         }
 
         .theme-toggle-btn .sun-icon {
@@ -382,7 +397,6 @@
 
         [data-theme="light"] .theme-toggle-btn .moon-icon {
             display: block;
-            color: #d97706;
         }
 
         /* Menú Desplegable (PC) */
