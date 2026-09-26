@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Servicios de Ingeniería | GLIC Ingeniería</title>
+    <title>Otros Servicios de Ingeniería | GLIC Ingeniería</title>
     <meta name="description"
-        content="Asesoría técnica y peritajes, outsourcing de cálculo estructural (Ingeniero en tu Empresa) y coordinación de especialidades MEP (eléctrico, sanitario, HVAC).">
+        content="Asesoría técnica, cubicaciones, revisión de proyectos, apoyo a constructoras y servicios de ingeniería complementarios.">
     <link rel="canonical" href="https://glic.cl/otros-servicios.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
-    <meta property="og:title" content="Servicios Complementarios de Ingeniería | GLIC Ingeniería">
+    <meta property="og:title" content="Otros Servicios de Ingeniería | GLIC Ingeniería">
     <meta property="og:description"
-        content="Asesoría técnica y peritajes, outsourcing de cálculo estructural (Ingeniero en tu Empresa) y coordinación de especialidades MEP (eléctrico, sanitario, HVAC).">
+        content="Asesoría técnica, cubicaciones, revisión de proyectos, apoyo a constructoras y servicios de ingeniería complementarios.">
     <meta property="og:image" content="https://glic.cl/assets/servicios_asesoria.jpg">
     <meta property="og:url" content="https://glic.cl/otros-servicios.html">
 
@@ -645,388 +645,463 @@
         }
 
         /* ==========================================================================
-           6. FORMULARIO DE CONTACTO UNIFICADO WIDESCREEN
+           SECCIÓN CONTACTO ENMARCADA (COMPACTA - 3/4 ALTURA)
            ========================================================================== */
-        #contacto {
-            padding: clamp(4rem, 6vw, 6rem) 0;
-            background-color: var(--bg-main);
+        #contacto.contact-section-wrapper {
             position: relative;
+            scroll-margin-top: var(--header-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1rem, 3vw, 2.5rem);
+            background-color: var(--bg-main);
+            transition: background-color var(--transition-speed) ease;
+            width: 100%;
         }
 
-        .contact-container {
-            width: 92%;
-            max-width: 1320px;
-            margin: 0 auto;
-        }
-
-        .contact-header-wrap {
-            text-align: center;
-            max-width: 780px;
-            margin: 0 auto clamp(2.5rem, 4vw, 3.5rem) auto;
-        }
-
-        .contact-section-title {
-            font-family: var(--font-title);
-            font-size: clamp(2rem, 3.8vw, 2.8rem);
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-lead-desc {
-            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin: 0 auto;
-        }
-
-        .contact-split-box {
+        /* Tarjeta Marco Exterior con bordes redondeados */
+        .contact-card-frame {
+            width: 100%;
+            max-width: 1140px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: clamp(2rem, 4vw, 3.2rem);
-            box-shadow: var(--shadow-lg);
-            display: grid;
-            grid-template-columns: 1.35fr auto 1fr;
-            gap: clamp(2rem, 3.5vw, 3.5rem);
-            align-items: stretch;
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            border-radius: var(--r-xl);
+            padding: clamp(0.9rem, 1.8vw, 1.6rem);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-speed) ease;
+            min-width: 0;
         }
 
-        [data-theme="light"] .contact-split-box {
+        [data-theme="light"] #contacto.contact-section-wrapper {
+            background-color: var(--bg-main);
+        }
+
+        [data-theme="light"] .contact-card-frame {
             background: #ffffff;
             border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
         }
 
-        .contact-form-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .contact-form-header {
-            margin-bottom: 1.8rem;
-        }
-
-        .contact-form-title {
-            font-family: var(--font-title);
-            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
-            font-weight: 800;
-            color: var(--text-heading);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-form-subtitle {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .contact-split-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .contact-form-row-duo {
+        /* Cuadrícula Interna: 2 Columnas en Escritorio */
+        .contact-inner-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(1.2rem, 2.5vw, 2.2rem);
+            align-items: stretch;
+            min-width: 0;
         }
 
-        .contact-form-group {
+        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados */
+        .contact-media-card {
+            position: relative;
+            border-radius: var(--r-lg);
+            background: url('assets/servicios_especialidades.jpg') center center / cover no-repeat;
+            overflow: hidden;
+            min-height: 380px;
+        }
+
+        /* LADO DERECHO: Formulario con Trazado de Líneas Minimalista */
+        .contact-form-content {
             display: flex;
             flex-direction: column;
-            gap: 0.45rem;
-        }
-
-        .contact-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-heading);
-            font-family: var(--font-title);
-        }
-
-        .contact-input-control {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: var(--r-sm);
-            color: var(--input-text);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: all var(--transition-speed) ease;
-            box-sizing: border-box;
-        }
-
-        .contact-input-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--bg-card);
-            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
-        }
-
-        [data-theme="light"] .contact-input-control {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .contact-input-control:focus {
-            background: #ffffff;
-            border-color: var(--primary);
-        }
-
-        .contact-select-control {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            background-size: 16px;
-            padding-right: 2.5rem;
-        }
-
-        textarea.contact-input-control {
-            min-height: 120px;
-            resize: vertical;
-            line-height: 1.5;
-        }
-
-        .contact-form-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin-top: 0.5rem;
-        }
-
-        .contact-btn-submit {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: var(--primary);
-            color: #000;
-            font-weight: 800;
-            font-family: var(--font-title);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 1.05rem 2rem;
-            border: none;
-            border-radius: var(--r-sm);
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+            padding: clamp(0.2rem, 0.8vw, 0.8rem) 0;
+            min-width: 0;
         }
 
-        .contact-btn-submit:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+        .contact-pane-header {
+            margin-bottom: 0.85rem;
+            max-width: 100%;
         }
 
-        .contact-form-privacy {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .contact-vertical-divider {
-            width: 1px;
-            background: var(--border);
-            min-height: 100%;
-        }
-
-        .contact-direct-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1.8rem;
-        }
-
-        .contact-panel-tag {
-            display: inline-block;
-            color: var(--primary);
+        .contact-pane-tag {
             font-family: var(--font-title);
             font-size: 0.72rem;
-            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .contact-panel-title {
+        .contact-pane-title {
             font-family: var(--font-title);
-            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            max-width: 100%;
         }
 
-        .contact-panel-desc {
-            font-size: 0.9rem;
+        [data-theme="light"] .contact-pane-title {
+            color: var(--primary);
+        }
+
+        .contact-pane-desc {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            font-weight: 400;
+            line-height: 1.45;
+            max-width: 100%;
+            overflow-wrap: anywhere;
         }
 
-        .contact-quick-actions {
+        [data-theme="light"] .contact-pane-desc {
+            color: #64748b;
+        }
+
+        .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 1.05rem;
+            min-width: 0;
         }
 
-        .contact-action-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.9rem 1.15rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover {
-            border-color: var(--primary);
-            background: var(--primary-dim);
-            transform: translateX(4px);
-        }
-
-        .contact-action-card .action-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            background: rgba(255, 153, 0, 0.12);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover .action-icon {
-            background: var(--primary);
-            color: #000;
-        }
-
-        .contact-action-card.whatsapp-action:hover .action-icon {
-            background: #25d366;
-            color: #fff;
-        }
-
-        .action-meta {
+        .form-line-group {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-width: 0;
         }
 
-        .action-label {
-            font-size: 0.74rem;
+        .form-line-label {
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 700;
             text-transform: uppercase;
-            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+            transition: color var(--transition-speed) ease;
         }
 
-        .action-val {
+        [data-theme="light"] .form-line-label {
+            color: #64748b;
+        }
+
+        .form-line-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font-body);
             font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 0.45rem 0;
+            transition: border-color var(--transition-speed) ease;
+            box-sizing: border-box;
+            border-radius: 0;
+            outline: none;
+            min-height: 38px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .contact-highlights-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.1rem;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed var(--border);
-            border-radius: var(--r-sm);
+        [data-theme="light"] .form-line-input {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
         }
 
-        [data-theme="light"] .contact-highlights-list {
-            background: rgba(0, 0, 0, 0.02);
+        .form-line-input::placeholder {
+            color: rgba(255, 255, 255, 0.28);
         }
 
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        [data-theme="light"] .form-line-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-line-group:focus-within .form-line-label {
+            color: var(--primary);
+        }
+
+        .select-line-control {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.2rem center;
+            background-size: 0.9em;
+            padding-right: 1.5rem;
+        }
+
+        .select-line-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .select-line-control option {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .textarea-line-control {
+            resize: vertical;
+            min-height: 65px;
             line-height: 1.45;
         }
 
-        .highlight-item strong {
-            color: var(--text-heading);
+        .form-line-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            min-width: 0;
         }
 
-        .highlight-bullet {
-            font-size: 1rem;
-            line-height: 1.2;
-            flex-shrink: 0;
-        }
-
-        .contact-panel-footer-logo {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        .form-submit-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.35rem;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
-        .contact-panel-footer-logo .logo-text {
+        .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1.8rem;
             font-family: var(--font-title);
+            font-size: 15px;
             font-weight: 800;
-            font-size: 0.95rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: var(--r-sm);
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            white-space: normal;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .contact-btn-clean:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-light);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
+        }
+
+        [data-theme="light"] .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+        }
+
+        [data-theme="light"] .contact-btn-clean:hover {
+            background: var(--primary-light);
+            color: #000000;
+            border-color: var(--primary-light);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
+        }
+
+        .contact-btn-clean:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .contact-btn-clean.is-loading {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .contact-direct-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .contact-direct-links a {
             color: var(--text-heading);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            white-space: nowrap;
+            display: inline-block;
         }
 
-        @media (max-width: 960px) {
-            .contact-split-box {
+        .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .contact-direct-links a {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .contact-direct-links span {
+            color: var(--border);
+        }
+
+        /* Trampa honeypot invisible para bots */
+        .form-honeypot {
+            position: absolute !important;
+            left: -9999px !important;
+            top: auto !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .form-status {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.35rem;
+            min-height: 1.2em;
+        }
+
+        .form-status.is-error {
+            color: #ef4444;
+        }
+
+        /* Responsividad Mejorada Contacto (3/4 altura) */
+        @media (max-width: 980px) {
+            #contacto.contact-section-wrapper {
+                align-items: flex-start;
+                padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
+            }
+
+            .contact-inner-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: clamp(1rem, 2.5vw, 1.6rem);
             }
 
-            .contact-vertical-divider {
+            .contact-media-card {
+                min-height: clamp(165px, 28vw, 225px);
+            }
+
+            .contact-form-content {
+                padding-top: 0;
+                padding-bottom: 0.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #contacto.contact-section-wrapper {
+                padding: 0.75rem 0.65rem max(1rem, env(safe-area-inset-bottom));
+            }
+
+            .contact-card-frame {
+                border-radius: 14px;
+                padding: clamp(0.75rem, 2.5vw, 1rem);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .contact-inner-grid {
+                gap: 1rem;
+            }
+
+            .contact-media-card {
+                min-height: 155px;
+            }
+
+            .contact-pane-header {
+                margin-bottom: 0.9rem;
+            }
+
+            .contact-pane-tag {
+                font-size: 0.64rem;
+                letter-spacing: 1.2px;
+            }
+
+            .contact-pane-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.45rem);
+                line-height: 1.2;
+            }
+
+            .contact-pane-desc {
+                font-size: 0.84rem;
+                line-height: 1.45;
+            }
+
+            .contact-underline-form {
+                gap: 0.9rem;
+            }
+
+            .form-line-duo {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .form-line-label {
+                font-size: 0.66rem;
+                letter-spacing: 0.8px;
+            }
+
+            .form-line-input {
+                min-height: 42px;
+                padding: 0.5rem 0;
+            }
+
+            textarea.form-line-input {
+                min-height: 6rem;
+            }
+
+            .form-submit-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-top: 0.2rem;
+            }
+
+            .contact-direct-links {
+                justify-content: flex-start;
+                font-size: 0.78rem;
+                line-height: 1.45;
+                gap: 0.5rem;
+            }
+
+            .contact-btn-clean {
                 width: 100%;
-                height: 1px;
-                min-height: 1px;
-            }
-
-            .contact-btn-submit {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-panel-footer-logo {
                 justify-content: center;
+                padding: 0.75rem 1rem;
+                min-height: 44px;
             }
         }
 
-        @media (max-width: 600px) {
-            .contact-form-row-duo {
-                grid-template-columns: 1fr;
+        @media (max-width: 380px) {
+            .contact-card-frame {
+                padding: 0.65rem;
             }
 
-            .contact-section-title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
+            .contact-media-card {
+                min-height: 135px;
+            }
+
+            .contact-direct-links {
+                font-size: 0.74rem;
+                gap: 0.42rem;
             }
         }
 
@@ -1269,20 +1344,18 @@
         <section class="service-hero">
             <div class="container">
                 <div class="hero-card">
-                    <div class="hero-badge">Servicios Especializados de Ingeniería</div>
-                    <h2 class="hero-title">Ingeniería y Asesoría <span class="text-gradient">a la Medida</span></h2>
+                    <div class="hero-badge">Servicios Complementarios de Ingeniería</div>
+                    <h1 class="hero-title">Asesoría y Servicios de <span class="text-gradient">Ingeniería</span></h1>
                     <p class="hero-desc">
-                        Soluciones técnicas de alto valor añadido respaldadas por experiencia en oficina técnica, cubicaciones y APU, investigación aplicada en eficiencia y aislamiento térmico (LCCA), alianza B2B de ingeniería externalizada en marca blanca para constructoras y diseño normativo de bodegas de sustancias peligrosas (SUSPEL D.S. 43) y coordinación BIM multidisciplinaria.
+                        Complementamos nuestros servicios de ingeniería con apoyo técnico en revisión de proyectos, cubicaciones, presupuestos y otras necesidades específicas de obra. Adaptamos el alcance del servicio a los requerimientos de cada cliente.
                     </p>
                     <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">Oficina Técnica & APU</span>
-                        <span class="tool-badge featured">Eficiencia Térmica (LCCA)</span>
-                        <span class="tool-badge">SUSPEL D.S. 43</span>
-                        <span class="tool-badge">BIM Revit MEP</span>
-                        <span class="tool-badge">Marca Blanca B2B</span>
-                        <span class="tool-badge">NCh 853 / OGUC</span>
+                        <span class="tool-badge featured">Asesoría Técnica</span>
+                        <span class="tool-badge featured">Cubicaciones</span>
+                        <span class="tool-badge">Revisión de Proyectos</span>
+                        <span class="tool-badge">Apoyo a Constructoras</span>
                     </div>
-                    <a href="#contacto" class="cta-btn">Consultar por Servicios &rarr;</a>
+                    <a href="#contacto" class="cta-btn">Consultar Servicio &rarr;</a>
                 </div>
             </div>
         </section>
@@ -1290,35 +1363,35 @@
         <!-- 1. ASESORÍA TÉCNICA Y OFICINA TÉCNICA -->
         <section id="asesoria" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Oficina Técnica, Cubicaciones & Eficiencia Térmica</span>
-                <h3 class="section-title">Asesoría Técnica y <span class="text-gradient">Oficina Técnica</span></h3>
+                <span class="area-tag">01. Asesoría Técnica</span>
+                <h3 class="section-title">Asesoría Técnica para <span class="text-gradient">Proyectos</span></h3>
                 <p class="section-lead">
-                    Control riguroso de proyectos para constructoras y mandantes, optimización de costos mediante cubicaciones y análisis de ciclo de vida (LCCA) en aislación y transmitancia térmica de envolventes.
+                    Apoyo técnico para revisar, organizar y resolver requerimientos durante distintas etapas de un proyecto.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>Cubicaciones, Precios Unitarios y Envolvente Térmica</h4>
+                        <h4>Apoyo técnico según necesidades</h4>
                         <p>
-                            Brindamos soporte técnico estratégico tanto en fase de licitación como durante el desarrollo del proyecto, uniendo la precisión de la oficina técnica con análisis avanzado de eficiencia energética.
+                            Brindamos soporte en oficina técnica y análisis de partidas para facilitar la toma de decisiones y el control de obra.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Cubicaciones y Análisis de Precios Unitarios (APU):</strong> Desglose analítico de cantidades de obra (acero, hormigón, moldajes, partidas húmedas) y estructuración de presupuestos compensados para licitar con certeza.</span>
+                                <span><strong>Revisión de planos y antecedentes:</strong> Detección preventiva de inconsistencias entre especialidades y verificación técnica previa a faena.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Asesoría en Aislación y Eficiencia Térmica:</strong> Optimización de transmitancia térmica (valores U) de muros, techumbres y pisos ventilados conforme a la OGUC y NCh 853, integrando análisis de ciclo de vida (LCCA) e impacto de radiación solar.</span>
+                                <span><strong>Cubicaciones:</strong> Cuantificación detallada de partidas de obra para compras y control de avance.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Revisión Integral de Proyectos y Planos:</strong> Auditoría técnica preventiva de memorias y expedientes antes del inicio de faena para evitar discordancias, sobrecostos y atrasos de obra.</span>
+                                <span><strong>Presupuestos y APU:</strong> Análisis de precios unitarios y estructuración de presupuestos compensados para licitar con certeza.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Peritajes y Diagnóstico Estructural:</strong> Inspección en terreno de patologías en hormigón armado, fisuras, deflexiones y diseño de refuerzos estructurales específicos.</span>
+                                <span><strong>Apoyo técnico en obra:</strong> Asistencia técnica y resolución de consultas constructivas durante la ejecución.</span>
                             </li>
                         </ul>
                     </div>
@@ -1330,42 +1403,42 @@
             </div>
         </section>
 
-        <!-- 2. INGENIERO EN TU EMPRESA Y SUSPEL -->
+        <!-- 2. INGENIERO EN TU EMPRESA -->
         <section id="ingeniero" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Alianza B2B y Bodegas SUSPEL</span>
-                <h3 class="section-title">Ingeniero en tu Empresa y <span class="text-gradient">Bodegas SUSPEL</span></h3>
+                <span class="area-tag">02. Ingeniero en tu Empresa</span>
+                <h3 class="section-title">Ingeniero en <span class="text-gradient">tu Empresa</span></h3>
                 <p class="section-lead">
-                    Departamento de ingeniería externalizado para constructoras y oficinas de arquitectura en marca blanca, sumado al diseño especializado de bodegas de almacenamiento de sustancias peligrosas bajo D.S. 43 y NCh 382.
+                    Apoyo para constructoras, oficinas y empresas que necesitan capacidad técnica adicional sin incorporar permanentemente un profesional a su equipo.
                 </p>
 
                 <div class="editorial-split reverse">
                     <div class="editorial-media">
-                        <img src="assets/suspel.png" alt="Diseño de bodegas de sustancias peligrosas SUSPEL" loading="lazy">
+                        <img src="assets/suspel.png" alt="Ingeniero en tu empresa y apoyo técnico" loading="lazy">
                     </div>
 
                     <div class="editorial-text">
-                        <h4>Ingeniería Externalizada y Cumplimiento Normativo Industrial</h4>
+                        <h4>Apoyo flexible según carga de trabajo</h4>
                         <p>
-                            Operamos como tu brazo técnico de cálculo y tramitación sanitaria-industrial, permitiéndote adjudicar más proyectos sin elevar tu estructura fija de costos.
+                            Operamos como respaldo técnico externo para responder oportunamente a licitaciones o sobrecargas de proyectos sin elevar costos fijos.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Bodegas de Sustancias Peligrosas (SUSPEL D.S. 43):</strong> Diseño estructural, sistemas de ventilación natural y forzada, contención de derrames y expedientes técnicos para aprobación formal ante la SEREMI de Salud.</span>
+                                <span><strong>Apoyo por proyecto:</strong> Incorporación puntual para atender requerimientos de ingeniería en licitaciones o proyectos específicos.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Marca Blanca (White-Label) para Constructoras:</strong> Entregamos planos, memorias de cálculo y cubicaciones formateados íntegramente con la identidad corporativa y logotipo de tu empresa.</span>
+                                <span><strong>Apoyo a equipos técnicos:</strong> Refuerzo para oficinas de arquitectura, constructoras o mandantes que requieren soporte de ingeniería civil.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Predimensionamientos Express en 48 Horas:</strong> Estimaciones ágiles de escuadrías y cuantías de acero y hormigón para responder oportunamente a licitaciones privadas y públicas.</span>
+                                <span><strong>Desarrollo de documentación técnica:</strong> Elaboración de planos, memorias explicativas y antecedentes técnicos con presentación profesional.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Modalidades Flexibles (Proyecto o Retainer):</strong> Contratación por requerimiento específico o bolsa mensual de horas de ingeniería dedicada con atención prioritaria continua.</span>
+                                <span><strong>Modalidad flexible:</strong> Contratación por entregables definidos o según volumen de trabajo acordado.</span>
                             </li>
                         </ul>
                     </div>
@@ -1373,39 +1446,39 @@
             </div>
         </section>
 
-        <!-- 3. ESPECIALIDADES MEP Y BIM -->
+        <!-- 3. REVISIÓN Y OPTIMIZACIÓN DE PROYECTOS -->
         <section id="especialidades" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Coordinación BIM y Especialidades MEP</span>
-                <h3 class="section-title">Coordinación BIM y <span class="text-gradient">Especialidades MEP</span></h3>
+                <span class="area-tag">03. Revisión y Optimización</span>
+                <h3 class="section-title">Revisión y Optimización <span class="text-gradient">de Proyectos</span></h3>
                 <p class="section-lead">
-                    Compatibilización tridimensional y detección temprana de interferencias entre cálculo estructural e instalaciones eléctricas, sanitarias y de climatización.
+                    Revisión técnica para identificar inconsistencias, oportunidades de mejora y aspectos a resolver antes de ejecutar.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
-                        <h4>Coordinación Multidisciplinaria BIM (Revit)</h4>
-                        <p>Integración de modelos estructurales y de instalaciones en entornos BIM paramétricos para resolver cruces críticos antes de llegar a faena.</p>
+                        <h4>Revisión de planos</h4>
+                        <p>Análisis crítico de la planimetría de cálculo y especialidades para prevenir errores constructivos.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Instalaciones Eléctricas y Fuerza</h4>
-                        <p>Tableros generales y de distribución, mallas de puesta a tierra, iluminación de alta eficiencia y corrientes débiles coordinados con la estructura soportante.</p>
+                        <h4>Compatibilización</h4>
+                        <p>Verificación de interferencias entre trazados estructurales, sanitarios y otras instalaciones.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Instalaciones Sanitarias Integradas</h4>
-                        <p>Cruces de pasadas reglamentarias de matrices de agua potable y colectores gravitacionales sin debilitar elementos estructurales sismorresistentes.</p>
+                        <h4>Optimización</h4>
+                        <p>Identificación de soluciones constructivas más eficientes o de montaje más simple.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Climatización y Ventilación (HVAC)</h4>
-                        <p>Trazado y dimensionamiento de ductos de inyección y extracción mecánica, ventilación forzada en recintos industriales y análisis de cargas térmicas.</p>
+                        <h4>Apoyo en decisiones técnicas</h4>
+                        <p>Criterio profesional de ingeniería civil para resolver contingencias antes y durante la obra.</p>
                     </div>
                 </div>
 
                 <!-- Callout de Enlace Contextual a Diseño Estructural -->
                 <div class="cross-link-box">
                     <div class="cross-link-text">
-                        <h3>¿Necesitas cálculo estructural específico para una nave o edificación?</h3>
-                        <p>Revisa nuestra área especializada de Cálculo Estructural donde diseñamos proyectos residenciales de gran envergadura, galpones industriales optimizados y estructuras temporales.</p>
+                        <h3>¿Necesitas cálculo estructural específico para tu obra?</h3>
+                        <p>Revisa nuestra área especializada de Cálculo y Diseño Estructural donde desarrollamos proyectos para viviendas, ampliaciones, estructuras metálicas y obras industriales.</p>
                     </div>
                     <div>
                         <a href="estructural.html" class="cross-link-btn">Ver Diseño Estructural &rarr;</a>
@@ -1414,142 +1487,79 @@
             </div>
         </section>
 
-        <!-- Formulario de Contacto General Widescreen -->
-        <section id="contacto">
-            <div class="contact-container">
-                <div class="contact-header-wrap">
-                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
-                    <p class="contact-lead-desc">Inicia tu requerimiento de ingeniería con nosotros. Cuéntanos qué servicio necesitas y te responderemos con una propuesta técnica a medida en pocas horas.</p>
-                </div>
+        <!-- =============================================================
+             SECCIÓN DE CONTACTO ENMARCADA (RESPONSIVE MEJORADO)
+             ============================================================= -->
+        <section id="contacto" class="contact-section-wrapper">
+            <!-- Tarjeta Exterior Enmarcada con bordes redondeados -->
+            <div class="contact-card-frame">
+                <div class="contact-inner-grid">
 
-                <div class="contact-split-box">
-                    <!-- Columna Izquierda: Formulario Widescreen -->
-                    <div class="contact-form-column">
-                        <div class="contact-form-header">
-                            <h3 class="contact-form-title">Consultar por Servicios de Ingeniería</h3>
-                            <p class="contact-form-subtitle">Completa el formulario y te contactaremos con asesoría directa de un ingeniero civil.</p>
+                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
+                    <div class="contact-media-card" aria-label="Asesoría técnica y especialidades de ingeniería"></div>
+
+                    <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
+                    <div class="contact-form-content">
+                        <div class="contact-pane-header">
+                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
+                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
                         </div>
 
-                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                        <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
                             <input type="hidden" name="subject" value="Cotización Otros Servicios - GLIC Web">
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
-                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Constructora / Particular" required autocomplete="name">
+                            <!-- Campo 1: Nombre o Empresa -->
+                            <div class="form-line-group">
+                                <label for="contact-nombre" class="form-line-label">Nombre o empresa *</label>
+                                <input type="text" id="contact-nombre" name="nombre" class="form-line-input" placeholder="Nombre o razón social" required autocomplete="name" autocapitalize="words" enterkeyhint="next">
+                            </div>
+
+                            <!-- Campos 2 y 3: Correo y Teléfono -->
+                            <div class="form-line-duo">
+                                <div class="form-line-group">
+                                    <label for="contact-email" class="form-line-label">Correo electrónico *</label>
+                                    <input type="email" id="contact-email" name="email" class="form-line-input" placeholder="correo@dominio.cl" required autocomplete="email" inputmode="email" enterkeyhint="next">
                                 </div>
-                                <div class="contact-form-group">
-                                    <label for="email" class="contact-label">Correo Electrónico *</label>
-                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                <div class="form-line-group">
+                                    <label for="contact-tel" class="form-line-label">Teléfono / WhatsApp (opcional)</label>
+                                    <input type="tel" id="contact-tel" name="telefono" class="form-line-input" placeholder="+56 9 XXXX XXXX" autocomplete="tel" inputmode="tel" enterkeyhint="next">
                                 </div>
                             </div>
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
-                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
-                                </div>
-                                <div class="contact-form-group">
-                                    <label for="servicio_tipo" class="contact-label">Servicio Solicitado</label>
-                                    <select id="servicio_tipo" name="servicio_tipo" class="contact-input-control contact-select-control">
-                                        <option value="Asesoria-OficinaTecnica">Asesoría Técnica / Cubicaciones y APU</option>
-                                        <option value="Eficiencia-Termica">Aislación y Eficiencia Térmica (LCCA)</option>
-                                        <option value="Bodegas-SUSPEL">Bodegas SUSPEL (D.S. 43 / SEREMI)</option>
-                                        <option value="Ingeniero-Empresa">Ingeniero en tu Empresa (B2B / Marca Blanca)</option>
-                                        <option value="Especialidades-BIM">Coordinación de Especialidades MEP / BIM</option>
-                                        <option value="Otro-Servicio">Otro requerimiento de ingeniería</option>
-                                    </select>
-                                </div>
+                            <!-- Campo 4: Mensaje / Antecedentes -->
+                            <div class="form-line-group">
+                                <label for="contact-mensaje" class="form-line-label">Antecedentes del proyecto *</label>
+                                <textarea id="contact-mensaje" name="antecedentes_proyecto" class="form-line-input textarea-line-control" placeholder="Indica ubicación, superficie aproximada, tipo de obra y antecedentes relevantes." required></textarea>
                             </div>
 
-                            <div class="contact-form-group">
-                                <label for="mensaje" class="contact-label">Detalles del Requerimiento *</label>
-                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica alcance de la asesoría, ubicación, plazos estimados o características de la obra..." required></textarea>
-                            </div>
-
-                            <div class="contact-form-footer">
-                                <button type="submit" class="contact-btn-submit">
+                            <!-- Fila de Envío y Enlaces Directos -->
+                            <div class="form-submit-row">
+                                <button type="submit" class="contact-btn-clean">
                                     <span>ENVIAR SOLICITUD</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>
-                                <p class="contact-form-privacy">Tus antecedentes serán tratados bajo estricta confidencialidad técnica.</p>
+
+                                <div class="contact-direct-links">
+                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                                    <span>&middot;</span>
+                                    <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                                </div>
                             </div>
+
+                            <!-- Campo trampa anti-spam: los usuarios reales no deben completarlo -->
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="contact-website">Sitio web</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <p id="form-status" class="form-status" aria-live="polite"></p>
                         </form>
                     </div>
 
-                    <!-- Divisor Vertical Sutil -->
-                    <div class="contact-vertical-divider" aria-hidden="true"></div>
-
-                    <!-- Columna Derecha: Canales Directos e Información Oficial -->
-                    <div class="contact-direct-column">
-                        <div class="contact-panel-info">
-                            <span class="contact-panel-tag">Atención Inmediata</span>
-                            <h4 class="contact-panel-title">Canales Directos</h4>
-                            <p class="contact-panel-desc">¿Requieres asistencia técnica inmediata o cotizar un servicio para licitación? Escríbenos directamente:</p>
-                        </div>
-
-                        <div class="contact-quick-actions">
-                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.275-.1-.476-.15-.677.15-.2.301-.777.978-.953 1.179-.176.2-.351.226-.652.075-1.479-.742-2.45-1.328-3.419-2.992-.257-.441.257-.409.734-1.362.08-.16.04-.301-.02-.451-.06-.15-.677-1.632-.928-2.235-.244-.587-.492-.507-.677-.516-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.802.376-.275.301-1.054 1.03-1.054 2.512 0 1.482 1.079 2.913 1.23 3.114.15.2 2.124 3.243 5.145 4.549 2.059.89 2.87.89 3.896.737.625-.093 1.78-.728 2.032-1.431.252-.703.252-1.305.176-1.431-.076-.126-.276-.201-.577-.351zM12.042 21.688c-1.87 0-3.647-.51-5.184-1.401l-.372-.218-3.856 1.011 1.029-3.759-.24-.382a9.664 9.664 0 0 1-1.48-5.186c0-5.352 4.354-9.706 9.708-9.706 2.593 0 5.031 1.01 6.865 2.844a9.66 9.66 0 0 1 2.843 6.864c0 5.353-4.354 9.707-9.708 9.707zm0-17.708c-4.412 0-8 3.588-8 8 0 1.547.44 2.993 1.203 4.225l.189.303-.612 2.235 2.29-.601.294.175a7.96 7.96 0 0 0 4.636 1.463c4.412 0 8-3.588 8-8 0-4.412-3.588-8-8-8z"/>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">WhatsApp Directo</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="tel:+56950321322" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Llamada Telefónica</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Correo Electrónico</span>
-                                    <span class="action-val">contacto@glic.cl</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="contact-highlights-list">
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Cubicaciones, APU y asesoría en <strong>eficiencia térmica LCCA</strong>.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Ingeniería estructural y ventilación para <strong>Bodegas SUSPEL D.S. 43</strong>.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Alianza B2B para constructoras en <strong>modalidad marca blanca</strong>.</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-panel-footer-logo">
-                            <span class="logo-text">GLIC INGENIERÍA</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1641,6 +1651,55 @@
                     metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
                 }
             });
+        }
+    
+        // Feedback visual durante el envío del formulario de contacto
+        const contactForm = document.querySelector('.contact-underline-form');
+        const submitBtn = contactForm?.querySelector('.contact-btn-clean');
+        const statusEl = document.getElementById('form-status');
+
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', () => {
+                const honeypot = document.getElementById('contact-website');
+
+                // Si un bot completa el campo trampa, no modificar la apariencia
+                if (honeypot && honeypot.value.trim() !== '') return;
+
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+                submitBtn.setAttribute('aria-disabled', 'true');
+                submitBtn.querySelector('span').textContent = 'ENVIANDO...';
+
+                if (statusEl) {
+                    statusEl.textContent = 'Enviando tu solicitud...';
+                    statusEl.classList.remove('is-error');
+                }
+            });
+        }
+
+        // Ocultar botón flotante al estar en el formulario de contacto o interactuar con los campos
+        const contactSectionEl = document.getElementById('contacto');
+        if (contactSectionEl && typeof fab !== 'undefined' && fab) {
+            contactSectionEl.addEventListener('focusin', () => {
+                fab.classList.remove('show-fab');
+                fab.classList.add('hide-fab');
+            });
+
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fab.classList.remove('show-fab');
+                        fab.classList.add('hide-fab');
+                    } else if (window.scrollY > 50) {
+                        fab.classList.add('show-fab');
+                        fab.classList.remove('hide-fab');
+                    }
+                });
+            }, {
+                threshold: [0, 0.05, 0.2]
+            });
+
+            contactObserver.observe(contactSectionEl);
         }
     </script>
 </body>

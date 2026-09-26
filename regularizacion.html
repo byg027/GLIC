@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Regularización de Viviendas y Ampliaciones DOM | GLIC Ingeniería</title>
+    <title>Regularización de Viviendas y Ampliaciones | GLIC Ingeniería</title>
     <meta name="description"
-        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales (DOM) en Chile. Levantamiento técnico, planos y expedientes con GLIC Ingeniería.">
+        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales. Levantamiento, planos, antecedentes técnicos y apoyo en la tramitación.">
     <link rel="canonical" href="https://glic.cl/regularizacion.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
-    <meta property="og:title" content="Regularización de Viviendas y Ampliaciones DOM | GLIC Ingeniería">
+    <meta property="og:title" content="Regularización de Viviendas y Ampliaciones | GLIC Ingeniería">
     <meta property="og:description"
-        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales (DOM) en Chile. Levantamiento técnico, planos y expedientes con GLIC Ingeniería.">
+        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales. Levantamiento, planos, antecedentes técnicos y apoyo en la tramitación.">
     <meta property="og:image" content="https://glic.cl/assets/servicios_regularizacion.jpg">
     <meta property="og:url" content="https://glic.cl/regularizacion.html">
     
@@ -716,388 +716,463 @@
         }
 
         /* ==========================================================================
-           5. FORMULARIO DE CONTACTO UNIFICADO WIDESCREEN
+           SECCIÓN CONTACTO ENMARCADA (COMPACTA - 3/4 ALTURA)
            ========================================================================== */
-        #contacto {
-            padding: clamp(4rem, 6vw, 6rem) 0;
-            background-color: var(--bg-main);
+        #contacto.contact-section-wrapper {
             position: relative;
+            scroll-margin-top: var(--header-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1rem, 3vw, 2.5rem);
+            background-color: var(--bg-main);
+            transition: background-color var(--transition-speed) ease;
+            width: 100%;
         }
 
-        .contact-container {
-            width: 92%;
-            max-width: 1320px;
-            margin: 0 auto;
-        }
-
-        .contact-header-wrap {
-            text-align: center;
-            max-width: 780px;
-            margin: 0 auto clamp(2.5rem, 4vw, 3.5rem) auto;
-        }
-
-        .contact-section-title {
-            font-family: var(--font-title);
-            font-size: clamp(2rem, 3.8vw, 2.8rem);
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-lead-desc {
-            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin: 0 auto;
-        }
-
-        .contact-split-box {
+        /* Tarjeta Marco Exterior con bordes redondeados */
+        .contact-card-frame {
+            width: 100%;
+            max-width: 1140px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: clamp(2rem, 4vw, 3.2rem);
-            box-shadow: var(--shadow-lg);
-            display: grid;
-            grid-template-columns: 1.35fr auto 1fr;
-            gap: clamp(2rem, 3.5vw, 3.5rem);
-            align-items: stretch;
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            border-radius: var(--r-xl);
+            padding: clamp(0.9rem, 1.8vw, 1.6rem);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-speed) ease;
+            min-width: 0;
         }
 
-        [data-theme="light"] .contact-split-box {
+        [data-theme="light"] #contacto.contact-section-wrapper {
+            background-color: var(--bg-main);
+        }
+
+        [data-theme="light"] .contact-card-frame {
             background: #ffffff;
             border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
         }
 
-        .contact-form-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .contact-form-header {
-            margin-bottom: 1.8rem;
-        }
-
-        .contact-form-title {
-            font-family: var(--font-title);
-            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
-            font-weight: 800;
-            color: var(--text-heading);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-form-subtitle {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .contact-split-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .contact-form-row-duo {
+        /* Cuadrícula Interna: 2 Columnas en Escritorio */
+        .contact-inner-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(1.2rem, 2.5vw, 2.2rem);
+            align-items: stretch;
+            min-width: 0;
         }
 
-        .contact-form-group {
+        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados */
+        .contact-media-card {
+            position: relative;
+            border-radius: var(--r-lg);
+            background: url('assets/servicios_regularizacion.jpg') center center / cover no-repeat;
+            overflow: hidden;
+            min-height: 380px;
+        }
+
+        /* LADO DERECHO: Formulario con Trazado de Líneas Minimalista */
+        .contact-form-content {
             display: flex;
             flex-direction: column;
-            gap: 0.45rem;
-        }
-
-        .contact-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-heading);
-            font-family: var(--font-title);
-        }
-
-        .contact-input-control {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: var(--r-sm);
-            color: var(--input-color);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: all var(--transition-speed) ease;
-            box-sizing: border-box;
-        }
-
-        .contact-input-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--bg-card);
-            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
-        }
-
-        [data-theme="light"] .contact-input-control {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .contact-input-control:focus {
-            background: #ffffff;
-            border-color: var(--primary);
-        }
-
-        .contact-select-control {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            background-size: 16px;
-            padding-right: 2.5rem;
-        }
-
-        textarea.contact-input-control {
-            min-height: 120px;
-            resize: vertical;
-            line-height: 1.5;
-        }
-
-        .contact-form-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin-top: 0.5rem;
-        }
-
-        .contact-btn-submit {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: var(--primary);
-            color: #000;
-            font-weight: 800;
-            font-family: var(--font-title);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 1.05rem 2rem;
-            border: none;
-            border-radius: var(--r-sm);
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+            padding: clamp(0.2rem, 0.8vw, 0.8rem) 0;
+            min-width: 0;
         }
 
-        .contact-btn-submit:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+        .contact-pane-header {
+            margin-bottom: 0.85rem;
+            max-width: 100%;
         }
 
-        .contact-form-privacy {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .contact-vertical-divider {
-            width: 1px;
-            background: var(--border);
-            min-height: 100%;
-        }
-
-        .contact-direct-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1.8rem;
-        }
-
-        .contact-panel-tag {
-            display: inline-block;
-            color: var(--primary);
+        .contact-pane-tag {
             font-family: var(--font-title);
             font-size: 0.72rem;
-            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .contact-panel-title {
+        .contact-pane-title {
             font-family: var(--font-title);
-            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            max-width: 100%;
         }
 
-        .contact-panel-desc {
-            font-size: 0.9rem;
+        [data-theme="light"] .contact-pane-title {
+            color: var(--primary);
+        }
+
+        .contact-pane-desc {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            font-weight: 400;
+            line-height: 1.45;
+            max-width: 100%;
+            overflow-wrap: anywhere;
         }
 
-        .contact-quick-actions {
+        [data-theme="light"] .contact-pane-desc {
+            color: #64748b;
+        }
+
+        .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 1.05rem;
+            min-width: 0;
         }
 
-        .contact-action-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.9rem 1.15rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover {
-            border-color: var(--primary);
-            background: var(--primary-dim);
-            transform: translateX(4px);
-        }
-
-        .contact-action-card .action-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            background: rgba(255, 153, 0, 0.12);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover .action-icon {
-            background: var(--primary);
-            color: #000;
-        }
-
-        .contact-action-card.whatsapp-action:hover .action-icon {
-            background: #25d366;
-            color: #fff;
-        }
-
-        .action-meta {
+        .form-line-group {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-width: 0;
         }
 
-        .action-label {
-            font-size: 0.74rem;
+        .form-line-label {
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 700;
             text-transform: uppercase;
-            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+            transition: color var(--transition-speed) ease;
         }
 
-        .action-val {
+        [data-theme="light"] .form-line-label {
+            color: #64748b;
+        }
+
+        .form-line-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font-body);
             font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 0.45rem 0;
+            transition: border-color var(--transition-speed) ease;
+            box-sizing: border-box;
+            border-radius: 0;
+            outline: none;
+            min-height: 38px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .contact-highlights-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.1rem;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed var(--border);
-            border-radius: var(--r-sm);
+        [data-theme="light"] .form-line-input {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
         }
 
-        [data-theme="light"] .contact-highlights-list {
-            background: rgba(0, 0, 0, 0.02);
+        .form-line-input::placeholder {
+            color: rgba(255, 255, 255, 0.28);
         }
 
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        [data-theme="light"] .form-line-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-line-group:focus-within .form-line-label {
+            color: var(--primary);
+        }
+
+        .select-line-control {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.2rem center;
+            background-size: 0.9em;
+            padding-right: 1.5rem;
+        }
+
+        .select-line-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .select-line-control option {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .textarea-line-control {
+            resize: vertical;
+            min-height: 65px;
             line-height: 1.45;
         }
 
-        .highlight-item strong {
-            color: var(--text-heading);
+        .form-line-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            min-width: 0;
         }
 
-        .highlight-bullet {
-            font-size: 1rem;
-            line-height: 1.2;
-            flex-shrink: 0;
-        }
-
-        .contact-panel-footer-logo {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        .form-submit-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.35rem;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
-        .contact-panel-footer-logo .logo-text {
+        .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1.8rem;
             font-family: var(--font-title);
+            font-size: 15px;
             font-weight: 800;
-            font-size: 0.95rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: var(--r-sm);
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            white-space: normal;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .contact-btn-clean:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-light);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
+        }
+
+        [data-theme="light"] .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+        }
+
+        [data-theme="light"] .contact-btn-clean:hover {
+            background: var(--primary-light);
+            color: #000000;
+            border-color: var(--primary-light);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
+        }
+
+        .contact-btn-clean:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .contact-btn-clean.is-loading {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .contact-direct-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .contact-direct-links a {
             color: var(--text-heading);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            white-space: nowrap;
+            display: inline-block;
         }
 
-        @media (max-width: 960px) {
-            .contact-split-box {
+        .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .contact-direct-links a {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .contact-direct-links span {
+            color: var(--border);
+        }
+
+        /* Trampa honeypot invisible para bots */
+        .form-honeypot {
+            position: absolute !important;
+            left: -9999px !important;
+            top: auto !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .form-status {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.35rem;
+            min-height: 1.2em;
+        }
+
+        .form-status.is-error {
+            color: #ef4444;
+        }
+
+        /* Responsividad Mejorada Contacto (3/4 altura) */
+        @media (max-width: 980px) {
+            #contacto.contact-section-wrapper {
+                align-items: flex-start;
+                padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
+            }
+
+            .contact-inner-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: clamp(1rem, 2.5vw, 1.6rem);
             }
 
-            .contact-vertical-divider {
+            .contact-media-card {
+                min-height: clamp(165px, 28vw, 225px);
+            }
+
+            .contact-form-content {
+                padding-top: 0;
+                padding-bottom: 0.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #contacto.contact-section-wrapper {
+                padding: 0.75rem 0.65rem max(1rem, env(safe-area-inset-bottom));
+            }
+
+            .contact-card-frame {
+                border-radius: 14px;
+                padding: clamp(0.75rem, 2.5vw, 1rem);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .contact-inner-grid {
+                gap: 1rem;
+            }
+
+            .contact-media-card {
+                min-height: 155px;
+            }
+
+            .contact-pane-header {
+                margin-bottom: 0.9rem;
+            }
+
+            .contact-pane-tag {
+                font-size: 0.64rem;
+                letter-spacing: 1.2px;
+            }
+
+            .contact-pane-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.45rem);
+                line-height: 1.2;
+            }
+
+            .contact-pane-desc {
+                font-size: 0.84rem;
+                line-height: 1.45;
+            }
+
+            .contact-underline-form {
+                gap: 0.9rem;
+            }
+
+            .form-line-duo {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .form-line-label {
+                font-size: 0.66rem;
+                letter-spacing: 0.8px;
+            }
+
+            .form-line-input {
+                min-height: 42px;
+                padding: 0.5rem 0;
+            }
+
+            textarea.form-line-input {
+                min-height: 6rem;
+            }
+
+            .form-submit-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-top: 0.2rem;
+            }
+
+            .contact-direct-links {
+                justify-content: flex-start;
+                font-size: 0.78rem;
+                line-height: 1.45;
+                gap: 0.5rem;
+            }
+
+            .contact-btn-clean {
                 width: 100%;
-                height: 1px;
-                min-height: 1px;
-            }
-
-            .contact-btn-submit {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-panel-footer-logo {
                 justify-content: center;
+                padding: 0.75rem 1rem;
+                min-height: 44px;
             }
         }
 
-        @media (max-width: 600px) {
-            .contact-form-row-duo {
-                grid-template-columns: 1fr;
+        @media (max-width: 380px) {
+            .contact-card-frame {
+                padding: 0.65rem;
             }
 
-            .contact-section-title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
+            .contact-media-card {
+                min-height: 135px;
+            }
+
+            .contact-direct-links {
+                font-size: 0.74rem;
+                gap: 0.42rem;
             }
         }
 
@@ -1357,20 +1432,19 @@
         <section class="service-hero">
             <div class="container">
                 <div class="hero-card">
-                    <div class="hero-badge">Gestión Municipal y Regularizaciones DOM</div>
-                    <h2 class="hero-title">Regularización de <span class="text-gradient">Viviendas y Ampliaciones</span></h2>
+                    <div class="hero-badge">Regularización y Tramitación DOM</div>
+                    <h1 class="hero-title">Regularización de <span class="text-gradient">Viviendas y Ampliaciones</span></h1>
                     <p class="hero-desc">
-                        Evita multas, aumenta la plusvalía comercial y obtén la Recepción Final definitiva para tu propiedad. En GLIC Ingeniería desarrollamos el expediente técnico oficial exigido por la Dirección de Obras Municipales (DOM) en todo Chile, tanto mediante leyes especiales de regularización simplificada (Ley del Mono N° 20.898) como por el procedimiento ordinario de la Ordenanza General de Urbanismo y Construcciones (OGUC).
+                        Desarrollamos los antecedentes técnicos necesarios para regularizar viviendas, ampliaciones y otras construcciones existentes ante la Dirección de Obras Municipales. Evaluamos la situación de la propiedad y definimos la documentación requerida según el caso.
                     </p>
                     <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">Ley 20.898 (Ley del Mono)</span>
-                        <span class="tool-badge featured">OGUC / D.S. 47</span>
-                        <span class="tool-badge">DOM Municipal</span>
-                        <span class="tool-badge">Recepción Final</span>
-                        <span class="tool-badge">Levantamiento As-Built</span>
-                        <span class="tool-badge">Cálculo de Estabilidad</span>
+                        <span class="tool-badge featured">DOM</span>
+                        <span class="tool-badge featured">OGUC</span>
+                        <span class="tool-badge featured">Ley 20.898</span>
+                        <span class="tool-badge">Planos</span>
+                        <span class="tool-badge">Levantamiento en terreno</span>
                     </div>
-                    <a href="#contacto" class="cta-btn">Cotizar Regularización DOM &rarr;</a>
+                    <a href="#contacto" class="cta-btn">Cotizar Regularización &rarr;</a>
                 </div>
             </div>
         </section>
@@ -1378,35 +1452,31 @@
         <!-- 1. VIVIENDAS EXISTENTES -->
         <section id="viviendas" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Marco Legal y Vías de Aprobación</span>
+                <span class="area-tag">01. Regularización de Viviendas</span>
                 <h3 class="section-title">Regularización de <span class="text-gradient">Viviendas Existentes</span></h3>
                 <p class="section-lead">
-                    Tramitación formal de inmuebles construidos sin permiso de edificación previo, habilitando su venta mediante crédito hipotecario bancario y asegurando su tasación comercial real.
+                    Apoyo técnico para regularizar construcciones que no cuentan con todos sus antecedentes o permisos, según el procedimiento aplicable.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>Vías de Regularización ante la DOM</h4>
+                        <h4>Evaluación del inmueble y definición del procedimiento</h4>
                         <p>
-                            Evaluamos rigurosamente los antecedentes técnicos, constructivos y legales de tu inmueble para determinar la vía más rápida y económica de ingreso ante la Dirección de Obras Municipales de tu comuna.
+                            Revisamos la situación reglamentaria y constructiva de la propiedad para estructurar el expediente correspondiente ante la Dirección de Obras Municipales.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Ley del Mono (Ley N° 20.898 y prórrogas):</strong> Procedimiento de regularización simplificada para viviendas sociales, autoconstrucciones o microempresas familiares que cumplan límites de avalúo fiscal y superficie máxima.</span>
+                                <span><strong>Revisión de antecedentes existentes:</strong> Análisis de títulos, certificados de informaciones previas (CIP) y permisos anteriores.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Permiso de Edificación Ordinario OGUC:</strong> Regularización integral para viviendas que sobrepasan los límites de leyes excepcionales, tramitando expediente de edificación con memorias de cálculo sismorresistente.</span>
+                                <span><strong>Evaluación de la vía de regularización aplicable:</strong> Definición del marco normativo correspondiente (leyes especiales o procedimiento general OGUC).</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Subsanación de observaciones municipales:</strong> Respuesta técnica integral a actas de observaciones emitidas por revisores de la DOM hasta lograr la aprobación definitiva del expediente.</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Certificados de Informaciones Previas (CIP):</strong> Estudio de zonificación del Plano Regulador Comunal (PRC), coeficientes de constructibilidad, ocupación de suelo y distanciamientos reglamentarios.</span>
+                                <span><strong>Desarrollo del expediente técnico requerido:</strong> Elaboración de planos de arquitectura, memorias y formularios oficiales.</span>
                             </li>
                         </ul>
                     </div>
@@ -1421,10 +1491,10 @@
         <!-- 2. AMPLIACIONES EXISTENTES -->
         <section id="ampliaciones" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Obras Posteriores y Ampliaciones</span>
-                <h3 class="section-title">Levantamiento de <span class="text-gradient">Ampliaciones Existentes</span></h3>
+                <span class="area-tag">02. Ampliaciones y Construcciones Existentes</span>
+                <h3 class="section-title">Regularización de <span class="text-gradient">Ampliaciones</span></h3>
                 <p class="section-lead">
-                    Levantamiento métrico y estructural en terreno para regularizar segundos pisos, quinchos, ampliaciones de estar, recintos habitables y cobertizos.
+                    Levantamiento y documentación de ampliaciones, segundos pisos y construcciones existentes.
                 </p>
 
                 <div class="editorial-split reverse">
@@ -1433,27 +1503,23 @@
                     </div>
 
                     <div class="editorial-text">
-                        <h4>Inspección Profesional en Terreno y Planos As-Built</h4>
+                        <h4>Del terreno a los planos</h4>
                         <p>
-                            Un ingeniero civil realiza el levantamiento exhaustivo de lo efectivamente construido, verificando materialidad, escuadrías, fundaciones y estado estructural para garantizar seguridad y viabilidad normativa.
+                            Un profesional realiza la inspección directa de lo edificado para levantar las dimensiones reales y verificar la coherencia constructiva.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Medición y catastro milimétrico:</strong> Levantamiento arquitectónico en terreno de muros, vanos, recintos, alturas libres, rasantes y adosamientos.</span>
+                                <span><strong>Levantamiento en terreno:</strong> Medición métrica de recintos, muros, alturas libres, adosamientos y distanciamientos.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Inspección estructural de vigas y columnas:</strong> Revisión de elementos soportantes en madera, acero o albañilería, identificando refuerzos necesarios para garantizar estabilidad sísmica.</span>
+                                <span><strong>Desarrollo de planos de arquitectura:</strong> Elaboración de planimetría en planta, cortes y fachadas conforme a los estándares de la DOM.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Planimetría As-Built oficial:</strong> Planos de ubicación, emplazamiento, arquitectura por niveles, cortes y fachadas conforme al formato y escalas exigidas por la DOM.</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Verificación de habitabilidad y seguridad:</strong> Cumplimiento de normas de iluminación, ventilación natural, resistencia al fuego (F-30, F-60) y aislamiento térmico (Art. 4.1.10 OGUC).</span>
+                                <span><strong>Revisión estructural cuando corresponda:</strong> Inspección de elementos soportantes e informes técnicos para verificar la estabilidad de la obra.</span>
                             </li>
                         </ul>
                     </div>
@@ -1464,36 +1530,32 @@
         <!-- 3. EXPEDIENTES TÉCNICOS DOM -->
         <section id="expedientes" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Dossier Oficial y Beneficios</span>
-                <h3 class="section-title">Expedientes Técnicos DOM y <span class="text-gradient">Recepción Final</span></h3>
+                <span class="area-tag">03. Expediente y Tramitación</span>
+                <h3 class="section-title">Antecedentes Técnicos para <span class="text-gradient">la DOM</span></h3>
                 <p class="section-lead">
-                    Elaboramos la carpeta técnica completa timbrada por ingenieros civiles y gestionamos el proceso hasta la obtención del Certificado de Recepción Definitiva.
+                    Desarrollo de la documentación necesaria para presentar el proyecto ante la Dirección de Obras Municipales.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
-                        <h4>Dossier Oficial y Formularios MINVU</h4>
-                        <p>Preparación y firma de formularios oficiales (Formulario Único de Estadísticas de Edificación, solicitudes DOM, declaraciones juradas de dominio y responsabilidad profesional).</p>
+                        <h4>Planos y antecedentes técnicos</h4>
+                        <p>Confección de carpetas completas con formularios oficiales, planos acotados y especificaciones técnicas resumidas.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Informes y Memorias de Estabilidad</h4>
-                        <p>Memoria de cálculo sismorresistente o informe de estabilidad estructural suscrito por ingeniero civil colegiado para certificar la solidez y seguridad del inmueble.</p>
+                        <h4>Informes estructurales cuando corresponda</h4>
+                        <p>Elaboración de memorias o informes de estabilidad suscritos por ingeniero civil para certificar la seguridad de la edificación.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Incremento de Plusvalía y Venta Bancaria</h4>
-                        <p>Legalización que permite tasar el 100% de los metros construidos, facilitando la venta mediante créditos hipotecarios bancarios y traspasos hereditarios sin observaciones.</p>
-                    </div>
-                    <div class="pillar-item">
-                        <h4>Blindaje Legal y Exención de Multas</h4>
-                        <p>Regularizar formalmente extingue el riesgo de clausuras, multas municipales acumulativas o decretos de demolición ante fiscalizaciones de la Dirección de Obras.</p>
+                        <h4>Apoyo frente a observaciones</h4>
+                        <p>Acompañamiento técnico y corrección oportuna de actas o alcances emitidos durante la revisión municipal.</p>
                     </div>
                 </div>
 
                 <!-- Callout de Enlace Contextual a Proyectos Sanitarios -->
                 <div class="cross-link-box">
                     <div class="cross-link-text">
-                        <h3>¿Tu regularización también requiere agua potable o alcantarillado?</h3>
-                        <p>Para obtener la recepción final municipal, la DOM exige obligatoriamente el certificado de dotación de servicios sanitarios emitido por la empresa concesionaria o SEREMI de Salud. En GLIC desarrollamos y regularizamos tus proyectos sanitarios integrales.</p>
+                        <h3>Regularización de la Edificación y sus Instalaciones</h3>
+                        <p>Cuando el proyecto requiere regularizar tanto la construcción como sus instalaciones sanitarias, GLIC puede coordinar ambos componentes.</p>
                     </div>
                     <div>
                         <a href="sanitarios.html" class="cross-link-btn">Ver Proyectos Sanitarios &rarr;</a>
@@ -1502,141 +1564,79 @@
             </div>
         </section>
 
-        <!-- Formulario de Contacto General Widescreen -->
-        <section id="contacto">
-            <div class="contact-container">
-                <div class="contact-header-wrap">
-                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
-                    <p class="contact-lead-desc">Inicia la regularización de tu propiedad con nosotros. Cuéntanos las características de tu inmueble y te responderemos con una evaluación técnica en pocas horas.</p>
-                </div>
+        <!-- =============================================================
+             SECCIÓN DE CONTACTO ENMARCADA (RESPONSIVE MEJORADO)
+             ============================================================= -->
+        <section id="contacto" class="contact-section-wrapper">
+            <!-- Tarjeta Exterior Enmarcada con bordes redondeados -->
+            <div class="contact-card-frame">
+                <div class="contact-inner-grid">
 
-                <div class="contact-split-box">
-                    <!-- Columna Izquierda: Formulario Widescreen -->
-                    <div class="contact-form-column">
-                        <div class="contact-form-header">
-                            <h3 class="contact-form-title">Cotizar Regularización Municipal</h3>
-                            <p class="contact-form-subtitle">Completa el formulario y un ingeniero civil evaluará tu caso técnico para indicarte el procedimiento óptimo.</p>
+                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
+                    <div class="contact-media-card" aria-label="Regularización de viviendas y edificaciones"></div>
+
+                    <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
+                    <div class="contact-form-content">
+                        <div class="contact-pane-header">
+                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
+                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
                         </div>
 
-                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                        <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
                             <input type="hidden" name="subject" value="Cotización Regularización Viviendas - GLIC Web">
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
-                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Particular / Juan Pérez" required autocomplete="name">
+                            <!-- Campo 1: Nombre o Empresa -->
+                            <div class="form-line-group">
+                                <label for="contact-nombre" class="form-line-label">Nombre o empresa *</label>
+                                <input type="text" id="contact-nombre" name="nombre" class="form-line-input" placeholder="Nombre o razón social" required autocomplete="name" autocapitalize="words" enterkeyhint="next">
+                            </div>
+
+                            <!-- Campos 2 y 3: Correo y Teléfono -->
+                            <div class="form-line-duo">
+                                <div class="form-line-group">
+                                    <label for="contact-email" class="form-line-label">Correo electrónico *</label>
+                                    <input type="email" id="contact-email" name="email" class="form-line-input" placeholder="correo@dominio.cl" required autocomplete="email" inputmode="email" enterkeyhint="next">
                                 </div>
-                                <div class="contact-form-group">
-                                    <label for="email" class="contact-label">Correo Electrónico *</label>
-                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                <div class="form-line-group">
+                                    <label for="contact-tel" class="form-line-label">Teléfono / WhatsApp (opcional)</label>
+                                    <input type="tel" id="contact-tel" name="telefono" class="form-line-input" placeholder="+56 9 XXXX XXXX" autocomplete="tel" inputmode="tel" enterkeyhint="next">
                                 </div>
                             </div>
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
-                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
-                                </div>
-                                <div class="contact-form-group">
-                                    <label for="tipo_tramite" class="contact-label">Tipo de Regularización</label>
-                                    <select id="tipo_tramite" name="tipo_tramite" class="contact-input-control contact-select-control">
-                                        <option value="Regularizacion-LeyMono">Regularización Ley del Mono (Ley 20.898)</option>
-                                        <option value="Regularizacion-General">Regularización General Vivienda (OGUC)</option>
-                                        <option value="Ampliacion-Existente">Regularización de Ampliación / Segundo Piso</option>
-                                        <option value="Expediente-DOM">Expediente Técnico y Recepción Final DOM</option>
-                                        <option value="Otro-Regularizacion">Otra consulta de regularización o edificación</option>
-                                    </select>
-                                </div>
+                            <!-- Campo 4: Mensaje / Antecedentes -->
+                            <div class="form-line-group">
+                                <label for="contact-mensaje" class="form-line-label">Antecedentes del proyecto *</label>
+                                <textarea id="contact-mensaje" name="antecedentes_proyecto" class="form-line-input textarea-line-control" placeholder="Indica ubicación, superficie aproximada, tipo de obra y antecedentes relevantes." required></textarea>
                             </div>
 
-                            <div class="contact-form-group">
-                                <label for="mensaje" class="contact-label">Detalles de la Propiedad *</label>
-                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica comuna donde se ubica el inmueble, metros cuadrados aproximados de la vivienda o ampliación, año estimado de construcción y si cuentas con permiso original..." required></textarea>
-                            </div>
-
-                            <div class="contact-form-footer">
-                                <button type="submit" class="contact-btn-submit">
+                            <!-- Fila de Envío y Enlaces Directos -->
+                            <div class="form-submit-row">
+                                <button type="submit" class="contact-btn-clean">
                                     <span>ENVIAR SOLICITUD</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>
-                                <p class="contact-form-privacy">Tus antecedentes serán tratados bajo estricta confidencialidad técnica.</p>
+
+                                <div class="contact-direct-links">
+                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                                    <span>&middot;</span>
+                                    <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                                </div>
                             </div>
+
+                            <!-- Campo trampa anti-spam: los usuarios reales no deben completarlo -->
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="contact-website">Sitio web</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <p id="form-status" class="form-status" aria-live="polite"></p>
                         </form>
                     </div>
 
-                    <!-- Divisor Vertical Sutil -->
-                    <div class="contact-vertical-divider" aria-hidden="true"></div>
-
-                    <!-- Columna Derecha: Canales Directos e Información Oficial -->
-                    <div class="contact-direct-column">
-                        <div class="contact-panel-info">
-                            <span class="contact-panel-tag">Atención Inmediata</span>
-                            <h4 class="contact-panel-title">Canales Directos</h4>
-                            <p class="contact-panel-desc">¿Tienes una notificación de la DOM o necesitas vender tu propiedad con crédito hipotecario pronto? Escríbenos directamente:</p>
-                        </div>
-
-                        <div class="contact-quick-actions">
-                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.275-.1-.476-.15-.677.15-.2.301-.777.978-.953 1.179-.176.2-.351.226-.652.075-1.479-.742-2.45-1.328-3.419-2.992-.257-.441.257-.409.734-1.362.08-.16.04-.301-.02-.451-.06-.15-.677-1.632-.928-2.235-.244-.587-.492-.507-.677-.516-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.802.376-.275.301-1.054 1.03-1.054 2.512 0 1.482 1.079 2.913 1.23 3.114.15.2 2.124 3.243 5.145 4.549 2.059.89 2.87.89 3.896.737.625-.093 1.78-.728 2.032-1.431.252-.703.252-1.305.176-1.431-.076-.126-.276-.201-.577-.351zM12.042 21.688c-1.87 0-3.647-.51-5.184-1.401l-.372-.218-3.856 1.011 1.029-3.759-.24-.382a9.664 9.664 0 0 1-1.48-5.186c0-5.352 4.354-9.706 9.708-9.706 2.593 0 5.031 1.01 6.865 2.844a9.66 9.66 0 0 1 2.843 6.864c0 5.353-4.354 9.707-9.708 9.707zm0-17.708c-4.412 0-8 3.588-8 8 0 1.547.44 2.993 1.203 4.225l.189.303-.612 2.235 2.29-.601.294.175a7.96 7.96 0 0 0 4.636 1.463c4.412 0 8-3.588 8-8 0-4.412-3.588-8-8-8z"/>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">WhatsApp Directo</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="tel:+56950321322" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Llamada Telefónica</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Correo Electrónico</span>
-                                    <span class="action-val">contacto@glic.cl</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="contact-highlights-list">
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Levantamiento métrico en terreno y planos <strong>As-Built oficiales</strong>.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Expediente completo para <strong>Recepción Final DOM</strong> sin trabas.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Validación de estabilidad suscrita por <strong>Ingeniero Civil</strong>.</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-panel-footer-logo">
-                            <span class="logo-text">GLIC INGENIERÍA</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1760,6 +1760,55 @@
                     metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
                 }
             });
+        }
+    
+        // Feedback visual durante el envío del formulario de contacto
+        const contactForm = document.querySelector('.contact-underline-form');
+        const submitBtn = contactForm?.querySelector('.contact-btn-clean');
+        const statusEl = document.getElementById('form-status');
+
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', () => {
+                const honeypot = document.getElementById('contact-website');
+
+                // Si un bot completa el campo trampa, no modificar la apariencia
+                if (honeypot && honeypot.value.trim() !== '') return;
+
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+                submitBtn.setAttribute('aria-disabled', 'true');
+                submitBtn.querySelector('span').textContent = 'ENVIANDO...';
+
+                if (statusEl) {
+                    statusEl.textContent = 'Enviando tu solicitud...';
+                    statusEl.classList.remove('is-error');
+                }
+            });
+        }
+
+        // Ocultar botón flotante al estar en el formulario de contacto o interactuar con los campos
+        const contactSectionEl = document.getElementById('contacto');
+        if (contactSectionEl && typeof fab !== 'undefined' && fab) {
+            contactSectionEl.addEventListener('focusin', () => {
+                fab.classList.remove('show-fab');
+                fab.classList.add('hide-fab');
+            });
+
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fab.classList.remove('show-fab');
+                        fab.classList.add('hide-fab');
+                    } else if (window.scrollY > 50) {
+                        fab.classList.add('show-fab');
+                        fab.classList.remove('hide-fab');
+                    }
+                });
+            }, {
+                threshold: [0, 0.05, 0.2]
+            });
+
+            contactObserver.observe(contactSectionEl);
         }
     </script>
 </body>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cálculo y Diseño Estructural | GLIC Ingeniería</title>
     <meta name="description"
-        content="Cálculo y diseño estructural sismorresistente en Chile: viviendas, galpones metálicos, estructuras industriales y temporales. Planos constructivos y memorias DOM.">
+        content="Diseño y cálculo estructural para viviendas, ampliaciones, estructuras metálicas y proyectos industriales. Ingeniería estructural y documentación técnica para construcción y tramitación.">
     <link rel="canonical" href="https://glic.cl/estructural.html">
 
     <!-- Open Graph -->
@@ -14,7 +14,7 @@
     <meta property="og:locale" content="es_CL">
     <meta property="og:title" content="Cálculo y Diseño Estructural | GLIC Ingeniería">
     <meta property="og:description"
-        content="Cálculo y diseño estructural sismorresistente en Chile: viviendas, galpones metálicos, estructuras industriales y temporales. Planos constructivos y memorias DOM.">
+        content="Diseño y cálculo estructural para viviendas, ampliaciones, estructuras metálicas y proyectos industriales. Ingeniería estructural y documentación técnica para construcción y tramitación.">
     <meta property="og:image" content="https://glic.cl/assets/servicios_galpones.jpg">
     <meta property="og:url" content="https://glic.cl/estructural.html">
 
@@ -586,479 +586,464 @@
         }
 
         /* ==========================================================================
-           7. FORMULARIO DE CONTACTO GENERAL (Widescreen Unificado)
+           SECCIÓN CONTACTO ENMARCADA (COMPACTA - 3/4 ALTURA)
            ========================================================================== */
-        #contacto {
+        #contacto.contact-section-wrapper {
+            position: relative;
+            scroll-margin-top: var(--header-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1rem, 3vw, 2.5rem);
+            background-color: var(--bg-main);
+            transition: background-color var(--transition-speed) ease;
             width: 100%;
-            position: relative;
-            padding: clamp(3.5rem, 6vh, 5.5rem) 0;
-            background: transparent;
-            z-index: 2;
         }
 
-        .contact-container {
-            width: 94%;
-            max-width: 1320px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-header-wrap {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto clamp(2rem, 4vh, 3rem) auto;
-        }
-
-        .contact-section-title {
-            font-family: var(--font-title);
-            font-size: clamp(2rem, 4.5vw, 3rem);
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-lead-desc {
-            font-size: clamp(0.95rem, 1.2vw, 1.08rem);
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .contact-split-box {
-            display: grid;
-            grid-template-columns: 1.35fr auto 1fr;
-            align-items: stretch;
-            gap: clamp(2rem, 3.5vw, 3.8rem);
+        /* Tarjeta Marco Exterior con bordes redondeados */
+        .contact-card-frame {
+            width: 100%;
+            max-width: 1140px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: clamp(2rem, 3.5vw, 3.5rem);
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            border-radius: var(--r-xl);
+            padding: clamp(0.9rem, 1.8vw, 1.6rem);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-speed) ease;
+            min-width: 0;
         }
 
-        /* Columna Izquierda: Formulario */
-        .contact-form-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        [data-theme="light"] #contacto.contact-section-wrapper {
+            background-color: var(--bg-main);
         }
 
-        .contact-form-header {
-            margin-bottom: 1.6rem;
+        [data-theme="light"] .contact-card-frame {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
         }
 
-        .contact-form-title {
-            font-family: var(--font-title);
-            font-size: clamp(1.2rem, 1.6vw, 1.45rem);
-            font-weight: 800;
-            color: var(--text-heading);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-form-subtitle {
-            font-size: clamp(0.88rem, 1.05vw, 0.96rem);
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .contact-split-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .contact-form-row-duo {
+        /* Cuadrícula Interna: 2 Columnas en Escritorio */
+        .contact-inner-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(1.2rem, 2.5vw, 2.2rem);
+            align-items: stretch;
+            min-width: 0;
         }
 
-        .contact-form-group {
+        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados */
+        .contact-media-card {
+            position: relative;
+            border-radius: var(--r-lg);
+            background: url('assets/servicios_industruales.jpg') center center / cover no-repeat;
+            overflow: hidden;
+            min-height: 380px;
+        }
+
+        /* LADO DERECHO: Formulario con Trazado de Líneas Minimalista */
+        .contact-form-content {
             display: flex;
             flex-direction: column;
-            gap: 0.45rem;
-            width: 100%;
-        }
-
-        .contact-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--text-muted);
-            font-family: var(--font-title);
-        }
-
-        .contact-input-control {
-            width: 100%;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: var(--input-color);
-            border-radius: var(--r-sm);
-            padding: 0.9rem 1.15rem;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
-            box-sizing: border-box;
-        }
-
-        .contact-select-control {
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1.1em;
-            padding-right: 2.5rem;
-            cursor: pointer;
-        }
-
-        .contact-select-control option {
-            background-color: var(--bg-card);
-            color: var(--text-main);
-        }
-
-        .contact-input-control::placeholder {
-            color: var(--input-placeholder);
-            opacity: 0.8;
-        }
-
-        .contact-input-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.22);
-        }
-
-        textarea.contact-input-control {
-            min-height: 145px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        .contact-form-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .contact-btn-submit {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: var(--primary);
-            color: #000000;
-            border: none;
-            border-radius: var(--r-sm);
-            padding: 1rem 2.5rem;
-            font-family: var(--font-title);
-            font-weight: 800;
-            font-size: 0.98rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            box-shadow: 0 4px 18px rgba(255, 153, 0, 0.35);
+            padding: clamp(0.2rem, 0.8vw, 0.8rem) 0;
+            min-width: 0;
         }
 
-        .contact-btn-submit:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 7px 24px rgba(255, 153, 0, 0.45);
+        .contact-pane-header {
+            margin-bottom: 0.85rem;
+            max-width: 100%;
         }
 
-        .contact-guarantee-note {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .contact-guarantee-note svg {
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        /* Divisor Vertical Elegante */
-        .contact-vertical-divider {
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
-            min-height: 100%;
-        }
-
-        /* Columna Derecha: Panel Informativo */
-        .contact-info-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1.8rem;
-        }
-
-        .contact-badge {
-            display: inline-block;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border: 1px solid rgba(255, 153, 0, 0.25);
-            padding: 4px 12px;
-            border-radius: 50px;
+        .contact-pane-tag {
             font-family: var(--font-title);
             font-size: 0.72rem;
-            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .contact-panel-title {
+        .contact-pane-title {
             font-family: var(--font-title);
-            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            max-width: 100%;
         }
 
-        .contact-panel-desc {
-            font-size: 0.9rem;
+        [data-theme="light"] .contact-pane-title {
+            color: var(--primary);
+        }
+
+        .contact-pane-desc {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            font-weight: 400;
+            line-height: 1.45;
+            max-width: 100%;
+            overflow-wrap: anywhere;
         }
 
-        .contact-quick-actions {
+        [data-theme="light"] .contact-pane-desc {
+            color: #64748b;
+        }
+
+        .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 1.05rem;
+            min-width: 0;
         }
 
-        .contact-action-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.9rem 1.15rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover {
-            border-color: var(--primary);
-            background: var(--primary-dim);
-            transform: translateX(4px);
-        }
-
-        .contact-action-card .action-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            background: rgba(255, 153, 0, 0.12);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover .action-icon {
-            background: var(--primary);
-            color: #000;
-        }
-
-        .contact-action-card.whatsapp-action:hover .action-icon {
-            background: #25d366;
-            color: #fff;
-        }
-
-        .action-meta {
+        .form-line-group {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-width: 0;
         }
 
-        .action-label {
-            font-size: 0.74rem;
+        .form-line-label {
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 700;
             text-transform: uppercase;
-            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+            transition: color var(--transition-speed) ease;
         }
 
-        .action-val {
+        [data-theme="light"] .form-line-label {
+            color: #64748b;
+        }
+
+        .form-line-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font-body);
             font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 0.45rem 0;
+            transition: border-color var(--transition-speed) ease;
+            box-sizing: border-box;
+            border-radius: 0;
+            outline: none;
+            min-height: 38px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .contact-highlights-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.1rem;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed var(--border);
-            border-radius: var(--r-sm);
+        [data-theme="light"] .form-line-input {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
         }
 
-        [data-theme="light"] .contact-highlights-list {
-            background: rgba(0, 0, 0, 0.02);
+        .form-line-input::placeholder {
+            color: rgba(255, 255, 255, 0.28);
         }
 
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        [data-theme="light"] .form-line-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-line-group:focus-within .form-line-label {
+            color: var(--primary);
+        }
+
+        .select-line-control {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.2rem center;
+            background-size: 0.9em;
+            padding-right: 1.5rem;
+        }
+
+        .select-line-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .select-line-control option {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .textarea-line-control {
+            resize: vertical;
+            min-height: 65px;
             line-height: 1.45;
         }
 
-        .highlight-item strong {
-            color: var(--text-heading);
+        .form-line-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            min-width: 0;
         }
 
-        .highlight-bullet {
-            color: var(--primary);
-            font-size: 0.75rem;
-            line-height: 1.5;
-            flex-shrink: 0;
-        }
-
-        /* Logo Oficial GLIC al pie del panel */
-        .contact-panel-footer-logo {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        .form-submit-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.35rem;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
-        .contact-panel-footer-logo .logo-text {
+        .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1.8rem;
             font-family: var(--font-title);
+            font-size: 15px;
             font-weight: 800;
-            font-size: 0.95rem;
             letter-spacing: 1px;
-            color: var(--text-heading);
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: var(--r-sm);
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            white-space: normal;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
         }
 
-        @media (max-width: 960px) {
-            .contact-split-box {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .contact-vertical-divider {
-                width: 100%;
-                height: 1px;
-                min-height: 1px;
-            }
-
-            .contact-btn-submit {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-panel-footer-logo {
-                justify-content: center;
-            }
+        .contact-btn-clean:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-light);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
         }
 
-        @media (max-width: 600px) {
-            .contact-form-row-duo {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-section-title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
-            }
-        }
-
-        /* Reglas Tema Claro Contacto */
-        [data-theme="light"] .contact-lead-desc {
-            color: #475569;
-        }
-
-        [data-theme="light"] .contact-split-box {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="light"] .contact-form-title {
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .contact-form-subtitle {
-            color: #64748b;
-        }
-
-        [data-theme="light"] .contact-label {
-            color: #475569;
-        }
-
-        [data-theme="light"] .contact-panel-title {
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .contact-panel-desc {
-            color: #64748b;
-        }
-
-        [data-theme="light"] .contact-action-card {
-            background: #f8fafc;
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .contact-action-card:hover {
-            background: rgba(255, 153, 0, 0.08);
+        [data-theme="light"] .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
             border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
         }
 
-        [data-theme="light"] .action-val {
+        [data-theme="light"] .contact-btn-clean:hover {
+            background: var(--primary-light);
+            color: #000000;
+            border-color: var(--primary-light);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
+        }
+
+        .contact-btn-clean:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .contact-btn-clean.is-loading {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .contact-direct-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .contact-direct-links a {
+            color: var(--text-heading);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .contact-direct-links a {
             color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
         }
 
-        [data-theme="light"] .action-label {
-            color: #64748b;
+        [data-theme="light"] .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
         }
 
-        [data-theme="light"] .contact-highlights-list {
-            background: #f8fafc;
-            border-color: rgba(0, 0, 0, 0.1);
+        .contact-direct-links span {
+            color: var(--border);
         }
 
-        [data-theme="light"] .highlight-item {
-            color: #475569;
+        /* Trampa honeypot invisible para bots */
+        .form-honeypot {
+            position: absolute !important;
+            left: -9999px !important;
+            top: auto !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
 
-        [data-theme="light"] .highlight-item strong {
-            color: #0f172a;
+        .form-status {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.35rem;
+            min-height: 1.2em;
         }
 
-        [data-theme="light"] .contact-panel-footer-logo {
-            border-top-color: rgba(0, 0, 0, 0.08);
+        .form-status.is-error {
+            color: #ef4444;
         }
 
-        [data-theme="light"] .contact-panel-footer-logo .logo-text {
-            color: #0f172a;
+        /* Responsividad Mejorada Contacto (3/4 altura) */
+        @media (max-width: 980px) {
+            #contacto.contact-section-wrapper {
+                align-items: flex-start;
+                padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
+            }
+
+            .contact-inner-grid {
+                grid-template-columns: 1fr;
+                gap: clamp(1rem, 2.5vw, 1.6rem);
+            }
+
+            .contact-media-card {
+                min-height: clamp(165px, 28vw, 225px);
+            }
+
+            .contact-form-content {
+                padding-top: 0;
+                padding-bottom: 0.25rem;
+            }
         }
 
-        [data-theme="light"] .contact-vertical-divider {
-            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, transparent);
+        @media (max-width: 640px) {
+            #contacto.contact-section-wrapper {
+                padding: 0.75rem 0.65rem max(1rem, env(safe-area-inset-bottom));
+            }
+
+            .contact-card-frame {
+                border-radius: 14px;
+                padding: clamp(0.75rem, 2.5vw, 1rem);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .contact-inner-grid {
+                gap: 1rem;
+            }
+
+            .contact-media-card {
+                min-height: 155px;
+            }
+
+            .contact-pane-header {
+                margin-bottom: 0.9rem;
+            }
+
+            .contact-pane-tag {
+                font-size: 0.64rem;
+                letter-spacing: 1.2px;
+            }
+
+            .contact-pane-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.45rem);
+                line-height: 1.2;
+            }
+
+            .contact-pane-desc {
+                font-size: 0.84rem;
+                line-height: 1.45;
+            }
+
+            .contact-underline-form {
+                gap: 0.9rem;
+            }
+
+            .form-line-duo {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .form-line-label {
+                font-size: 0.66rem;
+                letter-spacing: 0.8px;
+            }
+
+            .form-line-input {
+                min-height: 42px;
+                padding: 0.5rem 0;
+            }
+
+            textarea.form-line-input {
+                min-height: 6rem;
+            }
+
+            .form-submit-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-top: 0.2rem;
+            }
+
+            .contact-direct-links {
+                justify-content: flex-start;
+                font-size: 0.78rem;
+                line-height: 1.45;
+                gap: 0.5rem;
+            }
+
+            .contact-btn-clean {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1rem;
+                min-height: 44px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .contact-card-frame {
+                padding: 0.65rem;
+            }
+
+            .contact-media-card {
+                min-height: 135px;
+            }
+
+            .contact-direct-links {
+                font-size: 0.74rem;
+                gap: 0.42rem;
+            }
         }
 
         /* ==========================================================================
@@ -1257,52 +1242,51 @@
         <section class="service-hero">
             <div class="container">
                 <div class="hero-card">
-                    <div class="hero-badge">Ingeniería Estructural de Precisión</div>
-                    <h2 class="hero-title">Cálculo y <span class="text-gradient">Diseño Estructural</span></h2>
+                    <div class="hero-badge">Ingeniería Estructural</div>
+                    <h1 class="hero-title">Cálculo y <span class="text-gradient">Diseño Estructural</span></h1>
                     <p class="hero-desc">
-                        Desarrollamos proyectos de cálculo estructural sismorresistente con estricto cumplimiento normativo chileno (NCh433, NCh2369, NCh432, NCh431). Diseñamos soluciones eficientes en acero estructural, hormigón armado, albañilería, madera y perfiles conformados en frío (Metalcon), respaldados por software de cálculo avanzado y entrega de expedientes completos para obra y aprobación DOM / SEREMI.
+                        Desarrollamos proyectos de cálculo y diseño estructural para viviendas, ampliaciones, estructuras metálicas y proyectos industriales. Buscamos soluciones seguras, eficientes y constructibles, considerando las características de cada proyecto y la normativa chilena aplicable.
                     </p>
                     <div class="tools-strip" style="margin-bottom: 2rem;">
                         <span class="tool-badge featured">ETABS</span>
                         <span class="tool-badge featured">SAP2000</span>
-                        <span class="tool-badge featured">Autodesk Robot</span>
-                        <span class="tool-badge">Revit BIM</span>
+                        <span class="tool-badge featured">Robot</span>
                         <span class="tool-badge">AutoCAD</span>
-                        <span class="tool-badge">AISC 360 / NCh 2369</span>
+                        <span class="tool-badge">Revit</span>
                     </div>
                     <a href="#contacto" class="cta-btn">Cotizar Proyecto Estructural &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <!-- 1. VIVIENDAS Y PROYECTOS HABITACIONALES -->
+        <!-- 1. VIVIENDAS Y EDIFICACIÓN -->
         <section id="viviendas" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Área Habitacional y Comercial</span>
-                <h3 class="section-title">Cálculo Estructural de <span class="text-gradient">Viviendas y Edificación</span></h3>
+                <span class="area-tag">01. Viviendas y Edificación</span>
+                <h3 class="section-title">Cálculo Estructural de <span class="text-gradient">Viviendas y Ampliaciones</span></h3>
                 <p class="section-lead">
-                    Diseño sismorresistente para residencias de alto estándar, conjuntos habitacionales y ampliaciones. Minimizamos el costo de construcción optimizando armaduras de acero, hormigón y madera sin comprometer la visión arquitectónica ni la seguridad.
+                    Diseño estructural para viviendas nuevas, ampliaciones y proyectos de edificación, adaptado a la arquitectura y a las condiciones particulares de cada obra.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>Soluciones a la Medida de la Arquitectura</h4>
+                        <h4>Soluciones estructurales adaptadas al proyecto</h4>
                         <p>
-                            Experiencia directa en proyectos residenciales de hasta más de 400 m², resolviendo terrenos de pendiente pronunciada, grandes luces libres sin columnas interiores y voladizos arquitectónicos demandantes bajo las normativas NCh433 y D.S. 61.
+                            Desarrollo desde el sistema resistente hasta la documentación necesaria para la ejecución y, cuando corresponda, la tramitación.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Materialidad versátil:</strong> Hormigón armado, albañilería confinada, marcos rígidos de acero, entramados de madera y perfiles de acero conformado en frío (Metalcon).</span>
+                                <span><strong>Diseño en diversas materialidades:</strong> Hormigón armado, albañilería, acero estructural, entramados de madera y perfiles conformados en frío.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Expediente municipal completo:</strong> Memoria de cálculo sismorresistente timbrada, planos de fundaciones, losas, muros y vigas acotados al milímetro.</span>
+                                <span><strong>Memorias de cálculo y planos estructurales:</strong> Documentación técnica detallada y planos constructivos acotados para obra y presentación municipal.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Planillas de enfierradura:</strong> Cubicaciones exactas de acero y hormigón para cotización transparente de materiales y ejecución en faena.</span>
+                                <span><strong>Optimización del diseño:</strong> Estructuración eficiente y cubicaciones claras según los requerimientos y condiciones del proyecto.</span>
                             </li>
                         </ul>
                     </div>
@@ -1314,13 +1298,13 @@
             </div>
         </section>
 
-        <!-- 2. GALPONES Y NAVES METÁLICAS -->
+        <!-- 2. ESTRUCTURAS METÁLICAS -->
         <section id="galpones" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Centros Logísticos y Acopio</span>
-                <h3 class="section-title">Galpones y <span class="text-gradient">Naves Metálicas</span></h3>
+                <span class="area-tag">02. Estructuras Metálicas</span>
+                <h3 class="section-title">Galpones y <span class="text-gradient">Estructuras Metálicas</span></h3>
                 <p class="section-lead">
-                    Diseño y dimensionamiento de estructuras de acero para bodegas industriales, packing agrícola, centros de distribución y recintos comerciales con cobertura en todo Chile.
+                    Diseño y cálculo de estructuras metálicas para galpones, bodegas, instalaciones industriales y otras construcciones en acero.
                 </p>
 
                 <div class="editorial-split reverse">
@@ -1329,23 +1313,23 @@
                     </div>
 
                     <div class="editorial-text">
-                        <h4>Optimización de Acero y Grandes Luces</h4>
+                        <h4>Diseño eficiente y constructible</h4>
                         <p>
-                            Diseñamos marcos rígidos y cerchas de alma abierta capaces de cubrir luces de más de 40 metros sin apoyos intermedios, maximizando el espacio operativo útil para maniobras y estanterías pesadas.
+                            Desarrollamos proyectos en acero optimizando secciones y uniones para facilitar el montaje en faena y asegurar un comportamiento estructural confiable.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Reducción de peso (kg/m²):</strong> Empleo de perfiles de inercia variable soldados y perfiles conformados en frío para reducir costos de fabricación y montaje.</span>
+                                <span><strong>Diseño de estructuras de acero:</strong> Marcos rígidos, cerchas, vigas reticuladas y perfiles conformados en frío.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Solicitaciones severas:</strong> Cálculo riguroso ante empujes de viento (NCh432), sobrecarga de nieve cordillerana (NCh431) y cargas dinámicas para puentes grúa.</span>
+                                <span><strong>Consideración de cargas y condiciones de uso:</strong> Análisis normativo ante viento, nieve, sismo y requerimientos operacionales.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Planos de fabricación y montaje:</strong> Detalles de uniones empernadas, placas base, pernos de anclaje y zapatas de fundación para maestranza.</span>
+                                <span><strong>Documentación técnica para ejecución:</strong> Planos de conjunto, detalles de uniones, placas base y especificaciones constructivas.</span>
                             </li>
                         </ul>
                     </div>
@@ -1353,201 +1337,139 @@
             </div>
         </section>
 
-        <!-- 3. ESTRUCTURAS INDUSTRIALES, MINERÍA Y BODEGAS SUSPEL -->
+        <!-- 3. PROYECTOS INDUSTRIALES -->
         <section id="industriales" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Minería, Forestal y Sustancias Peligrosas</span>
-                <h3 class="section-title">Estructuras <span class="text-gradient">Industriales Pesadas y SUSPEL</span></h3>
+                <span class="area-tag">03. Proyectos Industriales</span>
+                <h3 class="section-title">Estructuras <span class="text-gradient">Industriales</span></h3>
                 <p class="section-lead">
-                    Ingeniería especializada para plantas de procesos, faenas mineras e industria forestal bajo normativas AISC 360, NCh 2369 y D.S. 43.
+                    Ingeniería estructural para instalaciones industriales, forestales, mineras y otras obras en acero u hormigón.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
-                        <h4>Bodegas de Sustancias Peligrosas (SUSPEL)</h4>
+                        <h4>Estructuras y soportes industriales</h4>
                         <p>
-                            Diseño y catálogo completo de memorias de cálculo estructural para bodegas modulares y fijas destinadas a minería e industria química. Cumplimiento estricto de normativas ASME, D.S. 43 y NCh 382, gestionando la tramitación y aceptación técnica ante la <strong>SEREMI de Salud</strong>.
+                            Diseño de plataformas, pasarelas, soportes de cañerías y estructuras operativas adaptadas a las exigencias de faena.
                         </p>
                     </div>
 
                     <div class="pillar-item">
-                        <h4>Infraestructura Minera y Forestal</h4>
+                        <h4>Estructuras de acero</h4>
                         <p>
-                            Desarrollo de proyectos estructurales en acero para la industria forestal y plantas industriales: racks de cañerías (pipe racks), plataformas multinivel, silos, tolvas de áridos y fundaciones especiales con análisis dinámico de vibración para maquinaria pesada.
+                            Cálculo y dimensionamiento de naves, bodegas de almacenamiento e infraestructura auxiliar bajo normativa técnica vigente.
                         </p>
                     </div>
 
                     <div class="pillar-item">
-                        <h4>Refuerzo Estructural (Retrofitting)</h4>
+                        <h4>Adaptación y refuerzo de estructuras</h4>
                         <p>
-                            Evaluación patológica in situ, diagnóstico de capacidad residual y diseño de refuerzos en perfiles metálicos, encamisados de hormigón y fibra de carbono para adaptaciones operativas y aumentos de sobrecarga de servicio.
+                            Revisión y diseño de refuerzos para estructuras existentes ante modificaciones de carga o cambios en la operación cuando corresponda.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. ESTRUCTURAS TEMPORALES -->
+        <!-- 4. ESTRUCTURAS TEMPORALES Y SOLUCIONES ESPECIALES -->
         <section id="temporales" class="service-section">
             <div class="container">
-                <span class="area-tag">04. Eventos, Productoras y Obras</span>
-                <h3 class="section-title">Estructuras <span class="text-gradient">Temporales y Certificaciones</span></h3>
+                <span class="area-tag">04. Estructuras Temporales y Soluciones Especiales</span>
+                <h3 class="section-title">Estructuras Temporales y <span class="text-gradient">Soluciones Especiales</span></h3>
                 <p class="section-lead">
-                    Revisión, cálculo y certificación expedita de seguridad estructural para montajes efímeros, escenarios techados y faenas constructivas.
+                    Cálculo y revisión estructural para estructuras temporales, elementos auxiliares de obra y soluciones especiales.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
-                        <h4>Escenarios y Torres Truss</h4>
-                        <p>Verificación de capacidad portante, análisis aerodinámico ante ráfagas de viento y anclajes para techumbres, trusses de aluminio y torres de sonido (delay y line-array).</p>
+                        <h4>Estructuras temporales</h4>
+                        <p>Verificación estructural de escenarios, carpas, montajes modulares y estructuras para eventos bajo solicitaciones de viento y uso.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Andamios y Pasarelas de Carga</h4>
-                        <p>Cálculo y validación de sistemas de andamios multidireccionales de trabajo y apeos para obras de edificación en altura y faenas industriales complejas.</p>
+                        <h4>Elementos auxiliares de obra</h4>
+                        <p>Revisión y cálculo de sistemas de andamios, alzaprimados y obras provisorias para faenas constructivas seguras.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Certificados Oficiales para Permisos</h4>
-                        <p>Emisión técnica y firma de certificados de estabilidad estructural para carpetas de autorización ante Delegaciones Presidenciales, SEC y Municipalidades.</p>
+                        <h4>Revisión y documentación estructural</h4>
+                        <p>Emisión de informes técnicos y memorias de estabilidad estructural para respaldo de seguridad y tramitaciones requeridas.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Formulario de Contacto General Widescreen -->
-        <section id="contacto">
-            <div class="contact-container">
-                <div class="contact-header-wrap">
-                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
-                    <p class="contact-lead-desc">Inicia tu proyecto estructural con nosotros. Envíanos antecedentes, planos preliminares o requerimientos y te responderemos con una propuesta técnica a medida en pocas horas.</p>
-                </div>
+        <!-- =============================================================
+             SECCIÓN DE CONTACTO ENMARCADA (RESPONSIVE MEJORADO)
+             ============================================================= -->
+        <section id="contacto" class="contact-section-wrapper">
+            <!-- Tarjeta Exterior Enmarcada con bordes redondeados -->
+            <div class="contact-card-frame">
+                <div class="contact-inner-grid">
 
-                <div class="contact-split-box">
-                    <!-- Columna Izquierda: Formulario Widescreen -->
-                    <div class="contact-form-column">
-                        <div class="contact-form-header">
-                            <h3 class="contact-form-title">Cotizar Proyecto Estructural</h3>
-                            <p class="contact-form-subtitle">Completa el formulario y te contactaremos con asesoría directa de un ingeniero civil.</p>
+                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
+                    <div class="contact-media-card" aria-label="Estructuras industriales y cálculo estructural"></div>
+
+                    <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
+                    <div class="contact-form-content">
+                        <div class="contact-pane-header">
+                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
+                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
                         </div>
 
-                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                        <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
                             <input type="hidden" name="subject" value="Cotización Diseño Estructural - GLIC Web">
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
-                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Constructora / Juan Pérez" required autocomplete="name">
+                            <!-- Campo 1: Nombre o Empresa -->
+                            <div class="form-line-group">
+                                <label for="contact-nombre" class="form-line-label">Nombre o empresa *</label>
+                                <input type="text" id="contact-nombre" name="nombre" class="form-line-input" placeholder="Nombre o razón social" required autocomplete="name" autocapitalize="words" enterkeyhint="next">
+                            </div>
+
+                            <!-- Campos 2 y 3: Correo y Teléfono -->
+                            <div class="form-line-duo">
+                                <div class="form-line-group">
+                                    <label for="contact-email" class="form-line-label">Correo electrónico *</label>
+                                    <input type="email" id="contact-email" name="email" class="form-line-input" placeholder="correo@dominio.cl" required autocomplete="email" inputmode="email" enterkeyhint="next">
                                 </div>
-                                <div class="contact-form-group">
-                                    <label for="email" class="contact-label">Correo Electrónico *</label>
-                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                <div class="form-line-group">
+                                    <label for="contact-tel" class="form-line-label">Teléfono / WhatsApp (opcional)</label>
+                                    <input type="tel" id="contact-tel" name="telefono" class="form-line-input" placeholder="+56 9 XXXX XXXX" autocomplete="tel" inputmode="tel" enterkeyhint="next">
                                 </div>
                             </div>
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
-                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
-                                </div>
-                                <div class="contact-form-group">
-                                    <label for="area" class="contact-label">Área del Proyecto</label>
-                                    <select id="area" name="area_interes" class="contact-input-control contact-select-control">
-                                        <option value="Calculo-Viviendas">Cálculo Estructural de Viviendas</option>
-                                        <option value="Galpones-Naves">Galpones y Naves Metálicas</option>
-                                        <option value="SUSPEL-Industria">Bodegas SUSPEL / Minería e Industria</option>
-                                        <option value="Estructuras-Temporales">Estructuras Temporales / Escenarios</option>
-                                        <option value="Otro-Estructural">Otro requerimiento de ingeniería</option>
-                                    </select>
-                                </div>
+                            <!-- Campo 4: Mensaje / Antecedentes -->
+                            <div class="form-line-group">
+                                <label for="contact-mensaje" class="form-line-label">Antecedentes del proyecto *</label>
+                                <textarea id="contact-mensaje" name="antecedentes_proyecto" class="form-line-input textarea-line-control" placeholder="Indica ubicación, superficie aproximada, tipo de obra y antecedentes relevantes." required></textarea>
                             </div>
 
-                            <div class="contact-form-group">
-                                <label for="mensaje" class="contact-label">Detalles de la Obra *</label>
-                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica superficie estimada (m²), materialidad deseada, ubicación de la obra y plazos requeridos..." required></textarea>
-                            </div>
-
-                            <div class="contact-form-footer">
-                                <button type="submit" class="contact-btn-submit">
+                            <!-- Fila de Envío y Enlaces Directos -->
+                            <div class="form-submit-row">
+                                <button type="submit" class="contact-btn-clean">
                                     <span>ENVIAR SOLICITUD</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>
-                                <p class="contact-guarantee-note">
-                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                    Tus datos están protegidos. Respuesta técnica ágil y presupuesto sin compromiso.
-                                </p>
+
+                                <div class="contact-direct-links">
+                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                                    <span>&middot;</span>
+                                    <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                                </div>
                             </div>
+
+                            <!-- Campo trampa anti-spam: los usuarios reales no deben completarlo -->
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="contact-website">Sitio web</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <p id="form-status" class="form-status" aria-live="polite"></p>
                         </form>
                     </div>
 
-                    <!-- Divisor Vertical -->
-                    <div class="contact-vertical-divider" aria-hidden="true"></div>
-
-                    <!-- Columna Derecha: Panel Informativo Directo -->
-                    <aside class="contact-info-panel" aria-label="Información de contacto directo">
-                        <div>
-                            <div class="contact-badge">Contacto Técnico Directo</div>
-                            <h3 class="contact-panel-title">ENVÍANOS TU PROYECTO</h3>
-                            <p class="contact-panel-desc">Adjunta planos de arquitectura preliminares, bocetos o especificaciones técnicas directamente por correo o WhatsApp:</p>
-                        </div>
-
-                        <div class="contact-quick-actions">
-                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Correo Oficial</span>
-                                    <strong class="action-val">contacto@glic.cl</strong>
-                                </div>
-                            </a>
-
-                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
-                                <div class="action-icon whatsapp-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">WhatsApp Directo</span>
-                                    <strong class="action-val">+56 9 5032 1322</strong>
-                                </div>
-                            </a>
-
-                            <a href="tel:+56950321322" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Teléfono Directo</span>
-                                    <strong class="action-val">+56 9 5032 1322</strong>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="contact-highlights-list">
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <div><strong>Presupuesto rápido:</strong> Estimación preliminar en horas con propuesta técnica.</div>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <div><strong>Firma Profesional:</strong> Proyectos firmados por Ingeniero Civil colegiado.</div>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <div><strong>Cobertura Nacional:</strong> Atención y desarrollo de proyectos en todo Chile.</div>
-                            </div>
-                        </div>
-
-                        <!-- Logo oficial de GLIC al pie del panel -->
-                        <div class="contact-panel-footer-logo">
-                            <a href="index.html" class="logo-anchor" title="GLIC Ingeniería">
-                                <div class="logo-link"></div>
-                                <span class="logo-text">GLIC INGENIERÍA</span>
-                            </a>
-                        </div>
-                    </aside>
                 </div>
             </div>
         </section>
@@ -1639,6 +1561,55 @@
                     metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
                 }
             });
+        }
+    
+        // Feedback visual durante el envío del formulario de contacto
+        const contactForm = document.querySelector('.contact-underline-form');
+        const submitBtn = contactForm?.querySelector('.contact-btn-clean');
+        const statusEl = document.getElementById('form-status');
+
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', () => {
+                const honeypot = document.getElementById('contact-website');
+
+                // Si un bot completa el campo trampa, no modificar la apariencia
+                if (honeypot && honeypot.value.trim() !== '') return;
+
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+                submitBtn.setAttribute('aria-disabled', 'true');
+                submitBtn.querySelector('span').textContent = 'ENVIANDO...';
+
+                if (statusEl) {
+                    statusEl.textContent = 'Enviando tu solicitud...';
+                    statusEl.classList.remove('is-error');
+                }
+            });
+        }
+
+        // Ocultar botón flotante al estar en el formulario de contacto o interactuar con los campos
+        const contactSectionEl = document.getElementById('contacto');
+        if (contactSectionEl && typeof fab !== 'undefined' && fab) {
+            contactSectionEl.addEventListener('focusin', () => {
+                fab.classList.remove('show-fab');
+                fab.classList.add('hide-fab');
+            });
+
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fab.classList.remove('show-fab');
+                        fab.classList.add('hide-fab');
+                    } else if (window.scrollY > 50) {
+                        fab.classList.add('show-fab');
+                        fab.classList.remove('hide-fab');
+                    }
+                });
+            }, {
+                threshold: [0, 0.05, 0.2]
+            });
+
+            contactObserver.observe(contactSectionEl);
         }
     </script>
 </body>

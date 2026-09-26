@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Proyectos Sanitarios y Alcantarillado | GLIC Ingeniería</title>
+    <title>Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería</title>
     <meta name="description"
-        content="Proyectos de ingeniería sanitaria: agua potable, alcantarillado, proyectos domiciliarios y regularizaciones bajo normativa RIDAA en Chile.">
+        content="Proyectos de agua potable y alcantarillado para viviendas, ampliaciones y proyectos domiciliarios. Diseño, planos, cálculo y regularización sanitaria.">
     <link rel="canonical" href="https://glic.cl/sanitarios.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
-    <meta property="og:title" content="Proyectos Sanitarios y Alcantarillado | GLIC Ingeniería">
+    <meta property="og:title" content="Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería">
     <meta property="og:description"
-        content="Proyectos de ingeniería sanitaria: agua potable, alcantarillado, proyectos domiciliarios y regularizaciones bajo normativa RIDAA en Chile.">
+        content="Proyectos de agua potable y alcantarillado para viviendas, ampliaciones y proyectos domiciliarios. Diseño, planos, cálculo y regularización sanitaria.">
     <meta property="og:image" content="https://glic.cl/assets/sanitario.jpg">
     <meta property="og:url" content="https://glic.cl/sanitarios.html">
 
@@ -678,402 +678,463 @@
         }
 
         /* ==========================================================================
-           6. FORMULARIO DE CONTACTO GENERAL (Widescreen Unificado)
+           SECCIÓN CONTACTO ENMARCADA (COMPACTA - 3/4 ALTURA)
            ========================================================================== */
-        #contacto {
+        #contacto.contact-section-wrapper {
+            position: relative;
+            scroll-margin-top: var(--header-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1rem, 3vw, 2.5rem);
+            background-color: var(--bg-main);
+            transition: background-color var(--transition-speed) ease;
             width: 100%;
-            position: relative;
-            padding: clamp(3.5rem, 6vh, 5.5rem) 0;
-            background: transparent;
-            z-index: 2;
         }
 
-        .contact-container {
-            width: 94%;
-            max-width: 1320px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-header-wrap {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto clamp(2rem, 4vh, 3rem) auto;
-        }
-
-        .contact-section-title {
-            font-family: var(--font-title);
-            font-size: clamp(2rem, 4.5vw, 3rem);
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-lead-desc {
-            font-size: clamp(0.95rem, 1.2vw, 1.08rem);
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .contact-split-box {
-            display: grid;
-            grid-template-columns: 1.35fr auto 1fr;
-            align-items: stretch;
-            gap: clamp(2rem, 3.5vw, 3.8rem);
+        /* Tarjeta Marco Exterior con bordes redondeados */
+        .contact-card-frame {
+            width: 100%;
+            max-width: 1140px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: clamp(2rem, 3.5vw, 3.5rem);
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            border-radius: var(--r-xl);
+            padding: clamp(0.9rem, 1.8vw, 1.6rem);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-speed) ease;
+            min-width: 0;
         }
 
-        /* Columna Izquierda: Formulario */
-        .contact-form-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        [data-theme="light"] #contacto.contact-section-wrapper {
+            background-color: var(--bg-main);
         }
 
-        .contact-form-header {
-            margin-bottom: 1.6rem;
+        [data-theme="light"] .contact-card-frame {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
         }
 
-        .contact-form-title {
-            font-family: var(--font-title);
-            font-size: clamp(1.2rem, 1.6vw, 1.45rem);
-            font-weight: 800;
-            color: var(--text-heading);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-form-subtitle {
-            font-size: clamp(0.88rem, 1.05vw, 0.96rem);
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .contact-split-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .contact-form-row-duo {
+        /* Cuadrícula Interna: 2 Columnas en Escritorio */
+        .contact-inner-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(1.2rem, 2.5vw, 2.2rem);
+            align-items: stretch;
+            min-width: 0;
         }
 
-        .contact-form-group {
+        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados */
+        .contact-media-card {
+            position: relative;
+            border-radius: var(--r-lg);
+            background: url('assets/instalaciones_sanitarias.jpg') center center / cover no-repeat;
+            overflow: hidden;
+            min-height: 380px;
+        }
+
+        /* LADO DERECHO: Formulario con Trazado de Líneas Minimalista */
+        .contact-form-content {
             display: flex;
             flex-direction: column;
-            gap: 0.45rem;
-            width: 100%;
-        }
-
-        .contact-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--text-muted);
-            font-family: var(--font-title);
-        }
-
-        .contact-input-control {
-            width: 100%;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: var(--input-color);
-            border-radius: var(--r-sm);
-            padding: 0.9rem 1.15rem;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
-            box-sizing: border-box;
-        }
-
-        .contact-select-control {
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1.1em;
-            padding-right: 2.5rem;
-            cursor: pointer;
-        }
-
-        .contact-select-control option {
-            background-color: var(--bg-card);
-            color: var(--text-main);
-        }
-
-        .contact-input-control::placeholder {
-            color: var(--input-placeholder);
-            opacity: 0.8;
-        }
-
-        .contact-input-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.22);
-        }
-
-        textarea.contact-input-control {
-            min-height: 145px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        .contact-form-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .contact-btn-submit {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: var(--primary);
-            color: #000000;
-            border: none;
-            border-radius: var(--r-sm);
-            padding: 1rem 2.5rem;
-            font-family: var(--font-title);
-            font-weight: 800;
-            font-size: 0.98rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            box-shadow: 0 4px 18px rgba(255, 153, 0, 0.35);
+            padding: clamp(0.2rem, 0.8vw, 0.8rem) 0;
+            min-width: 0;
         }
 
-        .contact-btn-submit:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 7px 24px rgba(255, 153, 0, 0.45);
+        .contact-pane-header {
+            margin-bottom: 0.85rem;
+            max-width: 100%;
         }
 
-        .contact-guarantee-note {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .contact-guarantee-note svg {
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        /* Divisor Vertical Elegante */
-        .contact-vertical-divider {
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
-            min-height: 100%;
-        }
-
-        /* Columna Derecha: Panel Informativo */
-        .contact-info-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1.8rem;
-        }
-
-        .contact-badge {
-            display: inline-block;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border: 1px solid rgba(255, 153, 0, 0.25);
-            padding: 4px 12px;
-            border-radius: 50px;
+        .contact-pane-tag {
             font-family: var(--font-title);
             font-size: 0.72rem;
-            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .contact-panel-title {
+        .contact-pane-title {
             font-family: var(--font-title);
-            font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            max-width: 100%;
         }
 
-        .contact-panel-desc {
-            font-size: 0.9rem;
+        [data-theme="light"] .contact-pane-title {
+            color: var(--primary);
+        }
+
+        .contact-pane-desc {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            font-weight: 400;
+            line-height: 1.45;
+            max-width: 100%;
+            overflow-wrap: anywhere;
         }
 
-        .contact-quick-actions {
+        [data-theme="light"] .contact-pane-desc {
+            color: #64748b;
+        }
+
+        .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 1.05rem;
+            min-width: 0;
         }
 
-        .contact-action-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0.9rem 1.15rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover {
-            border-color: var(--primary);
-            background: var(--primary-dim);
-            transform: translateX(4px);
-        }
-
-        .contact-action-card .action-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            background: rgba(255, 153, 0, 0.12);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-action-card:hover .action-icon {
-            background: var(--primary);
-            color: #000;
-        }
-
-        .contact-action-card.whatsapp-action:hover .action-icon {
-            background: #25d366;
-            color: #fff;
-        }
-
-        .action-meta {
+        .form-line-group {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-width: 0;
         }
 
-        .action-label {
-            font-size: 0.74rem;
+        .form-line-label {
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            font-weight: 700;
             text-transform: uppercase;
-            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+            transition: color var(--transition-speed) ease;
         }
 
-        .action-val {
+        [data-theme="light"] .form-line-label {
+            color: #64748b;
+        }
+
+        .form-line-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font-body);
             font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 0.45rem 0;
+            transition: border-color var(--transition-speed) ease;
+            box-sizing: border-box;
+            border-radius: 0;
+            outline: none;
+            min-height: 38px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .contact-highlights-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.1rem;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed var(--border);
-            border-radius: var(--r-sm);
+        [data-theme="light"] .form-line-input {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.15);
         }
 
-        [data-theme="light"] .contact-highlights-list {
-            background: rgba(0, 0, 0, 0.02);
+        .form-line-input::placeholder {
+            color: rgba(255, 255, 255, 0.28);
         }
 
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        [data-theme="light"] .form-line-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-line-group:focus-within .form-line-label {
+            color: var(--primary);
+        }
+
+        .select-line-control {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.2rem center;
+            background-size: 0.9em;
+            padding-right: 1.5rem;
+        }
+
+        .select-line-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        [data-theme="light"] .select-line-control option {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .textarea-line-control {
+            resize: vertical;
+            min-height: 65px;
             line-height: 1.45;
         }
 
-        .highlight-item strong {
-            color: var(--text-heading);
+        .form-line-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            min-width: 0;
         }
 
-        .highlight-bullet {
-            font-size: 1rem;
-            line-height: 1.2;
-            flex-shrink: 0;
-        }
-
-        /* Logo Oficial GLIC al pie del panel */
-        .contact-panel-footer-logo {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        .form-submit-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.35rem;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
-        .contact-panel-footer-logo .logo-text {
+        .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border: 1px solid var(--primary);
+            padding: 0.7rem 1.8rem;
             font-family: var(--font-title);
+            font-size: 15px;
             font-weight: 800;
-            font-size: 0.95rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: var(--r-sm);
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            white-space: normal;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .contact-btn-clean:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-light);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
+        }
+
+        [data-theme="light"] .contact-btn-clean {
+            background: var(--primary);
+            color: #000000;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.25);
+        }
+
+        [data-theme="light"] .contact-btn-clean:hover {
+            background: var(--primary-light);
+            color: #000000;
+            border-color: var(--primary-light);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.35);
+        }
+
+        .contact-btn-clean:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .contact-btn-clean.is-loading {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .contact-direct-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .contact-direct-links a {
             color: var(--text-heading);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            white-space: nowrap;
+            display: inline-block;
         }
 
-        @media (max-width: 960px) {
-            .contact-split-box {
+        .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        [data-theme="light"] .contact-direct-links a {
+            color: #0f172a;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .contact-direct-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .contact-direct-links span {
+            color: var(--border);
+        }
+
+        /* Trampa honeypot invisible para bots */
+        .form-honeypot {
+            position: absolute !important;
+            left: -9999px !important;
+            top: auto !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .form-status {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.35rem;
+            min-height: 1.2em;
+        }
+
+        .form-status.is-error {
+            color: #ef4444;
+        }
+
+        /* Responsividad Mejorada Contacto (3/4 altura) */
+        @media (max-width: 980px) {
+            #contacto.contact-section-wrapper {
+                align-items: flex-start;
+                padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
+            }
+
+            .contact-inner-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: clamp(1rem, 2.5vw, 1.6rem);
             }
 
-            .contact-vertical-divider {
+            .contact-media-card {
+                min-height: clamp(165px, 28vw, 225px);
+            }
+
+            .contact-form-content {
+                padding-top: 0;
+                padding-bottom: 0.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #contacto.contact-section-wrapper {
+                padding: 0.75rem 0.65rem max(1rem, env(safe-area-inset-bottom));
+            }
+
+            .contact-card-frame {
+                border-radius: 14px;
+                padding: clamp(0.75rem, 2.5vw, 1rem);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .contact-inner-grid {
+                gap: 1rem;
+            }
+
+            .contact-media-card {
+                min-height: 155px;
+            }
+
+            .contact-pane-header {
+                margin-bottom: 0.9rem;
+            }
+
+            .contact-pane-tag {
+                font-size: 0.64rem;
+                letter-spacing: 1.2px;
+            }
+
+            .contact-pane-title {
+                font-size: clamp(1.2rem, 5.5vw, 1.45rem);
+                line-height: 1.2;
+            }
+
+            .contact-pane-desc {
+                font-size: 0.84rem;
+                line-height: 1.45;
+            }
+
+            .contact-underline-form {
+                gap: 0.9rem;
+            }
+
+            .form-line-duo {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .form-line-label {
+                font-size: 0.66rem;
+                letter-spacing: 0.8px;
+            }
+
+            .form-line-input {
+                min-height: 42px;
+                padding: 0.5rem 0;
+            }
+
+            textarea.form-line-input {
+                min-height: 6rem;
+            }
+
+            .form-submit-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-top: 0.2rem;
+            }
+
+            .contact-direct-links {
+                justify-content: flex-start;
+                font-size: 0.78rem;
+                line-height: 1.45;
+                gap: 0.5rem;
+            }
+
+            .contact-btn-clean {
                 width: 100%;
-                height: 1px;
-                min-height: 1px;
-            }
-
-            .contact-btn-submit {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-panel-footer-logo {
                 justify-content: center;
+                padding: 0.75rem 1rem;
+                min-height: 44px;
             }
         }
 
-        @media (max-width: 600px) {
-            .contact-form-row-duo {
-                grid-template-columns: 1fr;
+        @media (max-width: 380px) {
+            .contact-card-frame {
+                padding: 0.65rem;
             }
 
-            .contact-section-title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
+            .contact-media-card {
+                min-height: 135px;
+            }
+
+            .contact-direct-links {
+                font-size: 0.74rem;
+                gap: 0.42rem;
             }
         }
 
@@ -1273,18 +1334,16 @@
         <section class="service-hero">
             <div class="container">
                 <div class="hero-card">
-                    <div class="hero-badge">Ingeniería Hidráulica y Sanitaria RIDAA</div>
-                    <h2 class="hero-title">Proyectos <span class="text-gradient">Sanitarios</span></h2>
+                    <div class="hero-badge">Ingeniería Sanitaria</div>
+                    <h1 class="hero-title">Proyectos de <span class="text-gradient">Agua Potable y Alcantarillado</span></h1>
                     <p class="hero-desc">
-                        Desarrollamos proyectos integrales de ingeniería sanitaria de agua potable y alcantarillado para viviendas particulares, loteos residenciales, recintos comerciales e industrias. Aplicamos modelación hidráulica computacional con EPANET, cálculo de estanques, plantas de tratamiento (PTAS), impulsiones y expedientes técnicos rigurosos para tramitación y aprobación definitiva ante empresas sanitarias concesionarias, SEREMI de Salud y Direcciones de Obras Municipales (DOM).
+                        Desarrollamos proyectos sanitarios para viviendas, ampliaciones y otras edificaciones, incluyendo sistemas de agua potable y alcantarillado. Elaboramos planos, cálculos y antecedentes técnicos de acuerdo con la normativa aplicable y los requerimientos del proyecto.
                     </p>
                     <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">EPANET</span>
-                        <span class="tool-badge featured">AutoCAD</span>
-                        <span class="tool-badge">RIDAA (D.S. 50/02)</span>
-                        <span class="tool-badge">D.S. 236/26</span>
-                        <span class="tool-badge">SEREMI de Salud</span>
-                        <span class="tool-badge">SISS</span>
+                        <span class="tool-badge featured">Agua Potable</span>
+                        <span class="tool-badge featured">Alcantarillado</span>
+                        <span class="tool-badge featured">Proyectos Domiciliarios</span>
+                        <span class="tool-badge">Regularización Sanitaria</span>
                     </div>
                     <a href="#contacto" class="cta-btn">Cotizar Proyecto Sanitario &rarr;</a>
                 </div>
@@ -1295,34 +1354,34 @@
         <section id="agua-potable" class="service-section">
             <div class="container">
                 <span class="area-tag">01. Abastecimiento y Redes de Distribución</span>
-                <h3 class="section-title">Diseño y Cálculo de <span class="text-gradient">Agua Potable</span></h3>
+                <h3 class="section-title">Proyectos de <span class="text-gradient">Agua Potable</span></h3>
                 <p class="section-lead">
-                    Dimensionamiento riguroso de redes interiores, matrices y sistemas de impulsión garantizando presiones de servicio continuas y optimización de pérdidas de carga bajo normativa RIDAA.
+                    Diseño y dimensionamiento de sistemas de agua potable para viviendas, ampliaciones y edificaciones.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>Redes Domiciliarias, Matrices y Salas de Bombas</h4>
+                        <h4>Diseño de redes y distribución</h4>
                         <p>
-                            Diseñamos sistemas de distribución de agua potable fría y caliente (APF y APC) para viviendas unifamiliares de gran superficie, loteos residenciales, edificios y recintos comerciales e industriales bajo estricta normativa chilena.
+                            Dimensionamos redes interiores y exteriores asegurando presiones y caudales adecuados para el funcionamiento continuo de los artefactos.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Cálculo hidráulico y pérdidas de carga:</strong> Determinación precisa de presiones estáticas y dinámicas, pérdidas lineales y singulares en tuberías de cobre, PVC, PPR y PEX.</span>
+                                <span><strong>Redes interiores:</strong> Trazado y dimensionamiento de cañerías de agua fría y caliente adaptadas a la arquitectura.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Sistemas de acumulación e impulsión:</strong> Dimensionamiento de estanques de reserva de agua potable, bombas centrífugas y estanques hidroneumáticos para garantizar caudal y presión constante en horas punta.</span>
+                                <span><strong>Cálculo hidráulico:</strong> Determinación de pérdidas de carga, presiones disponibles y caudales de diseño según normativa.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Matrices interiores y nichos de medidores (MAP):</strong> Diseño de arranques domiciliarios y empalmes a redes públicas concesionadas con especificación técnica reglamentaria de medidores.</span>
+                                <span><strong>Sistemas de almacenamiento e impulsión:</strong> Dimensionamiento de estanques de reserva y equipos de bombeo cuando las condiciones de presión lo requieran.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Redes húmedas contra incendio:</strong> Integración de gabinetes de red húmeda y seca conforme a las exigencias de la Ordenanza General de Urbanismo y Construcciones (OGUC).</span>
+                                <span><strong>Conexión a la red pública:</strong> Definición de arranques domiciliarios, nichos de medidor (MAP) y coordinación con redes existentes.</span>
                             </li>
                         </ul>
                     </div>
@@ -1338,9 +1397,9 @@
         <section id="alcantarillado" class="service-section">
             <div class="container">
                 <span class="area-tag">02. Evacuación y Tratamiento de Aguas Servidas</span>
-                <h3 class="section-title">Alcantarillado y <span class="text-gradient">Tratamiento de Aguas</span></h3>
+                <h3 class="section-title">Proyectos de <span class="text-gradient">Alcantarillado</span></h3>
                 <p class="section-lead">
-                    Soluciones integrales para la evacuación segura y gravitacional de aguas servidas, tanto en zonas urbanas con empalme a colector como en sectores rurales sin factibilidad de red pública.
+                    Diseño de redes de aguas servidas para viviendas y edificaciones.
                 </p>
 
                 <div class="editorial-split reverse">
@@ -1349,27 +1408,27 @@
                     </div>
 
                     <div class="editorial-text">
-                        <h4>Soluciones Urbanas y Particulares (Fosas y PTAS)</h4>
+                        <h4>Evacuación y disposición de aguas servidas</h4>
                         <p>
-                            Resolvemos la evacuación de aguas servidas domésticas y comerciales garantizando pendiente hidráulica, velocidad de autolimpieza y protección del medio ambiente conforme al D.S. N° 236/26 y RIDAA.
+                            Diseñamos trazados gravitacionales eficientes garantizando autolimpieza, ventilación reglamentaria y adecuada disposición final.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Redes interiores y bajadas:</strong> Trazado gravitacional de tuberías, registros de inspección y ventilaciones sanitarias que evitan malos olores y pérdidas de sello hidráulico.</span>
+                                <span><strong>Redes interiores:</strong> Trazado gravitacional eficiente, bajadas, ventilaciones y cámaras de inspección domiciliarias.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Uniones Domiciliarias (UD):</strong> Conexión reglamentaria a colectores públicos, cámaras de inspección domiciliarias y perfiles longitudinales con cotas de solera y rasante.</span>
+                                <span><strong>Cálculo y definición de pendientes:</strong> Verificación de pendientes mínimas y velocidades reglamentarias de autolimpieza.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Soluciones particulares (Fosas sépticas y drenes):</strong> Pruebas de absorción de suelos, dimensionamiento de cámaras desgrasadoras, fosas sépticas y sistemas de drenes de infiltración para parcelas.</span>
+                                <span><strong>Conexión a la red pública:</strong> Proyectos de unión domiciliaria (UD) con perfiles longitudinales para empalme al colector.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Plantas de Tratamiento (PTAS):</strong> Proyectos de plantas modulares de tratamiento de aguas servidas para loteos campestres, parcelaciones y condominios sin red pública.</span>
+                                <span><strong>Soluciones particulares:</strong> Diseño de fosas sépticas, cámaras desgrasadoras y sistemas de infiltración o drenes para sectores sin red pública.</span>
                             </li>
                         </ul>
                     </div>
@@ -1380,28 +1439,28 @@
         <!-- 3. PROYECTOS DOMICILIARIOS Y MODELACIÓN -->
         <section id="domiciliarios" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Expedientes Técnicos y Modelación</span>
-                <h3 class="section-title">Modelación Hidráulica y <span class="text-gradient">Planos Domiciliarios</span></h3>
+                <span class="area-tag">03. Expedientes Técnicos y Documentación</span>
+                <h3 class="section-title">Planos y <span class="text-gradient">Expedientes Sanitarios</span></h3>
                 <p class="section-lead">
-                    Desarrollamos la carpeta técnica completa lista para ejecución en terreno y tramitación municipal o concesionaria, integrando modelación hidráulica computacional y cubicaciones detalladas.
+                    Documentación técnica para ejecutar y presentar proyectos de agua potable y alcantarillado.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
-                        <h4>Simulación Hidráulica EPANET</h4>
-                        <p>Modelación computacional de redes de distribución, análisis de curvas características de bombas, presiones nodales dinámicas y velocidades de flujo para prevenir cavitación y golpe de ariete.</p>
+                        <h4>Planos de agua potable</h4>
+                        <p>Planimetría en planta, detalles e isométricos de la instalación con especificación de diámetros y accesorios.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Planos Isométricos de Agua Potable</h4>
-                        <p>Despiece isométrico tridimensional detallado con identificación de nudos, cotas piezométricas, diámetros nominales, válvulas de corte y accesorios para montaje expedito en faena.</p>
+                        <h4>Planos de alcantarillado</h4>
+                        <p>Trazado de colectores, ubicación de cámaras, cotas y perfiles longitudinales para ejecución en faena.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Perfiles Longitudinales de Alcantarillado</h4>
-                        <p>Planimetría técnica con pendientes calculadas (%), cotas de terreno, radier y rasante en cada tramo de cámara a cámara, garantizando velocidades de arrastre normativas.</p>
+                        <h4>Memorias y especificaciones técnicas</h4>
+                        <p>Justificación de consumos, gastos probables (UEH) y especificaciones técnicas de materiales y pruebas de hermeticidad.</p>
                     </div>
                     <div class="pillar-item">
-                        <h4>Memorias y Especificaciones Técnicas (EETT)</h4>
-                        <p>Justificación formal de gastos instalados y máximos probables (UEH), dotaciones de diseño, cuadro de artefactos y especificación de pruebas de presión hidrostática y hermeticidad.</p>
+                        <h4>Cubicaciones</h4>
+                        <p>Cálculo de cantidades de obra y listados de materiales para presupuesto y adquisición.</p>
                     </div>
                 </div>
             </div>
@@ -1410,35 +1469,35 @@
         <!-- 4. REGULARIZACIÓN SANITARIA -->
         <section id="regularizacion-sanitaria" class="service-section">
             <div class="container">
-                <span class="area-tag">04. Legalización y Resoluciones Sanitarias</span>
-                <h3 class="section-title">Regularización Sanitaria y <span class="text-gradient">Certificados de Dotación</span></h3>
+                <span class="area-tag">04. Regularización de Instalaciones</span>
+                <h3 class="section-title">Regularización de <span class="text-gradient">Instalaciones Sanitarias</span></h3>
                 <p class="section-lead">
-                    Tramitamos la regularización técnica de instalaciones sanitarias ejecutadas sin proyecto previo o modificadas tras ampliaciones, requisito obligatorio para la Recepción Final municipal.
+                    Desarrollo de documentación y antecedentes para regularizar instalaciones existentes que no cuentan con planos o antecedentes actualizados.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>De la Inspección en Terreno a la Aprobación Oficial</h4>
+                        <h4>Levantamiento y documentación de lo existente</h4>
                         <p>
-                            Si construiste o modificaste una propiedad sin planos sanitarios aprobados, elaboramos el expediente técnico completo para obtener la resolución sanitaria de la SEREMI de Salud o el certificado de dotación de la empresa sanitaria concesionaria.
+                            Revisamos lo ejecutado en obra para elaborar la planimetría As-Built y estructurar la carpeta técnica necesaria ante las entidades pertinentes.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Levantamiento en terreno:</strong> Catastro de redes existentes, ubicación de cámaras de inspección, llaves de paso, artefactos y empalmes.</span>
+                                <span><strong>Levantamiento:</strong> Catastro en terreno de redes existentes, ubicación de cámaras, artefactos y empalmes.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Planos As-Built:</strong> Generación de planimetría en planta e isométricos según lo efectivamente construido en obra.</span>
+                                <span><strong>Planos As-Built:</strong> Dibujo técnico de la planimetría conforme a lo efectivamente instalado en la propiedad.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Gestión ante SEREMI de Salud y Concesionarias:</strong> Ingreso de antecedentes, respuesta a observaciones y seguimiento hasta la aprobación formal.</span>
+                                <span><strong>Revisión de antecedentes:</strong> Verificación de coherencia técnica con los requerimientos sanitarios vigentes.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Certificado de Dotación Sanitaria:</strong> Documento indispensable exigido por la Dirección de Obras Municipales (DOM) para tramitar la Recepción Final.</span>
+                                <span><strong>Apoyo en tramitación:</strong> Preparación del expediente técnico para solicitar certificados o resoluciones sanitarias.</span>
                             </li>
                         </ul>
                     </div>
@@ -1452,7 +1511,7 @@
                 <div class="cross-link-box">
                     <div class="cross-link-text">
                         <h3>¿Tu proyecto también requiere regularización municipal (DOM)?</h3>
-                        <p>Si además de la regularización sanitaria necesitas legalizar la edificación o ampliación ante la Dirección de Obras Municipales, contamos con el servicio integral de Regularización de Viviendas.</p>
+                        <p>Si además de las instalaciones sanitarias necesitas regularizar la edificación ante la Dirección de Obras Municipales, contamos con el servicio integral de Regularización de Viviendas.</p>
                     </div>
                     <div>
                         <a href="regularizacion.html" class="cross-link-btn">Ver Regularizaciones DOM &rarr;</a>
@@ -1462,156 +1521,96 @@
                 <!-- Badges Normativos Sanitarios -->
                 <div style="text-align: center; margin-top: 3.5rem;">
                     <div style="color: var(--primary); font-family: var(--font-title); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem;">
-                        Marco Normativo y Estándares Técnicos
+                        Normativa y Criterios Técnicos
                     </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 680px; margin: 0 auto 1.5rem auto;">
+                        Desarrollamos los proyectos considerando la normativa sanitaria y los requerimientos de las entidades correspondientes, de acuerdo con las características y ubicación de cada proyecto.
+                    </p>
                     <div class="tools-strip" style="justify-content: center;">
-                        <span class="tool-badge">RIDAA (D.S. N° 50/02 MOP)</span>
-                        <span class="tool-badge">NCh 2485 (Agua Potable)</span>
-                        <span class="tool-badge">NCh 1105 (Alcantarillado)</span>
-                        <span class="tool-badge">NCh 1360 (Tuberías PVC)</span>
-                        <span class="tool-badge">D.S. N° 236/26 (Alcantarillados Particulares)</span>
-                        <span class="tool-badge">SEREMI de Salud</span>
+                        <span class="tool-badge">RIDAA</span>
+                        <span class="tool-badge">Normativa sanitaria vigente</span>
                         <span class="tool-badge">SISS</span>
+                        <span class="tool-badge">Empresas sanitarias</span>
+                        <span class="tool-badge">SEREMI de Salud</span>
+                        <span class="tool-badge">DOM</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Formulario de Contacto General Widescreen -->
-        <section id="contacto">
-            <div class="contact-container">
-                <div class="contact-header-wrap">
-                    <h2 class="contact-section-title">CONTÁCTANOS</h2>
-                    <p class="contact-lead-desc">Inicia tu proyecto sanitario con nosotros. Cuéntanos las características de tu instalación y te responderemos con una propuesta técnica a medida en pocas horas.</p>
-                </div>
+        <!-- =============================================================
+             SECCIÓN DE CONTACTO ENMARCADA (RESPONSIVE MEJORADO)
+             ============================================================= -->
+        <section id="contacto" class="contact-section-wrapper">
+            <!-- Tarjeta Exterior Enmarcada con bordes redondeados -->
+            <div class="contact-card-frame">
+                <div class="contact-inner-grid">
 
-                <div class="contact-split-box">
-                    <!-- Columna Izquierda: Formulario Widescreen -->
-                    <div class="contact-form-column">
-                        <div class="contact-form-header">
-                            <h3 class="contact-form-title">Cotizar Proyecto Sanitario</h3>
-                            <p class="contact-form-subtitle">Completa el formulario y te contactaremos con asesoría directa de un ingeniero civil.</p>
+                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
+                    <div class="contact-media-card" aria-label="Instalaciones y proyectos sanitarios"></div>
+
+                    <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
+                    <div class="contact-form-content">
+                        <div class="contact-pane-header">
+                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
+                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
                         </div>
 
-                        <form class="contact-split-form" action="https://api.web3forms.com/submit" method="POST">
+                        <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
                             <input type="hidden" name="subject" value="Cotización Proyectos Sanitarios - GLIC Web">
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="nombre" class="contact-label">Nombre o Empresa *</label>
-                                    <input type="text" id="nombre" name="nombre" class="contact-input-control" placeholder="Ej: Particular / Constructora" required autocomplete="name">
+                            <!-- Campo 1: Nombre o Empresa -->
+                            <div class="form-line-group">
+                                <label for="contact-nombre" class="form-line-label">Nombre o empresa *</label>
+                                <input type="text" id="contact-nombre" name="nombre" class="form-line-input" placeholder="Nombre o razón social" required autocomplete="name" autocapitalize="words" enterkeyhint="next">
+                            </div>
+
+                            <!-- Campos 2 y 3: Correo y Teléfono -->
+                            <div class="form-line-duo">
+                                <div class="form-line-group">
+                                    <label for="contact-email" class="form-line-label">Correo electrónico *</label>
+                                    <input type="email" id="contact-email" name="email" class="form-line-input" placeholder="correo@dominio.cl" required autocomplete="email" inputmode="email" enterkeyhint="next">
                                 </div>
-                                <div class="contact-form-group">
-                                    <label for="email" class="contact-label">Correo Electrónico *</label>
-                                    <input type="email" id="email" name="email" class="contact-input-control" placeholder="nombre@correo.cl" required autocomplete="email">
+                                <div class="form-line-group">
+                                    <label for="contact-tel" class="form-line-label">Teléfono / WhatsApp (opcional)</label>
+                                    <input type="tel" id="contact-tel" name="telefono" class="form-line-input" placeholder="+56 9 XXXX XXXX" autocomplete="tel" inputmode="tel" enterkeyhint="next">
                                 </div>
                             </div>
 
-                            <div class="contact-form-row-duo">
-                                <div class="contact-form-group">
-                                    <label for="telefono" class="contact-label">Teléfono / WhatsApp</label>
-                                    <input type="tel" id="telefono" name="telefono" class="contact-input-control" placeholder="+56 9 1234 5678" autocomplete="tel">
-                                </div>
-                                <div class="contact-form-group">
-                                    <label for="servicio_sanitario" class="contact-label">Tipo de Proyecto Sanitario</label>
-                                    <select id="servicio_sanitario" name="servicio_sanitario" class="contact-input-control contact-select-control">
-                                        <option value="Agua-Potable">Proyecto de Agua Potable y Matrices</option>
-                                        <option value="Alcantarillado-PTAS">Proyecto de Alcantarillado / Fosa y Drenes / PTAS</option>
-                                        <option value="Sanitario-Completo">Proyecto Completo (Agua Potable + Alcantarillado)</option>
-                                        <option value="Regularizacion-Sanitaria">Regularización Sanitaria / As-Built / SEREMI</option>
-                                        <option value="Otro-Sanitario">Otro requerimiento hidráulico o sanitario</option>
-                                    </select>
-                                </div>
+                            <!-- Campo 4: Mensaje / Antecedentes -->
+                            <div class="form-line-group">
+                                <label for="contact-mensaje" class="form-line-label">Antecedentes del proyecto *</label>
+                                <textarea id="contact-mensaje" name="antecedentes_proyecto" class="form-line-input textarea-line-control" placeholder="Indica ubicación, superficie aproximada, tipo de obra y antecedentes relevantes." required></textarea>
                             </div>
 
-                            <div class="contact-form-group">
-                                <label for="mensaje" class="contact-label">Detalles de la Instalación *</label>
-                                <textarea id="mensaje" name="mensaje" class="contact-input-control" placeholder="Indica ubicación de la propiedad, cantidad aproximada de recintos húmedos o artefactos, si cuenta con factibilidad de red pública o es sector rural..." required></textarea>
-                            </div>
-
-                            <div class="contact-form-footer">
-                                <button type="submit" class="contact-btn-submit">
+                            <!-- Fila de Envío y Enlaces Directos -->
+                            <div class="form-submit-row">
+                                <button type="submit" class="contact-btn-clean">
                                     <span>ENVIAR SOLICITUD</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>
-                                <p class="contact-form-privacy">Tus datos serán tratados bajo estricta confidencialidad técnica.</p>
+
+                                <div class="contact-direct-links">
+                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                                    <span>&middot;</span>
+                                    <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                                </div>
                             </div>
+
+                            <!-- Campo trampa anti-spam: los usuarios reales no deben completarlo -->
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="contact-website">Sitio web</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <p id="form-status" class="form-status" aria-live="polite"></p>
                         </form>
                     </div>
 
-                    <!-- Divisor Vertical Sutil -->
-                    <div class="contact-vertical-divider" aria-hidden="true"></div>
-
-                    <!-- Columna Derecha: Canales Directos e Información Oficial -->
-                    <div class="contact-direct-column">
-                        <div class="contact-panel-info">
-                            <span class="contact-panel-tag">Atención Inmediata</span>
-                            <h4 class="contact-panel-title">Canales Directos</h4>
-                            <p class="contact-panel-desc">¿Requieres asistencia técnica urgente o consultar factibilidad de un proyecto? Escríbenos directamente:</p>
-                        </div>
-
-                        <div class="contact-quick-actions">
-                            <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-action-card whatsapp-action">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.275-.1-.476-.15-.677.15-.2.301-.777.978-.953 1.179-.176.2-.351.226-.652.075-1.479-.742-2.45-1.328-3.419-2.992-.257-.441.257-.409.734-1.362.08-.16.04-.301-.02-.451-.06-.15-.677-1.632-.928-2.235-.244-.587-.492-.507-.677-.516-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.802.376-.275.301-1.054 1.03-1.054 2.512 0 1.482 1.079 2.913 1.23 3.114.15.2 2.124 3.243 5.145 4.549 2.059.89 2.87.89 3.896.737.625-.093 1.78-.728 2.032-1.431.252-.703.252-1.305.176-1.431-.076-.126-.276-.201-.577-.351zM12.042 21.688c-1.87 0-3.647-.51-5.184-1.401l-.372-.218-3.856 1.011 1.029-3.759-.24-.382a9.664 9.664 0 0 1-1.48-5.186c0-5.352 4.354-9.706 9.708-9.706 2.593 0 5.031 1.01 6.865 2.844a9.66 9.66 0 0 1 2.843 6.864c0 5.353-4.354 9.707-9.708 9.707zm0-17.708c-4.412 0-8 3.588-8 8 0 1.547.44 2.993 1.203 4.225l.189.303-.612 2.235 2.29-.601.294.175a7.96 7.96 0 0 0 4.636 1.463c4.412 0 8-3.588 8-8 0-4.412-3.588-8-8-8z"/>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">WhatsApp Directo</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="tel:+56950321322" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Llamada Telefónica</span>
-                                    <span class="action-val">+56 9 5032 1322</span>
-                                </div>
-                            </a>
-
-                            <a href="mailto:contacto@glic.cl" class="contact-action-card">
-                                <div class="action-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="action-meta">
-                                    <span class="action-label">Correo Electrónico</span>
-                                    <span class="action-val">contacto@glic.cl</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="contact-highlights-list">
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Modelación computacional <strong>EPANET</strong> y cálculo de pérdidas de carga.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Tramitación oficial ante <strong>SEREMI de Salud</strong> y concesionarias sanitarias.</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-bullet">&#9679;</span>
-                                <span>Expedientes técnicos integrados para <strong>Recepción Final DOM</strong>.</span>
-                            </div>
-                        </div>
-
-                        <div class="contact-panel-footer-logo">
-                            <span class="logo-text">GLIC INGENIERÍA</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1702,6 +1701,55 @@
                     metaTheme.setAttribute('content', nextTheme === 'light' ? '#ffffff' : '#050505');
                 }
             });
+        }
+    
+        // Feedback visual durante el envío del formulario de contacto
+        const contactForm = document.querySelector('.contact-underline-form');
+        const submitBtn = contactForm?.querySelector('.contact-btn-clean');
+        const statusEl = document.getElementById('form-status');
+
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', () => {
+                const honeypot = document.getElementById('contact-website');
+
+                // Si un bot completa el campo trampa, no modificar la apariencia
+                if (honeypot && honeypot.value.trim() !== '') return;
+
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+                submitBtn.setAttribute('aria-disabled', 'true');
+                submitBtn.querySelector('span').textContent = 'ENVIANDO...';
+
+                if (statusEl) {
+                    statusEl.textContent = 'Enviando tu solicitud...';
+                    statusEl.classList.remove('is-error');
+                }
+            });
+        }
+
+        // Ocultar botón flotante al estar en el formulario de contacto o interactuar con los campos
+        const contactSectionEl = document.getElementById('contacto');
+        if (contactSectionEl && typeof fab !== 'undefined' && fab) {
+            contactSectionEl.addEventListener('focusin', () => {
+                fab.classList.remove('show-fab');
+                fab.classList.add('hide-fab');
+            });
+
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fab.classList.remove('show-fab');
+                        fab.classList.add('hide-fab');
+                    } else if (window.scrollY > 50) {
+                        fab.classList.add('show-fab');
+                        fab.classList.remove('hide-fab');
+                    }
+                });
+            }, {
+                threshold: [0, 0.05, 0.2]
+            });
+
+            contactObserver.observe(contactSectionEl);
         }
     </script>
 </body>
