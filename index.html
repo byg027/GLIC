@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GLIC Ingeniería | Diseño Estructural, Proyectos Sanitarios y Regularizaciones</title>
     <meta name="description"
         content="GLIC Ingeniería: Consultora en Chile especializada en diseño estructural, proyectos sanitarios de agua potable y alcantarillado, regularización de viviendas y asesoría técnica.">
@@ -483,7 +483,8 @@
             -webkit-backdrop-filter: blur(15px);
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
             display: block;
             animation: fadeIn var(--transition-speed) ease;
         }
@@ -580,12 +581,14 @@
             }
 
             .dropdown-submenu:hover > .submenu-content,
+            .dropdown-submenu:focus-within > .submenu-content,
             .dropdown-submenu.is-open > .submenu-content {
                 display: block;
                 animation: flyoutFadeIn 180ms ease;
             }
 
             .dropdown-submenu:hover > .submenu-trigger .submenu-arrow,
+            .dropdown-submenu:focus-within > .submenu-trigger .submenu-arrow,
             .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
                 transform: translateX(3px);
             }
@@ -619,27 +622,65 @@
             }
         }
 
-        /* Hamburguesa */
+        /* Hamburguesa y Overlay */
         .hamburger {
             display: none;
             cursor: pointer;
             z-index: 1001;
+            width: 44px;
+            height: 44px;
+            padding: 10px 8px;
+            box-sizing: border-box;
+            background: transparent;
+            border: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .bar {
             display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
+            width: 24px;
+            height: 2.5px;
+            margin: 3px auto;
             transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease, background-color var(--transition-speed) ease;
             background-color: var(--bar-color);
             border-radius: 2px;
         }
 
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
         /* Media Query: Header en Móvil/Tablet */
         @media (max-width: 992px) {
-            .hamburger {
+            .nav-overlay {
                 display: block;
+            }
+
+            .nav-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .hamburger.active .bar:nth-child(2) {
@@ -647,31 +688,35 @@
             }
 
             .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
+                transform: translateY(8.5px) rotate(45deg);
                 background-color: var(--primary);
             }
 
             .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+                transform: translateY(-8.5px) rotate(-45deg);
                 background-color: var(--primary);
             }
 
             .nav-menu {
                 position: fixed;
-                left: -50%;
+                left: -100%;
                 top: 0;
                 flex-direction: column;
                 background-color: var(--dropdown-bg);
-                width: 50%;
+                width: clamp(270px, 80vw, 340px);
+                max-width: 340px;
                 height: 100vh;
                 text-align: left;
-                transition: left 250ms ease;
+                transition: left 0.3s ease;
                 justify-content: flex-start;
                 gap: 0.5rem;
-                padding-top: 80px;
-                backdrop-filter: blur(10px);
+                padding-top: calc(var(--header-height) + 20px);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 overflow-y: auto;
                 border-right: 1px solid var(--border);
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+                z-index: 1002;
             }
 
             .nav-menu.active {
@@ -679,8 +724,13 @@
             }
 
             .nav-link {
-                font-size: 1.1rem;
-                padding-left: 20px;
+                font-size: 1.05rem;
+                width: 100%;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                padding: 12px 25px;
+                box-sizing: border-box;
             }
 
             .logo-anchor h1,
@@ -710,15 +760,23 @@
             }
 
             .dropdown-item {
-                padding: 8px 20px;
+                padding: 10px 25px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
                 font-size: 0.9rem;
                 color: var(--primary-light);
+                box-sizing: border-box;
             }
 
             .dropdown-item.indent {
                 font-size: 0.85rem;
                 padding-left: 30px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
                 color: var(--text-muted);
+                box-sizing: border-box;
             }
 
             .dropdown-submenu .submenu-content {
@@ -738,15 +796,37 @@
                 display: block;
             }
 
+            .dropdown-item.submenu-trigger {
+                min-height: 44px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 10px 25px;
+                box-sizing: border-box;
+            }
+
             .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
                 transform: rotate(90deg);
                 color: var(--primary);
             }
 
+            .submenu-arrow {
+                min-width: 44px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             .submenu-content .dropdown-item {
-                padding: 7px 18px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                padding: 8px 25px 8px 30px;
                 font-size: 0.85rem;
                 color: var(--text-muted);
+                box-sizing: border-box;
             }
 
             .submenu-content .dropdown-item:hover {
@@ -1371,6 +1451,12 @@
             line-height: 1;
             margin-bottom: 0.8rem;
             position: static;
+        }
+
+        /* Secciones con Scroll Margin para Header Fijo */
+        #servicios,
+        #proyectos {
+            scroll-margin-top: calc(var(--header-height) + 20px);
         }
 
         /* Sección Nosotros */
@@ -2337,6 +2423,10 @@
                 gap: 15px;
             }
 
+            .footer-bottom {
+                padding-bottom: 5.5rem;
+            }
+
             .footer-col h3 {
                 font-size: 0.8rem;
                 margin-bottom: 0.5rem;
@@ -2355,6 +2445,13 @@
                 width: 15px;
                 height: 2px;
                 margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -2734,6 +2831,7 @@
             </div>
         </div>
     </header>
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
     <main>
         <section id="inicio">
@@ -3158,10 +3256,35 @@
     <script>
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
+        const navOverlay = document.getElementById("nav-overlay");
         const header = document.getElementById('main-header');
         const fab = document.querySelector('.fab');
         const sections = document.querySelectorAll('section');
         let lastScrollY = window.scrollY;
+
+        function openMenu() {
+            hamburger.classList.add("active");
+            navMenu.classList.add("active");
+            hamburger.setAttribute("aria-expanded", "true");
+            if (navOverlay) navOverlay.classList.add("active");
+            document.body.classList.add("menu-open");
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+            if (navOverlay) navOverlay.classList.remove("active");
+            document.body.classList.remove("menu-open");
+        }
+
+        function toggleMenu() {
+            if (navMenu.classList.contains("active")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
 
         // Toggle menú móvil con aria-expanded
         hamburger.addEventListener("click", toggleMenu);
@@ -3172,18 +3295,19 @@
             }
         });
 
-        function toggleMenu() {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-            const isExpanded = hamburger.classList.contains("active");
-            hamburger.setAttribute("aria-expanded", isExpanded);
+        if (navOverlay) {
+            navOverlay.addEventListener("click", closeMenu);
         }
 
-        // Ocultar menú al hacer clic en un enlace (excepto el botón del desplegable y los gatillos de submenús)
-        document.querySelectorAll(".nav-link:not(.dropdown > .nav-link), .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navMenu && navMenu.classList.contains("active")) {
+                closeMenu();
+            }
+        });
+
+        // Ocultar menú al hacer clic en cualquier enlace
+        document.querySelectorAll(".nav-link, .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
+            closeMenu();
         }));
 
         // Soporte táctil y clic para sub-sub-menús desplegables

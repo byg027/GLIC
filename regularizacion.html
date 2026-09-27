@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regularización de Viviendas y Ampliaciones | GLIC Ingeniería</title>
     <meta name="description"
         content="Elaboración de expedientes técnicos, planos y memorias para regularizar viviendas y ampliaciones ante la DOM, de acuerdo con la normativa aplicable.">
@@ -310,11 +310,45 @@
         [data-theme="light"] .theme-toggle-btn .sun-icon { display: none; }
         [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; }
 
-        .hamburger { display: none; cursor: pointer; z-index: 1001; }
+        /* Hamburguesa y Overlay */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            width: 44px;
+            height: 44px;
+            padding: 10px 8px;
+            box-sizing: border-box;
+            background: transparent;
+            border: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         .bar {
-            display: block; width: 25px; height: 3px; margin: 5px auto;
+            display: block; width: 24px; height: 2.5px; margin: 3px auto;
             transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease, background-color var(--transition-speed) ease;
             background-color: var(--bar-color); border-radius: 2px;
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         /* Menú Desplegable (PC) */
@@ -328,7 +362,8 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
-        .dropdown:hover .dropdown-content { display: block; animation: fadeIn var(--transition-speed) ease; }
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content { display: block; animation: fadeIn var(--transition-speed) ease; }
         
         .dropdown-title {
             display: block; padding: 15px 20px 5px 20px;
@@ -371,10 +406,12 @@
                 content: ''; position: absolute; top: 0; left: -12px; width: 12px; height: 100%;
             }
             .dropdown-submenu:hover > .submenu-content,
+            .dropdown-submenu:focus-within > .submenu-content,
             .dropdown-submenu.is-open > .submenu-content {
                 display: block; animation: flyoutFadeIn 180ms ease;
             }
             .dropdown-submenu:hover > .submenu-trigger .submenu-arrow,
+            .dropdown-submenu:focus-within > .submenu-trigger .submenu-arrow,
             .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
                 transform: translateX(3px);
             }
@@ -389,23 +426,25 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 992px) {
-            .hamburger { display: block; }
+            .nav-overlay { display: block; }
+            .nav-overlay.active { opacity: 1; pointer-events: auto; }
+            .hamburger { display: flex; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--primary); }
-            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--primary); }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); background-color: var(--primary); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); background-color: var(--primary); }
 
             .nav-menu {
                 position: fixed; left: -100%; top: 0; 
                 flex-direction: column; background-color: var(--dropdown-bg);
-                width: 75%; max-width: 320px; height: 100vh; text-align: left;
+                width: clamp(270px, 80vw, 340px); max-width: 340px; height: 100vh; text-align: left;
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); justify-content: flex-start; gap: 0.5rem;
                 padding-top: calc(var(--header-height) + 20px); backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px); overflow-y: auto;
                 border-right: 1px solid var(--border);
-                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5); z-index: 1002;
             }
             .nav-menu.active { left: 0; }
-            .nav-link { font-size: 1rem; padding: 12px 25px; width: 100%; } 
+            .nav-link { font-size: 1rem; padding: 12px 25px; width: 100%; min-height: 44px; display: flex; align-items: center; box-sizing: border-box; } 
             .header-content h1 { font-size: 1.1rem; }
 
             .dropdown-content {
@@ -416,8 +455,11 @@
             .dropdown:hover .dropdown-content { animation: none; }
             
             .dropdown-title { padding-left: 25px; font-size: 0.7rem; margin-top: 10px; }
-            .dropdown-item { padding: 8px 25px; font-size: 0.85rem; }
-            .dropdown-item.indent { padding-left: 35px; }
+            .dropdown-item {
+                padding: 10px 25px; min-height: 44px; display: flex; align-items: center;
+                font-size: 0.85rem; box-sizing: border-box;
+            }
+            .dropdown-item.indent { padding-left: 35px; min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
 
             .dropdown-submenu .submenu-content {
                 display: none; background: rgba(255, 255, 255, 0.03);
@@ -426,10 +468,17 @@
             }
             [data-theme="light"] .dropdown-submenu .submenu-content { background: rgba(0, 0, 0, 0.03); }
             .dropdown-submenu.is-open > .submenu-content { display: block; }
+            .dropdown-item.submenu-trigger {
+                min-height: 44px; display: flex; justify-content: space-between; align-items: center;
+                width: 100%; padding: 10px 25px; box-sizing: border-box;
+            }
             .dropdown-submenu.is-open > .submenu-trigger .submenu-arrow {
                 transform: rotate(90deg); color: var(--primary);
             }
-            .submenu-content .dropdown-item { padding: 7px 18px; font-size: 0.85rem; color: var(--text-muted); }
+            .submenu-arrow {
+                min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+            }
+            .submenu-content .dropdown-item { padding: 8px 25px; min-height: 44px; display: flex; align-items: center; font-size: 0.85rem; color: var(--text-muted); box-sizing: border-box; }
             .submenu-content .dropdown-item:hover { color: var(--primary); background: transparent; }
 
             .arrow { display: none; }
@@ -552,6 +601,7 @@
             padding: clamp(3.5rem, 6vw, 5.5rem) 0;
             border-bottom: 1px solid var(--border);
             position: relative;
+            scroll-margin-top: calc(var(--header-height) + 20px);
         }
 
         .service-section:nth-child(even) {
@@ -1330,7 +1380,17 @@
                 font-size: 0.75rem; line-height: 1.5; margin-bottom: 0.3rem;
             }
             .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
-            .footer-bottom { margin-top: 2rem; }
+            .footer-bottom {
+                margin-top: 2rem;
+                padding-bottom: 5.5rem;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         [data-theme="light"] header {
@@ -1540,6 +1600,7 @@
             </div>
         </div>
     </header>
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
     <main>
         <!-- Hero Principal del Servicio Unificado -->
@@ -1799,20 +1860,57 @@
     <script>
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
+        const navOverlay = document.getElementById("nav-overlay");
         const header = document.getElementById('main-header');
         const fab = document.querySelector('.fab');
         const sections = document.querySelectorAll('section');
         let lastScrollY = window.scrollY;
 
-        hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
+        function openMenu() {
+            hamburger.classList.add("active");
+            navMenu.classList.add("active");
+            hamburger.setAttribute("aria-expanded", "true");
+            if (navOverlay) navOverlay.classList.add("active");
+            document.body.classList.add("menu-open");
+        }
 
-        // Ocultar menú al hacer clic en un enlace (excepto el botón del desplegable y los gatillos de submenús)
-        document.querySelectorAll(".nav-link:not(.dropdown > .nav-link), .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
+        function closeMenu() {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+            if (navOverlay) navOverlay.classList.remove("active");
+            document.body.classList.remove("menu-open");
+        }
+
+        function toggleMenu() {
+            if (navMenu.classList.contains("active")) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        hamburger.addEventListener("click", toggleMenu);
+        hamburger.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
+
+        if (navOverlay) {
+            navOverlay.addEventListener("click", closeMenu);
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navMenu && navMenu.classList.contains("active")) {
+                closeMenu();
+            }
+        });
+
+        // Ocultar menú al hacer clic en cualquier enlace
+        document.querySelectorAll(".nav-link, .dropdown-item:not(.submenu-trigger), .submenu-content .dropdown-item").forEach(n => n.addEventListener("click", () => {
+            closeMenu();
         }));
 
         // Soporte táctil y clic para sub-sub-menús desplegables
