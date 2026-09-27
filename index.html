@@ -999,7 +999,7 @@
         .geometric-open-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3.5rem 2.8rem;
+            gap: clamp(2.5rem, 3.2vw, 3.5rem) clamp(1.8rem, 2.5vw, 2.8rem);
             margin-top: 2rem;
             margin-bottom: 2rem;
             align-items: start;
@@ -1007,9 +1007,9 @@
 
         .geo-item {
             display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 1.8rem;
-            align-items: center;
+            grid-template-columns: 230px 1fr;
+            gap: 1.6rem;
+            align-items: start;
             position: relative;
             padding-bottom: 1.8rem;
             border-bottom: 1px solid var(--border);
@@ -1023,7 +1023,8 @@
         /* Marco fotográfico con corte diagonal y esquinas genuinamente redondeadas */
         .geo-image-frame {
             display: block;
-            height: 200px;
+            width: 100%;
+            height: 190px;
             position: relative;
             overflow: hidden;
             -webkit-clip-path: url(#geo-clip-odd);
@@ -1066,12 +1067,16 @@
             box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
         }
 
+        .geo-text {
+            min-width: 0;
+        }
+
         .geo-text h3 {
             font-family: var(--font-title);
-            font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+            font-size: clamp(1.15rem, 1.5vw, 1.4rem);
             font-weight: 800;
             color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.45rem;
             line-height: 1.25;
         }
 
@@ -1124,7 +1129,84 @@
             transform: translateX(2px);
         }
 
-        @media (max-width: 950px) {
+        /* -------------------------------------------------------------
+           ESCALADO RESPONSIVO PROGRESIVO
+           ------------------------------------------------------------- */
+
+        /* 1. Laptops y Pantallas Medianas (1025px - 1180px) */
+        @media (max-width: 1180px) {
+            .geometric-open-grid {
+                gap: 2.5rem 1.8rem;
+            }
+
+            .geo-item {
+                grid-template-columns: 180px 1fr;
+                gap: 1.2rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .geo-image-frame {
+                height: 165px;
+            }
+
+            .geo-text h3 {
+                font-size: 1.18rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .geo-text p {
+                font-size: 0.87rem;
+                line-height: 1.5;
+                margin-bottom: 0.85rem;
+            }
+
+            .geo-sublinks {
+                gap: 6px 12px;
+            }
+
+            .geo-sublinks li a {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* 2. Tablets en Horizontal y Pantallas Intermedias (881px - 1024px) */
+        @media (max-width: 1024px) {
+            .geometric-open-grid {
+                gap: 2.2rem 1.4rem;
+            }
+
+            .geo-item {
+                grid-template-columns: 160px 1fr;
+                gap: 1.1rem;
+                padding-bottom: 1.4rem;
+            }
+
+            .geo-image-frame {
+                height: 155px;
+            }
+
+            .geo-text h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.35rem;
+            }
+
+            .geo-text p {
+                font-size: 0.84rem;
+                line-height: 1.48;
+                margin-bottom: 0.75rem;
+            }
+
+            .geo-sublinks {
+                gap: 4px 10px;
+            }
+
+            .geo-sublinks li a {
+                font-size: 0.78rem;
+            }
+        }
+
+        /* 3. Tablets en Vertical y Resolución Intermedia Media (601px - 880px) */
+        @media (max-width: 880px) {
             .geometric-open-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem 1.2rem;
@@ -1132,15 +1214,40 @@
 
             .geo-item {
                 grid-template-columns: 1fr;
-                gap: 0.8rem;
-                align-items: start;
+                gap: 0.85rem;
+                padding-bottom: 1.3rem;
             }
 
             .geo-image-frame {
-                height: 150px;
+                width: 100%;
+                aspect-ratio: 16 / 10;
+                height: auto;
+                max-height: 200px;
+            }
+
+            .geo-text h3 {
+                font-size: clamp(1rem, 2.4vw, 1.15rem);
+                margin-bottom: 0.35rem;
+                line-height: 1.25;
+            }
+
+            .geo-text p {
+                font-size: clamp(0.78rem, 1.6vw, 0.85rem);
+                line-height: 1.45;
+                margin-bottom: 0.7rem;
+            }
+
+            .geo-sublinks {
+                gap: 4px 10px;
+                margin-bottom: 0.3rem;
+            }
+
+            .geo-sublinks li a {
+                font-size: 0.76rem;
             }
         }
 
+        /* 4. Dispositivos Móviles (<= 600px) */
         @media (max-width: 600px) {
             .geometric-open-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1154,7 +1261,10 @@
             }
 
             .geo-image-frame {
-                height: clamp(100px, 26vw, 135px);
+                width: 100%;
+                aspect-ratio: 16 / 11;
+                height: auto;
+                max-height: clamp(100px, 26vw, 135px);
             }
 
             .geo-text h3 {
@@ -2600,12 +2710,9 @@
                                 loading="lazy">
                         </div>
                         <div class="project-content">
-                            <span class="project-tag">Estructuras Industriales & DS 43</span>
                             <h3>Catálogo de Bodegas de Sustancias Peligrosas</h3>
-                            <p>Desarrollo y cálculo estructural modular para catálogo de bodegas estandarizadas para
-                                almacenamiento de sustancias peligrosas (SUSPEL). Diseño conforme al Decreto Supremo DS
-                                43 del MINSAL y normas sísmicas NCh2369 / NCh433, incorporando ventilación técnica,
-                                resistencia al fuego y cubetos estancos de retención de derrames.</p>
+                            <p>Diseño y cálculo estructural modular de bodegas estandarizadas para sustancias peligrosas
+                                (SUSPEL) para minería, conforme a normas DS 43 y NCh2369 con cubeto de retención.</p>
                         </div>
                     </div>
 
@@ -2615,12 +2722,9 @@
                                 loading="lazy">
                         </div>
                         <div class="project-content">
-                            <span class="project-tag">Vivienda & Edificación</span>
                             <h3>Diseño Estructural Vivienda Albañilería y Metalcon</h3>
-                            <p>Cálculo estructural integral para vivienda unifamiliar combinando primer piso en
-                                albañilería confinada y segundo nivel en estructura liviana de acero galvanizado
-                                (Metalcon / Steel Framing). Solución optimizada para comportamiento sísmico según NCh433
-                                con memorias de cálculo y planos listos para ingreso DOM.</p>
+                            <p>Cálculo estructural integral para vivienda combinando albañilería, metalcon y acero
+                                estructural, optimizado para comportamiento sísmico NCh433 para ingreso DOM.</p>
                         </div>
                     </div>
 
@@ -2630,12 +2734,9 @@
                                 loading="lazy">
                         </div>
                         <div class="project-content">
-                            <span class="project-tag">Estructuras de Acero & Obras Auxiliares</span>
                             <h3>Estructuras Industriales Menores en Acero</h3>
-                            <p>Ingeniería de detalle, modelación y planos de fabricación para estructuras auxiliares e
-                                industriales: plataformas operacionales con emparrillado metálico, pasarelas de acceso,
-                                cobertizos y refuerzos estructurales bajo normas NCh427 / AISC 360 y NCh2369,
-                                priorizando constructibilidad y rapidez de montaje.</p>
+                            <p>Ingeniería de detalle y planos de fabricación para plataformas operacionales, pasarelas
+                                y cobertizos industriales bajo normas NCh427 / AISC 360 y NCh2369.</p>
                         </div>
                     </div>
 
@@ -2644,12 +2745,9 @@
                             <img src="carousel/drenes.png" alt="Regularización Sanitaria Domiciliaria" loading="lazy">
                         </div>
                         <div class="project-content">
-                            <span class="project-tag">Ingeniería Sanitaria & RIDAA</span>
                             <h3>Regularización Sanitaria Domiciliaria</h3>
-                            <p>Levantamiento, ingeniería hidráulica y regularización técnica de redes domiciliarias de
-                                agua potable y alcantarillado. Elaboración de memorias de cálculo, planos as-built y
-                                tramitación integral conforme al reglamento RIDAA para la obtención de resolución
-                                sanitaria y recepción final municipal.</p>
+                            <p>Levantamiento, ingeniería hidráulica y tramitación técnica de redes domiciliarias de agua
+                                potable y alcantarillado bajo reglamento RIDAA para recepción sanitaria y municipal.</p>
                         </div>
                     </div>
                 </div>
