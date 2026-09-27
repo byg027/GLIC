@@ -1311,45 +1311,118 @@
             scroll-margin-top: calc(var(--header-height) + 20px);
         }
 
+        /* ==========================================================================
+           SECCIÓN NOSOTROS (EDITORIAL SUIZO ASIMÉTRICO / SWISS GRID)
+           ========================================================================== */
         .nosotros-section {
             padding: clamp(3.5rem, 7vh, 6rem) 0 !important;
-            text-align: center;
             background: var(--nosotros-bg);
-            border-top: 1px solid var(--nosotros-border);
-            border-bottom: 1px solid var(--nosotros-border);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .nosotros-section h2 {
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
+        .nosotros-swiss-grid {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: clamp(2rem, 5vw, 4.5rem);
+            align-items: start;
+            text-align: left;
         }
 
-        .nosotros-section h2::after {
-            content: '';
-            display: block;
-            width: 45px;
-            height: 3px;
-            background: var(--primary);
-            margin: 0.8rem auto 0 auto;
-            border-radius: 2px;
-        }
-
-        .nosotros-content {
-            max-width: 860px;
-            margin: 0 auto;
+        .nosotros-swiss-sidebar {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
             display: flex;
             flex-direction: column;
-            gap: 1.6rem;
+            gap: 1.25rem;
         }
 
-        .nosotros-content p {
-            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-            line-height: 1.85;
-            color: var(--nosotros-text);
-            text-wrap: pretty;
-            margin: 0 auto;
+        .nosotros-swiss-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nosotros-swiss-kicker::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .nosotros-swiss-title {
+            font-family: var(--font-title);
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -1.5px;
+            line-height: 1;
+            margin: 0;
+            text-align: left;
+        }
+
+        .nosotros-swiss-title::after {
+            display: none !important;
+        }
+
+        .nosotros-swiss-specs {
+            border-top: 1px solid var(--border);
+            padding-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .nosotros-swiss-row {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nosotros-swiss-val {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .nosotros-swiss-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+            text-align: left;
+            border-left: 2px solid var(--primary);
+            padding-left: clamp(1.25rem, 2.5vw, 2rem);
+        }
+
+        .nosotros-swiss-content p {
+            font-size: clamp(1.1rem, 1.65vw, 1.3rem);
+            line-height: 1.8;
+            color: var(--text-heading);
             font-weight: 400;
+            text-wrap: pretty;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .nosotros-swiss-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .nosotros-swiss-sidebar {
+                position: static;
+            }
         }
 
         /* ==========================================================================
@@ -2746,18 +2819,30 @@
         </section>
 
         <section id="nosotros" class="container nosotros-section">
-            <h2 class="animated-element">Nosotros</h2>
-            <div class="nosotros-content animated-element">
-                <p>
-                    GLIC opera desde el sur de Chile, desarrollando proyectos en diversas áreas de la ingeniería, con
-                    especial énfasis en el diseño y cálculo estructural, los proyectos sanitarios y las
-                    regularizaciones.
-                </p>
-                <p>
-                    En cada proyecto buscamos un equilibrio entre el uso eficiente de materiales, la facilidad de
-                    construcción y ejecución, y el cumplimiento de la normativa vigente, siempre priorizando la
-                    seguridad y la calidad de las soluciones desarrolladas.
-                </p>
+            <div class="nosotros-swiss-grid">
+                <aside class="nosotros-swiss-sidebar animated-element">
+                    <div class="nosotros-swiss-kicker">Ingeniería Civil</div>
+                    <h2 class="nosotros-swiss-title">Nosotros</h2>
+                    <div class="nosotros-swiss-specs">
+                        <div class="nosotros-swiss-row">
+                            <span>UBICACIÓN</span>
+                            <span class="nosotros-swiss-val">Valdivia, Los Ríos, Chile</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="nosotros-swiss-content animated-element">
+                    <p>
+                        GLIC opera desde el sur de Chile, desarrollando proyectos para todo el país en diversas áreas de la ingeniería, con
+                        especial énfasis en el diseño y cálculo estructural, los proyectos sanitarios y las
+                        regularizaciones.
+                    </p>
+                    <p>
+                        En cada proyecto buscamos un equilibrio entre el uso eficiente de materiales, la facilidad de
+                        construcción y ejecución, y el cumplimiento de la normativa vigente, siempre priorizando la
+                        seguridad y la calidad de las soluciones desarrolladas.
+                    </p>
+                </div>
             </div>
         </section>
 
