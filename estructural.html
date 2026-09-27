@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap"
         rel="stylesheet">
 
     <meta name="theme-color" content="#050505">
@@ -68,9 +68,7 @@
             --theme-toggle-color: rgba(255, 255, 255, 0.55);
             --theme-toggle-hover-bg: rgba(255, 255, 255, 0.08);
             --theme-toggle-hover-border: rgba(255, 255, 255, 0.12);
-            --theme-toggle-hover-color: #ffffff;
-            --hero-overlay: linear-gradient(135deg, rgba(5, 5, 5, 0.92) 0%, rgba(10, 10, 10, 0.84) 100%);
-            --hero-card-bg: rgba(17, 17, 17, 0.88);
+            --hero-overlay: linear-gradient(90deg, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0.20) 100%);
             --subcard-bg: rgba(20, 20, 22, 0.85);
             --subcard-border: rgba(255, 255, 255, 0.08);
             --input-bg: rgba(0, 0, 0, 0.6);
@@ -78,6 +76,7 @@
             --input-text: #ffffff;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
             --header-height: 70px;
             --r-sm: 6px;
             --r-md: 10px;
@@ -107,10 +106,7 @@
             --theme-toggle-color: rgba(15, 23, 42, 0.55);
             --theme-toggle-hover-bg: rgba(0, 0, 0, 0.05);
             --theme-toggle-hover-border: rgba(0, 0, 0, 0.08);
-            --theme-toggle-hover-color: #0f172a;
-            --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.88) 100%);
-            --hero-card-bg: rgba(255, 255, 255, 0.96);
-            --hero-card-border: rgba(0, 0, 0, 0.08);
+            --hero-overlay: linear-gradient(90deg, rgba(248, 250, 252, 0.90) 0%, rgba(248, 250, 252, 0.60) 55%, rgba(248, 250, 252, 0.25) 100%);
             --subcard-bg: #ffffff;
             --subcard-border: rgba(0, 0, 0, 0.08);
             --input-bg: #ffffff;
@@ -326,60 +322,82 @@
            4. HERO PRINCIPAL DE SERVICIO
            ========================================================================== */
         .service-hero {
-            min-height: 80vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
-            padding: calc(var(--header-height) + 3.5rem) 0 4rem 0;
-            background-image: var(--hero-overlay), url('assets/servicios_galpones.jpg');
-            background-position: center;
-            background-size: cover;
+            box-sizing: border-box;
+            padding: calc(var(--header-height) + 2.5rem) 0 3.5rem 0;
+            background-color: var(--bg-main);
             position: relative;
             border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Fondo Fotográfico con Corte Diagonal Angular Original */
+        .diagonal-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 54%;
+            height: 100%;
+            background: url('assets/servicios_galpones.jpg') center right / cover no-repeat;
+            clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .diagonal-image-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0.15) 50%, transparent 100%);
+        }
+
+        [data-theme="light"] .diagonal-image-bg::after {
+            background: linear-gradient(90deg, rgba(248, 250, 252, 0.70) 0%, rgba(248, 250, 252, 0.20) 50%, transparent 100%);
+        }
+
+        .diagonal-line {
+            display: inline-block;
+            width: 42px;
+            height: 3px;
+            background: var(--primary);
+            margin-bottom: 1.1rem;
         }
 
         .container {
             width: 90%; max-width: 1200px; margin: 0 auto;
         }
 
-        .hero-card {
-            background: var(--hero-card-bg);
-            border: 1px solid var(--hero-card-border);
-            border-radius: var(--r-xl);
-            padding: clamp(2rem, 5vw, 4rem);
-            box-shadow: var(--shadow-card);
-            backdrop-filter: blur(15px);
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border: 1px solid rgba(255, 153, 0, 0.3);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1.2rem;
-            font-family: var(--font-title);
+        .hero-content {
+            max-width: min(520px, 45vw);
+            position: relative;
+            z-index: 3;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-size: clamp(2.1rem, 3.8vw, 3.4rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.15rem;
             color: var(--text-heading);
+            letter-spacing: -0.5px;
+            text-wrap: balance;
         }
 
         .hero-desc {
-            font-size: clamp(1rem, 1.3vw, 1.15rem);
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2.2rem;
-            max-width: 75ch;
+            font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+            color: var(--text-main);
+            opacity: 0.92;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+            max-width: 44ch;
+            text-wrap: pretty;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
         }
 
         .cta-btn {
@@ -393,17 +411,18 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.4rem;
             border-radius: var(--r-sm);
             border: none;
             cursor: pointer;
+            text-decoration: none;
             box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
             transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
         .cta-btn:hover {
             transform: translateY(-2px);
             background-color: var(--primary-light);
-            box-shadow: 0 14px 30px rgba(255, 153, 0, 0.4);
+            box-shadow: 0 14px 30px rgba(255, 153, 0, 0.42);
             color: #000;
         }
 
@@ -422,16 +441,6 @@
             background-color: var(--bg-surface);
         }
 
-        .area-tag {
-            font-size: 0.78rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.6rem;
-            font-family: var(--font-title);
-            display: inline-block;
-        }
 
         .section-title {
             font-size: clamp(1.8rem, 3.8vw, 2.6rem);
@@ -551,37 +560,40 @@
             margin: 0;
         }
 
-        /* Tools Strip */
-        .tools-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            align-items: center;
-            margin-top: 1.2rem;
-        }
-
-        .tool-badge {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            padding: 6px 14px;
-            border-radius: var(--r-sm);
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 0.5px;
-        }
-
-        .tool-badge.featured {
-            border-color: rgba(255, 153, 0, 0.4);
-            color: var(--primary);
-            background: var(--primary-dim);
-        }
-
         @media (max-width: 960px) {
             .editorial-split,
             .editorial-split.reverse {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .diagonal-image-bg {
+                width: 100%;
+                height: 48%;
+                top: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+
+            .service-hero {
+                min-height: auto;
+                padding-top: 15rem;
+                padding-bottom: 3.5rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding-top: 13rem;
+                padding-bottom: 3rem;
+            }
+            .hero-actions .cta-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
             }
         }
 
@@ -626,96 +638,121 @@
         /* Cuadrícula Interna: 2 Columnas en Escritorio */
         .contact-inner-grid {
             display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
+            grid-template-columns: 1fr 1fr;
             gap: clamp(1.2rem, 2.5vw, 2.2rem);
             align-items: stretch;
             min-width: 0;
+            min-height: clamp(520px, 62vh, 640px);
         }
 
-        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados */
+        /* LADO IZQUIERDO: Tarjeta interior con bordes redondeados y textos embebidos */
         .contact-media-card {
             position: relative;
             border-radius: var(--r-lg);
-            background: url('assets/servicios_industruales.jpg') center center / cover no-repeat;
+            background: 
+                linear-gradient(180deg, rgba(5, 5, 5, 0.72) 0%, rgba(5, 5, 5, 0.35) 42%, rgba(5, 5, 5, 0.92) 100%),
+                url('assets/servicios_industruales.jpg') center center / cover no-repeat;
             overflow: hidden;
             min-height: 380px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* LADO DERECHO: Formulario con Trazado de Líneas Minimalista */
+        .contact-media-overlay {
+            display: none;
+        }
+
+        .contact-media-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: clamp(1.4rem, 2.5vw, 2.2rem);
+        }
+
+        .contact-media-top {
+            font-family: var(--font-title);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-media-pipe {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .contact-media-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .contact-media-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .contact-media-desc {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.88);
+            text-wrap: pretty;
+            margin: 0;
+        }
+
+        /* Lado Derecho: Formulario con Trazado de Líneas Minimalista */
         .contact-form-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: clamp(0.2rem, 0.8vw, 0.8rem) 0;
+            padding: 0.25rem 0;
             min-width: 0;
+            min-height: 0;
         }
 
-        .contact-pane-header {
-            margin-bottom: 0.85rem;
-            max-width: 100%;
-        }
-
-        .contact-pane-tag {
+        .contact-form-title {
             font-family: var(--font-title);
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-pane-title {
-            font-family: var(--font-title);
-            font-size: clamp(1.35rem, 2vw, 1.7rem);
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: var(--primary);
+            font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            color: var(--text-heading);
             letter-spacing: -0.5px;
-            max-width: 100%;
-        }
-
-        [data-theme="light"] .contact-pane-title {
-            color: var(--primary);
-        }
-
-        .contact-pane-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            line-height: 1.45;
-            max-width: 100%;
-            overflow-wrap: anywhere;
-        }
-
-        [data-theme="light"] .contact-pane-desc {
-            color: #64748b;
+            margin-bottom: clamp(1rem, 1.8vh, 1.5rem);
+            line-height: 1.2;
         }
 
         .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 1.05rem;
-            min-width: 0;
+            gap: clamp(1.2rem, 1.8vh, 1.65rem);
         }
 
         .form-line-group {
-            position: relative;
             display: flex;
             flex-direction: column;
+            gap: 0.25rem;
             min-width: 0;
         }
 
         .form-line-label {
             font-family: var(--font-title);
             font-size: 0.72rem;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.9px;
             color: var(--text-muted);
-            margin-bottom: 0.2rem;
-            transition: color var(--transition-speed) ease;
+            font-weight: 700;
         }
 
         [data-theme="light"] .form-line-label {
@@ -724,20 +761,20 @@
 
         .form-line-input {
             width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            min-height: 2.35rem;
             background: transparent;
             border: none;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-main);
+            border-bottom: 1px solid var(--border-light, rgba(255, 255, 255, 0.12));
+            color: var(--text-heading);
+            padding: 0.6rem 0;
             font-family: var(--font-body);
-            font-size: 0.95rem;
-            padding: 0.45rem 0;
-            transition: border-color var(--transition-speed) ease;
-            box-sizing: border-box;
-            border-radius: 0;
+            font-size: 16px;
+            font-weight: 400;
             outline: none;
-            min-height: 38px;
-            -webkit-appearance: none;
-            appearance: none;
+            border-radius: 0;
+            transition: border-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         [data-theme="light"] .form-line-input {
@@ -745,55 +782,36 @@
             border-bottom-color: rgba(0, 0, 0, 0.15);
         }
 
+        .form-line-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-line-input:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
         .form-line-input::placeholder {
-            color: rgba(255, 255, 255, 0.28);
+            color: var(--text-muted);
+            opacity: 0.7;
+            font-weight: 300;
+            font-size: 16px;
         }
 
         [data-theme="light"] .form-line-input::placeholder {
             color: #94a3b8;
         }
 
-        .form-line-input:focus {
-            border-bottom-color: var(--primary);
-        }
-
-        [data-theme="light"] .form-line-input:focus {
-            border-bottom-color: var(--primary);
-        }
-
-        .form-line-group:focus-within .form-line-label {
-            color: var(--primary);
-        }
-
-        .select-line-control {
-            cursor: pointer;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9900' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 0.2rem center;
-            background-size: 0.9em;
-            padding-right: 1.5rem;
-        }
-
-        .select-line-control option {
-            background-color: var(--bg-card);
-            color: var(--text-main);
-        }
-
-        [data-theme="light"] .select-line-control option {
-            background-color: #ffffff;
-            color: #0f172a;
-        }
-
-        .textarea-line-control {
+        textarea.form-line-input {
             resize: vertical;
-            min-height: 65px;
-            line-height: 1.45;
+            min-height: clamp(6.8rem, 13vh, 9rem);
+            line-height: 1.5;
         }
 
         .form-line-duo {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
+            gap: 1.15rem;
             min-width: 0;
         }
 
@@ -801,8 +819,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1rem;
-            margin-top: 0.35rem;
+            gap: 1rem 1.25rem;
+            margin-top: clamp(0.6rem, 1.2vh, 1rem);
             flex-wrap: wrap;
             min-width: 0;
         }
@@ -863,42 +881,50 @@
             transform: none;
         }
 
-        .contact-direct-links {
+        /* Enlaces de Contacto Directo con estilo técnico junto al botón */
+        .contact-strip-links {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            gap: 1.15rem;
             flex-wrap: wrap;
             min-width: 0;
         }
 
-        .contact-direct-links a {
+        .contact-strip-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-heading);
             text-decoration: none;
-            border-bottom: 1px solid var(--border);
-            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: color var(--transition-speed) ease;
             white-space: nowrap;
-            display: inline-block;
         }
 
-        .contact-direct-links a:hover {
+        .contact-strip-link svg {
+            stroke: var(--primary);
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-strip-link:hover {
             color: var(--primary);
-            border-bottom-color: var(--primary);
         }
 
-        [data-theme="light"] .contact-direct-links a {
+        .contact-strip-link:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        [data-theme="light"] .contact-strip-link {
             color: #0f172a;
-            border-bottom-color: rgba(0, 0, 0, 0.2);
         }
 
-        [data-theme="light"] .contact-direct-links a:hover {
+        [data-theme="light"] .contact-strip-link:hover {
             color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-
-        .contact-direct-links span {
-            color: var(--border);
         }
 
         /* Trampa honeypot invisible para bots */
@@ -926,20 +952,19 @@
             color: #ef4444;
         }
 
-        /* Responsividad Mejorada Contacto (3/4 altura) */
         @media (max-width: 980px) {
-            #contacto.contact-section-wrapper {
-                align-items: flex-start;
-                padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
-            }
-
             .contact-inner-grid {
                 grid-template-columns: 1fr;
                 gap: clamp(1rem, 2.5vw, 1.6rem);
+                min-height: auto;
             }
 
             .contact-media-card {
-                min-height: clamp(165px, 28vw, 225px);
+                min-height: clamp(240px, 35vw, 300px);
+            }
+
+            .contact-media-content {
+                padding: 1.25rem;
             }
 
             .contact-form-content {
@@ -962,87 +987,23 @@
             .contact-inner-grid {
                 gap: 1rem;
             }
+        }
 
-            .contact-media-card {
-                min-height: 155px;
-            }
-
-            .contact-pane-header {
-                margin-bottom: 0.9rem;
-            }
-
-            .contact-pane-tag {
-                font-size: 0.64rem;
-                letter-spacing: 1.2px;
-            }
-
-            .contact-pane-title {
-                font-size: clamp(1.2rem, 5.5vw, 1.45rem);
-                line-height: 1.2;
-            }
-
-            .contact-pane-desc {
-                font-size: 0.84rem;
-                line-height: 1.45;
-            }
-
-            .contact-underline-form {
-                gap: 0.9rem;
-            }
-
-            .form-line-duo {
-                grid-template-columns: 1fr;
-                gap: 0.9rem;
-            }
-
-            .form-line-label {
-                font-size: 0.66rem;
-                letter-spacing: 0.8px;
-            }
-
-            .form-line-input {
-                min-height: 42px;
-                padding: 0.5rem 0;
-            }
-
-            textarea.form-line-input {
-                min-height: 6rem;
-            }
-
+        @media (max-width: 480px) {
             .form-submit-row {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 0.75rem;
-                margin-top: 0.2rem;
-            }
-
-            .contact-direct-links {
-                justify-content: flex-start;
-                font-size: 0.78rem;
-                line-height: 1.45;
-                gap: 0.5rem;
+                gap: 1rem;
             }
 
             .contact-btn-clean {
                 width: 100%;
-                justify-content: center;
-                padding: 0.75rem 1rem;
-                min-height: 44px;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .contact-card-frame {
-                padding: 0.65rem;
             }
 
-            .contact-media-card {
-                min-height: 135px;
-            }
-
-            .contact-direct-links {
-                font-size: 0.74rem;
-                gap: 0.42rem;
+            .contact-strip-links {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 0.85rem 1.25rem;
             }
         }
 
@@ -1240,21 +1201,19 @@
     <main>
         <!-- Hero Principal del Servicio Unificado -->
         <section class="service-hero">
+            <!-- Fondo con corte diagonal angular original -->
+            <div class="diagonal-image-bg" aria-hidden="true"></div>
+
             <div class="container">
-                <div class="hero-card">
-                    <div class="hero-badge">Ingeniería Estructural</div>
+                <div class="hero-content">
+                    <div class="diagonal-line"></div>
                     <h1 class="hero-title">Cálculo y <span class="text-gradient">Diseño Estructural</span></h1>
                     <p class="hero-desc">
-                        Desarrollamos proyectos de cálculo y diseño estructural para viviendas, ampliaciones, estructuras metálicas y proyectos industriales. Buscamos soluciones seguras, eficientes y constructibles, considerando las características de cada proyecto y la normativa chilena aplicable.
+                        Cálculo y diseño estructural para viviendas, galpones e instalaciones industriales. Soluciones seguras y eficientes bajo normativa nacional.
                     </p>
-                    <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">ETABS</span>
-                        <span class="tool-badge featured">SAP2000</span>
-                        <span class="tool-badge featured">Robot</span>
-                        <span class="tool-badge">AutoCAD</span>
-                        <span class="tool-badge">Revit</span>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="cta-btn">Cotizar Proyecto Estructural &rarr;</a>
                     </div>
-                    <a href="#contacto" class="cta-btn">Cotizar Proyecto Estructural &rarr;</a>
                 </div>
             </div>
         </section>
@@ -1262,7 +1221,6 @@
         <!-- 1. VIVIENDAS Y EDIFICACIÓN -->
         <section id="viviendas" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Viviendas y Edificación</span>
                 <h3 class="section-title">Cálculo Estructural de <span class="text-gradient">Viviendas y Ampliaciones</span></h3>
                 <p class="section-lead">
                     Diseño estructural para viviendas nuevas, ampliaciones y proyectos de edificación, adaptado a la arquitectura y a las condiciones particulares de cada obra.
@@ -1301,7 +1259,6 @@
         <!-- 2. ESTRUCTURAS METÁLICAS -->
         <section id="galpones" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Estructuras Metálicas</span>
                 <h3 class="section-title">Galpones y <span class="text-gradient">Estructuras Metálicas</span></h3>
                 <p class="section-lead">
                     Diseño y cálculo de estructuras metálicas para galpones, bodegas, instalaciones industriales y otras construcciones en acero.
@@ -1340,7 +1297,6 @@
         <!-- 3. PROYECTOS INDUSTRIALES -->
         <section id="industriales" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Proyectos Industriales</span>
                 <h3 class="section-title">Estructuras <span class="text-gradient">Industriales</span></h3>
                 <p class="section-lead">
                     Ingeniería estructural para instalaciones industriales, forestales, mineras y otras obras en acero u hormigón.
@@ -1374,7 +1330,6 @@
         <!-- 4. ESTRUCTURAS TEMPORALES Y SOLUCIONES ESPECIALES -->
         <section id="temporales" class="service-section">
             <div class="container">
-                <span class="area-tag">04. Estructuras Temporales y Soluciones Especiales</span>
                 <h3 class="section-title">Estructuras Temporales y <span class="text-gradient">Soluciones Especiales</span></h3>
                 <p class="section-lead">
                     Cálculo y revisión estructural para estructuras temporales, elementos auxiliares de obra y soluciones especiales.
@@ -1405,15 +1360,23 @@
             <div class="contact-card-frame">
                 <div class="contact-inner-grid">
 
-                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
-                    <div class="contact-media-card" aria-label="Estructuras industriales y cálculo estructural"></div>
+                    <!-- Bloque Interior Izquierdo: Fotografía con Textos Embebidos -->
+                    <div class="contact-media-card" aria-label="Estructuras industriales y cálculo estructural">
+                        <div class="contact-media-overlay"></div>
+                        <div class="contact-media-content">
+                            <div class="contact-media-top">
+                                <span class="contact-media-pipe">|</span> GLIC INGENIERÍA
+                            </div>
+                            <div class="contact-media-bottom">
+                                <h3 class="contact-media-title">Cuéntanos sobre tu proyecto</h3>
+                                <p class="contact-media-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
                     <div class="contact-form-content">
-                        <div class="contact-pane-header">
-                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
-                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
-                        </div>
+                        <h3 class="contact-form-title">Contáctanos</h3>
 
                         <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
@@ -1453,10 +1416,15 @@
                                     </svg>
                                 </button>
 
-                                <div class="contact-direct-links">
-                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                                    <span>&middot;</span>
-                                    <a href="mailto:contacto@glic.cl">contacto@glic.cl</a>
+                                <div class="contact-strip-links">
+                                    <a href="https://wa.me/56950321322" target="_blank" rel="noopener noreferrer" class="contact-strip-link">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                    <a href="mailto:contacto@glic.cl" class="contact-strip-link">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                        <span>contacto@glic.cl</span>
+                                    </a>
                                 </div>
                             </div>
 
