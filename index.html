@@ -1002,6 +1002,7 @@
             gap: 3.5rem 2.8rem;
             margin-top: 2rem;
             margin-bottom: 2rem;
+            align-items: start;
         }
 
         .geo-item {
@@ -1019,26 +1020,26 @@
             border-bottom-color: var(--primary);
         }
 
-        /* Marco fotográfico con corte diagonal poligonal tipo ingeniería */
+        /* Marco fotográfico con corte diagonal y esquinas genuinamente redondeadas */
         .geo-image-frame {
+            display: block;
             height: 200px;
             position: relative;
             overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+            -webkit-clip-path: url(#geo-clip-odd);
+            clip-path: url(#geo-clip-odd);
             background: var(--geo-frame-bg);
-            border-radius: var(--r-sm, 6px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease;
+            filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.3));
+            cursor: pointer;
         }
 
         .geo-item:nth-child(even) .geo-image-frame {
-            clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+            -webkit-clip-path: url(#geo-clip-even);
+            clip-path: url(#geo-clip-even);
         }
 
-        .geo-item:hover .geo-image-frame,
-        .geo-item:nth-child(even):hover .geo-image-frame {
-            transform: scale(1.03);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+        [data-theme="light"] .geo-image-frame {
+            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.08));
         }
 
         .geo-image-frame img {
@@ -1046,12 +1047,6 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(var(--geo-img-brightness)) contrast(1.15);
-            transition: filter 0.5s ease, transform 0.6s ease;
-        }
-
-        .geo-item:hover .geo-image-frame img {
-            filter: brightness(1) contrast(1.1);
-            transform: scale(1.08);
         }
 
         .geo-accent-line {
@@ -1080,6 +1075,17 @@
             line-height: 1.25;
         }
 
+        .geo-text h3 a {
+            color: var(--text-heading);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .geo-text h3 a:hover,
+        .geo-item:hover .geo-text h3 a {
+            color: var(--primary);
+        }
+
         .geo-text p {
             font-size: 0.92rem;
             color: var(--text-muted);
@@ -1092,7 +1098,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px 16px;
-            margin-bottom: 1.1rem;
+            margin-bottom: 0.5rem;
             padding: 0;
         }
 
@@ -1118,25 +1124,6 @@
             transform: translateX(2px);
         }
 
-        .geo-btn {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-family: var(--font-title);
-            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
-        }
-
-        .geo-btn:hover {
-            transform: translateX(5px);
-            color: var(--primary-light);
-        }
-
         @media (max-width: 950px) {
             .geometric-open-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1151,17 +1138,6 @@
 
             .geo-image-frame {
                 height: 150px;
-                clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
-            }
-
-            .geo-item:nth-child(even) .geo-image-frame {
-                clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
-            }
-
-            .geo-item:hover .geo-image-frame,
-            .geo-item:nth-child(even):hover .geo-image-frame {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
-                transform: scale(1.03);
             }
         }
 
@@ -1179,17 +1155,6 @@
 
             .geo-image-frame {
                 height: clamp(100px, 26vw, 135px);
-                clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
-            }
-
-            .geo-item:nth-child(even) .geo-image-frame {
-                clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
-            }
-
-            .geo-item:hover .geo-image-frame,
-            .geo-item:nth-child(even):hover .geo-image-frame {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
-                transform: scale(1.03);
             }
 
             .geo-text h3 {
@@ -1211,10 +1176,6 @@
 
             .geo-sublinks li a {
                 font-size: clamp(0.65rem, 2vw, 0.74rem);
-            }
-
-            .geo-btn {
-                font-size: clamp(0.66rem, 2vw, 0.76rem);
             }
         }
 
@@ -2378,7 +2339,7 @@
                                 </a>
                                 <div class="submenu-content">
                                     <a href="otros-servicios.html#asesoria" class="dropdown-item">Asesoría Técnica</a>
-                                    <a href="otros-servicios.html#ingeniero" class="dropdown-item">Ingeniero en tu Empresa</a>
+                                    <a href="otros-servicios.html#ingeniero" class="dropdown-item">B2B</a>
                                     <a href="otros-servicios.html#especialidades" class="dropdown-item">Especialidades MEP</a>
                                 </div>
                             </div>
@@ -2426,8 +2387,8 @@
                     <h2><span class="text-gradient">Ingeniería estructural, proyectos sanitarios, regularizaciones y
                             más</span></h2>
                     <p>Desarrollamos soluciones de ingeniería para viviendas, galpones, locales comerciales, estructuras
-                        industriales y proyectos especiales, combinando un diseño eficiente con soluciones
-                        constructivamente viables y documentación técnica que respalda su correcta ejecución.</p>
+                    industriales y proyectos especiales, combinando un diseño eficiente con soluciones
+                    constructivamente viables y documentación técnica que respalda su correcta ejecución.</p>
                     <div class="hero-buttons">
                         <a href="contacto.html" class="cta-button">Cotizar Proyecto</a>
                         <a href="#servicios" class="btn-secondary">Ver servicios</a>
@@ -2442,35 +2403,46 @@
         <section id="servicios" class="container">
             <h2 class="animated-element">Servicios</h2>
 
+            <!-- Definición de clip-path SVG con esquinas curvas redondeadas -->
+            <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true" focusable="false">
+                <defs>
+                    <clipPath id="geo-clip-odd" clipPathUnits="objectBoundingBox">
+                        <path d="M 0 0.07 Q 0 0 0.06 0 L 0.94 0 Q 1 0 0.984 0.09 L 0.836 0.91 Q 0.82 1 0.76 1 L 0.06 1 Q 0 1 0 0.93 Z" />
+                    </clipPath>
+                    <clipPath id="geo-clip-even" clipPathUnits="objectBoundingBox">
+                        <path d="M 0.24 0 L 0.94 0 Q 1 0 1 0.07 L 1 0.93 Q 1 1 0.94 1 L 0.06 1 Q 0 1 0.016 0.91 L 0.164 0.09 Q 0.18 0 0.24 0 Z" />
+                    </clipPath>
+                </defs>
+            </svg>
+
             <!-- Mosaico Asimétrico con Cortes Diagonales (Alternativa 02) -->
             <div class="geometric-open-grid animated-element">
 
                 <!-- 1. Diseño Estructural -->
                 <div class="geo-item">
-                    <div class="geo-image-frame">
+                    <a href="estructural.html" class="geo-image-frame" aria-label="Diseño Estructural">
                         <img src="assets/servicios_galpones.jpg" alt="Diseño Estructural" loading="lazy">
-                    </div>
+                    </a>
                     <div class="geo-text">
-                        <h3>Diseño Estructural</h3>
-                        <p>Cálculo y diseño sismorresistente con planos constructivos y memorias técnicas.</p>
+                        <h3><a href="estructural.html">Diseño Estructural</a></h3>
+                        <p>Cálculo, diseño y documentación estructural para proyectos residenciales, industriales y de infraestructura.</p>
                         <ul class="geo-sublinks">
                             <li><a href="estructural.html#viviendas">Viviendas</a></li>
                             <li><a href="estructural.html#galpones">Galpones</a></li>
                             <li><a href="estructural.html#industriales">Estructuras Industriales</a></li>
                             <li><a href="estructural.html#temporales">Estructuras Temporales</a></li>
                         </ul>
-                        <a href="estructural.html" class="geo-btn">Ver servicio &rarr;</a>
                     </div>
                     <div class="geo-accent-line"></div>
                 </div>
 
                 <!-- 2. Proyectos Sanitarios -->
                 <div class="geo-item">
-                    <div class="geo-image-frame">
+                    <a href="sanitarios.html" class="geo-image-frame" aria-label="Proyectos Sanitarios">
                         <img src="assets/servicios_especialidades.jpg" alt="Proyectos Sanitarios" loading="lazy">
-                    </div>
+                    </a>
                     <div class="geo-text">
-                        <h3>Proyectos Sanitarios</h3>
+                        <h3><a href="sanitarios.html">Proyectos Sanitarios</a></h3>
                         <p>Agua potable, alcantarillado e instalaciones técnicas bajo normativa RIDAA.</p>
                         <ul class="geo-sublinks">
                             <li><a href="sanitarios.html">Agua Potable</a></li>
@@ -2478,43 +2450,40 @@
                             <li><a href="sanitarios.html">Proyectos Domiciliarios</a></li>
                             <li><a href="sanitarios.html">Regularización Sanitaria</a></li>
                         </ul>
-                        <a href="sanitarios.html" class="geo-btn">Ver servicio &rarr;</a>
                     </div>
                     <div class="geo-accent-line"></div>
                 </div>
 
                 <!-- 3. Regularizaciones -->
                 <div class="geo-item">
-                    <div class="geo-image-frame">
+                    <a href="regularizacion.html" class="geo-image-frame" aria-label="Regularizaciones">
                         <img src="assets/servicios_regularizacion.jpg" alt="Regularizaciones" loading="lazy">
-                    </div>
+                    </a>
                     <div class="geo-text">
-                        <h3>Regularizaciones</h3>
+                        <h3><a href="regularizacion.html">Regularizaciones</a></h3>
                         <p>Expedientes técnicos y trámites de regularización y recepción final ante la DOM.</p>
                         <ul class="geo-sublinks">
                             <li><a href="regularizacion.html">Regularización de Viviendas</a></li>
                             <li><a href="regularizacion.html">Ampliaciones Existentes</a></li>
                             <li><a href="regularizacion.html">Expedientes Técnicos DOM</a></li>
                         </ul>
-                        <a href="regularizacion.html" class="geo-btn">Ver servicio &rarr;</a>
                     </div>
                     <div class="geo-accent-line"></div>
                 </div>
 
                 <!-- 4. Otros Servicios -->
                 <div class="geo-item">
-                    <div class="geo-image-frame">
+                    <a href="otros-servicios.html" class="geo-image-frame" aria-label="Otros Servicios">
                         <img src="assets/servicios_asesoria.jpg" alt="Otros Servicios" loading="lazy">
-                    </div>
+                    </a>
                     <div class="geo-text">
-                        <h3>Otros Servicios</h3>
-                        <p>Asesoría técnica experta, ingeniero en tu empresa y coordinación de especialidades.</p>
+                        <h3><a href="otros-servicios.html">Otros Servicios</a></h3>
+                        <p>Asesoría técnica experta, B2B y coordinación de especialidades.</p>
                         <ul class="geo-sublinks">
                             <li><a href="otros-servicios.html#asesoria">Asesoría Técnica</a></li>
-                            <li><a href="otros-servicios.html#ingeniero">Ingeniero en tu Empresa</a></li>
+                            <li><a href="otros-servicios.html#ingeniero">B2B</a></li>
                             <li><a href="otros-servicios.html#especialidades">Especialidades MEP</a></li>
                         </ul>
-                        <a href="otros-servicios.html" class="geo-btn">Ver servicio &rarr;</a>
                     </div>
                     <div class="geo-accent-line"></div>
                 </div>
