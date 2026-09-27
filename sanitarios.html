@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería</title>
     <meta name="description"
-        content="Proyectos de agua potable y alcantarillado para viviendas, ampliaciones y proyectos domiciliarios. Diseño, planos, cálculo y regularización sanitaria.">
+        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y edificaciones, incluyendo el dimensionamiento de redes y la documentación técnica necesaria para su presentación y tramitación.">
     <link rel="canonical" href="https://glic.cl/sanitarios.html">
 
     <!-- Open Graph -->
@@ -14,7 +14,7 @@
     <meta property="og:locale" content="es_CL">
     <meta property="og:title" content="Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería">
     <meta property="og:description"
-        content="Proyectos de agua potable y alcantarillado para viviendas, ampliaciones y proyectos domiciliarios. Diseño, planos, cálculo y regularización sanitaria.">
+        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y edificaciones, incluyendo el dimensionamiento de redes y la documentación técnica necesaria para su presentación y tramitación.">
     <meta property="og:image" content="https://glic.cl/assets/sanitario.jpg">
     <meta property="og:url" content="https://glic.cl/sanitarios.html">
 
@@ -662,9 +662,23 @@
             margin: 0;
         }
 
+        .cross-link-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            flex-shrink: 0;
+            min-width: 250px;
+        }
+
+        .cross-link-actions .cross-link-btn {
+            width: 100%;
+            text-align: center;
+        }
+
         .cross-link-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             padding: 0.8rem 1.6rem;
             background: transparent;
             color: var(--primary);
@@ -683,6 +697,24 @@
         .cross-link-btn:hover {
             background: var(--primary);
             color: #000000;
+        }
+
+        @media (max-width: 820px) {
+            .cross-link-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1.25rem;
+            }
+
+            .cross-link-actions {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .cross-link-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         /* ==========================================================================
@@ -1307,7 +1339,7 @@
                     <div class="diagonal-line"></div>
                     <h1 class="hero-title">Proyectos de <span class="text-gradient">Agua Potable y Alcantarillado</span></h1>
                     <p class="hero-desc">
-                        Diseño y dimensionamiento de agua potable y alcantarillado para viviendas, loteos y edificaciones bajo normativa nacional.
+                        Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y edificaciones, incluyendo el dimensionamiento de redes y la documentación técnica necesaria para su presentación y tramitación.
                     </p>
                     <div class="hero-actions">
                         <a href="#contacto" class="cta-btn">Cotizar Proyecto Sanitario &rarr;</a>
@@ -1321,32 +1353,29 @@
             <div class="container">
                 <h3 class="section-title">Proyectos de <span class="text-gradient">Agua Potable</span></h3>
                 <p class="section-lead">
-                    Diseño y dimensionamiento de sistemas de agua potable para viviendas, ampliaciones y edificaciones.
+                    Diseño y dimensionamiento de sistemas de agua potable, considerando las características y requerimientos de cada proyecto.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
                         <h4>Diseño de redes y distribución</h4>
-                        <p>
-                            Dimensionamos redes interiores y exteriores asegurando presiones y caudales adecuados para el funcionamiento continuo de los artefactos.
-                        </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Redes interiores:</strong> Trazado y dimensionamiento de cañerías de agua fría y caliente adaptadas a la arquitectura.</span>
+                                <span><strong>Redes interiores:</strong> Trazado y dimensionamiento de cañerías de agua fría y caliente.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Cálculo hidráulico:</strong> Determinación de pérdidas de carga, presiones disponibles y caudales de diseño según normativa.</span>
+                                <span><strong>Cálculo hidráulico:</strong> Verificación de caudales, presiones y pérdidas de carga.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Sistemas de almacenamiento e impulsión:</strong> Dimensionamiento de estanques de reserva y equipos de bombeo cuando las condiciones de presión lo requieran.</span>
+                                <span><strong>Almacenamiento e impulsión:</strong> Dimensionamiento de estanques y equipos de bombeo cuando sean requeridos.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Conexión a la red pública:</strong> Definición de arranques domiciliarios, nichos de medidor (MAP) y coordinación con redes existentes.</span>
+                                <span><strong>Conexión a la red pública:</strong> Definición de arranques, medidores y empalmes.</span>
                             </li>
                         </ul>
                     </div>
@@ -1363,7 +1392,7 @@
             <div class="container">
                 <h3 class="section-title">Proyectos de <span class="text-gradient">Alcantarillado</span></h3>
                 <p class="section-lead">
-                    Diseño de redes de aguas servidas para viviendas y edificaciones.
+                    Diseño de sistemas de evacuación de aguas servidas para viviendas y edificaciones.
                 </p>
 
                 <div class="editorial-split reverse">
@@ -1373,26 +1402,23 @@
 
                     <div class="editorial-text">
                         <h4>Evacuación y disposición de aguas servidas</h4>
-                        <p>
-                            Diseñamos trazados gravitacionales eficientes garantizando autolimpieza, ventilación reglamentaria y adecuada disposición final.
-                        </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Redes interiores:</strong> Trazado gravitacional eficiente, bajadas, ventilaciones y cámaras de inspección domiciliarias.</span>
+                                <span><strong>Redes interiores:</strong> Trazado de colectores, bajadas, ventilaciones y cámaras.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Cálculo y definición de pendientes:</strong> Verificación de pendientes mínimas y velocidades reglamentarias de autolimpieza.</span>
+                                <span><strong>Cálculo y pendientes:</strong> Verificación de pendientes y condiciones de autolimpieza.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Conexión a la red pública:</strong> Proyectos de unión domiciliaria (UD) con perfiles longitudinales para empalme al colector.</span>
+                                <span><strong>Conexión a la red pública:</strong> Desarrollo de uniones domiciliarias y perfiles longitudinales.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Soluciones particulares:</strong> Diseño de fosas sépticas, cámaras desgrasadoras y sistemas de infiltración o drenes para sectores sin red pública.</span>
+                                <span><strong>Soluciones particulares:</strong> Diseño de fosas sépticas, cámaras desgrasadoras y sistemas de infiltración o drenes.</span>
                             </li>
                         </ul>
                     </div>
@@ -1400,26 +1426,26 @@
             </div>
         </section>
 
-        <!-- 3. PROYECTOS DOMICILIARIOS Y MODELACIÓN -->
+        <!-- 3. PLANOS Y DOCUMENTACIÓN TÉCNICA -->
         <section id="domiciliarios" class="service-section">
             <div class="container">
-                <h3 class="section-title">Planos y <span class="text-gradient">Expedientes Sanitarios</span></h3>
+                <h3 class="section-title">Planos y <span class="text-gradient">Documentación Técnica</span></h3>
                 <p class="section-lead">
-                    Documentación técnica para ejecutar y presentar proyectos de agua potable y alcantarillado.
+                    Elaboración de la documentación necesaria para la ejecución y presentación de proyectos sanitarios.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
                         <h4>Planos de agua potable</h4>
-                        <p>Planimetría en planta, detalles e isométricos de la instalación con especificación de diámetros y accesorios.</p>
+                        <p>Plantas, detalles e isométricos con trazado de redes, diámetros y accesorios.</p>
                     </div>
                     <div class="pillar-item">
                         <h4>Planos de alcantarillado</h4>
-                        <p>Trazado de colectores, ubicación de cámaras, cotas y perfiles longitudinales para ejecución en faena.</p>
+                        <p>Trazado de colectores, cámaras, cotas y perfiles longitudinales.</p>
                     </div>
                     <div class="pillar-item">
                         <h4>Memorias y especificaciones técnicas</h4>
-                        <p>Justificación de consumos, gastos probables (UEH) y especificaciones técnicas de materiales y pruebas de hermeticidad.</p>
+                        <p>Definición de consumos, gastos probables (UEH), materiales y condiciones técnicas de ejecución.</p>
                     </div>
                     <div class="pillar-item">
                         <h4>Cubicaciones</h4>
@@ -1434,32 +1460,29 @@
             <div class="container">
                 <h3 class="section-title">Regularización de <span class="text-gradient">Instalaciones Sanitarias</span></h3>
                 <p class="section-lead">
-                    Desarrollo de documentación y antecedentes para regularizar instalaciones existentes que no cuentan con planos o antecedentes actualizados.
+                    Regularización de instalaciones existentes mediante el levantamiento de lo ejecutado y la elaboración de la documentación técnica correspondiente.
                 </p>
 
                 <div class="editorial-split">
                     <div class="editorial-text">
                         <h4>Levantamiento y documentación de lo existente</h4>
-                        <p>
-                            Revisamos lo ejecutado en obra para elaborar la planimetría As-Built y estructurar la carpeta técnica necesaria ante las entidades pertinentes.
-                        </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Levantamiento:</strong> Catastro en terreno de redes existentes, ubicación de cámaras, artefactos y empalmes.</span>
+                                <span><strong>Levantamiento:</strong> Catastro de redes, cámaras, artefactos y empalmes.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Planos As-Built:</strong> Dibujo técnico de la planimetría conforme a lo efectivamente instalado en la propiedad.</span>
+                                <span><strong>Planos As-Built:</strong> Representación de las instalaciones conforme a lo ejecutado.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Revisión de antecedentes:</strong> Verificación de coherencia técnica con los requerimientos sanitarios vigentes.</span>
+                                <span><strong>Revisión de antecedentes:</strong> Verificación de las condiciones técnicas y requerimientos sanitarios.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Apoyo en tramitación:</strong> Preparación del expediente técnico para solicitar certificados o resoluciones sanitarias.</span>
+                                <span><strong>Apoyo en tramitación:</strong> Preparación de antecedentes para su presentación ante las entidades correspondientes.</span>
                             </li>
                         </ul>
                     </div>
@@ -1469,14 +1492,15 @@
                     </div>
                 </div>
 
-                <!-- Callout de Enlace Cruzado a Regularizaciones DOM -->
+                <!-- Callout de Enlace Cruzado a Regularizaciones DOM y Diseño Estructural -->
                 <div class="cross-link-box">
                     <div class="cross-link-text">
-                        <h3>¿Tu proyecto también requiere regularización municipal (DOM)?</h3>
-                        <p>Si además de las instalaciones sanitarias necesitas regularizar la edificación ante la Dirección de Obras Municipales, contamos con el servicio integral de Regularización de Viviendas.</p>
+                        <h3>¿Tu proyecto requiere regularización en la DOM o cálculo estructural?</h3>
+                        <p>Si la vivienda necesita regularización ante la municipalidad o requieres el proyecto de cálculo estructural para obras nuevas y ampliaciones, podemos coordinar ambos proyectos.</p>
                     </div>
-                    <div>
+                    <div class="cross-link-actions">
                         <a href="regularizacion.html" class="cross-link-btn">Ver Regularizaciones DOM &rarr;</a>
+                        <a href="estructural.html" class="cross-link-btn">Ver Diseño Estructural &rarr;</a>
                     </div>
                 </div>
 
@@ -1486,10 +1510,10 @@
                         Normativa y Criterios Técnicos
                     </div>
                     <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 680px; margin: 0 auto 1.5rem auto;">
-                        Desarrollamos los proyectos considerando la normativa sanitaria y los requerimientos de las entidades correspondientes, de acuerdo con las características y ubicación de cada proyecto.
+                        Desarrollamos los proyectos de acuerdo con la normativa sanitaria vigente y los requerimientos de las entidades correspondientes, considerando las características y ubicación de cada proyecto.
                     </p>
                     <div class="tools-strip" style="justify-content: center;">
-                        <span class="tool-badge">RIDAA</span>
+                        <span class="tool-badge">RIDA</span>
                         <span class="tool-badge">Normativa sanitaria vigente</span>
                         <span class="tool-badge">SISS</span>
                         <span class="tool-badge">Empresas sanitarias</span>

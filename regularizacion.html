@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Regularización de Viviendas y Ampliaciones | GLIC Ingeniería</title>
     <meta name="description"
-        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales. Levantamiento, planos, antecedentes técnicos y apoyo en la tramitación.">
+        content="Elaboración de expedientes técnicos, planos y memorias para regularizar viviendas y ampliaciones ante la DOM, de acuerdo con la normativa aplicable.">
     <link rel="canonical" href="https://glic.cl/regularizacion.html">
 
     <!-- Open Graph -->
@@ -13,7 +13,7 @@
     <meta property="og:locale" content="es_CL">
     <meta property="og:title" content="Regularización de Viviendas y Ampliaciones | GLIC Ingeniería">
     <meta property="og:description"
-        content="Regularización de viviendas y ampliaciones ante la Dirección de Obras Municipales. Levantamiento, planos, antecedentes técnicos y apoyo en la tramitación.">
+        content="Elaboración de expedientes técnicos, planos y memorias para regularizar viviendas y ampliaciones ante la DOM, de acuerdo con la normativa aplicable.">
     <meta property="og:image" content="https://glic.cl/assets/servicios_regularizacion.jpg">
     <meta property="og:url" content="https://glic.cl/regularizacion.html">
     
@@ -27,10 +27,11 @@
     
     <meta name="theme-color" content="#050505">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap"
+        rel="stylesheet">
 
     <script>
         (function () {
@@ -156,7 +157,9 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            line-height: 1.1;
+            font-family: var(--font-title);
+            color: var(--text-heading);
+            line-height: 1.2;
             text-wrap: balance;
         }
 
@@ -166,7 +169,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
@@ -454,6 +457,7 @@
         }
 
         .hero-title {
+            font-family: var(--font-title);
             font-size: clamp(2.1rem, 3.8vw, 3.4rem);
             font-weight: 900;
             line-height: 1.15;
@@ -464,6 +468,7 @@
         }
 
         .hero-desc {
+            font-family: var(--font-body);
             font-size: clamp(0.96rem, 1.15vw, 1.08rem);
             color: var(--text-main);
             opacity: 0.92;
@@ -677,7 +682,7 @@
 
         /* Callout Cross-link */
         .cross-link-box {
-            background: var(--bg-surface);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--primary);
             border-radius: var(--r-md);
@@ -687,45 +692,83 @@
             align-items: center;
             justify-content: space-between;
             gap: 2rem;
-            flex-wrap: wrap;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cross-link-box:hover {
+            border-color: var(--border-hover);
+            border-left-color: var(--primary-light);
+            transform: translateY(-2px);
         }
 
         .cross-link-text h3 {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--text-heading);
             margin-bottom: 0.4rem;
             font-family: var(--font-title);
         }
 
         .cross-link-text p {
-            font-size: 0.92rem;
             color: var(--text-muted);
-            margin: 0;
+            font-size: 0.92rem;
             line-height: 1.6;
-            max-width: 70ch;
+            margin: 0;
+        }
+
+        .cross-link-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            flex-shrink: 0;
+            min-width: 250px;
+        }
+
+        .cross-link-actions .cross-link-btn {
+            width: 100%;
+            text-align: center;
         }
 
         .cross-link-btn {
             display: inline-flex;
             align-items: center;
-            background: var(--primary-dim);
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            background: transparent;
             color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.75rem 1.6rem;
+            border: 2px solid var(--primary);
             border-radius: var(--r-sm);
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 0.88rem;
+            font-family: var(--font-title);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: all var(--transition-speed) ease;
             white-space: nowrap;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
         }
 
         .cross-link-btn:hover {
             background: var(--primary);
-            color: #000;
-            transform: translateX(4px);
+            color: #000000;
+        }
+
+        @media (max-width: 820px) {
+            .cross-link-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1.25rem;
+                padding: 1.5rem;
+            }
+
+            .cross-link-actions {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .cross-link-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         @media (max-width: 960px) {
@@ -1441,7 +1484,7 @@
                     <div class="diagonal-line"></div>
                     <h1 class="hero-title">Regularización de <span class="text-gradient">Viviendas y Ampliaciones</span></h1>
                     <p class="hero-desc">
-                        Elaboración de expedientes técnicos, planos y memorias para regularizar viviendas y ampliaciones ante la DOM bajo normativa nacional.
+                        Elaboración de expedientes técnicos, planos y memorias para regularizar viviendas y ampliaciones ante la DOM, de acuerdo con la normativa aplicable.
                     </p>
                     <div class="hero-actions">
                         <a href="#contacto" class="cta-btn">Cotizar Regularización &rarr;</a>
@@ -1460,23 +1503,23 @@
 
                 <div class="editorial-split">
                     <div class="editorial-text">
-                        <h4>Evaluación del inmueble y definición del procedimiento</h4>
+                        <h4>Evaluación del inmueble y procedimiento</h4>
                         <p>
-                            Revisamos la situación reglamentaria y constructiva de la propiedad para estructurar el expediente correspondiente ante la Dirección de Obras Municipales.
+                            Revisión de la situación normativa y constructiva de la propiedad para definir y desarrollar el expediente correspondiente.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Revisión de antecedentes existentes:</strong> Análisis de títulos, certificados de informaciones previas (CIP) y permisos anteriores.</span>
+                                <span><strong>Revisión de antecedentes:</strong> Análisis de títulos, Certificados de Informaciones Previas (CIP) y permisos existentes.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Evaluación de la vía de regularización aplicable:</strong> Definición del marco normativo correspondiente (leyes especiales o procedimiento general OGUC).</span>
+                                <span><strong>Definición del procedimiento:</strong> Determinación de la vía de regularización aplicable según la normativa vigente.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Desarrollo del expediente técnico requerido:</strong> Elaboración de planos de arquitectura, memorias y formularios oficiales.</span>
+                                <span><strong>Expediente técnico:</strong> Elaboración de planos, memorias y formularios requeridos.</span>
                             </li>
                         </ul>
                     </div>
@@ -1493,7 +1536,7 @@
             <div class="container">
                 <h3 class="section-title">Regularización de <span class="text-gradient">Ampliaciones</span></h3>
                 <p class="section-lead">
-                    Levantamiento y documentación de ampliaciones, segundos pisos y construcciones existentes.
+                    Levantamiento y documentación de ampliaciones, segundos pisos y otras construcciones existentes.
                 </p>
 
                 <div class="editorial-split reverse">
@@ -1504,21 +1547,21 @@
                     <div class="editorial-text">
                         <h4>Del terreno a los planos</h4>
                         <p>
-                            Un profesional realiza la inspección directa de lo edificado para levantar las dimensiones reales y verificar la coherencia constructiva.
+                            Inspección y levantamiento de las condiciones existentes para desarrollar la documentación necesaria para su regularización.
                         </p>
 
                         <ul class="spec-list">
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Levantamiento en terreno:</strong> Medición métrica de recintos, muros, alturas libres, adosamientos y distanciamientos.</span>
+                                <span><strong>Levantamiento en terreno:</strong> Medición de recintos, muros, alturas, adosamientos y distanciamientos.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Desarrollo de planos de arquitectura:</strong> Elaboración de planimetría en planta, cortes y fachadas conforme a los estándares de la DOM.</span>
+                                <span><strong>Planos de arquitectura:</strong> Elaboración de plantas, cortes y fachadas conforme a los requerimientos de la DOM.</span>
                             </li>
                             <li>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>Revisión estructural cuando corresponda:</strong> Inspección de elementos soportantes e informes técnicos para verificar la estabilidad de la obra.</span>
+                                <span><strong>Revisión estructural:</strong> Evaluación de elementos soportantes e informes técnicos cuando corresponda.</span>
                             </li>
                         </ul>
                     </div>
@@ -1531,32 +1574,33 @@
             <div class="container">
                 <h3 class="section-title">Antecedentes Técnicos para <span class="text-gradient">la DOM</span></h3>
                 <p class="section-lead">
-                    Desarrollo de la documentación necesaria para presentar el proyecto ante la Dirección de Obras Municipales.
+                    Elaboración de la documentación necesaria para la presentación y revisión del expediente ante la Dirección de Obras Municipales.
                 </p>
 
                 <div class="engineering-pillars">
                     <div class="pillar-item">
                         <h4>Planos y antecedentes técnicos</h4>
-                        <p>Confección de carpetas completas con formularios oficiales, planos acotados y especificaciones técnicas resumidas.</p>
+                        <p>Preparación de formularios, planos acotados y especificaciones técnicas requeridas para la tramitación.</p>
                     </div>
                     <div class="pillar-item">
                         <h4>Informes estructurales cuando corresponda</h4>
-                        <p>Elaboración de memorias o informes de estabilidad suscritos por ingeniero civil para certificar la seguridad de la edificación.</p>
+                        <p>Elaboración de memorias o informes de estabilidad suscritos por ingeniero civil cuando sean requeridos.</p>
                     </div>
                     <div class="pillar-item">
                         <h4>Apoyo frente a observaciones</h4>
-                        <p>Acompañamiento técnico y corrección oportuna de actas o alcances emitidos durante la revisión municipal.</p>
+                        <p>Revisión y corrección de antecedentes según las observaciones emitidas durante la revisión municipal.</p>
                     </div>
                 </div>
 
-                <!-- Callout de Enlace Contextual a Proyectos Sanitarios -->
+                <!-- Callout de Enlace Cruzado a Regularización Sanitaria y Verificación Estructural -->
                 <div class="cross-link-box">
                     <div class="cross-link-text">
-                        <h3>Regularización de la Edificación y sus Instalaciones</h3>
-                        <p>Cuando el proyecto requiere regularizar tanto la construcción como sus instalaciones sanitarias, GLIC puede coordinar ambos componentes.</p>
+                        <h3>¿La DOM te solicita regularizar instalaciones sanitarias o memoria estructural?</h3>
+                        <p>Para obtener la recepción municipal gestionamos la carpeta técnica de agua y alcantarillado, o desarrollamos las verificaciones y memorias de estabilidad exigidas para ampliaciones.</p>
                     </div>
-                    <div>
-                        <a href="sanitarios.html" class="cross-link-btn">Ver Proyectos Sanitarios &rarr;</a>
+                    <div class="cross-link-actions">
+                        <a href="sanitarios.html#regularizacion-sanitaria" class="cross-link-btn">Ver Regularización Sanitaria &rarr;</a>
+                        <a href="estructural.html#viviendas" class="cross-link-btn">Ver Verificación Estructural &rarr;</a>
                     </div>
                 </div>
             </div>
