@@ -6,20 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería</title>
     <meta name="description"
-        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y edificaciones, incluyendo el dimensionamiento de redes y la documentación técnica necesaria para su presentación y tramitación.">
-    <link rel="canonical" href="https://glic.cl/sanitarios.html">
+        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y regularizaciones sanitarias ante SEREMI y empresas sanitarias.">
+    <link rel="canonical" href="https://glic.cl/sanitarios">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
     <meta property="og:title" content="Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería">
     <meta property="og:description"
-        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y edificaciones, incluyendo el dimensionamiento de redes y la documentación técnica necesaria para su presentación y tramitación.">
+        content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y regularizaciones sanitarias ante SEREMI y empresas sanitarias.">
     <meta property="og:image" content="https://glic.cl/assets/sanitario.jpg">
-    <meta property="og:url" content="https://glic.cl/sanitarios.html">
+    <meta property="og:url" content="https://glic.cl/sanitarios">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Proyectos Sanitarios de Agua Potable y Alcantarillado | GLIC Ingeniería">
+    <meta name="twitter:description" content="Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y regularizaciones sanitarias ante SEREMI y empresas sanitarias.">
+    <meta name="twitter:image" content="https://glic.cl/assets/sanitario.jpg">
 
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +34,43 @@
         rel="stylesheet">
 
     <meta name="theme-color" content="#050505">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://glic.cl/#organization",
+          "name": "GLIC Ingeniería",
+          "url": "https://glic.cl",
+          "logo": "https://glic.cl/assets/portada.jpg"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://glic.cl/sanitarios#service",
+          "name": "Proyectos Sanitarios de Agua Potable y Alcantarillado",
+          "serviceType": "Ingeniería Sanitaria",
+          "provider": { "@id": "https://glic.cl/#organization" },
+          "description": "Desarrollo de proyectos de agua potable y alcantarillado para viviendas, ampliaciones y regularizaciones sanitarias ante SEREMI y empresas sanitarias.",
+          "areaServed": "CL"
+        }
+      ]
+    }
+    </script>
+
     <script>
         (function () {
+            // Limpieza inmediata de extensión .html en la barra de direcciones en la versión web
+            if (window.location.protocol.startsWith('http')) {
+                var p = window.location.pathname;
+                if (p.endsWith('.html') || p.endsWith('/index.html')) {
+                    var clean = p.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+                    if (!clean) clean = '/';
+                    window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+                }
+            }
             var savedTheme = localStorage.getItem('glic_theme');
             if (savedTheme === 'light') {
                 document.documentElement.setAttribute('data-theme', 'light');
@@ -56,6 +96,7 @@
             --text-muted: #a0a0a0;
             --text-heading: #ffffff;
             --border: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.12);
             --border-hover: rgba(255, 153, 0, 0.4);
             --header-bg: rgba(5, 5, 5, 0.90);
             --header-border: rgba(255, 255, 255, 0.08);
@@ -88,6 +129,8 @@
             --r-md: 10px;
             --r-lg: 16px;
             --r-xl: 24px;
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
             --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
             --transition-speed: 200ms;
         }
@@ -100,6 +143,7 @@
             --text-muted: #64748b;
             --text-heading: #0f172a;
             --border: rgba(0, 0, 0, 0.08);
+            --border-light: rgba(0, 0, 0, 0.08);
             --border-hover: rgba(255, 153, 0, 0.6);
             --header-bg: rgba(255, 255, 255, 0.95);
             --header-border: rgba(0, 0, 0, 0.08);
@@ -124,6 +168,8 @@
             --input-bg: #ffffff;
             --input-border: #cbd5e1;
             --input-text: #0f172a;
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
@@ -637,22 +683,36 @@
         /* Callout Enlace Contextual */
         .cross-link-box {
             background: var(--bg-card);
-            border: 1px solid rgba(255, 153, 0, 0.25);
-            border-radius: var(--r-lg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--r-md);
             padding: clamp(1.8rem, 3.5vw, 2.5rem);
             margin: 3.5rem auto 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 2rem;
-            flex-wrap: wrap;
-            box-shadow: var(--shadow-card);
+            box-sizing: border-box;
+            max-width: 100%;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cross-link-box:hover {
+            border-color: var(--border-hover);
+            border-left-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .cross-link-text {
+            flex: 1 1 auto;
+            min-width: 0;
         }
 
         .cross-link-text h3 {
             font-size: 1.25rem;
             color: var(--text-heading);
             margin-bottom: 0.4rem;
+            font-family: var(--font-title);
         }
 
         .cross-link-text p {
@@ -667,7 +727,9 @@
             flex-direction: column;
             gap: 0.65rem;
             flex-shrink: 0;
-            min-width: 250px;
+            width: auto;
+            max-width: 100%;
+            min-width: 0;
         }
 
         .cross-link-actions .cross-link-btn {
@@ -679,19 +741,25 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 1.6rem;
+            padding: 0.8rem 1.4rem;
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
             border-radius: var(--r-sm);
             font-weight: 800;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             font-family: var(--font-title);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            white-space: nowrap;
+            white-space: normal;
+            word-break: normal;
+            text-align: center;
+            line-height: 1.3;
             transition: all var(--transition-speed) ease;
             text-decoration: none;
+            box-sizing: border-box;
+            max-width: 100%;
+            width: 100%;
         }
 
         .cross-link-btn:hover {
@@ -704,15 +772,21 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 1.25rem;
+                padding: clamp(1.2rem, 3.5vw, 1.6rem);
             }
 
             .cross-link-actions {
                 width: 100%;
+                max-width: 100%;
                 min-width: 0;
             }
 
             .cross-link-btn {
                 width: 100%;
+                max-width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: clamp(0.78rem, 2.6vw, 0.86rem);
+                white-space: normal;
                 text-align: center;
             }
         }
@@ -1048,6 +1122,18 @@
             color: var(--primary);
         }
 
+        [data-theme="light"] .contact-media-title {
+            color: #ffffff !important;
+        }
+
+        [data-theme="light"] .contact-media-desc {
+            color: rgba(255, 255, 255, 0.88) !important;
+        }
+
+        [data-theme="light"] .contact-media-top {
+            color: #ffffff !important;
+        }
+
         /* Trampa honeypot invisible para bots */
         .form-honeypot {
             position: absolute !important;
@@ -1227,77 +1313,77 @@
     <!-- Header Principal -->
     <header id="main-header">
         <div class="header-content">
-            <a href="index.html" class="logo-anchor" aria-label="Ir a Inicio GLIC Ingeniería">
+            <a href="./" class="logo-anchor" aria-label="Ir a Inicio GLIC Ingeniería">
                 <div class="logo-link"></div>
                 <h1>GLIC Ingeniería</h1>
             </a>
 
             <div class="header-actions">
                 <nav class="nav-menu" aria-label="Navegación principal">
-                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+                    <a href="./#inicio" class="nav-link">Inicio</a>
 
                     <div class="dropdown">
-                        <a href="index.html#servicios" class="nav-link active">Servicios <span class="arrow">&#9662;</span></a>
+                        <a href="./#servicios" class="nav-link active">Servicios <span class="arrow">&#9662;</span></a>
                         <div class="dropdown-content">
                             <!-- 1. Diseño Estructural -->
                             <div class="dropdown-submenu">
-                                <a href="estructural.html" class="dropdown-item submenu-trigger">
+                                <a href="estructural" class="dropdown-item submenu-trigger">
                                     <span>Diseño Estructural</span>
                                     <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
                                 </a>
                                 <div class="submenu-content">
-                                    <a href="estructural.html#viviendas" class="dropdown-item">Viviendas</a>
-                                    <a href="estructural.html#galpones" class="dropdown-item">Galpones y Naves</a>
-                                    <a href="estructural.html#industriales" class="dropdown-item">Estructuras Industriales</a>
-                                    <a href="estructural.html#temporales" class="dropdown-item">Estructuras Temporales</a>
+                                    <a href="estructural#viviendas" class="dropdown-item">Viviendas</a>
+                                    <a href="estructural#galpones" class="dropdown-item">Galpones y Naves</a>
+                                    <a href="estructural#industriales" class="dropdown-item">Estructuras Industriales</a>
+                                    <a href="estructural#temporales" class="dropdown-item">Estructuras Temporales</a>
                                 </div>
                             </div>
 
                             <!-- 2. Proyectos Sanitarios -->
                             <div class="dropdown-submenu">
-                                <a href="sanitarios.html" class="dropdown-item submenu-trigger">
+                                <a href="sanitarios" class="dropdown-item submenu-trigger">
                                     <span>Proyectos Sanitarios</span>
                                     <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
                                 </a>
                                 <div class="submenu-content">
-                                    <a href="sanitarios.html#agua-potable" class="dropdown-item">Agua Potable</a>
-                                    <a href="sanitarios.html#alcantarillado" class="dropdown-item">Alcantarillado</a>
-                                    <a href="sanitarios.html#domiciliarios" class="dropdown-item">Proyectos Domiciliarios</a>
-                                    <a href="sanitarios.html#regularizacion-sanitaria" class="dropdown-item">Regularización Sanitaria</a>
+                                    <a href="sanitarios#agua-potable" class="dropdown-item">Agua Potable</a>
+                                    <a href="sanitarios#alcantarillado" class="dropdown-item">Alcantarillado</a>
+                                    <a href="sanitarios#domiciliarios" class="dropdown-item">Proyectos Domiciliarios</a>
+                                    <a href="sanitarios#regularizacion-sanitaria" class="dropdown-item">Regularización Sanitaria</a>
                                 </div>
                             </div>
 
                             <!-- 3. Regularizaciones -->
                             <div class="dropdown-submenu">
-                                <a href="regularizacion.html" class="dropdown-item submenu-trigger">
+                                <a href="regularizacion" class="dropdown-item submenu-trigger">
                                     <span>Regularizaciones</span>
                                     <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
                                 </a>
                                 <div class="submenu-content">
-                                    <a href="regularizacion.html#viviendas" class="dropdown-item">Regularización de Viviendas</a>
-                                    <a href="regularizacion.html#ampliaciones" class="dropdown-item">Ampliaciones Existentes</a>
-                                    <a href="regularizacion.html#expedientes" class="dropdown-item">Expedientes Técnicos DOM</a>
+                                    <a href="regularizacion#viviendas" class="dropdown-item">Regularización de Viviendas</a>
+                                    <a href="regularizacion#ampliaciones" class="dropdown-item">Ampliaciones Existentes</a>
+                                    <a href="regularizacion#expedientes" class="dropdown-item">Expedientes Técnicos DOM</a>
                                 </div>
                             </div>
 
                             <!-- 4. Otros Servicios -->
                             <div class="dropdown-submenu">
-                                <a href="otros-servicios.html" class="dropdown-item submenu-trigger">
+                                <a href="otros-servicios" class="dropdown-item submenu-trigger">
                                     <span>Otros Servicios</span>
                                     <span class="submenu-arrow" aria-label="Abrir submenú">&#9656;</span>
                                 </a>
                                 <div class="submenu-content">
-                                    <a href="otros-servicios.html#asesoria" class="dropdown-item">Asesoría Técnica</a>
-                                    <a href="otros-servicios.html#ingeniero" class="dropdown-item">Ingeniero en tu Empresa</a>
-                                    <a href="otros-servicios.html#especialidades" class="dropdown-item">Especialidades MEP</a>
+                                    <a href="otros-servicios#asesoria" class="dropdown-item">Asesoría Técnica</a>
+                                    <a href="otros-servicios#ingeniero" class="dropdown-item">Ingeniero en tu Empresa</a>
+                                    <a href="otros-servicios#especialidades" class="dropdown-item">Especialidades MEP</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <a href="index.html#proyectos" class="nav-link">Proyectos</a>
-                    <a href="index.html#nosotros" class="nav-link">Nosotros</a>
-                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="./#proyectos" class="nav-link">Proyectos</a>
+                    <a href="./#nosotros" class="nav-link">Nosotros</a>
+                    <a href="contacto" class="nav-link">Contacto</a>
                 </nav>
 
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema claro / oscuro" title="Cambiar tema">
@@ -1499,8 +1585,8 @@
                         <p>Si la vivienda necesita regularización ante la municipalidad o requieres el proyecto de cálculo estructural para obras nuevas y ampliaciones, podemos coordinar ambos proyectos.</p>
                     </div>
                     <div class="cross-link-actions">
-                        <a href="regularizacion.html" class="cross-link-btn">Ver Regularizaciones DOM &rarr;</a>
-                        <a href="estructural.html" class="cross-link-btn">Ver Diseño Estructural &rarr;</a>
+                        <a href="regularizacion" class="cross-link-btn">Ver Regularizaciones DOM &rarr;</a>
+                        <a href="estructural" class="cross-link-btn">Ver Diseño Estructural &rarr;</a>
                     </div>
                 </div>
 
@@ -1625,11 +1711,11 @@
             <div class="footer-col footer-links">
                 <h3>Navegación</h3>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="index.html#servicios">Servicios Principales</a></li>
-                    <li><a href="index.html#proyectos">Proyectos</a></li>
-                    <li><a href="index.html#nosotros">Nosotros</a></li>
-                    <li><a href="contacto.html">Solicitar Cotización</a></li>
+                    <li><a href="./#inicio">Inicio</a></li>
+                    <li><a href="./#servicios">Servicios Principales</a></li>
+                    <li><a href="./#proyectos">Proyectos</a></li>
+                    <li><a href="./#nosotros">Nosotros</a></li>
+                    <li><a href="contacto">Solicitar Cotización</a></li>
                 </ul>
             </div>
             <div class="footer-col footer-contact">
@@ -1718,26 +1804,66 @@
             });
         }
     
-        // Feedback visual durante el envío del formulario de contacto
+        // Envío asíncrono con AJAX (fetch) a Web3Forms
         const contactForm = document.querySelector('.contact-underline-form');
         const submitBtn = contactForm?.querySelector('.contact-btn-clean');
         const statusEl = document.getElementById('form-status');
 
         if (contactForm && submitBtn) {
-            contactForm.addEventListener('submit', () => {
-                const honeypot = document.getElementById('contact-website');
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-                // Si un bot completa el campo trampa, no modificar la apariencia
+                const honeypot = document.getElementById('contact-website');
                 if (honeypot && honeypot.value.trim() !== '') return;
 
+                const originalBtnHtml = submitBtn.innerHTML;
                 submitBtn.classList.add('is-loading');
                 submitBtn.disabled = true;
                 submitBtn.setAttribute('aria-disabled', 'true');
-                submitBtn.querySelector('span').textContent = 'ENVIANDO...';
+                const spanEl = submitBtn.querySelector('span');
+                if (spanEl) spanEl.textContent = 'ENVIANDO...';
 
                 if (statusEl) {
                     statusEl.textContent = 'Enviando tu solicitud...';
                     statusEl.classList.remove('is-error');
+                    statusEl.style.color = 'var(--text-muted, #a0a0a0)';
+                }
+
+                try {
+                    const formData = new FormData(contactForm);
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+
+                    if (response.status === 200 && data.success) {
+                        if (statusEl) {
+                            statusEl.textContent = '¡Solicitud enviada con éxito! Te contactaremos a la brevedad.';
+                            statusEl.classList.remove('is-error');
+                            statusEl.style.color = '#22c55e';
+                        }
+                        contactForm.reset();
+                        if (spanEl) spanEl.textContent = 'ENVIADO';
+                        setTimeout(() => {
+                            submitBtn.classList.remove('is-loading');
+                            submitBtn.disabled = false;
+                            submitBtn.removeAttribute('aria-disabled');
+                            submitBtn.innerHTML = originalBtnHtml;
+                        }, 4000);
+                    } else {
+                        throw new Error(data.message || 'Error al enviar');
+                    }
+                } catch (error) {
+                    if (statusEl) {
+                        statusEl.textContent = 'Hubo un problema al enviar la solicitud. Por favor intenta nuevamente o contáctanos por WhatsApp.';
+                        statusEl.classList.add('is-error');
+                        statusEl.style.color = '#ef4444';
+                    }
+                    submitBtn.classList.remove('is-loading');
+                    submitBtn.disabled = false;
+                    submitBtn.removeAttribute('aria-disabled');
+                    submitBtn.innerHTML = originalBtnHtml;
                 }
             });
         }
@@ -1748,6 +1874,23 @@
             contactSectionEl.addEventListener('focusin', () => {
                 fab.classList.remove('show-fab');
                 fab.classList.add('hide-fab');
+            });
+        }
+
+        // Soporte para navegación local sin servidor (file://)
+        if (window.location.protocol === 'file:') {
+            document.addEventListener('DOMContentLoaded', function () {
+                var pages = ['estructural', 'sanitarios', 'regularizacion', 'otros-servicios', 'contacto'];
+                document.querySelectorAll('a[href]').forEach(function (a) {
+                    var h = a.getAttribute('href');
+                    if (!h) return;
+                    if (h === './' || h === '.') { a.setAttribute('href', 'index.html'); return; }
+                    if (h.startsWith('./#')) { a.setAttribute('href', 'index.html' + h.substring(2)); return; }
+                    pages.forEach(function (p) {
+                        if (h === p) a.setAttribute('href', p + '.html');
+                        else if (h.startsWith(p + '#')) a.setAttribute('href', p + '.html' + h.substring(p.length));
+                    });
+                });
             });
         }
     </script>
