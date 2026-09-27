@@ -1458,7 +1458,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--r-xl);
-            padding: clamp(0.9rem, 1.8vw, 1.6rem);
+            padding: clamp(1.4rem, 2.4vw, 2.2rem);
             box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
             transition: all var(--transition-speed) ease;
             min-width: 0;
@@ -1477,16 +1477,79 @@
             min-width: 0;
         }
 
-        /* Lado Izquierdo: Fotografía Limpia (Altura reducida a 3/4) */
+        /* Lado Izquierdo: Fotografía con Textos Embebidos */
         .contact-media-card {
             position: relative;
             border-radius: var(--r-lg);
             background: url('assets/servicios_galpones.jpg') center center / cover no-repeat;
             overflow: hidden;
-            min-height: 370px;
+            min-height: clamp(520px, 62vh, 640px);
             min-width: 0;
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-media-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5, 5, 5, 0.72) 0%, rgba(5, 5, 5, 0.35) 42%, rgba(5, 5, 5, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .contact-media-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            padding: clamp(1.4rem, 2.5vw, 2.2rem);
+        }
+
+        .contact-media-top {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-media-pipe {
+            color: var(--primary);
+            font-size: 1.15rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .contact-media-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .contact-media-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            text-wrap: balance;
+            margin: 0;
+        }
+
+        .contact-media-desc {
+            font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.88);
+            text-wrap: pretty;
+            margin: 0;
         }
 
         /* Lado Derecho: Formulario con Trazado de Líneas Minimalista */
@@ -1497,6 +1560,16 @@
             padding: 0.25rem 0;
             min-width: 0;
             min-height: 0;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+            margin-bottom: clamp(1rem, 1.8vh, 1.5rem);
+            line-height: 1.2;
         }
 
         .contact-pane-header {
@@ -1537,7 +1610,7 @@
         .contact-underline-form {
             display: flex;
             flex-direction: column;
-            gap: 1.05rem;
+            gap: clamp(1.2rem, 1.8vh, 1.65rem);
         }
 
         .form-line-group {
@@ -1560,12 +1633,12 @@
             width: 100%;
             min-width: 0;
             max-width: 100%;
-            min-height: 2.15rem;
+            min-height: 2.35rem;
             background: transparent;
             border: none;
             border-bottom: 1px solid var(--border-light, rgba(255, 255, 255, 0.12));
             color: var(--text-heading);
-            padding: 0.45rem 0;
+            padding: 0.6rem 0;
             font-family: var(--font-body);
             font-size: 16px;
             font-weight: 400;
@@ -1608,8 +1681,8 @@
 
         textarea.form-line-input {
             resize: vertical;
-            min-height: 5.25rem;
-            line-height: 1.45;
+            min-height: clamp(6.8rem, 13vh, 9rem);
+            line-height: 1.5;
         }
 
         .form-line-duo {
@@ -1624,7 +1697,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            margin-top: 0.35rem;
+            margin-top: clamp(0.6rem, 1.2vh, 1rem);
             flex-wrap: wrap;
             min-width: 0;
         }
@@ -1734,13 +1807,30 @@
                 padding: clamp(1.2rem, 3vw, 2.2rem) clamp(0.85rem, 2.5vw, 1.5rem);
             }
 
+            .contact-card-frame {
+                padding: clamp(0.9rem, 1.8vw, 1.4rem);
+            }
+
             .contact-inner-grid {
                 grid-template-columns: 1fr;
                 gap: clamp(1rem, 2.5vw, 1.6rem);
             }
 
             .contact-media-card {
-                min-height: clamp(165px, 28vw, 225px);
+                min-height: 260px;
+            }
+
+            .contact-underline-form {
+                gap: 1.05rem;
+            }
+
+            .form-line-input {
+                padding: 0.45rem 0;
+                min-height: 2.15rem;
+            }
+
+            textarea.form-line-input {
+                min-height: 5.25rem;
             }
 
             .contact-form-content {
@@ -2865,15 +2955,23 @@
             <div class="contact-card-frame animated-element">
                 <div class="contact-inner-grid">
 
-                    <!-- Bloque Interior Izquierdo: Fotografía Limpia (según boceto) -->
-                    <div class="contact-media-card" aria-label="Fotografía de proyecto de ingeniería"></div>
+                    <!-- Bloque Interior Izquierdo: Fotografía con Textos Embebidos -->
+                    <div class="contact-media-card" aria-label="Fotografía de proyecto de ingeniería">
+                        <div class="contact-media-overlay"></div>
+                        <div class="contact-media-content">
+                            <div class="contact-media-top">
+                                <span class="contact-media-pipe">|</span> GLIC INGENIERÍA
+                            </div>
+                            <div class="contact-media-bottom">
+                                <h3 class="contact-media-title">Cuéntanos sobre tu proyecto</h3>
+                                <p class="contact-media-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Bloque Interior Derecho: Formulario con Trazado de Línea Minimalista -->
                     <div class="contact-form-content">
-                        <div class="contact-pane-header">
-                            <h3 class="contact-pane-title">Cuéntanos sobre tu proyecto</h3>
-                            <p class="contact-pane-desc">Envíanos los antecedentes disponibles y evaluaremos los requerimientos para definir el alcance de la ingeniería necesaria.</p>
-                        </div>
+                        <h3 class="contact-form-title">Contáctanos</h3>
 
                         <form class="contact-underline-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="8bb255d9-738e-4f20-8c8c-71ab7f5ed86d">
