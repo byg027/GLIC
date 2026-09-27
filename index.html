@@ -3149,15 +3149,25 @@
             const currentScrollY = window.scrollY;
             lastScrollY = currentScrollY;
 
-            // FAB visibility (ocultar si se está en la sección de contacto)
+            // FAB visibility (ocultar si se está en la sección nosotros o en el formulario de contacto)
+            const nosotrosSection = document.getElementById('nosotros');
             const contactSection = document.getElementById('contacto');
-            let isContactVisible = false;
-            if (contactSection) {
-                const rect = contactSection.getBoundingClientRect();
-                isContactVisible = (rect.top < window.innerHeight && rect.bottom > 0);
+            let isExcludedVisible = false;
+
+            if (nosotrosSection) {
+                const rectN = nosotrosSection.getBoundingClientRect();
+                if (rectN.top < window.innerHeight) {
+                    isExcludedVisible = true;
+                }
+            }
+            if (!isExcludedVisible && contactSection) {
+                const rectC = contactSection.getBoundingClientRect();
+                if (rectC.top < window.innerHeight) {
+                    isExcludedVisible = true;
+                }
             }
 
-            if (currentScrollY > 50 && !isContactVisible) {
+            if (currentScrollY > 100 && !isExcludedVisible) {
                 fab.classList.add('show-fab');
                 fab.classList.remove('hide-fab');
             } else {
@@ -3297,30 +3307,18 @@
             });
         }
 
-        // Ocultar botón flotante al estar en el formulario de contacto o interactuar con los campos
+        // Ocultar botón flotante al interactuar con los campos del formulario de contacto
         const contactSectionEl = document.getElementById('contacto');
         if (contactSectionEl && fab) {
             contactSectionEl.addEventListener('focusin', () => {
                 fab.classList.remove('show-fab');
                 fab.classList.add('hide-fab');
             });
-
-            const contactObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        fab.classList.remove('show-fab');
-                        fab.classList.add('hide-fab');
-                    } else if (window.scrollY > 50) {
-                        fab.classList.add('show-fab');
-                        fab.classList.remove('hide-fab');
-                    }
-                });
-            }, {
-                threshold: [0, 0.05, 0.2]
-            });
-
-            contactObserver.observe(contactSectionEl);
         }
+
+        // Ejecución inicial de visibilidad al cargar la página
+        handleScroll();
+        window.addEventListener('resize', handleScroll, { passive: true });
     </script>
 </body>
 
