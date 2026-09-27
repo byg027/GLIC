@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&family=JetBrains+Mono:wght@600;700&display=swap"
         rel="stylesheet">
     <link rel="preload" as="image" href="assets/portada.jpg">
 
@@ -93,6 +93,7 @@
 
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
             --header-height: 70px;
             --r-sm: 6px;
             --r-md: 10px;
@@ -855,83 +856,108 @@
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            gap: clamp(1.2rem, 2.5vw, 2.2rem);
         }
 
         @media (max-width: 768px) {
             .project-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: clamp(0.6rem, 2.5vw, 1.1rem);
+                gap: clamp(0.7rem, 2.2vw, 1.1rem);
+            }
+        }
+
+        /* Encuadre Placa Industrial Embebida (Industrial Plate) */
+        .card-plate {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            overflow: hidden;
+            position: relative;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-plate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border);
+            transition: background-color var(--transition-speed) ease;
+            z-index: 4;
+        }
+
+        .card-plate:hover::before {
+            background: var(--primary);
+        }
+
+        .card-plate:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(255, 153, 0, 0.1);
+        }
+
+        .card-plate-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-plate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 500ms ease;
+        }
+
+        .card-plate:hover .card-plate-img img {
+            transform: scale(1.04);
+        }
+
+        .card-plate-content {
+            padding: clamp(1rem, 2vw, 1.8rem);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-plate-content h3 {
+            font-family: var(--font-title);
+            font-size: clamp(0.92rem, 1.55vw, 1.22rem);
+            color: var(--text-heading);
+            margin-bottom: 0.45rem;
+            line-height: 1.3;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .card-plate:hover .card-plate-content h3 {
+            color: var(--primary);
+        }
+
+        .card-plate-content p {
+            font-size: clamp(0.72rem, 1.1vw, 0.86rem);
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .card-plate-content {
+                padding: clamp(0.65rem, 2vw, 1rem);
             }
 
-            .project-item {
-                border-radius: var(--r-md);
-                display: flex;
-                flex-direction: column;
-            }
-
-            .project-content {
-                padding: clamp(0.65rem, 2.5vw, 1rem) !important;
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-            }
-
-            .project-tag {
-                font-size: clamp(0.52rem, 1.8vw, 0.65rem);
-                padding: 2px 6px;
-                letter-spacing: 0.4px;
-                margin-bottom: 0.4rem;
-                display: inline-block;
-                align-self: flex-start;
-            }
-
-            .project-content h3 {
-                font-size: clamp(0.82rem, 2.7vw, 1.02rem) !important;
-                margin-bottom: 0.35rem;
+            .card-plate-content h3 {
+                font-size: clamp(0.82rem, 2.7vw, 1.02rem);
+                margin-bottom: 0.3rem;
                 line-height: 1.25;
             }
 
-            .project-content p {
-                font-size: clamp(0.68rem, 2.1vw, 0.8rem);
+            .card-plate-content p {
+                font-size: clamp(0.68rem, 2vw, 0.78rem);
                 line-height: 1.38;
             }
-        }
-
-        /* Únicamente .project-item mantiene recuadro con borde y fondo */
-        .project-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            overflow: hidden;
-        }
-
-        .project-item:hover {
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(255, 153, 0, 0.08);
-        }
-
-        .project-content h3 {
-            color: var(--primary);
-            font-family: var(--font-title);
-            margin-bottom: 0.8rem;
-            font-size: 1.25rem;
-            line-height: 1.3;
-        }
-
-        .project-tag {
-            display: inline-block;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            font-weight: 700;
-            color: var(--primary-light);
-            background: var(--primary-dim);
-            border: 1px solid rgba(255, 153, 0, 0.25);
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-bottom: 0.8rem;
         }
 
         /* .card (usado en beneficios) - Diseño abierto sin recuadros */
@@ -950,49 +976,8 @@
             font-size: 1.15rem;
         }
 
-        .project-content h3 {
-            color: var(--primary);
-        }
-
-        .card p,
-        .project-content p {
+        .card p {
             color: var(--text-muted);
-        }
-
-        .image-wrapper {
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-speed) ease;
-        }
-
-        .image-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity var(--transition-speed) ease;
-        }
-
-        .project-item:hover .image-wrapper::after {
-            opacity: 1;
-        }
-
-        .project-item:hover img {
-            transform: scale(1.03);
-        }
-
-        .project-content {
-            padding: 2rem;
         }
 
         /* Sección Servicios - Alternativa 02: Mosaico Asimétrico con Cortes Diagonales (Diseño Abierto) */
@@ -2273,24 +2258,26 @@
         }
 
         /* Ajustes de contraste para Modo Claro */
-        [data-theme="light"] .project-item {
+        [data-theme="light"] .card-plate {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
         }
 
-        [data-theme="light"] .project-content h3 {
+        [data-theme="light"] .card-plate::before {
+            background: #e2e8f0;
+        }
+
+        [data-theme="light"] .card-plate:hover::before {
+            background: var(--primary);
+        }
+
+        [data-theme="light"] .card-plate-content h3 {
             color: #0f172a;
         }
 
-        [data-theme="light"] .project-item:hover .project-content h3 {
+        [data-theme="light"] .card-plate:hover .card-plate-content h3 {
             color: var(--primary-dark);
-        }
-
-        [data-theme="light"] .project-tag {
-            color: var(--primary-dark);
-            background: rgba(255, 153, 0, 0.12);
-            border: 1px solid rgba(255, 153, 0, 0.3);
         }
 
         [data-theme="light"] .hero-img-wrapper img {
@@ -2704,47 +2691,51 @@
 
             <div class="container" style="padding-top: 3.5rem;">
                 <div id="proyectos-grid" class="project-grid">
-                    <div class="project-item animated-element">
-                        <div class="image-wrapper">
+                    <!-- 1. SUSPEL -->
+                    <div class="card-plate animated-element">
+                        <div class="card-plate-img">
                             <img src="carousel/Suspel.PNG" alt="Catálogo de Bodegas de Sustancias Peligrosas"
                                 loading="lazy">
                         </div>
-                        <div class="project-content">
+                        <div class="card-plate-content">
                             <h3>Catálogo de Bodegas de Sustancias Peligrosas</h3>
                             <p>Diseño y cálculo estructural modular de bodegas estandarizadas para sustancias peligrosas
                                 (SUSPEL) para minería, conforme a normas DS 43 y NCh2369 con cubeto de retención.</p>
                         </div>
                     </div>
 
-                    <div class="project-item animated-element">
-                        <div class="image-wrapper">
+                    <!-- 2. Vivienda -->
+                    <div class="card-plate animated-element">
+                        <div class="card-plate-img">
                             <img src="carousel/casavalpo.PNG" alt="Diseño Estructural Vivienda Albañilería y Metalcon"
                                 loading="lazy">
                         </div>
-                        <div class="project-content">
+                        <div class="card-plate-content">
                             <h3>Diseño Estructural Vivienda Albañilería y Metalcon</h3>
                             <p>Cálculo estructural integral para vivienda combinando albañilería, metalcon y acero
                                 estructural, optimizado para comportamiento sísmico NCh433 para ingreso DOM.</p>
                         </div>
                     </div>
 
-                    <div class="project-item animated-element">
-                        <div class="image-wrapper">
+                    <!-- 3. Garra / Acero -->
+                    <div class="card-plate animated-element">
+                        <div class="card-plate-img">
                             <img src="carousel/garra.PNG" alt="Estructuras Industriales Menores en Acero"
                                 loading="lazy">
                         </div>
-                        <div class="project-content">
+                        <div class="card-plate-content">
                             <h3>Estructuras Industriales Menores en Acero</h3>
                             <p>Ingeniería de detalle y planos de fabricación para plataformas operacionales, pasarelas
                                 y cobertizos industriales bajo normas NCh427 / AISC 360 y NCh2369.</p>
                         </div>
                     </div>
 
-                    <div class="project-item animated-element">
-                        <div class="image-wrapper">
+                    <!-- 4. Drenes -->
+                    <div class="card-plate animated-element">
+                        <div class="card-plate-img">
                             <img src="carousel/drenes.png" alt="Regularización Sanitaria Domiciliaria" loading="lazy">
                         </div>
-                        <div class="project-content">
+                        <div class="card-plate-content">
                             <h3>Regularización Sanitaria Domiciliaria</h3>
                             <p>Levantamiento, ingeniería hidráulica y tramitación técnica de redes domiciliarias de agua
                                 potable y alcantarillado bajo reglamento RIDAA para recepción sanitaria y municipal.</p>
