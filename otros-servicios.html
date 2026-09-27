@@ -327,60 +327,82 @@
            4. HERO PRINCIPAL DE SERVICIO
            ========================================================================== */
         .service-hero {
-            min-height: 80vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
-            padding: calc(var(--header-height) + 3.5rem) 0 4rem 0;
-            background-image: var(--hero-overlay), url('assets/servicios_asesoria.jpg');
-            background-position: center;
-            background-size: cover;
+            box-sizing: border-box;
+            padding: calc(var(--header-height) + 2.5rem) 0 3.5rem 0;
+            background-color: var(--bg-main);
             position: relative;
             border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Fondo Fotográfico con Corte Diagonal Angular Original */
+        .diagonal-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 54%;
+            height: 100%;
+            background: url('assets/servicios_asesoria.jpg') center right / cover no-repeat;
+            clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .diagonal-image-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0.15) 50%, transparent 100%);
+        }
+
+        [data-theme="light"] .diagonal-image-bg::after {
+            background: linear-gradient(90deg, rgba(248, 250, 252, 0.70) 0%, rgba(248, 250, 252, 0.20) 50%, transparent 100%);
+        }
+
+        .diagonal-line {
+            display: inline-block;
+            width: 42px;
+            height: 3px;
+            background: var(--primary);
+            margin-bottom: 1.1rem;
         }
 
         .container {
             width: 90%; max-width: 1200px; margin: 0 auto;
         }
 
-        .hero-card {
-            background: var(--hero-card-bg);
-            border: 1px solid var(--hero-card-border);
-            border-radius: var(--r-xl);
-            padding: clamp(2rem, 5vw, 4rem);
-            box-shadow: var(--shadow-card);
-            backdrop-filter: blur(15px);
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border: 1px solid rgba(255, 153, 0, 0.3);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1.2rem;
-            font-family: var(--font-title);
+        .hero-content {
+            max-width: min(520px, 45vw);
+            position: relative;
+            z-index: 3;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-size: clamp(2.1rem, 3.8vw, 3.4rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.15rem;
             color: var(--text-heading);
+            letter-spacing: -0.5px;
+            text-wrap: balance;
         }
 
         .hero-desc {
-            font-size: clamp(1rem, 1.3vw, 1.15rem);
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2.2rem;
-            max-width: 75ch;
+            font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+            color: var(--text-main);
+            opacity: 0.92;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+            max-width: 44ch;
+            text-wrap: pretty;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
         }
 
         .cta-btn {
@@ -394,21 +416,20 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.4rem;
             border-radius: var(--r-sm);
             border: none;
             cursor: pointer;
+            text-decoration: none;
             box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
             transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
         .cta-btn:hover {
             transform: translateY(-2px);
             background-color: var(--primary-light);
-            box-shadow: 0 14px 30px rgba(255, 153, 0, 0.4);
+            box-shadow: 0 14px 30px rgba(255, 153, 0, 0.42);
             color: #000;
         }
-
-
 
         /* ==========================================================================
            5. SECCIONES EDITORIALES (Diseño Limpio y Espacioso)
@@ -421,17 +442,6 @@
 
         .service-section:nth-child(even) {
             background-color: var(--bg-surface);
-        }
-
-        .area-tag {
-            font-size: 0.78rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.6rem;
-            font-family: var(--font-title);
-            display: inline-block;
         }
 
         .section-title {
@@ -643,6 +653,37 @@
             background: var(--primary);
             color: #000;
             transform: translateX(4px);
+        }
+
+        @media (max-width: 960px) {
+            .diagonal-image-bg {
+                width: 100%;
+                height: 48%;
+                top: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+
+            .service-hero {
+                min-height: auto;
+                padding-top: 15rem;
+                padding-bottom: 3.5rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding-top: 13rem;
+                padding-bottom: 3rem;
+            }
+            .hero-actions .cta-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
         }
 
         /* ==========================================================================
@@ -1297,20 +1338,19 @@
     <main>
         <!-- Hero Principal del Servicio Unificado -->
         <section class="service-hero">
+            <!-- Fondo con corte diagonal angular original -->
+            <div class="diagonal-image-bg" aria-hidden="true"></div>
+
             <div class="container">
-                <div class="hero-card">
-                    <div class="hero-badge">Servicios Complementarios de Ingeniería</div>
+                <div class="hero-content">
+                    <div class="diagonal-line"></div>
                     <h1 class="hero-title">Asesoría y Servicios de <span class="text-gradient">Ingeniería</span></h1>
                     <p class="hero-desc">
-                        Complementamos nuestros servicios de ingeniería con apoyo técnico en revisión de proyectos, cubicaciones, presupuestos y otras necesidades específicas de obra. Adaptamos el alcance del servicio a los requerimientos de cada cliente.
+                        Asesoría técnica integral, revisión de proyectos, cubicaciones y optimización constructiva bajo normativa nacional.
                     </p>
-                    <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">Asesoría Técnica</span>
-                        <span class="tool-badge featured">Cubicaciones</span>
-                        <span class="tool-badge">Revisión de Proyectos</span>
-                        <span class="tool-badge">Apoyo a Constructoras</span>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="cta-btn">Cotizar Asesoría Técnica &rarr;</a>
                     </div>
-                    <a href="#contacto" class="cta-btn">Consultar Servicio &rarr;</a>
                 </div>
             </div>
         </section>
@@ -1318,7 +1358,6 @@
         <!-- 1. ASESORÍA TÉCNICA Y OFICINA TÉCNICA -->
         <section id="asesoria" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Asesoría Técnica</span>
                 <h3 class="section-title">Asesoría Técnica para <span class="text-gradient">Proyectos</span></h3>
                 <p class="section-lead">
                     Apoyo técnico para revisar, organizar y resolver requerimientos durante distintas etapas de un proyecto.
@@ -1361,7 +1400,6 @@
         <!-- 2. INGENIERO EN TU EMPRESA -->
         <section id="ingeniero" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Ingeniero en tu Empresa</span>
                 <h3 class="section-title">Ingeniero en <span class="text-gradient">tu Empresa</span></h3>
                 <p class="section-lead">
                     Apoyo para constructoras, oficinas y empresas que necesitan capacidad técnica adicional sin incorporar permanentemente un profesional a su equipo.
@@ -1404,7 +1442,6 @@
         <!-- 3. REVISIÓN Y OPTIMIZACIÓN DE PROYECTOS -->
         <section id="especialidades" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Revisión y Optimización</span>
                 <h3 class="section-title">Revisión y Optimización <span class="text-gradient">de Proyectos</span></h3>
                 <p class="section-lead">
                     Revisión técnica para identificar inconsistencias, oportunidades de mejora y aspectos a resolver antes de ejecutar.

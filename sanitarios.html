@@ -334,97 +334,82 @@
            4. HERO PRINCIPAL DE SERVICIO
            ========================================================================== */
         .service-hero {
-            min-height: 80vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
-            padding: calc(var(--header-height) + 3.5rem) 0 4rem 0;
-            background-image: var(--hero-overlay), url('assets/sanitario.jpg');
-            background-position: center;
-            background-size: cover;
+            box-sizing: border-box;
+            padding: calc(var(--header-height) + 2.5rem) 0 3.5rem 0;
+            background-color: var(--bg-main);
             position: relative;
             border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* Fondo Fotográfico con Corte Diagonal Angular Original */
+        .diagonal-image-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 54%;
+            height: 100%;
+            background: url('assets/sanitario.jpg') center right / cover no-repeat;
+            clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .diagonal-image-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0.15) 50%, transparent 100%);
+        }
+
+        [data-theme="light"] .diagonal-image-bg::after {
+            background: linear-gradient(90deg, rgba(248, 250, 252, 0.70) 0%, rgba(248, 250, 252, 0.20) 50%, transparent 100%);
+        }
+
+        .diagonal-line {
+            display: inline-block;
+            width: 42px;
+            height: 3px;
+            background: var(--primary);
+            margin-bottom: 1.1rem;
         }
 
         .container {
             width: 90%; max-width: 1200px; margin: 0 auto;
         }
 
-        .hero-card {
-            background: var(--hero-card-bg);
-            border: 1px solid var(--hero-card-border);
-            border-radius: var(--r-xl);
-            padding: clamp(2rem, 5vw, 4rem);
-            box-shadow: var(--shadow-card);
-            backdrop-filter: blur(15px);
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border: 1px solid rgba(255, 153, 0, 0.3);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1.2rem;
-            font-family: var(--font-title);
+        .hero-content {
+            max-width: min(520px, 45vw);
+            position: relative;
+            z-index: 3;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-size: clamp(2.1rem, 3.8vw, 3.4rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.15rem;
             color: var(--text-heading);
+            letter-spacing: -0.5px;
+            text-wrap: balance;
         }
 
         .hero-desc {
-            font-size: clamp(1rem, 1.3vw, 1.15rem);
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2.2rem;
-            max-width: 75ch;
+            font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+            color: var(--text-main);
+            opacity: 0.92;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+            max-width: 44ch;
+            text-wrap: pretty;
         }
 
-        .hero-highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-highlight-box {
-            background: var(--subcard-bg);
-            border: 1px solid var(--subcard-border);
-            border-bottom: 3px solid var(--primary);
-            border-radius: var(--r-md);
-            padding: 1.4rem;
-            text-align: left;
-        }
-
-        .hero-highlight-num {
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 0.95rem;
-            font-family: var(--font-title);
-            margin-bottom: 0.4rem;
-        }
-
-        .hero-highlight-box h4 {
-            font-size: 1.05rem;
-            margin-bottom: 0.4rem;
-            color: var(--text-heading);
-        }
-
-        .hero-highlight-box p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin: 0;
-            line-height: 1.5;
+        .hero-actions {
+            display: flex;
+            align-items: center;
         }
 
         .cta-btn {
@@ -438,16 +423,18 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.4rem;
             border-radius: var(--r-sm);
             border: none;
             cursor: pointer;
+            text-decoration: none;
             box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
-            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
         .cta-btn:hover {
             transform: translateY(-2px);
             background-color: var(--primary-light);
+            box-shadow: 0 14px 30px rgba(255, 153, 0, 0.42);
             color: #000;
         }
 
@@ -464,16 +451,7 @@
             background-color: var(--bg-surface);
         }
 
-        .area-tag {
-            font-size: 0.78rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.6rem;
-            font-family: var(--font-title);
-            display: inline-block;
-        }
+
 
         .section-title {
             font-size: clamp(1.8rem, 3.8vw, 2.6rem);
@@ -624,6 +602,35 @@
             .editorial-split.reverse {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .diagonal-image-bg {
+                width: 100%;
+                height: 48%;
+                top: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+
+            .service-hero {
+                min-height: auto;
+                padding-top: 15rem;
+                padding-bottom: 3.5rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding-top: 13rem;
+                padding-bottom: 3rem;
+            }
+            .hero-actions .cta-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
             }
         }
 
@@ -1287,20 +1294,19 @@
     <main>
         <!-- Hero Principal del Servicio Unificado -->
         <section class="service-hero">
+            <!-- Fondo con corte diagonal angular original -->
+            <div class="diagonal-image-bg" aria-hidden="true"></div>
+
             <div class="container">
-                <div class="hero-card">
-                    <div class="hero-badge">Ingeniería Sanitaria</div>
+                <div class="hero-content">
+                    <div class="diagonal-line"></div>
                     <h1 class="hero-title">Proyectos de <span class="text-gradient">Agua Potable y Alcantarillado</span></h1>
                     <p class="hero-desc">
-                        Desarrollamos proyectos sanitarios para viviendas, ampliaciones y otras edificaciones, incluyendo sistemas de agua potable y alcantarillado. Elaboramos planos, cálculos y antecedentes técnicos de acuerdo con la normativa aplicable y los requerimientos del proyecto.
+                        Diseño y dimensionamiento de agua potable y alcantarillado para viviendas, loteos y edificaciones bajo normativa nacional.
                     </p>
-                    <div class="tools-strip" style="margin-bottom: 2rem;">
-                        <span class="tool-badge featured">Agua Potable</span>
-                        <span class="tool-badge featured">Alcantarillado</span>
-                        <span class="tool-badge featured">Proyectos Domiciliarios</span>
-                        <span class="tool-badge">Regularización Sanitaria</span>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="cta-btn">Cotizar Proyecto Sanitario &rarr;</a>
                     </div>
-                    <a href="#contacto" class="cta-btn">Cotizar Proyecto Sanitario &rarr;</a>
                 </div>
             </div>
         </section>
@@ -1308,7 +1314,6 @@
         <!-- 1. AGUA POTABLE -->
         <section id="agua-potable" class="service-section">
             <div class="container">
-                <span class="area-tag">01. Abastecimiento y Redes de Distribución</span>
                 <h3 class="section-title">Proyectos de <span class="text-gradient">Agua Potable</span></h3>
                 <p class="section-lead">
                     Diseño y dimensionamiento de sistemas de agua potable para viviendas, ampliaciones y edificaciones.
@@ -1351,7 +1356,6 @@
         <!-- 2. ALCANTARILLADO -->
         <section id="alcantarillado" class="service-section">
             <div class="container">
-                <span class="area-tag">02. Evacuación y Tratamiento de Aguas Servidas</span>
                 <h3 class="section-title">Proyectos de <span class="text-gradient">Alcantarillado</span></h3>
                 <p class="section-lead">
                     Diseño de redes de aguas servidas para viviendas y edificaciones.
@@ -1394,7 +1398,6 @@
         <!-- 3. PROYECTOS DOMICILIARIOS Y MODELACIÓN -->
         <section id="domiciliarios" class="service-section">
             <div class="container">
-                <span class="area-tag">03. Expedientes Técnicos y Documentación</span>
                 <h3 class="section-title">Planos y <span class="text-gradient">Expedientes Sanitarios</span></h3>
                 <p class="section-lead">
                     Documentación técnica para ejecutar y presentar proyectos de agua potable y alcantarillado.
@@ -1424,7 +1427,6 @@
         <!-- 4. REGULARIZACIÓN SANITARIA -->
         <section id="regularizacion-sanitaria" class="service-section">
             <div class="container">
-                <span class="area-tag">04. Regularización de Instalaciones</span>
                 <h3 class="section-title">Regularización de <span class="text-gradient">Instalaciones Sanitarias</span></h3>
                 <p class="section-lead">
                     Desarrollo de documentación y antecedentes para regularizar instalaciones existentes que no cuentan con planos o antecedentes actualizados.
