@@ -1092,6 +1092,11 @@
             padding: 0;
         }
 
+        .geo-sublinks li {
+            min-width: calc(50% - 10px);
+            max-width: 100%;
+        }
+
         .geo-sublinks li a {
             color: var(--geo-sublinks-color);
             text-decoration: none;
@@ -1267,6 +1272,10 @@
             .geo-sublinks {
                 gap: 2px 6px;
                 margin-bottom: 0.5rem;
+            }
+
+            .geo-sublinks li {
+                min-width: 0;
             }
 
             .geo-sublinks li a {
