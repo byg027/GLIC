@@ -1260,8 +1260,13 @@
             min-height: 1.2em;
         }
 
+        .form-status.is-success {
+            color: #22c55e !important;
+            font-weight: 700 !important;
+        }
+
         .form-status.is-error {
-            color: #ef4444;
+            color: #ef4444 !important;
         }
 
         /* Responsividad Contacto */
@@ -1374,22 +1379,51 @@
         .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: #666; font-size: 0.85rem; }
         
         @media (max-width: 768px) {
-            .footer-container { gap: 15px; }
-            .footer-col h3 { font-size: 0.8rem; margin-bottom: 0.5rem; }
-            .footer-about p, .footer-links a, .footer-contact p, .footer-contact a { 
-                font-size: 0.75rem; line-height: 1.5; margin-bottom: 0.3rem;
+            footer {
+                padding: 2.2rem 0 1.5rem 0;
             }
-            .footer-col h3::after { width: 15px; height: 2px; margin-top: 5px; }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem 0.75rem;
+            }
+
+            .footer-about {
+                grid-column: 1 / -1;
+            }
+
+            .footer-about p {
+                max-width: 480px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .footer-bottom {
-                margin-top: 2rem;
+                margin-top: 1.75rem;
+                padding-top: 1rem;
                 padding-bottom: 5.5rem;
             }
-        }
 
-        @media (max-width: 520px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .footer-col h3 {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-about p,
+            .footer-links a,
+            .footer-contact p,
+            .footer-contact a {
+                font-size: 0.75rem;
+                line-height: 1.5;
+                margin-bottom: 0.3rem;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+
+            .footer-col h3::after {
+                width: 15px;
+                height: 2px;
+                margin-top: 5px;
             }
         }
 
@@ -2011,8 +2045,9 @@
 
                 if (statusEl) {
                     statusEl.textContent = 'Enviando tu solicitud...';
-                    statusEl.classList.remove('is-error');
+                    statusEl.classList.remove('is-error', 'is-success');
                     statusEl.style.color = 'var(--text-muted, #a0a0a0)';
+                    statusEl.style.fontWeight = '';
                 }
 
                 try {
@@ -2025,9 +2060,11 @@
 
                     if (response.status === 200 && data.success) {
                         if (statusEl) {
-                            statusEl.textContent = '¡Solicitud enviada con éxito! Te contactaremos a la brevedad.';
+                            statusEl.textContent = '¡Mensaje enviado con éxito! Te contactaremos a la brevedad.';
                             statusEl.classList.remove('is-error');
+                            statusEl.classList.add('is-success');
                             statusEl.style.color = '#22c55e';
+                            statusEl.style.fontWeight = '700';
                         }
                         contactForm.reset();
                         if (spanEl) spanEl.textContent = 'ENVIADO';
@@ -2042,9 +2079,11 @@
                     }
                 } catch (error) {
                     if (statusEl) {
-                        statusEl.textContent = 'Hubo un problema al enviar la solicitud. Por favor intenta nuevamente o contáctanos por WhatsApp.';
+                        statusEl.textContent = 'Hubo un problema al enviar la solicitud. Por favor intenta nuevamente o contáctanos por correo a contacto@glic.cl.';
+                        statusEl.classList.remove('is-success');
                         statusEl.classList.add('is-error');
                         statusEl.style.color = '#ef4444';
+                        statusEl.style.fontWeight = '';
                     }
                     submitBtn.classList.remove('is-loading');
                     submitBtn.disabled = false;
